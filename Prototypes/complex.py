@@ -2,11 +2,13 @@ class Complex():
 
 
     """ 
-    Operations involving complex numbers
+    Operations and arithmetic involving complex numbers
     Operations include:
-        + / -
-        *
+        + -
+        * /
+        == !=
         abs
+        repr
         str
     """
 
@@ -17,12 +19,17 @@ class Complex():
 
 
     # make the number complex, if possible
-    def correct_type(self, number):
+    def _correct_type(self, number):
         if isinstance(number, (float,int)):                                    
             number = Complex(number)
         elif not (hasattr(number, 'real') and hasattr(number, 'imag')):
             raise TypeError('number must have a real and imagiary part')
         return number
+
+
+    # illegal operations for complex numbers 
+    def _illegal(self, op):
+        print(f'Unable to compute\noperation \"{op}\" illegal for complex numbers')
 
 
     def __abs__(self):
@@ -32,7 +39,7 @@ class Complex():
 
     def __add__(self, other):
         """ self + other """    
-        other = self.correct_type(other)
+        other = self._correct_type(other)
         return Complex(self.real + other.real, self.imag + other.imag)
 
 
@@ -43,7 +50,7 @@ class Complex():
 
     def __sub__(self, other):
         """ self - other """
-        other = self.correct_type(other)
+        other = self._correct_type(other)
         return Complex(self.real - other.real, self.imag - other.imag)
 
 
@@ -54,7 +61,7 @@ class Complex():
 
     def __mul__(self, other):
         """ self * other """
-        other = self.correct_type(other)
+        other = self._correct_type(other)
         return Complex(self.real*other.real - self.imag*other.imag, self.real*other.imag + self.imag*other.real)
         # (ac-bd) + (ad+bc)i
 
@@ -66,7 +73,7 @@ class Complex():
 
     def __truediv__(self, other):
         """ self / other """
-        other = self.correct_type(other)
+        other = self._correct_type(other)
         r = float(other.real**2 + other.imag**2)
         return Complex((self.real*other.real+self.imag*other.imag)/r, (self.imag*other.real-self.real*other.imag)/r)
 
@@ -76,10 +83,44 @@ class Complex():
         return self.__truediv__(other)
 
 
+    def __eq__(self, other):
+        """ self == other """
+        other = self._correct_type(other)
+        return self.real == other.real and self.imag == other.imag
+
+
+    def __ne__(self,other):
+        """ self != other """
+        return not(self.__eq__(other))
+
+    ### printing and display ###
     def __str__(self):
         """ str(self) """
         if self.imag >= 0:
             return '(%s + %sj)' % (self.real, self.imag)
         else:
             return '(%s - %sj)' % (self.real, abs(self.imag))
+
+
+    def __repr__(self):
+        """ repr(self) """
+        return 'Complex(%s, %s)' % (self.real, self.imag)
+
+    ### illegal operations ###    
+    def __gt__(self, other):
+        self._illegal('>')
+    
+
+    def __ge__(self, other):
+        self._illegal('>=')
+    
+
+    def __lt__(self, other):
+        self._illegal('<')
+    
+
+    def __le__(self, other):
+        self._illegal('<=')
+
+# print(Complex(3, -1) < Complex(2,-1))
 
