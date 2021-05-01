@@ -1,2 +1,2 @@
-# Computer-Science-Coursework
+# Visualising and Investigating the Riemann Hypothesis
  
