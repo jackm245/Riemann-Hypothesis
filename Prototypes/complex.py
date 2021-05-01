@@ -1,5 +1,6 @@
 class Complex(): 
 
+
     """ 
     Operations involving complex numbers
     Operations include:
@@ -9,9 +10,11 @@ class Complex():
         str
     """
 
+
     def __init__(self, real, imag=0.0):
         self.real = real
         self.imag = imag
+
 
     # make the number complex, if possible
     def correct_type(self, number):
@@ -43,9 +46,11 @@ class Complex():
         other = self.correct_type(other)
         return Complex(self.real - other.real, self.imag - other.imag)
 
+
     def __rsub__(self, other):
         """ other - self """
         return self.__sub__(other)
+
 
     def __mul__(self, other):
         """ self * other """
@@ -53,11 +58,28 @@ class Complex():
         return Complex(self.real*other.real - self.imag*other.imag, self.real*other.imag + self.imag*other.real)
         # (ac-bd) + (ad+bc)i
 
+
     def __rmul__(self, other):
         """ other - self """
         return self.__mul__(other)
 
+
+    def __truediv__(self, other):
+        """ self / other """
+        other = self.correct_type(other)
+        r = float(other.real**2 + other.imag**2)
+        return Complex((self.real*other.real+self.imag*other.imag)/r, (self.imag*other.real-self.real*other.imag)/r)
+
+
+    def __rtruediv__(self, other):
+        """ other / self """
+        return self.__truediv__(other)
+
+
     def __str__(self):
         """ str(self) """
-        return '(%s + %sj)' % (self.real, self.imag)
+        if self.imag >= 0:
+            return '(%s + %sj)' % (self.real, self.imag)
+        else:
+            return '(%s - %sj)' % (self.real, abs(self.imag))
 
