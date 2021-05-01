@@ -1,3 +1,15 @@
+#=============================================================================#
+#
+#    File:   complex.py
+#    Author: Jack Morgan
+#    Date:   May 2021
+#    Description:
+#        Contains the class Complex
+#        Computes arithmetic operations involving complex numbers
+#
+#=============================================================================#
+
+
 class Complex(): 
 
 
@@ -93,6 +105,7 @@ class Complex():
         """ self != other """
         return not(self.__eq__(other))
 
+
     ### printing and display ###
     def __str__(self):
         """ str(self) """
@@ -105,6 +118,7 @@ class Complex():
     def __repr__(self):
         """ repr(self) """
         return 'Complex(%s, %s)' % (self.real, self.imag)
+
 
     ### illegal operations ###    
     def __gt__(self, other):
@@ -121,6 +135,4 @@ class Complex():
 
     def __le__(self, other):
         self._illegal('<=')
-
-# print(Complex(3, -1) < Complex(2,-1))
 
