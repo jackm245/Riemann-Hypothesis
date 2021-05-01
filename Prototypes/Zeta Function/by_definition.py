@@ -12,7 +12,7 @@ def zeta(s: complex) -> complex:
     # output the final result
     return res
 
-j = 1j
+
 for x in range(2,10):
     for y in range(2,10):
-        print(zeta(x+y*j))
+        print(zeta(x + y * 1j))
