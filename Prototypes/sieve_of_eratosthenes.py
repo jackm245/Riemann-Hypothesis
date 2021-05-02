@@ -1,9 +1,22 @@
+#=============================================================================#
+#
+#    File:   sieve_of_eratosthenes.py
+#    Author: Jack Morgan
+#    Date:   May 2021
+#    Description:
+#        Uses a sieve to find all of the prime numbers up to a limit
+#        Three versions, each faster than the last
+#
+#=============================================================================#
+
+
 import numpy as np
 from time import time
 from math import sqrt, floor
 
 
 # print the prime numbers up to limit
+# first version
 def sieve_of_eratosthenes_1(limit):
     possible_primes = [True for _ in range(limit)]
     possible_primes[0] = possible_primes[1] = False
@@ -15,6 +28,7 @@ def sieve_of_eratosthenes_1(limit):
     return possible_primes
 
 
+#second version
 def sieve_of_eratosthenes_2(limit):
     possible_primes = np.ones(limit)
     possible_primes[0:2:1] = 0
@@ -24,7 +38,7 @@ def sieve_of_eratosthenes_2(limit):
             possible_primes[i*i:limit:i] = 0
     return possible_primes
 
-
+# third version
 def sieve_of_eratosthenes_3(limit):
     possible_primes = np.ones(limit, dtype=bool)
     possible_primes[0:2:1] = False
