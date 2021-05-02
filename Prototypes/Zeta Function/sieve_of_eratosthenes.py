@@ -2,6 +2,7 @@ import numpy as np
 from time import time
 from math import sqrt, floor
 
+
 # print the prime numbers up to limit
 def sieve_of_eratosthenes_1(limit):
     possible_primes = [True for _ in range(limit)]
@@ -14,7 +15,6 @@ def sieve_of_eratosthenes_1(limit):
     return possible_primes
 
 
-# print the prime numbers up to limit
 def sieve_of_eratosthenes_2(limit):
     possible_primes = np.ones(limit)
     possible_primes[0:2:1] = 0
@@ -24,6 +24,7 @@ def sieve_of_eratosthenes_2(limit):
             possible_primes[i*i:limit:i] = 0
     return possible_primes
 
+
 def sieve_of_eratosthenes_3(limit):
     possible_primes = np.ones(limit, dtype=bool)
     possible_primes[0:2:1] = False
@@ -32,22 +33,25 @@ def sieve_of_eratosthenes_3(limit):
     return np.flatnonzero(possible_primes)
 
 
-limit = 1*10**6
+def main():
+    limit = 1*10**6
 
-start1 = time()
-print(list(sieve_of_eratosthenes_1(limit)))
-end1 = time()
+    start1 = time()
+    print(list(sieve_of_eratosthenes_1(limit)))
+    end1 = time()
 
-start2 = time()
-print(list(sieve_of_eratosthenes_2(limit)))
-end2 = time()
+    start2 = time()
+    print(list(sieve_of_eratosthenes_2(limit)))
+    end2 = time()
 
-start3 = time()
-print(sieve_of_eratosthenes_3(limit))
-end3 = time()
+    start3 = time()
+    print(sieve_of_eratosthenes_3(limit))
+    end3 = time()
 
-print(f'time 1: {end1-start1} seconds')
-print(f'time 2: {end2-start2} seconds')
-print(f'time 3: {end3-start3} seconds')
+    print(f'time 1: {end1-start1} seconds')
+    print(f'time 2: {end2-start2} seconds')
+    print(f'time 3: {end3-start3} seconds')
 
 
+if __name__ == "__main__":
+    main()
