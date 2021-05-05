@@ -23,6 +23,8 @@ class Complex():
         abs
         repr
         str
+        conjugate
+        dump
     """
 
 
