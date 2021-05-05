@@ -38,6 +38,7 @@ def sieve_of_eratosthenes_2(limit):
             possible_primes[i*i:limit:i] = 0
     return possible_primes
 
+
 # third version
 def sieve_of_eratosthenes_3(limit):
     possible_primes = np.ones(limit, dtype=bool)
