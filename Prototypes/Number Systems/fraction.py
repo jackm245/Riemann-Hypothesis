@@ -34,35 +34,47 @@ class Fraction:
 
 
     def __init__(self, numerator, denominator=1):
-        #FRACTIONS DIVIDED BY FRACTIONS. FRAC AS NUM AND DENOM
-        if not(isinstance(numerator, (float, int, str)) or isinstance(denominator, (float, int, str))):
-            raise ValueError(f'Fraction({numerator}, {denominator})\nData must be of type float, int, or str')
-        elif isinstance(numerator, str):
-            try:
-                float(numerator)
-            except ValueError as numerator_value_error:
-                raise ValueError(f'{numerator_value_error}\nNumerator must be a number')
-        elif isinstance(denominator, str):
-            try:
-                float(denominator)
-            except ValueError as denominator_value_error:
-                raise ValueError(f'{denominator_value_error}\nDenominator must be a number') 
-        # convert data types
-        if isinstance(numerator, str):
-            numerator = float(numerator)
-            if numerator == int(numerator):
-                numerator = int(numerator)
-        if isinstance(denominator, str):
-            denominator = float(denominator)
-            if denominator == int(denominator):
-                denominator = int(denominator)
-        # where numerator and denominator are floats
-        if denominator == 0:
-            raise ZeroDivisionError(f'Fraction({numerator}, 0)')
         self.numerator = numerator
         self.denominator = denominator
+        if isinstance(self.numerator, Fraction) and isinstance(self.denominator, Fraction):
+           self._convert_to_single_fraction(self.numerator, self.denominator)
+        elif isinstance(self.numerator, Fraction):
+            self.denominator *= self.numerator.denominator
+            self.numerator = self.numerator.numerator
+        elif isinstance(self.denominator, Fraction):
+            self.numerator *= self.denominator.denominator
+            self.denominator = self.denominator.numerator
+        elif not(isinstance(self.numerator, (float, int, str)) or isinstance(self.denominator, (float, int, str))):
+            raise ValueError(f'Fraction({self.numerator}, {self.denominator})\nData must be of type float, int, or str.\nNumerator of type \'{type(self.numerator)}\'.\nDenominator of type \'{type(self.denominator)}\'.')
+        elif isinstance(self.numerator, str):
+            try:
+                float(self.numerator)
+            except ValueError as numerator_value_error:
+                raise ValueError(f'{numerator_value_error}\nNumerator must be a number, not \'{self.numerator}\'').with_traceback(numerator_value_error.__traceback__)
+        elif isinstance(self.denominator, str):
+            try:
+                float(self.denominator)
+            except ValueError as denominator_value_error:
+                raise ValueError(f'{denominator_value_error}\nDenominator must be a number, not \'{self.denominator}\'').with_traceback(denominator_value_error.__traceback__)
+        # convert data types
+        if isinstance(self.numerator, str):
+            self.numerator = float(self.numerator)
+            if self.numerator == int(self.numerator):
+                self.numerator = int(self.numerator)
+        if isinstance(self.denominator, str):
+            self.denominator = float(self.denominator)
+            if self.denominator == int(self.denominator):
+                self.denominator = int(self.denominator)
+        if self.denominator == 0:
+            raise ZeroDivisionError(f'Fraction({self.numerator}, 0)')
         self._simplify_fraction()
 
+    
+    def _convert_to_single_fraction(self, num, denom):
+        # \frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a\cdot \:d}{b\cdot \:c}
+        fraction = Fraction(num.numerator * denom.denominator, num.denominator * denom.numerator)
+        self.numerator = fraction.numerator
+        self.denominator = fraction.denominator
 
     def _convert_to_decimal_fraction(self):
         # multiply by largest length
@@ -105,17 +117,30 @@ class Fraction:
             self.numerator = -self.numerator
 
     
-    def _get_reciprocal(self):
-        return Fraction(self.denominator, self.numerator)
+    def _get_reciprocal(self, fraction):
+        fraction = self._convert_to_fraction(fraction, 'reciprocal')
+        return Fraction(fraction.denominator, fraction.numerator)
 
 
-    def __add__(self, other):
-        """ self + other """
+    def _convert_to_fraction(self, other, operation):
         if not isinstance(other, Fraction):
             try:
                 other = Fraction(other)
             except ValueError as error:
-                raise ValueError(f'{error}\nUnable to add numbers {self} and {other}')
+                raise ValueError(f'{error}\nUnable to perform operation \'{operation}\' on numbers \'{self}\' and \'{other}\'').with_traceback(error.__traceback__)
+        return other
+
+
+    def __abs__(self):
+        """ abs(self) """
+        if self.numerator < 0:
+            self.numerator = -self.numerator
+        return Fraction(self.numerator, self.denominator)
+
+
+    def __add__(self, other):
+        """ self + other """
+        other = self._convert_to_fraction(other, 'addition')
         resulting_numerator = self.numerator * other.denominator + self.denominator * other.numerator
         resulting_denominator = self.denominator * other.denominator
         return (Fraction(resulting_numerator, resulting_denominator))
@@ -128,11 +153,7 @@ class Fraction:
 
     def __sub__(self, other):
         """ self - other """
-        if not isinstance(other, Fraction):
-            try:
-                other = Fraction(other)
-            except ValueError as error:
-                raise ValueError(f'{error}\nUnable to subtract numbers {self} and {other}')
+        other = self._convert_to_fraction(other, 'subtraction')
         resulting_numerator = self.numerator * other.denominator - self.denominator * other.numerator
         resulting_denominator = self.denominator * other.denominator
         return (Fraction(resulting_numerator, resulting_denominator))
@@ -144,10 +165,26 @@ class Fraction:
 
 
     def __mul__(self, other):
-        """ other * self """
-        if not isinstance(other, Fraction):
-            other = Fraction(other)
+        """ self * other """
+        other = self._convert_to_fraction(other, 'multiplication')
         return Fraction(self.numerator * other.numerator, self.denominator * other.denominator)
+
+
+    def __rmul__(self, other):
+        """ other * self """
+        return self.__mul__(other)
+
+
+    def __truediv__(self, other):
+        """ self / other """
+        other = self._convert_to_fraction(other, 'true division')
+        # \frac{a}{b}\div \frac{c}{d} \equiv \frac{a}{b}\cdot \frac{d}{c}
+        return self.__mul__(self._get_reciprocal(other))
+
+    
+    def __rtruediv__(self, other):
+        """ other / self """
+        return self._get_reciprocal(self.__truediv__(other))
 
 
     def __str__(self):
@@ -158,4 +195,7 @@ class Fraction:
         return f'Fraction({self.numerator}, {self.denominator})'
 
 
-print(Fraction(1, 2) - 'x')
+    def __int__(self):
+        return self.numerator // self.denominator
+
+print(Fraction(2, 1) / Fraction(3, 4))
