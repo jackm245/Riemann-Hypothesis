@@ -36,6 +36,10 @@ class Fraction:
     def __init__(self, numerator, denominator=1):
         self.numerator = numerator
         self.denominator = denominator
+        self._validate_input()
+
+
+    def _validate_input(self):
         if isinstance(self.numerator, Fraction) and isinstance(self.denominator, Fraction):
            self._convert_to_single_fraction(self.numerator, self.denominator)
         elif isinstance(self.numerator, Fraction):
@@ -198,4 +202,4 @@ class Fraction:
     def __int__(self):
         return self.numerator // self.denominator
 
-print(Fraction(2, 1) / Fraction(3, 4))
+print(Fraction(Fraction(2, 1), Fraction(3, 4)))
