@@ -49,7 +49,7 @@ class Complex():
     
     ### Arithmetic Operations ###
     def __abs__(self):
-        """ |self| """
+        """ abs(self) """
         return sqrt(self.real**2 + self.imag**2)
 
 
