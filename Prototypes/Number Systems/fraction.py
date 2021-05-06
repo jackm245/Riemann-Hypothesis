@@ -36,8 +36,9 @@ class Fraction:
         self.numerator = numerator
         self.denominator = denominator
         self._validate_input()
-
+        self._simplify_fraction()
     
+
     # makes sure that numerator and denominator are valid numbers
     # accepts different data types (int, float, str, Fraction)
     def _validate_input(self):
@@ -72,7 +73,6 @@ class Fraction:
                 self.denominator = int(self.denominator)
         if self.denominator == 0:
             raise ZeroDivisionError(f'Fraction({self.numerator}, 0)')
-        self._simplify_fraction()
 
     
     # where a fraction may consist of a fraction on the numerator or denominator
