@@ -10,12 +10,6 @@
 #=============================================================================#
 
 
-"""
-operations
-fractions divided by fractions
-"""
-
-
 import re
 
 
@@ -29,7 +23,12 @@ class Fraction:
     """
     Operations and arithmetic involving fractions
     Operations include:
-
+        Simplification of fractions
+        abs ()
+        + -
+        * /
+        int(), str(), repr()
+        _get_reciprocal()
     """
 
 
@@ -38,7 +37,9 @@ class Fraction:
         self.denominator = denominator
         self._validate_input()
 
-
+    
+    # makes sure that numerator and denominator are valid numbers
+    # accepts different data types (int, float, str, Fraction)
     def _validate_input(self):
         if isinstance(self.numerator, Fraction) and isinstance(self.denominator, Fraction):
            self._convert_to_single_fraction(self.numerator, self.denominator)
@@ -74,12 +75,16 @@ class Fraction:
         self._simplify_fraction()
 
     
+    # where a fraction may consist of a fraction on the numerator or denominator
+    # simplify this into a single fraction
     def _convert_to_single_fraction(self, num, denom):
         # \frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a\cdot \:d}{b\cdot \:c}
         fraction = Fraction(num.numerator * denom.denominator, num.denominator * denom.numerator)
         self.numerator = fraction.numerator
         self.denominator = fraction.denominator
 
+
+    # where numerator or denominator are decimals, covert the fraction into a decimal fraction
     def _convert_to_decimal_fraction(self):
         # multiply by largest length
         numerator_decimals, denominator_decimals = 0, 0
@@ -92,6 +97,7 @@ class Fraction:
         self.denominator = int(self.denominator*10**highest_decimal_places)
 
 
+    # find the greatest common divisor (highest common factor) between numbers num1 and num2
     def _get_greatest_common_divisor(self, num1, num2):
         # euclidean algorithm
         if num2 == 0:
@@ -99,7 +105,8 @@ class Fraction:
         else:
             return self._get_greatest_common_divisor(num2, num1 % num2)
 
-    
+
+    # find the lowest common multiple between numbers num1 and num2
     def _get_lowest_common_multiple(self, num1, num2):
         # special case when num1 and num2 ignored as num2 cant be 0 for fractions
         # {\displaystyle \operatorname {lcm} (a,b)={\frac {|a\cdot b|}{\gcd(a,b)}}.}
@@ -126,6 +133,7 @@ class Fraction:
         return Fraction(fraction.denominator, fraction.numerator)
 
 
+    # convert variable other to type Fraction
     def _convert_to_fraction(self, other, operation):
         if not isinstance(other, Fraction):
             try:
@@ -192,14 +200,18 @@ class Fraction:
 
 
     def __str__(self):
+        """ str(self) """
         return f'{self.numerator}/{self.denominator}'
 
 
     def __repr__(self):
+        """ repr(self) """
         return f'Fraction({self.numerator}, {self.denominator})'
 
 
     def __int__(self):
+        """ int(self) """
         return self.numerator // self.denominator
+
 
 print(Fraction(Fraction(2, 1), Fraction(3, 4)))
