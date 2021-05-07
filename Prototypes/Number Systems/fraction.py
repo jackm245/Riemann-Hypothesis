@@ -36,6 +36,8 @@ class Fraction:
         Extended Assignments
 
         Unary Operators
+        -
+        +
         abs()
 
         Comparison Operators
@@ -249,7 +251,19 @@ class Fraction:
         return other.__pow__(self)
 
 
+    ### Extended Assignments ###
+
+
     ### Unary Operators ###
+    def __neg__(self):
+        """ -self """
+        return Fraction(-self.numerator, self.denominator)
+
+    def __pos__(self):
+        """ +self """
+        return Fraction(+self.numerator, self.denominator)
+
+
     def __abs__(self):
         """ abs(self) """
         if self.numerator < 0:
