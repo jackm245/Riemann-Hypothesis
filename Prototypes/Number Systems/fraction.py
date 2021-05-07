@@ -23,12 +23,37 @@ class Fraction:
     """
     Operations and arithmetic involving fractions
     Operations include:
-        Simplification of fractions
-        abs ()
-        + -
-        * /
-        int(), str(), repr()
+        
+        Binary Operators
+        +
+        -
+        *
+        //
+        /
+
+        Extended Assignments
+        
+        Unary Operators
+        abs()
+
+        Comparison Operators
+        <
+        <=
+        ==
+        !=
+        >=
+        >
+
+        Type Conversion
+        int()
+        str()
+        float()
+
+        Miscellaneous
+        _simplify_fraction()
         _get_reciprocal()
+        dump()
+        repr()
     """
 
 
@@ -130,7 +155,10 @@ class Fraction:
     
     def _get_reciprocal(self, fraction):
         fraction = self._convert_to_fraction(fraction, 'reciprocal')
-        return Fraction(fraction.denominator, fraction.numerator)
+        if fraction.numerator != 0:
+            return Fraction(fraction.denominator, fraction.numerator)
+        else:
+            raise ValueError('Unable to take reciprocal of Fraction(0, 1)')
 
 
     # convert variable other to type Fraction
@@ -142,7 +170,8 @@ class Fraction:
                 raise ValueError(f'{error}\nUnable to perform operation \'{operation}\' on numbers \'{self}\' and \'{other}\'').with_traceback(error.__traceback__)
         return other
 
-
+    
+    ### Arithmetic Operations ###
     def __abs__(self):
         """ abs(self) """
         if self.numerator < 0:
@@ -179,6 +208,7 @@ class Fraction:
     def __mul__(self, other):
         """ self * other """
         other = self._convert_to_fraction(other, 'multiplication')
+        print(self, other)
         return Fraction(self.numerator * other.numerator, self.denominator * other.denominator)
 
 
@@ -191,7 +221,8 @@ class Fraction:
         """ self / other """
         other = self._convert_to_fraction(other, 'true division')
         # \frac{a}{b}\div \frac{c}{d} \equiv \frac{a}{b}\cdot \frac{d}{c}
-        return self.__mul__(self._get_reciprocal(other))
+        #return other.__mul__(self._get_reciprocal(self))
+        return Fraction(self.numerator * other.denominator, self.denominator * other.numerator)
 
     
     def __rtruediv__(self, other):
@@ -199,6 +230,19 @@ class Fraction:
         return self._get_reciprocal(self.__truediv__(other))
 
 
+    def __floordiv__(self, other):
+        """ self // other """
+        other = self._convert_to_fraction(other, 'floor division')
+        return self.__truediv__(other).__int__()
+
+
+    def __rfloordiv__(self, other):
+        """ other // self """
+        #return self._get_reciprocal(self.__floordiv__(other)).__int__()
+        return self.__rtruediv__(other).__int__()
+
+
+    ### Data type and printing operations ###
     def __str__(self):
         """ str(self) """
         return f'{self.numerator}/{self.denominator}'
@@ -209,9 +253,65 @@ class Fraction:
         return f'Fraction({self.numerator}, {self.denominator})'
 
 
+    def dump(self):
+        return self.__dict__
+
+
     def __int__(self):
         """ int(self) """
         return self.numerator // self.denominator
 
 
-print(Fraction(Fraction(2, 1), Fraction(3, 4)))
+    def __float__(self):
+        """ float(self) """
+        return float(self.numerator / self.denominator)
+
+
+    ### Comparative Operators ###
+    def __eq__(self, other):
+        """ self == other """
+        other = self._convert_to_fraction(other, 'equal to')
+        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
+        return self.numerator * lcm == other.numerator * lcm
+    
+
+    def __ne__(self, other):
+        """ self != other """
+        other = self._convert_to_fraction(other, 'not equal to')
+        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
+        return self.numerator * lcm != other.numerator * lcm
+
+
+    def __lt__(self, other):
+        """ self < other """
+        other = self._convert_to_fraction(other, 'less than')
+        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
+        return self.numerator * lcm < other.numerator * lcm
+
+
+    def __le__(self, other):
+        """ self <= other """
+        other = self._convert_to_fraction(other, 'less than or equal to')
+        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
+        return self.numerator * lcm <= other.numerator * lcm
+
+
+    def __gt__(self, other):
+        """ self > other """
+        other = self._convert_to_fraction(other, 'greater than')
+        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
+        return self.numerator * lcm > other.numerator * lcm
+
+    def __ge__(self, other):
+        """ self >= other """
+        other = self._convert_to_fraction(other, 'greater than or equal to')
+        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
+        return self.numerator * lcm >= other.numerator * lcm
+
+
+# print(int(Fraction(3, 4)))
+print(Fraction(Fraction(2, 1) / Fraction(3, 4)))
+print(10 / Fraction(3, 4))
+print(10 // Fraction(3, 4))
+print(Fraction(30, 4) // 10)
+print(Fraction(3, 4) / 10)
