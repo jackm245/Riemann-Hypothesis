@@ -9,6 +9,10 @@
 #
 #=============================================================================#
 
+
+from math import atan
+
+
 __all__ = ['Complex']
 
 class Complex(): 
@@ -158,5 +162,13 @@ class Complex():
         """ (a+b*1j).conjugate() returns (a-b*1j) """
         return Complex(self.real, -self.imag)
 
-    def dump(self):
+
+    def phase(self)
+         """ phase(self) """
+         return atan(self.imag /  self.real)
+
+
+   def dump(self):
         return self.__dict__
+
+
