@@ -342,4 +342,4 @@ class Fraction:
 # print(int(Fraction(3, 4)))
 print(Fraction(1, 2)**2)
 print(Fraction(6, 5) ** Fraction(2, 3))
-print(2**Fraction(1, 2))
+print(float(2**Fraction(1, 2)))
