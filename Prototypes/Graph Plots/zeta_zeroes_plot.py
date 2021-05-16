@@ -53,12 +53,19 @@ def zeta(x, y=0):
     return result
 
 
+def is_sign_change(previous, number):
+    print(f'prev: {previous}, number {number}')
+    previous_sign = previous / abs(previous)
+    number_sign = number / abs(number)
+    return previous_sign == number_sign
+
+
 def animate(i, x_vals, y_vals):
     _zeta = zeta(1/2, i/50)
-    _zeta_real = round(_zeta.real, 2)
-    _zeta_imag = round(_zeta.imag, 2)
-    print(_zeta_real, _zeta_imag)
-    if _zeta_real == 0 and _zeta_imag == 0:
+    print(_zeta.real, _zeta.imag)
+    print(x_vals[-10:])
+    print(y_vals[-10:])
+    if is_sign_change(y_vals[-1].real, _zeta.real) and is_sign_change(y_vals[-1].imag, _zeta.imag):
         x_vals.append(1/2)
         y_vals.append(i/50)
 
@@ -74,8 +81,8 @@ def animate(i, x_vals, y_vals):
 def plot():
     plt.style.use('dark_background')
 
-    x_vals = []
-    y_vals = []
+    x_vals = [1]
+    y_vals = [1]
 
     ani = FuncAnimation(plt.gcf(), animate, fargs=(x_vals, y_vals,), interval=10)
     plt.xlabel('Re')
