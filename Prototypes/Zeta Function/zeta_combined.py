@@ -5,7 +5,7 @@
 #    Date:   May 2021
 #    Description:
 #        Using the value of zeta divided by eta to calculate the zeta function
-#        Calculates the value of zeta for all inputs
+#        Calculates the value of zeta for all input values
 #
 #=============================================================================#
 
