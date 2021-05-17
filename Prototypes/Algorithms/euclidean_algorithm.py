@@ -1,6 +1,6 @@
 #=============================================================================#
 #
-#    File:   euclidean_algorothm.py
+#    File:   euclidean_algorithm.py
 #    Author: Jack Morgan
 #    Date:   May 2021
 #    Description:
