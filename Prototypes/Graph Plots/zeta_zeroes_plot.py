@@ -54,22 +54,26 @@ def zeta(x, y=0):
 
 
 def is_sign_change(previous, number):
-    print(f'prev: {previous}, number {number}')
-    if previous == 0 or number == 0:
+    # print(f'prev: {previous}, number {number}')
+    if previous == 0:
         return False
     previous_sign = previous / abs(previous)
     number_sign = number / abs(number)
-    return previous_sign == number_sign
+    return previous_sign != number_sign
 
 
 def animate(i, x_vals, y_vals):
-    _zeta = zeta(1/2, i/50)
-    print(_zeta.real, _zeta.imag)
-    print(x_vals)
-    print(y_vals)
-    if is_sign_change(y_vals[-1].real, _zeta.real) and is_sign_change(y_vals[-1].imag, _zeta.imag):
+    PRECISION = 100
+    previous_y_input = (i-1)/PRECISION
+    current_y_input = i/PRECISION
+    previous_zeta = zeta(1/2, previous_y_input)
+    current_zeta = zeta(1/2, current_y_input)
+    # print(current_zeta.real, current_zeta.imag)
+    # print(y_vals)
+    if is_sign_change(previous_zeta.real, current_zeta.real) and is_sign_change(previous_zeta.imag, current_zeta.imag):
         x_vals.append(1/2)
-        y_vals.append(i/50)
+        y_vals.append(current_y_input)
+        print(current_y_input)
 
     plt.cla()
 
@@ -83,10 +87,10 @@ def animate(i, x_vals, y_vals):
 def plot():
     plt.style.use('dark_background')
 
-    x_vals = [1]
-    y_vals = [1]
+    x_vals = []
+    y_vals = []
 
-    ani = FuncAnimation(plt.gcf(), animate, fargs=(x_vals, y_vals,), interval=10)
+    animation = FuncAnimation(plt.gcf(), animate, fargs=(x_vals, y_vals,), interval=0)
     plt.xlabel('Re')
     plt.ylabel('Im')
     plt.tight_layout()
