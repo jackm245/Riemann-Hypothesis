@@ -23,12 +23,16 @@ class Complex():
     Operations include:
         + -
         * /
+        **
         == !=
         abs
-        repr
         str
+        repr
         conjugate
+        phase
         dump
+        polar
+        rect
     """
 
     # initialisation using *args
