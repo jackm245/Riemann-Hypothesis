@@ -31,7 +31,7 @@ class Complex():
         dump
     """
 
-
+    # initialisation using *args
     def __init__(self, *args):
         # check if defined as polar coordinates
         if len(args) == 3 and args[2] == True:
@@ -43,6 +43,21 @@ class Complex():
         else:
             self.real = args[0]
             self.imag = args[1] if len(args) > 1 else 0
+
+
+    # initialisation using parameters
+    # problem is with parameter names
+    """
+    def __init__(self, real, imag=0, rect=True):
+        # check if defined as polar coordinates
+        if not rect:
+            self.real = real * cos(imag)
+            self.imag = real * sin(imag)
+        # for rect coordinates
+        else:
+            self.real = real
+            self.imag = imag
+    """
 
 
     # make the number complex, if possible
@@ -184,6 +199,11 @@ class Complex():
     def polar(self):
         """ polar(self) """
         return (self.__abs__(), self.phase())
+
+
+    def rect(self):
+        """ rect(self) """
+        return (self.real, self.imag)
 
 
 print(Complex(12, 5))
