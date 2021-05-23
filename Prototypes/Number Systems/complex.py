@@ -126,6 +126,17 @@ class Complex():
         return self.__truediv__(other)
 
 
+    def __pow__(self, other):
+        """ self ** other """
+        r, phi = self.polar()
+        return r**other*(cos(other*phi)+sin(other*phi)*1j)
+
+
+    def __rpow__(self, other):
+        """ other ** self """
+        raise NotImplementedError('number to a complex power is not defined, 2')
+
+
     def __eq__(self, other):
         """ self == other """
         other = self._correct_type(other)
@@ -206,5 +217,4 @@ class Complex():
         return (self.real, self.imag)
 
 
-print(Complex(12, 5))
-print(Complex(13, 0.3, True))
+print(Complex(5, 2)**3)
