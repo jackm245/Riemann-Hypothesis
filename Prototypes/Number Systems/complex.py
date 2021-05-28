@@ -35,6 +35,7 @@ class Complex():
         rect
     """
 
+
     # initialisation using *args
     def __init__(self, *args):
         # check if defined as polar coordinates
