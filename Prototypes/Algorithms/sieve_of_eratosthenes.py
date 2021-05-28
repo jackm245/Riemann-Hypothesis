@@ -12,8 +12,7 @@
 
 import numpy as np
 from time import time
-from math import sqrt, floor
-
+from math import sqrt, ceil
 
 # print the prime numbers up to limit
 # first version
@@ -36,14 +35,13 @@ def sieve_of_eratosthenes_2(limit):
         if bool(isprime):
             yield i
             possible_primes[i*i:limit:i] = 0
-    return possible_primes
 
 
 # third version
 def sieve_of_eratosthenes_3(limit):
     possible_primes = np.ones(limit, dtype=bool)
     possible_primes[0:2:1] = False
-    for i in range(2, floor(sqrt(limit))):
+    for i in range(2, ceil(sqrt(limit))):
         possible_primes[i*i:limit:i] = False
     return np.flatnonzero(possible_primes)
 
