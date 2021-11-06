@@ -60,7 +60,6 @@ class Fraction:
         _get_reciprocal()
     """
 
-
     def __init__(self, numerator, denominator=1):
         self.numerator = numerator
         self.denominator = denominator

@@ -14,7 +14,18 @@ import scipy.integrate as integrate
 from math import log
 
 
-def Li(N):
-    return integrate.quad(lambda t: 1/log(t), 0.000000000000000000000000000000000000000000000000000000000000000000000000001, N)
+def reciprocal_log(t):
+    if t == 1:
+        return 0
+    else:
+        return 1/log(t)
 
-print(Li(4))
+
+# Li(N) = \int_{0}^{N}\frac{dt}{\ln{t}}
+# def Li(N):
+    # return integrate.quad(lambda t: 1/log(t), 0.000000001, N)
+
+def Li(N):
+    return integrate.quad(reciprocal_log, 0, N)[0]
+
+print(1, Li(4))

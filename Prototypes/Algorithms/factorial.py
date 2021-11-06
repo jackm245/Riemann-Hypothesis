@@ -13,5 +13,6 @@
 import numpy as np
 
 
-def factorial(x):
+# x!\text{ ,  for }x \in  \mathbb{Z}
+def factorial(x: int) -> int:
     return np.prod(np.arange(1, x+1))

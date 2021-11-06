@@ -10,8 +10,8 @@
 #=============================================================================#
 
 
-
-def gcd(num1, num2):
+# function to find the greatest common divisor of two integers
+def gcd(num1: int, num2: int) -> int:
     if num2 == 0:
         return num1
     else:

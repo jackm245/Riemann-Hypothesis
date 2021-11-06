@@ -9,6 +9,9 @@
 #
 #=============================================================================#
 
+## in same cases it says that operations are illegal or not implemented
+## but havent tried to convert for int first
+## should work e.g for Complex(4, 0) < Complex(5, 0)
 
 from math import sin, cos, atan, sqrt
 
@@ -76,7 +79,7 @@ class Complex():
 
     # illegal operations for complex numbers
     def _illegal(self, op):
-        print(f'Unable to compute\noperation \"{op}\" illegal for complex numbers')
+        print(f'Unable to compute \"{op}\"\nThis operation is illegal for complex numbers')
 
 
     ### Arithmetic Operations ###
@@ -139,7 +142,7 @@ class Complex():
 
     def __rpow__(self, other):
         """ other ** self """
-        raise NotImplementedError('number to a complex power is not defined, 2')
+        raise NotImplementedError(f'Eror computing {other} ** {self}:\n\tnumber to a complex power is not defined')
 
 
     def __eq__(self, other):
@@ -179,19 +182,19 @@ class Complex():
 
     ### illegal operations ###
     def __gt__(self, other):
-        self._illegal('>')
+        self._illegal(f'{self} > {other}')
 
 
     def __ge__(self, other):
-        self._illegal('>=')
+        self._illegal(f'{self} >= {other}')
 
 
     def __lt__(self, other):
-        self._illegal('<')
+        self._illegal(f'{self} < {other}')
 
 
     def __le__(self, other):
-        self._illegal('<=')
+        self._illegal(f'{self} <= {other}')
 
 
     ### Miscellaneous Functions ###
@@ -222,4 +225,5 @@ class Complex():
         return (self.real, self.imag)
 
 
+print(5**Complex(5, 0))
 print(Complex(5, 2)**3)
