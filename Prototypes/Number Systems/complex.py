@@ -225,5 +225,5 @@ class Complex():
         return (self.real, self.imag)
 
 
-print(5**Complex(5, 0))
 print(Complex(5, 2)**3)
+print(help(Complex.__add__))
