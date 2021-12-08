@@ -14,11 +14,11 @@
 ## should work e.g for Complex(4, 0) < Complex(5, 0)
 
 from math import sin, cos, atan, sqrt
-
+from number import Number
 
 # __all__ = ['Complex']
 
-class Complex():
+class Complex(Number):
     # subclass of number class
 
     """
@@ -41,6 +41,7 @@ class Complex():
 
     # initialisation using *args
     def __init__(self, *args):
+        super().__init__([*args])
         # check if defined as polar coordinates
         if len(args) == 3 and args[2] == True:
             r = args[0]
@@ -226,4 +227,4 @@ class Complex():
 
 
 print(Complex(5, 2)**3)
-print(help(Complex.__add__))
+help(Complex.__add__)

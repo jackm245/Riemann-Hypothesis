@@ -12,12 +12,12 @@
 
 import re
 from math import exp, log
-
+from number import Number
 
 __all__ = ['Fraction']
 
 
-class Fraction:
+class Fraction(Number):
     # subclass of number class
     # subclass of complex class
 
@@ -61,6 +61,7 @@ class Fraction:
     """
 
     def __init__(self, numerator, denominator=1):
+        super().__init__([numerator, denominator])
         self.numerator = numerator
         self.denominator = denominator
         self._validate_input()
