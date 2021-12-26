@@ -59,6 +59,7 @@ def test():
     test_case_1 = zeta(3.0, 4.5)
     test_case_2 = zeta(1, -2.5)
     test_case_3 = zeta(2, 0)
+    test_case_4 = zeta(7, 5)
 
     # true values taken from wolfram alpha
     test1 = abs(test_case_1[0] - 0.89796690) < TOL and abs(test_case_1[1] - 0.023707555) < TOL
@@ -66,6 +67,7 @@ def test():
     test3 = abs(test_case_3[0] - pi**2/6) < TOL and abs(test_case_3[1] - 0.000000000) < TOL
 
     print(f'test1: {test1}\ntest2: {test2}\ntest2: {test3}')
+    print(test_case_4)
 
 
 if __name__=='__main__':

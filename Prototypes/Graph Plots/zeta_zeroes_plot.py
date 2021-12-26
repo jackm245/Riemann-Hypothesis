@@ -101,4 +101,3 @@ if __name__=='__main__':
     start = time()
     plot()
     print(f'--- {time()-start} seconds ---')
-
