@@ -18,6 +18,7 @@ def zeta(s, t=100):
 
 
 def test_zeta(s, t=100):
+    if s == 1: return float('inf')
     term1 = (1/(1-2**(1-s)))
     sum1 = 0
     for n in range(t):

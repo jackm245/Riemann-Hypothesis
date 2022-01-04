@@ -353,7 +353,7 @@ Similarly, we can manipulate the earlier function to find it in another form tha
     \zeta(s) &= \frac{1}{1-2^{1-s}}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^s}
     \intertext{Then, by performing analytic continuation by using Hankel Functions (essentially very complicated mathematics that is beyond the scope of this project), it can be derived that:}
     \zeta(s) = \frac{1}{1-2^{1-s}} \sum_{n=0}^{\infty} & \frac{1}{2^{n+1}} \sum_{k=0}^{n} (-1)^k \binom{n}{k} (k+1)^{-s}
-    \intertext{Where $\binom{n}{k}$ is a binomial coefficient calculated by:}
+    \intertext{Where $\binom{n}{k}$ is a binomial coefficient where:}
     \binom{n}{k} &= \frac{n!}{k!(n-k)!}
 \end{align*}
 
@@ -989,7 +989,7 @@ As for the Introduction Guide, it will show an example of what the introduction 
 
 Probably the most complex part of the tutorial section will be the Investigation section. This will inform the user of how to use, understand, and interpret the different graphs and plots. This section should give the user a simple understanding of how they can use the program to investigate the Riemann Hypothesis
 
-The final section in the tutorial will be a Summary Guide, that is how to use the summary section of the program. This will be very similar to the Introduction Guide, but will have an emphasis on the user trying to draw conclusions from the data they have collected, instead of the just beaing able to understand what is going on.
+The final section in the tutorial will be a Summary Guide, that is how to use the summary section of the program. This will be very similar to the Introduction Guide, but will have an emphasis on the user trying to draw conclusions from the data they have collected, instead of the just being able to understand what is going on.
 \clearpage
 \subsubsection{Introduction Structure Diagram}
 In the Introduction section of the program, the user will be able to develop their understanding of what the Riemann Hypothesis is and why its so important.
@@ -1008,7 +1008,6 @@ First of all is the historical background section. This shows how the Riemann Hy
 Next is the section describing the Riemann Hypothesis. This section will include a lot of maths, but will also br written such that people will a limited mathematical understanding will still be able to understand what is being said.
 
 The final part of the introduction is the Practical Applications section. This will inform the user why the Riemann Hypothesis affects us today and how it can actually be used.
-
 
 \clearpage
 \subsubsection{Investigation Structure Diagram}
@@ -1048,12 +1047,12 @@ The first part of the summary; the theory recap will essentially be a very cut d
 
 As for the investigation results, this page aims to provide the results of the user's investigation. It will provide raw data as well as some visual aids such as graphs. It will also compare the data collected by the user with the expected data.
 
-Next is the conclusion and evaluation section. This section will detail to the user how acccurate their resultws were to the true values, as well as any evidence and proof of the Riemann Hypothesis.
+Next is the conclusion and evaluation section. This section will detail to the user how accurate their results were to the true values, as well as any evidence and proof of the Riemann Hypothesis.
 
-Finally, is the Impact of the Riemann Hypothesis. The aim of this section is to explain to teh user why the Riemann Hypothesis is so improtant by explaining how it affects us.
+Finally, is the Impact of the Riemann Hypothesis. The aim of this section is to explain to the user why the Riemann Hypothesis is so important by explaining how it affects us.
 
 
-Overall, I feel as if I have sufficiently broken down my project into a number of more managable parts that will comes together neatly to form the whole system.
+Overall, I feel as if I have sufficiently broken down my project into a number of more manageable parts that will comes together neatly to form the whole system.
 \subsection{Hierarchy Diagrams}
 
 \subsection{System Flowcharts}
@@ -1210,6 +1209,29 @@ def greatest_common_divisor(a: int, b: int) -> int:
         return greatest_common_divisor(b, a % b)
 \end{lstlisting}
 
+
+\subsubsection{Riemann Zeta Function}
+One of the most important mathematical functions in this project is the Riemann Zeta Function. As mentioned in my analysis section, it can be defined as:
+\begin{align*}
+    \zeta(s) &= \sum^{\inf}_{n=1}\frac{1}{s^n}
+    \intertext{Which can be rewritten as:}
+    \zeta(s) &= \frac{1}{1-2^{1-s}} \sum_{n=0}^{\infty} & \frac{1}{2^{n+1}} \sum_{k=0}^{n} (-1)^k \binom{n}{k} (k+1)^{-s}
+\end{align*}
+
+Using flowcharts, we can write this fuction as follows:
+% 1
+\clearpage
+123123
+1231233123
+12
+$$=(3-1)+(2i-3i)$$12
+$$=(3-1)+(2i-3i)$$3i
+% \begin{figure}[t]
+    % \centering
+    % \caption{Zeta Function Flowchart}
+    % \captionsetup{justification=centering}
+    % \includegraphics[scale=0.7]{zeta-function-flowchart}
+% \end{figure}
 
 
 \subsection{Data Structure Design}
