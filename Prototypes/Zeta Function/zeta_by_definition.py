@@ -17,12 +17,12 @@ def zeta(s: complex) -> complex:
     if not s.real > 1:
         raise ValueError('Real part of input must be greater than 1')
     TERMS = 1 * 10**6 # the number of terms that we wish to compute.
-    res = 0
+    result = 0
     # computes an approximation for the infinite sum
     for n in range(1, TERMS+1):
-        res += 1/(n**s)
+        result += 1/(n**s)
     # output the final result
-    return res
+    return result
 
 
 for x in range(2,10):

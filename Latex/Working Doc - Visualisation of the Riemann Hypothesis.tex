@@ -14,6 +14,8 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{orange}{rgb}{0.82,0.6,0.4}
+\definecolor{black}{rgb}{0,0,0}
 
 \lstset{frame=tb,
   language=Python,
@@ -27,11 +29,15 @@
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
+  identifierstyle=\color{black},
+  % numberstyle=\color{blue},
+  stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=3,
+  escapeinside={(*@}{@*)}
 }
-\graphicspath{{./Images/}}
+\graphicspath{{./Images}}
 \setcounter{secnumdepth}{2}
 
 \author{Jack Morgan}
@@ -939,7 +945,7 @@ Now here are the testing results for the improved function.
     \end{tabular}
 \end{table}
 
-Overall, this function now works very well to compute values of $\zeta(s)$ where $\Re(s) > 1$. It throws an error at incorrect inputs and calculates $\zeta(s)$ very accurately. However, this approximation could be made more accurate by increasing the number of \textit{TERMS}, although this could slow the program down significantly.
+Overall, this function is able to compute values of $\zeta(s)$ where $\Re(s) > 1$. It throws an error at incorrect inputs (which is good) and calculates $\zeta(s)$ relatively accurately. However, this approximation could be made more accurate by increasing the number of \textit{TERMS}, although this could slow the program down significantly. Using this function to calculate $\zeta(s)$ to any useful degree of accuracy would take too much time to compute. Furthermore, this function only allows us to calculate values where $\Re(s) > 1$.
 
 \clearpage
 \section{Documented Design}
@@ -1083,7 +1089,7 @@ Some points to note; I have tailored this class diagram and the following pseudo
     \caption{Prefix add function}
     \begin{algorithmic}
         \Function{add}{$a$, $b$}\\
-             \hspace{\algorithmicindent}\Return $a + b$
+             \hspace{\algorithmi}indent}\Return $a + b$
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
@@ -1166,22 +1172,63 @@ This would swap the arguments around so that the \textit{\_\_add\_\_} function i
 \clearpage
 
 \subsection{Key Algorithms Design}
-Throughout this section, I will be modelling some key algorithms used throughout this project.  For each algorithm, I will describe it in words, create a flowchart for it, write the algorithm in Pseudocode, and then write it in Python.
+Throughout this section, I will be modelling some of the key algorithms used throughout this project. For each algorithm, I will describe how it works using structured English, represent it by using a flowchart, and then write the algorithm in Pseudocode and Python.
 
 \subsubsection{Euclidean Algorithm}
 The Euclidean Algorithm is a method for computing the greatest common divisor of two integers. The greatest common divisor is the largest number that divides into both of the numbers without a remainder. This algorithm is recursive.
 
-Using flowcharts, the algorithm looks as follows:
+It works by, first, taking in two integers $a$ and $b$. These are the numbers for which the greatest common divisor will be found. I will explain how this algorithm works through the use of an example.
+
+Say we want to find the greatest common divisor of 45 and 10.
+We would first take the largest of the two numbers, and set that equal to some multiple of the smaller number, plus some remainder.
+$$45 = 10 \cdot n + r$$
+Where $n$ is the multiple of the smaller number, and $r$ is the remainder.
+We can then compute what the values of $n$ and $r$ are. For this example, $n = 4$ and $r = 5$.
+$$45 = 10 \cdot 4 + 5$$
+Say we then use this as a general equation
+$$a = b \cdot n + r$$
+The next step (and every other step) of the algorithm is to take the value of $b$ and move it to the left hand side of the equation, replacing the value of $a$. We then do a similar thing by replacing the value of $n$ with the value of $r$. This process is repeated until $r = 0$.
+
+Completing this step would look as follows:
+$$10 = 5 \cdot n + r$$
+Then working out the values of $n$ and $r$
+$$10 = 5 \cdot 2 + 0$$
+And now the repeating process stops because $r=0$. We then output the value of $b$, and that is the answer for the greatest common divisor of the two numbers $a$ and $b$. So for this example, the greatest common divisor of $45$ and $10$ is $5$.
+
+Now, lets see how this algorithm works on a larger example, where we want to work out the greatest common divisor of $300$ and $245$.
+$$300 = 245 \cdot n + r$$
+$$300 = 245 \cdot 1 + 55$$
+$$245 = 55 \cdot n + r$$
+$$245 = 55 \cdot 4 + 25$$
+$$25 = 5 \cdot n + r$$
+$$25 = 5 \cdot 5 + 0$$
+
+Then our answer is the value at position $b$ in $a = b \cdot n + r$, which is $5$. So the greatest common divisor of $300$ and $245$ is 5.
+
+Now, earlier I mentioned that we start by taking the larger of the two inputs, and place that on the left hand side of the equation, but really, the algorithm works no matter which input starts on the right of the equation. Say instead of calculating the greatest common divisor of $300$ and $245$, we want to calculate the greatest common divisor of $245$ and $300$. We would start by forming the equation:
+$$245 = 300 \cdot n + r$$
+And then working out the values of $n$ and $r$:
+$$245 = 300 \cdot 0 + 245$$
+For any set of values where the smaller input is at position $a$, we will always be left with $n = 0$ and $r = a$.
+
+Following through with the algorithm, the next step would be:
+$$300 = 245 \cdot n + r$$
+This is exactly how we started the previous example. This shows that it doesn't matter which way round the two input numbers go in the algorithm, it will always compute the same number.
+
+In other words, the greatest common divisor of $a$ and $b$, is the same as the greatest common divisor of $b$ and $a$, which intuitively makes sense.
+\clearpage
+Now using flowcharts, we can write the algorithm as follows:
 
 \begin{figure}[h]
     \centering
     \caption{Euclidean Algorithm Flowchart}
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.9]{euclidean-algorithm-flowchart}
+    \includegraphics[scale=0.6]{euclidean-algorithm-flowchart}
 \end{figure}
-\clearpage
-Converting this into pseudocode:
 
+By representing the algorithm as a flowchart, we can see that it starts of by receiving two integers $a$ and $b$ as an input, and then keeps on finding the values of $n$ and $r$ from the examples, until the value of $b$ is $0$. Implementing this as code, this looping could be done using a standard \texttt{WHILE} loop, but I think that implementing this algorithm as a recursive function would be more suitable.
+
+Implementing this algorithm in pseudocode, it would look as follows:
 \begin{algorithm}
     \caption{Euclidean Algorithm Pseudocode}
     \begin{algorithmic}
@@ -1189,15 +1236,16 @@ Converting this into pseudocode:
             \If {$b = 0$}
                 \State \Return $a$
             \Else
-                \Comment{recursively call the function until $b = 0$}
                 \State\Return\Call{greatest\_common\_divisor}{$b$, $a$ MOD $b$}
+                \Comment{recursively call the function until $b = 0$}
             \EndIf
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
 
-And then in Python:
-
+We can see from this pseudocode, the recursive nature of this algorithm.
+\clearpage
+Then writing the Euclidean Algorithm in Python:
 
 \begin{lstlisting}
 # Euclidean Algorithm
@@ -1209,34 +1257,178 @@ def greatest_common_divisor(a: int, b: int) -> int:
         return greatest_common_divisor(b, a % b)
 \end{lstlisting}
 
+This implementation of the Euclidean Algorithm in Python, is very efficient. Although it is recursive, and that can in some circumstances lead to a large amount of memory use - especially in Python - it would be relatively simple to unwind the stack at the end of the computation, because this function does not call any other functions and is relatively simple.
+
 
 \subsubsection{Riemann Zeta Function}
 One of the most important mathematical functions in this project is the Riemann Zeta Function. As mentioned in my analysis section, it can be defined as:
+% \begin{align*}
+    $$\zeta(s) = \sum^{\infty}_{n=1}\frac{1}{s^n}$$
+Which can be rewritten as:
+    $$\zeta(s) = \frac{1}{1-2^{1-s}} \sum_{n=0}^{\infty} \frac{1}{2^{n+1}} \sum_{k=0}^{n} (-1)^k \binom{n}{k} (k+1)^{-s}$$
+% \end{align*}
+
+This is just one of many of the ways that $\zeta(s)$ can be defined. The main advantages of this definition are that it is will allow inputs for any complex number $s$ (apart from when $s = 1$ for which $\zeta(s)$ is undefined), and that it is fast to compute.
+\clearpage
+Using flowcharts, we can write this function as follows:
+\begin{figure}[h]
+    \centering
+    \caption{Zeta Function Flowchart}
+    \captionsetup{justification=centering}
+    \includegraphics[scale=0.6]{zeta-function-flowchart-two}
+\end{figure}
+
+Unfortunately, with any computational implementation of the zeta function, it would be impossible to calculate an exact output for any given input. This is due to the fact that the zeta function, be definition is the sum of an infinite series.
+
+It would be intractable to compute every single element in the series to be able to sum it. Because the infinite sum is convergent (except for $\zeta(1)$ which cannot be calculated), we can approximate the sum by calculating a very large number of terms in the sum, instead of an infinite amount. The number of terms we calculate in the sum is a trade-off between the time it takes to compute the function, and the accuracy of our answer.
+
+This is what the variable \texttt{Terms}, in the flowchart, is used for. Its aim is to replace the $\infty$ in the infinite loop, such that we can still compute $\zeta(s)$ to a high degree of accuracy, with the function still being relatively time efficient.
+
+In a sense, we are changing our definition of the zeta function, so the function that we are actually calculating is this:
+
+$$\zeta(s) \approx \frac{1}{1-2^{1-s}} \sum_{n=0}^{\texttt{Terms}} \frac{1}{2^{n+1}} \sum_{k=0}^{n} (-1)^k \binom{n}{k} (k+1)^{-s} $$
+
+Which is a less accurate version of the zeta function, but is actually computable.
+
+From the flowchart, we can see how the situation where $s=1$ is handled. $\zeta(1)$ is undefined, so we would be unable to calculate this. Therefore, we have to check this special case, and if $s=1$, then the function will \texttt{OUTPUT Infinity}, otherwise, it will just continue with the rest of the function.
+
+The rest of the function, is essentially just creating two sequences and summing them. The flowchart represents this well, it allows us to visualise the looping nature of the sequences.
+
+We can break down our formula for the approximation of $\zeta(s)$, which will make it clear how the flowchart is designed to work.
+
+\begin{figure}[h]
+    \centering
+    \caption{Decomposed Zeta Function}
+    \captionsetup{justification=centering}
+    \includegraphics[scale=0.4]{zeta-approx-explained}
+\end{figure}
+
+From this image, we can see that:
+
+$$\zeta(s) = \texttt{Term3} \cdot \texttt{Sum2}$$
+Where:
+$$\texttt{Sum2} = \sum \texttt{Term2} \cdot \texttt{Sum1}$$
+Where:
+$$\texttt{Sum1} = \sum \texttt{Term1}$$
+
+Then, all that has to be done is replace the values of \texttt{Term1}, \texttt{Term2}, and \texttt{Term3} with their respective values, and that is essentially what is being calculated.
+
+By applying decomposition to the function, we can now easily see how the flowchart works, and now how to implement this function by using pseudocode.
+\clearpage
+\begin{algorithm}[h]
+    \caption{Zeta Function Pseudocode}
+    \begin{algorithmic}
+        \Function{zeta}{s}
+            \State{TERMS = 100}
+            \If {$s == 1$}
+                \State \Return $\infty$
+            \Else
+                \For {n = 0 \textbf{to} TERMS}
+                    \State {sum1 = 0}
+                    \For {k = 0 \textbf{to} n+1}
+                        \State {sum2 += $(-1)^k \cdot \binom{n}{k} \cdot (k+1)^{-s}$}
+                    \EndFor
+                    \State{sum1 += sum2 $\cdot \frac{1}{2^{n+1}}$}
+                \EndFor
+                \State \Return{sum1 $\cdot \frac{1}{1-2^{1-s}}$}
+            \EndIf
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+For sake of readability, I have omitted creating separate variables for \texttt{Term1}, \texttt{Term2}, and \texttt{Term3}. Instead, these can just be seen by the mathematical equations present in the Pseudocode.
+
+I much prefer this representation of the function, as it easily allows you to see how the sums are implemented alongside the terms. The use of \texttt{for} loops makes it easy to see how we have a sum being calculated inside a sum.
+
+With pseudocode, I have just been able to write the mathematical statements for readability sake, however, when implementing this as a programming language, it could look rather messy with long maths having to be written out.
+One area that would need addressing when converting this pseudocode to an actual language is with the binomial coefficient, that is $\binom{n}{k}$. I have previously mentioned this in my analysis, however:
+
+$$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
+
+Where:
 \begin{align*}
-    \zeta(s) &= \sum^{\inf}_{n=1}\frac{1}{s^n}
-    \intertext{Which can be rewritten as:}
-    \zeta(s) &= \frac{1}{1-2^{1-s}} \sum_{n=0}^{\infty} & \frac{1}{2^{n+1}} \sum_{k=0}^{n} (-1)^k \binom{n}{k} (k+1)^{-s}
+    x! &= \prod_{a=1}^x a\\
+    &= a \times (a-1) \times (a-2) \times (a-3) \times \dots \times 3 \times 2 \times 1
+\end{align*}
+Which is itself, the product of another series.
+
+So when calculating the zeta function in this form, we are actually having to compute, the product of 3 series , within a series, within a series. This may not seem at all time or space efficient, but these sums are a lot easier for a computer to compute than evaluating $\zeta(s)$ by its definition that is:
+$$\zeta(s) = \sum^{\infty}_{n=1} \frac{1}{n^s}$$
+
+To implement the binomial coefficient effectively, we would not be able to use it in its factorial form - this would take too long to compute. Instead, we can define the binomial coefficient another way.
+
+$$\binom{n}{k} = \frac{n^{\underline{k}}}{k!}$$
+Where $n^{\underline{k}}$ is known as a falling factorial power and is defined as:
+\begin{align*}
+    n^{\underline{k}} &= n(n-1)(n-2) \dots (n-k+1)\\
+    &= \prod_{x=1}^k (n - (x - 1))\\
+    &= \prod_{x=1}^{k-1} (n - x)
 \end{align*}
 
-Using flowcharts, we can write this fuction as follows:
-% 1
+So looking back at how to use this to calculate the binomial coefficient, we can say that:
+\begin{align*}
+    \binom{n}{k} &= \frac{n!}{k!(n-k)!}\\
+    \binom{n}{k} $= \frac{n^{\underline{k}}}{k!}
+    &= \frac{n(n-1)(n-2)\dots (n-(k-1))}{k(k-1)(k-2) \dots 1}\\
+    &= \prod^k_{i=1} \frac{n+1-i}{i}\\
+    &= \prod^{k-1}_{i=0} \frac{n-i}{i+1}
+\end{align*}
+
+We now have a function, that we can be called from inside the zeta function, in order to calculate the appropriate binomial coefficient.
+
+Implementing the binomial coefficient function as pseudocode would look as follows:
+
 \clearpage
-123123
-1231233123
-12
-$$=(3-1)+(2i-3i)$$12
-$$=(3-1)+(2i-3i)$$3i
-% \begin{figure}[t]
-    % \centering
-    % \caption{Zeta Function Flowchart}
-    % \captionsetup{justification=centering}
-    % \includegraphics[scale=0.7]{zeta-function-flowchart}
-% \end{figure}
+\begin{algorithm}[ht]
+    \caption{Binomial Coefficient Pseudocode}
+    \begin{algorithmic}
+        \Function{binom}{n, k}
+            \State{v = 1}
+            \For {i = 0 \textbf{to} k}
+                \State {$\text{v} = \text{v} \times \frac{\text{n}-\text{i}}{\text{i}+1}$}
+            \EndFor
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+Rewriting our definition of the zeta function, with this new way of calculating the binomial coefficient, we can now say that:
+
+$$\zeta(s) \approx \frac{1}{1-2^{1-s}} \sum_{n=0}^{\texttt{Terms}} \left( \frac{1}{2^{n+1}} \sum_{k=0}^{n} \left( (-1)^k \left(\prod^{k-1}_{i=0} \frac{n-i}{i+1} \right) (k+1)^{-s} \right) \right)$$
+
+We are then able to convert both the Zeta Function Pseudocode and the Binomial Coefficient Pseudocode into Python
+
+\begin{lstlisting}
+# Binomial Coefficient
+# \binom{n}{k} = \prod^{k-1}_{i=0} \frac{n-i}{i+1}
+def binom(n, k):
+    v = 1
+    for i in range(k):
+        v *= (n - i) / (i + 1)
+    return v
+
+# Global Zeta Function
+# \zeta(s) \approx \frac{1}{1-2^{1-s}} \sum_{n=0}^{\texttt{TERMS}} \left( \frac{1}{2^{n+1}} \sum_{k=0}^{n} \left( (-1)^k \left(\prod^{k-1}_{i=0} \frac{n-i}{i+1} \right) (k+1)^{-s} \right) \right)
+def zeta(s, TERMS=100):
+    if s == 1:
+        return float('inf')
+    # \sum_{n=0}^{\texttt{TERMS}} \left( \frac{1}{2^{n+1}} \sum_{k=0}^{n} \left( (-1)^k \left(\prod^{k-1}_{i=0} \frac{n-i}{i+1} \right) (k+1)^{-s} \right) \right)
+    sum1 = 0
+    for n in range(TERMS):
+        # \sum_{k=0}^{n} \left( (-1)^k  \binom{n}{k} (k+1)^{-s} \right)
+        sum2 = 0
+        for k in range(n+1):
+            term1 = (-1)**k * binom(n, k) * (k+1)** (-s)
+            sum2 += term1
+        term2 = (1/(2**(n+1)))
+        sum1 += sum2 * term2
+    term1 = (1/(1-2**(1-s)))
+    return sum1 * term1
+\end{lstlisting}
 
 
-\subsection{Data Structure Design}
-\subsection{File Structure}
-\subsection{HCI \& Screen Designs}
+% \subsection{Data Structure Design}
+% \subsection{File Structure}
+% \subsection{HCI \& Screen Designs}
 
 
 

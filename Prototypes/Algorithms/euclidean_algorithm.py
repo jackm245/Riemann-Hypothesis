@@ -15,5 +15,10 @@ def gcd(num1: int, num2: int) -> int:
     if num2 == 0:
         return num1
     else:
+        print('--------------')
+        print('a = b * n + r')
+        print(f'{num1} = {num2} * n + r')
+        print(f'{num1} = {num2} * {num1 // num2} + {num1 % num2}')
+        print('--------------')
         return gcd(num2, num1 % num2)
 

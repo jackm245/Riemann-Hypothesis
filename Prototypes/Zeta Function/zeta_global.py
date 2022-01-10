@@ -1,7 +1,7 @@
 from itertools import count, islice
 
 
-# (utility) binomial coefficient
+# binomial coefficient
 def binom(n, k):
     v = 1
     for i in range(k):
@@ -9,15 +9,8 @@ def binom(n, k):
     return v
 
 
-# formula (21) in http://mathworld.wolfram.com/RiemannZetaFunction.html
-# Global zeta function by Knopp and Hasse (s != 1)
+# Global zeta function
 def zeta(s, t=100):
-    if s == 1: return float("inf")
-    term = (1 / 2 ** (n + 1) * sum((-1) ** k * binom(n, k) * (k + 1) ** -s for k in range(n + 1)) for n in count(0))
-    return sum(islice(term, t)) / (1 - 2 ** (1 - s))
-
-
-def test_zeta(s, t=100):
     if s == 1: return float('inf')
     sum1 = 0
     for n in range(t):
