@@ -114,8 +114,8 @@ class Complex(Number):
     def __mul__(self, other):
         """ self * other """
         other = self._correct_type(other)
-        return Complex(self.real*other.real - self.imag*other.imag, self.real*other.imag + self.imag*other.real)
         # (ac-bd) + (ad+bc)i
+        return Complex(self.real*other.real - self.imag*other.imag, self.real*other.imag + self.imag*other.real)
 
 
     def __rmul__(self, other):
