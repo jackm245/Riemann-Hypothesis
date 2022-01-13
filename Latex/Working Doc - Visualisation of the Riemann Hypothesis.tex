@@ -995,6 +995,16 @@ It will not be necessary for a user to login, however, if they do not log in, th
     \caption{Login System Structure Diagram}
 \end{figure}
 
+There will be 5 sections to the login system that I create. The first of which allows the user to sign up and create an account. This is for first-time users of the programme, who want to be able to use it to its full functionality. The sign up process involves the user creating a unique username, adding a unique email to the account (used for when the user forgets their password), and creating a strong and complicated password. They will then be sent an email to the address that they entered, with a verification code. Once this code has been entered in the program, the user's login details will be encrypted and stored in a database. They will then advance to the next part of the program: the tutorial.
+
+The login section will allow the user to sign in to an account that has already been created. They will be required to enter either their username or email, and their password. The program will check whether the username or email is valid (if it is in the database), and if the password associated to that account is the same as the one entered by the user. If the user gets the password wrong 3 times, then they will have to wait 1 minute before trying again. This is to stop any attacks to try and guess user's passwords. Once a user has signed in, they will be taken to the tutorial section.
+
+If a user has forgotten their password, then they will be able to reset it in the forgotten password section. The user will be required to enter either their username and email for that account. These credentials will need to be verified, and then if they are correct, a new password will be sent to the user by email.The user will then be sent straight to the Reset Password screen so that they can change the password to one that they will remember.
+
+The reset password section will allow the user to change their password if they don't like the one they currently have, or if they have had to reset their password. They will have to enter their username and password, to confirm their identity. They will then enter a new strong and complicated password, and this will be the new password associated to their account.
+
+The final section is the continue without login section. Without a login, the user will still be able to use all parts of the program, however, their data will not be saved.
+
 \subsubsection{Tutorial Structure Diagram}
 
 The tutorial is one of the key sections of the program. The tutorial will give the user a guide on how to use the program.
@@ -1002,22 +1012,28 @@ The tutorial is one of the key sections of the program. The tutorial will give t
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.43]{tutorial-structure-diagram}
+    \includegraphics[scale=0.55]{tutorial-structure-diagram}
     \caption{Tutorial Structure Diagram}
 \end{figure}
 
 The tutorial itself will be split up into 4 main parts; that is a guide on the structure of the program, and how to use each of the individual sections of the program.
 
-The overall tutorial will be relatively simple, and will just give the user an understanding of how to use the program
+Overall, the tutorial will be relatively simple, and will just give the user an understanding of how to use the program
 
 The Program Structure Guide will inform the user of the layout of the project, and how each section is related to another. It will tell the user how to navigate pages, and how to use key features of the program that will require user input.
+
+Next in the tutorial, will be the Login Guide. This will essentially just be a quick note to the user, about how to sign up and create a strong and complicated password, what to do if you forget your password, or want to change it; as well as explain why the user may or may not want to create an account, and how the program differs whether the user is signed in or not.
 
 As for the Introduction Guide, it will show an example of what the introduction section will look like, and have labels to show how to navigate pages as well as what everything means.
 
 Probably the most complex part of the tutorial section will be the Investigation section. This will inform the user of how to use, understand, and interpret the different graphs and plots. This section should give the user a simple understanding of how they can use the program to investigate the Riemann Hypothesis
 
 The final section in the tutorial will be a Summary Guide, that is how to use the summary section of the program. This will be very similar to the Introduction Guide, but will have an emphasis on the user trying to draw conclusions from the data they have collected, instead of the just being able to understand what is going on.
+
+The tutorial section will not have a lot of functionality, but its purpose is just to briefly describe to the user, how the program is intended to be used.
+
 \clearpage
+
 \subsubsection{Introduction Structure Diagram}
 In the Introduction section of the program, the user will be able to develop their understanding of what the Riemann Hypothesis is and why its so important.
 

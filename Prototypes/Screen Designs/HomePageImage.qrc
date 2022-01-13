@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="imageresource">
+    <file>zeta-graph.jpg</file>
+  </qresource>
+</RCC>
