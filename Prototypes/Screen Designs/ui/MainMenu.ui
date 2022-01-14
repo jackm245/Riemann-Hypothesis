@@ -218,7 +218,7 @@ font: 18pt &quot;Sans Serif&quot;;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>media/zeta-graph.jpg</pixmap>
+     <pixmap>../Media/zeta-graph.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

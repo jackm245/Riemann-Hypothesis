@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'homescreen.ui'
+# Form implementation generated from reading ui file 'ui/MainMenu.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -90,7 +90,7 @@ class Ui_MainMenu(object):
         sizePolicy.setHeightForWidth(self.BackgroundImage.sizePolicy().hasHeightForWidth())
         self.BackgroundImage.setSizePolicy(sizePolicy)
         self.BackgroundImage.setText("")
-        self.BackgroundImage.setPixmap(QtGui.QPixmap("media/zeta-graph.jpg"))
+        self.BackgroundImage.setPixmap(QtGui.QPixmap("ui/../Media/zeta-graph.jpg"))
         self.BackgroundImage.setScaledContents(True)
         self.BackgroundImage.setObjectName("BackgroundImage")
         self.BackgroundImage.raise_()

@@ -1,9 +1,95 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from homescreen import Ui_MainMenu
-from login import Ui_LoginScreen
-from signup import Ui_SignUpScreen
+from MainMenu import Ui_MainMenu
+from Login import Ui_LoginScreen
+from SignUp import Ui_SignUpScreen
 from ForgottenPassword import Ui_ForgottenPasswordScreen
+from ForgottenPassword2 import Ui_ForgottenPassword2Screen
+from ResetPassword import Ui_ResetPasswordScreen
+from ResetPassword2 import Ui_ResetPassword2Screen
+
+
+class ResetPassword2(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(ResetPassword2, self).__init__()
+        self.ui = Ui_ResetPassword2Screen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.show()
+
+
+class ResetPassword(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(ResetPassword, self).__init__()
+        self.ui = Ui_ResetPasswordScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.SignUpTab.clicked.connect(self.goto_signup)
+        self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
+
+        self.ui.SubmitButton.clicked.connect(self.submit)
+
+        self.show()
+
+    def goto_login(self):
+        self.login = Login()
+        self.hide()
+
+    def goto_signup(self):
+        self.signup = SignUp()
+        self.hide()
+
+    def goto_forgotten_password(self):
+        self.forgotten_password = ForgottenPassword()
+        self.hide()
+
+    def submit(self):
+        # Confirm Sign In
+        self.reset_password_2 = ResetPassword2()
+        self.hide()
+
+
+class ForgottenPassword2(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(ForgottenPassword2, self).__init__()
+        self.ui = Ui_ForgottenPassword2Screen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.SignUpTab.clicked.connect(self.goto_signup)
+        self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
+
+        self.ui.SubmitButton.clicked.connect(self.submit)
+
+        self.show()
+
+    def goto_login(self):
+        self.login = Login()
+        self.hide()
+
+    def goto_signup(self):
+        self.signup = SignUp()
+        self.hide()
+
+    def goto_reset_password(self):
+        self.reset_password = ResetPassword()
+        self.hide()
+
+    def submit(self):
+        # Check verification code
+        self.reset_password_2 = ResetPassword2()
+        self.hide()
+
 
 class ForgottenPassword(QtWidgets.QDialog):
 
@@ -13,8 +99,13 @@ class ForgottenPassword(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
+
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.SignUpTab.clicked.connect(self.goto_signup)
+        self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
+
+        self.ui.SubmitButton.clicked.connect(self.submit)
+
         self.show()
 
     def goto_login(self):
@@ -22,8 +113,18 @@ class ForgottenPassword(QtWidgets.QDialog):
         self.hide()
 
     def goto_signup(self):
-        self.singup = SignUp()
+        self.signup = SignUp()
         self.hide()
+
+    def goto_reset_password(self):
+        self.reset_password = ResetPassword()
+        self.hide()
+
+    def submit(self):
+        # Send Email
+        self.forgotten_password_2 = ForgottenPassword2()
+        self.hide()
+
 
 class SignUp(QtWidgets.QDialog):
 
@@ -33,8 +134,11 @@ class SignUp(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
+
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
+        self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
+
         self.show()
 
     def goto_login(self):
@@ -43,6 +147,10 @@ class SignUp(QtWidgets.QDialog):
 
     def goto_forgotten_password(self):
         self.forgotten_password = ForgottenPassword()
+        self.hide()
+
+    def goto_reset_password(self):
+        self.reset_password = ResetPassword()
         self.hide()
 
 
@@ -54,21 +162,31 @@ class Login(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
+
         self.ui.SignUpTab.clicked.connect(self.goto_signup)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
+        self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
+
         self.ui.SubmitButton.clicked.connect(self.submit)
+
         self.show()
 
     def goto_signup(self):
-        self.singup = SignUp()
+        self.signup = SignUp()
         self.hide()
 
     def goto_forgotten_password(self):
         self.forgotten_password = ForgottenPassword()
         self.hide()
 
+    def goto_reset_password(self):
+        self.reset_password = ResetPassword()
+        self.hide()
+
     def submit(self):
-        pass
+        username = self.ui.UsernameInput.text()
+        password  = self.ui.PasswordInput.text()
+        self.ui.ErrorLabel.setText("Error")
 
 
 class Main(QtWidgets.QMainWindow):
@@ -79,8 +197,10 @@ class Main(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
+
         self.ui.LogInButton.clicked.connect(self.goto_login)
         self.ui.ExitButton.clicked.connect(self.exit)
+
         self.show()
 
     def goto_login(self):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ResetPassword.ui'
+# Form implementation generated from reading ui file 'ui/Login.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ResetPasswordScreen(object):
-    def setupUi(self, ResetPasswordScreen):
-        ResetPasswordScreen.setObjectName("ResetPasswordScreen")
-        ResetPasswordScreen.resize(1340, 720)
-        ResetPasswordScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(ResetPasswordScreen)
+class Ui_LoginScreen(object):
+    def setupUi(self, LoginScreen):
+        LoginScreen.setObjectName("LoginScreen")
+        LoginScreen.resize(1340, 720)
+        LoginScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(LoginScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_ResetPasswordScreen(object):
         self.LoginTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.LoginTab.setObjectName("LoginTab")
         self.SignUpTab = QtWidgets.QPushButton(self.TabBar)
@@ -64,8 +64,8 @@ class Ui_ResetPasswordScreen(object):
         self.ResetPasswordTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 20pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 20pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ResetPasswordTab.setObjectName("ResetPasswordTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
@@ -84,7 +84,7 @@ class Ui_ResetPasswordScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.PasswordText.setObjectName("PasswordText")
         self.UsernameInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.UsernameInput.setGeometry(QtCore.QRect(720, 130, 261, 60))
+        self.UsernameInput.setGeometry(QtCore.QRect(720, 130, 231, 60))
         self.UsernameInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -95,7 +95,7 @@ class Ui_ResetPasswordScreen(object):
         self.UsernameInput.setCursorPosition(0)
         self.UsernameInput.setObjectName("UsernameInput")
         self.PasswordInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.PasswordInput.setGeometry(QtCore.QRect(720, 280, 261, 60))
+        self.PasswordInput.setGeometry(QtCore.QRect(720, 280, 231, 60))
         self.PasswordInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -116,30 +116,36 @@ class Ui_ResetPasswordScreen(object):
 "font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SubmitButton.setObjectName("SubmitButton")
+        self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
+        self.ErrorLabel.setGeometry(QtCore.QRect(440, 350, 461, 71))
+        self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.ErrorLabel.setObjectName("ErrorLabel")
 
-        self.retranslateUi(ResetPasswordScreen)
-        QtCore.QMetaObject.connectSlotsByName(ResetPasswordScreen)
+        self.retranslateUi(LoginScreen)
+        QtCore.QMetaObject.connectSlotsByName(LoginScreen)
 
-    def retranslateUi(self, ResetPasswordScreen):
+    def retranslateUi(self, LoginScreen):
         _translate = QtCore.QCoreApplication.translate
-        ResetPasswordScreen.setWindowTitle(_translate("ResetPasswordScreen", "Visualising the Riemann Hypothesis - Reset Password"))
-        self.Title.setText(_translate("ResetPasswordScreen", "Login"))
-        self.LoginTab.setText(_translate("ResetPasswordScreen", "Login"))
-        self.SignUpTab.setText(_translate("ResetPasswordScreen", "Sign Up"))
-        self.ForgottenPasswordTab.setText(_translate("ResetPasswordScreen", "Forgotten Password"))
-        self.ResetPasswordTab.setText(_translate("ResetPasswordScreen", "Reset Password"))
-        self.UsernameOrEmailText.setText(_translate("ResetPasswordScreen", "<html><head/><body><p align=\"right\">Username / Email:</p></body></html>"))
-        self.PasswordText.setText(_translate("ResetPasswordScreen", "<html><head/><body><p align=\"right\">Password:</p></body></html>"))
-        self.UsernameInput.setPlaceholderText(_translate("ResetPasswordScreen", "Enter Username/Email"))
-        self.PasswordInput.setPlaceholderText(_translate("ResetPasswordScreen", "Enter Password"))
-        self.SubmitButton.setText(_translate("ResetPasswordScreen", "Submit"))
+        LoginScreen.setWindowTitle(_translate("LoginScreen", "Visualising the Riemann Hypothesis - Log In"))
+        self.Title.setText(_translate("LoginScreen", "Login"))
+        self.LoginTab.setText(_translate("LoginScreen", "Login"))
+        self.SignUpTab.setText(_translate("LoginScreen", "Sign Up"))
+        self.ForgottenPasswordTab.setText(_translate("LoginScreen", "Forgotten Password"))
+        self.ResetPasswordTab.setText(_translate("LoginScreen", "Reset Password"))
+        self.UsernameOrEmailText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Username / Email:</p></body></html>"))
+        self.PasswordText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Password:</p></body></html>"))
+        self.UsernameInput.setPlaceholderText(_translate("LoginScreen", "Enter Username"))
+        self.PasswordInput.setPlaceholderText(_translate("LoginScreen", "Enter Password"))
+        self.SubmitButton.setText(_translate("LoginScreen", "Submit"))
+        self.ErrorLabel.setText(_translate("LoginScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    ResetPasswordScreen = QtWidgets.QDialog()
-    ui = Ui_ResetPasswordScreen()
-    ui.setupUi(ResetPasswordScreen)
-    ResetPasswordScreen.show()
+    LoginScreen = QtWidgets.QDialog()
+    ui = Ui_LoginScreen()
+    ui.setupUi(LoginScreen)
+    LoginScreen.show()
     sys.exit(app.exec_())
