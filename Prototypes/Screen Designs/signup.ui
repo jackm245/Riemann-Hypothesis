@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LoginScreen</class>
- <widget class="QDialog" name="LoginScreen">
+ <class>SignUpScreen</class>
+ <widget class="QDialog" name="SignUpScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visualising the Riemann Hypothesis - Log In</string>
+   <string>Visualising the Riemann Hypothesis - Sign Up</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -72,8 +72,8 @@
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -96,8 +96,8 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -170,7 +170,7 @@ border-radius: 20px;</string>
      <property name="geometry">
       <rect>
        <x>270</x>
-       <y>110</y>
+       <y>60</y>
        <width>301</width>
        <height>61</height>
       </rect>
@@ -180,14 +180,14 @@ border-radius: 20px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Username / Email:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Username:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="PasswordText">
+    <widget class="QLabel" name="EmailText">
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>230</y>
+       <y>150</y>
        <width>281</width>
        <height>61</height>
       </rect>
@@ -197,14 +197,14 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Password:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Email:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="UsernameInput">
      <property name="geometry">
       <rect>
        <x>680</x>
-       <y>110</y>
+       <y>60</y>
        <width>231</width>
        <height>60</height>
       </rect>
@@ -227,11 +227,82 @@ border-color:rgb(69, 69, 69);</string>
       <string>Enter Username</string>
      </property>
     </widget>
+    <widget class="QLineEdit" name="EmailInput">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>150</y>
+       <width>231</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 239, 239);
+color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;;
+border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+     <property name="cursorPosition">
+      <number>0</number>
+     </property>
+     <property name="placeholderText">
+      <string>Enter Email</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SubmitButton">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>440</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="PasswordText">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>250</y>
+       <width>281</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Password:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
     <widget class="QLineEdit" name="PasswordInput">
      <property name="geometry">
       <rect>
        <x>680</x>
-       <y>230</y>
+       <y>250</y>
        <width>231</width>
        <height>60</height>
       </rect>
@@ -257,28 +328,51 @@ border-color:rgb(69, 69, 69);</string>
       <string>Enter Password</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="SubmitButton">
+    <widget class="QLabel" name="PasswordText_2">
      <property name="geometry">
       <rect>
-       <x>530</x>
-       <y>340</y>
-       <width>200</width>
-       <height>70</height>
+       <x>260</x>
+       <y>350</y>
+       <width>311</width>
+       <height>61</height>
       </rect>
      </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
      <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>Submit</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Confirm Password:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="PasswordInput_2">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>350</y>
+       <width>231</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 239, 239);
+color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;;
+border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="cursorPosition">
+      <number>0</number>
+     </property>
+     <property name="placeholderText">
+      <string>Re-enter Password</string>
      </property>
     </widget>
    </widget>

@@ -11,29 +11,135 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(1340, 720)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(580, 230, 411, 181))
-        self.label.setStyleSheet("font: 26pt \"Sans Serif\";")
-        self.label.setObjectName("label")
+class Ui_LoginScreen(object):
+    def setupUi(self, LoginScreen):
+        LoginScreen.setObjectName("LoginScreen")
+        LoginScreen.resize(1340, 720)
+        LoginScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(LoginScreen)
+        self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
+        self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
+        self.widget.setObjectName("widget")
+        self.Title = QtWidgets.QLabel(self.widget)
+        self.Title.setGeometry(QtCore.QRect(610, 20, 121, 51))
+        self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
+        self.Title.setObjectName("Title")
+        self.TabBar = QtWidgets.QWidget(self.widget)
+        self.TabBar.setGeometry(QtCore.QRect(0, 80, 1340, 80))
+        self.TabBar.setStyleSheet("background-color: rgb(239, 239, 239);")
+        self.TabBar.setObjectName("TabBar")
+        self.LoginTab = QtWidgets.QPushButton(self.TabBar)
+        self.LoginTab.setGeometry(QtCore.QRect(10, 5, 200, 70))
+        self.LoginTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.LoginTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"")
+        self.LoginTab.setObjectName("LoginTab")
+        self.SignUpTab = QtWidgets.QPushButton(self.TabBar)
+        self.SignUpTab.setGeometry(QtCore.QRect(220, 5, 200, 70))
+        self.SignUpTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SignUpTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SignUpTab.setObjectName("SignUpTab")
+        self.ForgottenPasswordTab = QtWidgets.QPushButton(self.TabBar)
+        self.ForgottenPasswordTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ForgottenPasswordTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ForgottenPasswordTab.setObjectName("ForgottenPasswordTab")
+        self.ResetPasswordTab = QtWidgets.QPushButton(self.TabBar)
+        self.ResetPasswordTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
+        self.ResetPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ResetPasswordTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 20pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ResetPasswordTab.setObjectName("ResetPasswordTab")
+        self.MainWidget = QtWidgets.QWidget(self.widget)
+        self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
+        self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"border-radius: 20px;")
+        self.MainWidget.setObjectName("MainWidget")
+        self.UsernameOrEmailText = QtWidgets.QLabel(self.MainWidget)
+        self.UsernameOrEmailText.setGeometry(QtCore.QRect(270, 110, 301, 61))
+        self.UsernameOrEmailText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.UsernameOrEmailText.setObjectName("UsernameOrEmailText")
+        self.PasswordText = QtWidgets.QLabel(self.MainWidget)
+        self.PasswordText.setGeometry(QtCore.QRect(290, 230, 281, 61))
+        self.PasswordText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.PasswordText.setObjectName("PasswordText")
+        self.UsernameInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.UsernameInput.setGeometry(QtCore.QRect(680, 110, 231, 60))
+        self.UsernameInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.UsernameInput.setText("")
+        self.UsernameInput.setCursorPosition(0)
+        self.UsernameInput.setObjectName("UsernameInput")
+        self.PasswordInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.PasswordInput.setGeometry(QtCore.QRect(680, 230, 231, 60))
+        self.PasswordInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.PasswordInput.setText("")
+        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.PasswordInput.setCursorPosition(0)
+        self.PasswordInput.setObjectName("PasswordInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(530, 340, 200, 70))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(LoginScreen)
+        QtCore.QMetaObject.connectSlotsByName(LoginScreen)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, LoginScreen):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Login Page"))
+        LoginScreen.setWindowTitle(_translate("LoginScreen", "Visualising the Riemann Hypothesis - Log In"))
+        self.Title.setText(_translate("LoginScreen", "Login"))
+        self.LoginTab.setText(_translate("LoginScreen", "Login"))
+        self.SignUpTab.setText(_translate("LoginScreen", "Sign Up"))
+        self.ForgottenPasswordTab.setText(_translate("LoginScreen", "Forgotten Password"))
+        self.ResetPasswordTab.setText(_translate("LoginScreen", "Reset Password"))
+        self.UsernameOrEmailText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Username / Email:</p></body></html>"))
+        self.PasswordText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Password:</p></body></html>"))
+        self.UsernameInput.setPlaceholderText(_translate("LoginScreen", "Enter Username"))
+        self.PasswordInput.setPlaceholderText(_translate("LoginScreen", "Enter Password"))
+        self.SubmitButton.setText(_translate("LoginScreen", "Submit"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
+    LoginScreen = QtWidgets.QDialog()
+    ui = Ui_LoginScreen()
+    ui.setupUi(LoginScreen)
+    LoginScreen.show()
     sys.exit(app.exec_())
