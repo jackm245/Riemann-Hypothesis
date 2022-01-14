@@ -6,4 +6,4 @@ Writeup
 =======
 See the Writeup_ to read about this project.
 
-.. _Django: https://github.com/jackm245/Riemann-Hypothesis/blob/main/Latex/Visualising%20the%20Riemann%20Hypothesis.pdf
+.. _Writeup: https://github.com/jackm245/Riemann-Hypothesis/blob/main/Latex/Visualising%20the%20Riemann%20Hypothesis.pdf
