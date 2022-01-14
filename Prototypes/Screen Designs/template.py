@@ -11,117 +11,87 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(1340, 720)
-        Dialog.setSizeGripEnabled(False)
-        self.PageWidget = QtWidgets.QWidget(Dialog)
-        self.PageWidget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
-        self.PageWidget.setStyleSheet("background-color: rgb(69, 69, 69);")
-        self.PageWidget.setObjectName("PageWidget")
-        self.Title = QtWidgets.QLabel(self.PageWidget)
-        self.Title.setGeometry(QtCore.QRect(620, 20, 101, 51))
+class Ui_TemplateScreen(object):
+    def setupUi(self, TemplateScreen):
+        TemplateScreen.setObjectName("TemplateScreen")
+        TemplateScreen.resize(1340, 720)
+        TemplateScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(TemplateScreen)
+        self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
+        self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
+        self.widget.setObjectName("widget")
+        self.Title = QtWidgets.QLabel(self.widget)
+        self.Title.setGeometry(QtCore.QRect(610, 20, 191, 51))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
-        self.TabBar = QtWidgets.QWidget(self.PageWidget)
+        self.TabBar = QtWidgets.QWidget(self.widget)
         self.TabBar.setGeometry(QtCore.QRect(0, 80, 1340, 80))
         self.TabBar.setStyleSheet("background-color: rgb(239, 239, 239);")
         self.TabBar.setObjectName("TabBar")
-        self.Tab1 = QtWidgets.QWidget(self.TabBar)
-        self.Tab1.setGeometry(QtCore.QRect(5, 5, 200, 70))
-        self.Tab1.setStyleSheet("background-color: rgb(69, 69, 69);\n"
-"border-radius: 20px;")
-        self.Tab1.setObjectName("Tab1")
-        self.Tab1Text = QtWidgets.QLabel(self.Tab1)
-        self.Tab1Text.setGeometry(QtCore.QRect(0, 0, 200, 70))
-        self.Tab1Text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Tab1Text.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.Tab1Text.setObjectName("Tab1Text")
-        self.Tab2 = QtWidgets.QWidget(self.TabBar)
-        self.Tab2.setGeometry(QtCore.QRect(210, 5, 200, 70))
-        self.Tab2.setStyleSheet("background-color: rgb(69, 69, 69);\n"
-"border-radius: 20px;")
-        self.Tab2.setObjectName("Tab2")
-        self.Tab2Text = QtWidgets.QLabel(self.Tab2)
-        self.Tab2Text.setGeometry(QtCore.QRect(0, 0, 200, 70))
-        self.Tab2Text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Tab2Text.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.Tab2Text.setObjectName("Tab2Text")
-        self.Tab3 = QtWidgets.QWidget(self.TabBar)
-        self.Tab3.setGeometry(QtCore.QRect(415, 5, 200, 70))
-        self.Tab3.setStyleSheet("background-color: rgb(69, 69, 69);\n"
-"border-radius: 20px;")
-        self.Tab3.setObjectName("Tab3")
-        self.Tab3Text = QtWidgets.QLabel(self.Tab3)
-        self.Tab3Text.setGeometry(QtCore.QRect(0, 0, 200, 70))
-        self.Tab3Text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Tab3Text.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.Tab3Text.setObjectName("Tab3Text")
-        self.Tab4 = QtWidgets.QWidget(self.TabBar)
-        self.Tab4.setGeometry(QtCore.QRect(620, 5, 200, 70))
-        self.Tab4.setStyleSheet("border: 2px solid;\n"
+        self.Tab1 = QtWidgets.QPushButton(self.TabBar)
+        self.Tab1.setGeometry(QtCore.QRect(10, 5, 200, 70))
+        self.Tab1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Tab1.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
-"border-color:rgb(69, 69, 69);")
-        self.Tab4.setObjectName("Tab4")
-        self.Tab4Text = QtWidgets.QLabel(self.Tab4)
-        self.Tab4Text.setGeometry(QtCore.QRect(0, 0, 200, 70))
-        self.Tab4Text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Tab4Text.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.Tab4Text.setLineWidth(0)
-        self.Tab4Text.setObjectName("Tab4Text")
-        self.MainWidget = QtWidgets.QWidget(self.PageWidget)
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"")
+        self.Tab1.setObjectName("Tab1")
+        self.Tab2 = QtWidgets.QPushButton(self.TabBar)
+        self.Tab2.setGeometry(QtCore.QRect(220, 5, 200, 70))
+        self.Tab2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Tab2.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.Tab2.setObjectName("Tab2")
+        self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius: 20px;")
         self.MainWidget.setObjectName("MainWidget")
-        self.PrevButton = QtWidgets.QWidget(self.MainWidget)
+        self.PrevButton = QtWidgets.QPushButton(self.MainWidget)
         self.PrevButton.setGeometry(QtCore.QRect(10, 460, 200, 70))
-        self.PrevButton.setStyleSheet("background-color: rgb(69, 69, 69);\n"
-"border-radius: 20px;")
+        self.PrevButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.PrevButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
         self.PrevButton.setObjectName("PrevButton")
-        self.PrevText = QtWidgets.QLabel(self.PrevButton)
-        self.PrevText.setGeometry(QtCore.QRect(0, 0, 200, 70))
-        self.PrevText.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.PrevText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.PrevText.setObjectName("PrevText")
-        self.NextButton = QtWidgets.QWidget(self.MainWidget)
+        self.NextButton = QtWidgets.QPushButton(self.MainWidget)
         self.NextButton.setGeometry(QtCore.QRect(1110, 460, 200, 70))
-        self.NextButton.setStyleSheet("background-color: rgb(69, 69, 69);\n"
-"border-radius: 20px;")
+        self.NextButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NextButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
         self.NextButton.setObjectName("NextButton")
-        self.NextText = QtWidgets.QLabel(self.NextButton)
-        self.NextText.setGeometry(QtCore.QRect(0, 0, 200, 70))
-        self.NextText.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.NextText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.NextText.setObjectName("NextText")
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(TemplateScreen)
+        QtCore.QMetaObject.connectSlotsByName(TemplateScreen)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, TemplateScreen):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Template"))
-        self.Title.setText(_translate("Dialog", "Title"))
-        self.Tab1Text.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Tab 1</p></body></html>"))
-        self.Tab2Text.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Tab 2</p></body></html>"))
-        self.Tab3Text.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Tab 3</p></body></html>"))
-        self.Tab4Text.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Tab 4</p></body></html>"))
-        self.PrevText.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Prev</p></body></html>"))
-        self.NextText.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Next</p></body></html>"))
+        TemplateScreen.setWindowTitle(_translate("TemplateScreen", "Visualising the Riemann Hypothesis - Template"))
+        self.Title.setText(_translate("TemplateScreen", "Template"))
+        self.Tab1.setText(_translate("TemplateScreen", "Tab1"))
+        self.Tab2.setText(_translate("TemplateScreen", "Tab2"))
+        self.PrevButton.setText(_translate("TemplateScreen", "Prev"))
+        self.NextButton.setText(_translate("TemplateScreen", "Next"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
+    TemplateScreen = QtWidgets.QDialog()
+    ui = Ui_TemplateScreen()
+    ui.setupUi(TemplateScreen)
+    TemplateScreen.show()
     sys.exit(app.exec_())

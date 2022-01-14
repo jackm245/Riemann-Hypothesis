@@ -31,7 +31,7 @@
    <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>612</x>
       <y>20</y>
       <width>121</width>
       <height>51</height>
@@ -260,7 +260,7 @@ border-color:rgb(69, 69, 69);</string>
     <widget class="QPushButton" name="SubmitButton">
      <property name="geometry">
       <rect>
-       <x>530</x>
+       <x>570</x>
        <y>440</y>
        <width>200</width>
        <height>70</height>

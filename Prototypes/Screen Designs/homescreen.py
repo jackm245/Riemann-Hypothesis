@@ -36,47 +36,49 @@ class Ui_MainMenu(object):
         self.SideWidget.setObjectName("SideWidget")
         self.Title = QtWidgets.QLabel(self.SideWidget)
         self.Title.setGeometry(QtCore.QRect(100, 30, 371, 121))
-        self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(255, 255, 255)")
+        self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
         self.InvestigationButton = QtWidgets.QPushButton(self.SideWidget)
         self.InvestigationButton.setGeometry(QtCore.QRect(170, 410, 231, 61))
         self.InvestigationButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.InvestigationButton.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.InvestigationButton.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius:20px;\n"
 "font: 18pt \"Sans Serif\";")
         self.InvestigationButton.setObjectName("InvestigationButton")
         self.LogInButton = QtWidgets.QPushButton(self.SideWidget)
         self.LogInButton.setGeometry(QtCore.QRect(170, 170, 231, 61))
         self.LogInButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.LogInButton.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.LogInButton.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius:20px;\n"
 "font: 18pt \"Sans Serif\";")
+        self.LogInButton.setCheckable(False)
+        self.LogInButton.setChecked(False)
         self.LogInButton.setObjectName("LogInButton")
         self.TutorialButton = QtWidgets.QPushButton(self.SideWidget)
         self.TutorialButton.setGeometry(QtCore.QRect(170, 250, 231, 61))
         self.TutorialButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.TutorialButton.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.TutorialButton.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius:20px;\n"
 "font: 18pt \"Sans Serif\";")
         self.TutorialButton.setObjectName("TutorialButton")
         self.IntroductionButton = QtWidgets.QPushButton(self.SideWidget)
         self.IntroductionButton.setGeometry(QtCore.QRect(170, 330, 231, 61))
         self.IntroductionButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.IntroductionButton.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.IntroductionButton.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius:20px;\n"
 "font: 18pt \"Sans Serif\";")
         self.IntroductionButton.setObjectName("IntroductionButton")
         self.SummaryButton = QtWidgets.QPushButton(self.SideWidget)
         self.SummaryButton.setGeometry(QtCore.QRect(170, 490, 231, 61))
         self.SummaryButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.SummaryButton.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.SummaryButton.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius:20px;\n"
 "font: 18pt \"Sans Serif\";")
         self.SummaryButton.setObjectName("SummaryButton")
         self.ExitButton = QtWidgets.QPushButton(self.SideWidget)
         self.ExitButton.setGeometry(QtCore.QRect(170, 570, 231, 61))
         self.ExitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.ExitButton.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.ExitButton.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "border-radius:20px;\n"
 "font: 18pt \"Sans Serif\";")
         self.ExitButton.setObjectName("ExitButton")

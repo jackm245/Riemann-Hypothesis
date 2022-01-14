@@ -21,7 +21,7 @@ class Ui_SignUpScreen(object):
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
         self.Title = QtWidgets.QLabel(self.widget)
-        self.Title.setGeometry(QtCore.QRect(610, 20, 121, 51))
+        self.Title.setGeometry(QtCore.QRect(612, 20, 121, 51))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
         self.TabBar = QtWidgets.QWidget(self.widget)
@@ -107,7 +107,7 @@ class Ui_SignUpScreen(object):
         self.EmailInput.setCursorPosition(0)
         self.EmailInput.setObjectName("EmailInput")
         self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
-        self.SubmitButton.setGeometry(QtCore.QRect(530, 440, 200, 70))
+        self.SubmitButton.setGeometry(QtCore.QRect(570, 440, 200, 70))
         self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.SubmitButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
