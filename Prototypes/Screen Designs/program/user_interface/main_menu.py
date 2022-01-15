@@ -90,7 +90,7 @@ class Ui_MainMenu(object):
         sizePolicy.setHeightForWidth(self.BackgroundImage.sizePolicy().hasHeightForWidth())
         self.BackgroundImage.setSizePolicy(sizePolicy)
         self.BackgroundImage.setText("")
-        self.BackgroundImage.setPixmap(QtGui.QPixmap("ui/../Media/zeta-graph.jpg"))
+        self.BackgroundImage.setPixmap(QtGui.QPixmap("ui/../media/zeta-graph.jpg"))
         self.BackgroundImage.setScaledContents(True)
         self.BackgroundImage.setObjectName("BackgroundImage")
         self.BackgroundImage.raise_()
