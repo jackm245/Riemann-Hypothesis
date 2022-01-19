@@ -6,12 +6,19 @@ import sys
 class MainMenu(QtWidgets.QMainWindow):
 
 
-    def __init__(self):
+    def __init__(self, username=''):
         super(MainMenu, self).__init__()
+        self.username = username
         self.ui = Ui_MainMenu()
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
+
+        if self.username:
+            self.ui.LoginLabel.setText(f"<html><head/><body><p align=\"center\">{self.username}</p></body></html>")
+            self.ui.LoginLabel.show()
+        else:
+            self.ui.LoginLabel.hide()
 
         self.ui.LogInButton.clicked.connect(self.goto_login)
         self.ui.ExitButton.clicked.connect(self.exit)

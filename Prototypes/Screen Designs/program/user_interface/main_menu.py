@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/MainMenu.ui'
+# Form implementation generated from reading ui file 'ui/main_menu.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -93,8 +93,16 @@ class Ui_MainMenu(object):
         self.BackgroundImage.setPixmap(QtGui.QPixmap("ui/../media/zeta-graph.jpg"))
         self.BackgroundImage.setScaledContents(True)
         self.BackgroundImage.setObjectName("BackgroundImage")
+        self.LoginLabel = QtWidgets.QLabel(self.MainWidget)
+        self.LoginLabel.setGeometry(QtCore.QRect(1140, 20, 181, 51))
+        self.LoginLabel.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"border-radius:20px;\n"
+"font: 15pt \"Sans Serif\";\n"
+"padding:3px;")
+        self.LoginLabel.setObjectName("LoginLabel")
         self.BackgroundImage.raise_()
         self.SideWidget.raise_()
+        self.LoginLabel.raise_()
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
@@ -109,6 +117,7 @@ class Ui_MainMenu(object):
         self.IntroductionButton.setText(_translate("MainMenu", "Introduction"))
         self.SummaryButton.setText(_translate("MainMenu", "Summary"))
         self.ExitButton.setText(_translate("MainMenu", "Exit"))
+        self.LoginLabel.setText(_translate("MainMenu", "<html><head/><body><p align=\"center\">Temp Text</p></body></html>"))
 
 
 if __name__ == "__main__":

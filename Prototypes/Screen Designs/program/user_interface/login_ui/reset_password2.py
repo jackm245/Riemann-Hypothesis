@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/ResetPassword2.ui'
+# Form implementation generated from reading ui file 'ui/login_screens/reset_password2.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -30,7 +30,7 @@ class Ui_ResetPassword2Screen(object):
         self.TabBar.setObjectName("TabBar")
         self.LoginTab = QtWidgets.QPushButton(self.TabBar)
         self.LoginTab.setGeometry(QtCore.QRect(10, 5, 200, 70))
-        self.LoginTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.LoginTab.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.LoginTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
@@ -40,7 +40,7 @@ class Ui_ResetPassword2Screen(object):
         self.LoginTab.setObjectName("LoginTab")
         self.SignUpTab = QtWidgets.QPushButton(self.TabBar)
         self.SignUpTab.setGeometry(QtCore.QRect(220, 5, 200, 70))
-        self.SignUpTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SignUpTab.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.SignUpTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
@@ -50,7 +50,7 @@ class Ui_ResetPassword2Screen(object):
         self.SignUpTab.setObjectName("SignUpTab")
         self.ForgottenPasswordTab = QtWidgets.QPushButton(self.TabBar)
         self.ForgottenPasswordTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
-        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.ForgottenPasswordTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
@@ -60,7 +60,7 @@ class Ui_ResetPassword2Screen(object):
         self.ForgottenPasswordTab.setObjectName("ForgottenPasswordTab")
         self.ResetPasswordTab = QtWidgets.QPushButton(self.TabBar)
         self.ResetPasswordTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
-        self.ResetPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ResetPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.ResetPasswordTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
@@ -92,6 +92,7 @@ class Ui_ResetPassword2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);")
         self.PasswordInput.setText("")
+        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
         self.PasswordInput.setCursorPosition(0)
         self.PasswordInput.setObjectName("PasswordInput")
         self.ConfirmPasswordInput = QtWidgets.QLineEdit(self.MainWidget)

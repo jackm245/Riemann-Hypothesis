@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Login.ui'
+# Form implementation generated from reading ui file 'ui/login_screens/login.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -121,6 +121,16 @@ class Ui_LoginScreen(object):
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
+        self.ShowHideButton = QtWidgets.QPushButton(self.MainWidget)
+        self.ShowHideButton.setGeometry(QtCore.QRect(980, 290, 111, 41))
+        self.ShowHideButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ShowHideButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 25pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ShowHideButton.setObjectName("ShowHideButton")
 
         self.retranslateUi(LoginScreen)
         QtCore.QMetaObject.connectSlotsByName(LoginScreen)
@@ -139,6 +149,7 @@ class Ui_LoginScreen(object):
         self.PasswordInput.setPlaceholderText(_translate("LoginScreen", "Enter Password"))
         self.SubmitButton.setText(_translate("LoginScreen", "Submit"))
         self.ErrorLabel.setText(_translate("LoginScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.ShowHideButton.setText(_translate("LoginScreen", "Show"))
 
 
 if __name__ == "__main__":

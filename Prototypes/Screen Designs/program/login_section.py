@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .user_interface import Ui_LoginScreen, Ui_SignUpScreen, Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen
+from time import sleep
 
 
 class ResetPassword2(QtWidgets.QDialog):
@@ -162,6 +163,8 @@ class Login(QtWidgets.QDialog):
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
 
         self.ui.SubmitButton.clicked.connect(self.submit)
+        self.ui.ShowHideButton.clicked.connect(self.show_hide)
+        self.show_or_hide = 'Show'
 
         self.show()
 
@@ -178,6 +181,19 @@ class Login(QtWidgets.QDialog):
         self.hide()
 
     def submit(self):
-        username = self.ui.UsernameInput.text()
-        password  = self.ui.PasswordInput.text()
-        self.ui.ErrorLabel.setText("Error")
+        from .main_section import MainMenu
+        self.username = self.ui.UsernameInput.text()
+        #  password  = self.ui.PasswordInput.text()
+        #  self.ui.ErrorLabel.setText("Error")
+        self.main_menu = MainMenu(self.username)
+        self.hide()
+
+    def show_hide(self):
+        if self.show_or_hide == 'Show':
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.show_or_hide = 'Hide'
+        else:
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.show_or_hide = 'Show'
+        self.ui.ShowHideButton.setText(self.show_or_hide)
+

@@ -224,8 +224,28 @@ font: 18pt &quot;Sans Serif&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="LoginLabel">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>20</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(239, 239, 239);
+border-radius:20px;
+font: 15pt &quot;Sans Serif&quot;;
+padding:3px;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Temp Text&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
    <zorder>BackgroundImage</zorder>
    <zorder>SideWidget</zorder>
+   <zorder>LoginLabel</zorder>
   </widget>
  </widget>
  <resources/>

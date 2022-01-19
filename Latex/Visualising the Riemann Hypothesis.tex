@@ -38,7 +38,7 @@
   escapeinside={(*@}{@*)}
 }
 \graphicspath{{./Media/Images}}
-\setcounter{secnumdepth}{2}
+% \setcounter{secnumdepth}{2}
 
 \author{Jack Morgan}
 \title{Visualisation of the Riemann Hypothesis}
@@ -74,6 +74,9 @@
     \end{center}
 \end{titlepage}
 
+\tableofcontents
+
+\clearpage
 
 \section{Analysis}
 
@@ -1475,8 +1478,46 @@ This function will be used extensively throughout my technical solution to plot 
 
 % \subsection{Data Structure Design}
 % \subsection{File Structure}
-% \subsection{HCI \& Screen Designs}
+\subsection{HCI and Screen Designs}
+Throughout this section, I will be creating initial designs for my screen pages used throughout the program.
+Each page will have a consistant structure and layout, such that it will not be confusing for a user to be able to use and navigate page.
 
+\clearpage
 
+\subsubsection{Generic Template}
+The consistant design for my user interface will follow the following template design.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.3]{template-screen-design}
+    \caption{Generic Screen Design}
+\end{figure}
+
+At the top of the page is the title. This is there to show the user which page they are on.
+
+Below this, is the tabline. Each tab on the bar  will be a clickable button, that will take the user to a different screen. The user will be able to go through the tabs in whichever order they please, which may not necessarily be in the order they are arranged; although the program will be designed such that the next tab will follow on from the previous one.
+
+The section with the title 'Content' will show the main part of each page. For example, if the page was showing a graph plot, it will be displayed in this section. It will also have scroll functionality similar to a webpage, such that each screen will be able to display a sufficient amount of text, and data.
+
+At the bottom of the page, are the previous and next buttons, this will display the previous and next tabs respectively. These button will allow for the user to navigate between each of the pages more easily.
+
+\clearpage
+
+\subsubsection{Login Template}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.3]{login-screen-design}
+    \caption{Login Screen Design}
+\end{figure}
+
+From the figure above, we can see a prototype design for the Login Page.
+On the tab bar are the different options for the user. The login screen starts on the page that will be most-used, that is to be able to sign in to the program. However, the tab bar means that if a user wants to create an account, or reset their password, then they have the option there.
+
+The user's password will not be visible when they type it in for security reasons, but in case they want to see what the have typed, then there is a show button for them.
+
+If the user incorrectly types their username/password, then an error message will be displayed just above the submit button.
+
+The submit button will take the user's input for their username and password, and check it against the stored values in the database. If they are incorrect, the error will be displayed, if the credentials are correct, then the user will be taken back to the main menu.
 
 \end{document}
