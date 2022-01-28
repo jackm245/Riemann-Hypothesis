@@ -52,7 +52,7 @@ def animate(i, x_vals, y_vals):
 
     plt.cla()
 
-    plt.scatter(x_vals, y_vals)
+    plt.plot(x_vals, y_vals)
 
     plt.xlabel('Re')
     plt.ylabel('Im')
