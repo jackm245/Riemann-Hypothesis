@@ -10,6 +10,7 @@
 \usepackage{color}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{multirow}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -831,7 +832,7 @@ $$\zeta(s) = \sum_{n=1}^{\infty} n^{-s}$$
 
 We can approximate the value but calculating the sum to such a high number, that the error difference is not significant. If we want to approximate the zeta function, we could compute:
 
-$$\zeta(s) = \sum_{n=1}^{1x10^6} n^{-s}$$
+$$\zeta(s) = \sum_{n=1}^{1 \times 10^6} n^{-s}$$
 
 Which would not give us the exact value, but one close enough that we can still use.
 
@@ -1107,6 +1108,13 @@ Overall, I feel as if I have sufficiently broken down my project into a number o
 
 \clearpage
 \subsection{Object-Oriented Design}
+
+$$NEED TO ADD UI CLASSES$$
+
+$$ AND ALSO EXPLAIN HIGH LEVEL OOP STUFF$$
+
+$$SEE BOOK ON HOW TO DO PROPERLY$$
+
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
@@ -1209,6 +1217,129 @@ This would swap the arguments around so that the \textit{\_\_add\_\_} function i
 
 \clearpage
 \subsection{Database Design}
+
+Throughout this next section, I will be explaining the structure of the database I will be using, creating data tables for each of the tables in the database, create designs for the key SQL queries that will be used, and I will create entity-relationship diagrams for the database.
+
+\subsubsection{Table Design}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: Users}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    User\_ID & Primary & Integer & & \\
+    \hline
+    Username & & String & \textbackslash w\{1,20\} & Unique Username for each user\\
+    \hline
+    Email & & String & .+@.+\textbackslash ..+ & \\
+    \hline
+    Password & & String & & A hashed version of the user's password\\
+    \hline
+    \end{tabular}
+    \caption{Data table for the Users Table}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: Questions}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    Queston\_ID & Primary & Integer & & \\
+    \hline
+    Queston\_No & & Integer & \textbackslash d+ & The number of the question\\
+    \hline
+    Question & & String & .\{1,140\} & Questions that is asked to the user\\
+    \hline
+    Answer & & String & .\{1,140\} & The correct answer to the question\\
+    \hline
+    \end{tabular}
+    \caption{Data table for the Questions Table}
+\end{table}
+
+\clearpage
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: Answers}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    Answer\_ID & Primary & Integer & & \\
+    \hline
+    Answer & & String & .\{1,140\} & \\
+    \hline
+    \end{tabular}
+    \caption{Data table for the Answers Table}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: User Answer}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    User\_ID & & String & & \\
+    \hline
+    Answer\_ID & & String & & \\
+    \hline
+    \end{tabular}
+    \caption{Data table for the User Answer Table}
+\end{table}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.12\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.17\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: Zeta}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    Zeta\_ID & Primary & String & & \\
+    \hline
+    Input & & String & \textbackslash d+\textbackslash +\textbackslash d+i & \\
+    \hline
+    Output & & String & \textbackslash d+\textbackslash +\textbackslash d+i & \\
+    \hline
+    \end{tabular}
+    \caption{Data table for the Zeta Table}
+\end{table}
+
+\clearpage
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: User Zeta}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    Zeta\_ID & & String & & \\
+    \hline
+    User\_ID & & String & & \\
+    \hline
+    \end{tabular}
+    \caption{Data table for the User Zeta Table}
+\end{table}
+
+% \subsubsection{Third Normal Form}
 \clearpage
 
 \subsection{Key Algorithms Design}
@@ -1478,14 +1609,18 @@ This function will be used extensively throughout my technical solution to plot 
 
 % \subsection{Data Structure Design}
 % \subsection{File Structure}
-\subsection{HCI and Screen Designs}
-Throughout this section, I will be creating initial designs for my screen pages used throughout the program.
-Each page will have a consistant structure and layout, such that it will not be confusing for a user to be able to use and navigate page.
 
 \clearpage
 
+\subsection{HCI and Screen Designs}
+Throughout this section, I will be creating initial designs for my screen pages used throughout the program.
+
+Each page will have a consistent structure and layout, such that it will not be confusing for a user to be able to use and navigate page.
+
+I will not be showing the design of every page used - because they are largely similar - I will instead just be showcasing and explaining some of the designs for my most important or unique parts of the project.
+
 \subsubsection{Generic Template}
-The consistant design for my user interface will follow the following template design.
+The consistent design for my user interface will follow the following template design.
 
 \begin{figure}[ht]
     \centering
@@ -1495,15 +1630,40 @@ The consistant design for my user interface will follow the following template d
 
 At the top of the page is the title. This is there to show the user which page they are on.
 
-Below this, is the tabline. Each tab on the bar  will be a clickable button, that will take the user to a different screen. The user will be able to go through the tabs in whichever order they please, which may not necessarily be in the order they are arranged; although the program will be designed such that the next tab will follow on from the previous one.
+Below this, is the tab line. Each tab on the bar  will be a clickable button, that will take the user to a different screen. The user will be able to go through the tabs in whichever order they please, which may not necessarily be in the order they are arranged; although the program will be designed such that the next tab will follow on from the previous one.
 
-The section with the title 'Content' will show the main part of each page. For example, if the page was showing a graph plot, it will be displayed in this section. It will also have scroll functionality similar to a webpage, such that each screen will be able to display a sufficient amount of text, and data.
+The section with the title 'Content' will show the main part of each page. For example, if the page was showing a graph plot, it will be displayed in this section.
 
 At the bottom of the page, are the previous and next buttons, this will display the previous and next tabs respectively. These button will allow for the user to navigate between each of the pages more easily.
 
 \clearpage
+\subsubsection{Main Menu Screen Design}
 
-\subsubsection{Login Template}
+The main menu is the main entry point for the user into the program. This will be what the user first sees when they launch the program, and will display all of the possible menu options for them.
+
+It is important that this page looks visually appealing, but is also very functional and allows for efficient traversal between screen pages.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.2]{main-menu-screen-design}
+    \caption{Main Menu Screen Design}
+\end{figure}
+
+On the left hand side, is displayed a menu of all of the sections of the program that the user is able to navigate to. It is recommended that the user goes through them in the order shows, however, they will be able to navigate the sections however they please.
+
+Selecting each menu option will show a new page for that respective section, and close the main menu page. When the user is finished with that section, they will then be sent back to the main menu screen.
+
+If the user chooses to log in, the their username will shown on the main menu screen, as demonstrated in the figure below.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{main-menu-logged-in-screen-design}
+    \caption{Logged In Main Menu Screen Design}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Login Screen Design}
 
 \begin{figure}[ht]
     \centering
@@ -1518,6 +1678,37 @@ The user's password will not be visible when they type it in for security reason
 
 If the user incorrectly types their username/password, then an error message will be displayed just above the submit button.
 
-The submit button will take the user's input for their username and password, and check it against the stored values in the database. If they are incorrect, the error will be displayed, if the credentials are correct, then the user will be taken back to the main menu.
+The submit button will take the user's input for their username and password, and check it against the stored values in the database. If they are incorrect, the error will be displayed, if the credentials are correct, then the user will be taken back to the main menu, and it will display their username, showing that they are logged in.
+
+The user will then be able to go to any part of the program they wish, and have their data saved for the next time they want to use the program.
+
+\clearpage
+
+\subsubsection{Graph Plots Screen Design}
+
+As part of the investigation section of the project, the user will have the opportunity to interact with various graphs. An example of how this would look is shown in the figure below.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.18]{graph-plots-screen-design}
+    \caption{Graph Plot Screen Design}
+\end{figure}
+
+The graph will be animated, such that it updates in real time as the user is looking at it. The user will also be able to change input values into the graph plots.
+
+\subsubsection{Calculator Screen Design}
+
+Another part of the investigation section will be where the user can calculate values of the zeta function. The basic version will be where the user can enter a single input value, and an output value is calculated.
+
+A more advanced version is where the user defines a range of value for the input, by given a start value, a stop value and a step value for the difference between the values.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.18]{zeta-function-calculator-screen-design}
+    \caption{Zeta Function Calculator Screen Design}
+\end{figure}
+
+The user will then be able to store the output values from this calculator in a database. The database will contain values of zeta that every user who uses the program calculates, and each input output pair calculated will be stored with the user who found out the value, then there will be a leaderboard of who has calculated the most values for the zeta function.
+
 
 \end{document}
