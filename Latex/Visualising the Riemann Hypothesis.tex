@@ -11,6 +11,9 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{multirow}
+\usepackage[backend=biber, style=verbose]{biblatex}
+\addbibresource{References.bib}
+
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -1221,6 +1224,28 @@ This would swap the arguments around so that the \textit{\_\_add\_\_} function i
 Throughout this next section, I will be explaining the structure of the database I will be using, creating data tables for each of the tables in the database, create designs for the key SQL queries that will be used, and I will create entity-relationship diagrams for the database.
 
 \subsubsection{Table Design}
+In this subsection, I will be using data tables to represent the tables that will be present in my database.
+
+Within my database, there will be 8 tables, which are:
+
+\begin{enumerate}
+    \item Users Table
+    \item Questions Table
+    \item Answers Table
+    \item User Answer Table
+    \item Notes Table
+    \item Notes Responses Table
+    \item Zeta Table
+    \item User Zeta Table
+\end{enumerate}
+
+In each data table, I will show the table name and the name of each of the fields in the table. For each of the fields, I will list whether it is a key of the table, it's datatype, any necessary validation using regular expressions, and some notes on the field.
+
+With the regular expression used for validation, an item in the table will only be considered valid if the entire item itself is a match to the regex. For strings, I am limiting their size to 140 characters, such that the user will be unable to enter strings that are too long and potentially use up too much storage in the database.
+
+\clearpage
+
+The purpose of the Users Table will be to store the login credentials for each user registered to the program. The table will store the username, email, and hashed password of each of the users. This is the table that will be referenced when a user creates an account, or goes to login to an existing account.
 
 \begin{table}[ht]
     \centering
@@ -1242,6 +1267,14 @@ Throughout this next section, I will be explaining the structure of the database
     \end{tabular}
     \caption{Data table for the Users Table}
 \end{table}
+
+More explanation of the Users Table
+
+More explanation of the Users Table
+
+Another table in the database is the Questions Table. At points throughout the program, the user will be asked questions. These are questions that the user can either get right or wrong and they are used to check that the user is able to use the program in the right way.
+
+The table will store, for each question, the question number the actual question itself, and the correct answer to the question.
 
 \begin{table}[ht]
     \centering
@@ -1277,6 +1310,8 @@ Throughout this next section, I will be explaining the structure of the database
     \hline
     Answer\_ID & Primary & Integer & & \\
     \hline
+    Question\_ID & & Integer & & \\
+    \hline
     Answer & & String & .\{1,140\} & \\
     \hline
     \end{tabular}
@@ -1300,6 +1335,43 @@ Throughout this next section, I will be explaining the structure of the database
     \caption{Data table for the User Answer Table}
 \end{table}
 
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: Notes}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    Notes\_ID & Primary & Integer & & \\
+    \hline
+    Note\_No & & Integer & \textbackslash d+ & The number of the note question\\
+    \hline
+    Question & & String & .\{1,140\} & Questions that is asked to the user\\
+    \hline
+    \end{tabular}
+    \caption{Data table for the Questions Table}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Table: Note Responses}}\\
+    \hline
+    \hline
+    \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
+    \hline
+    Response\_ID & Primary & Integer & & \\
+    \hline
+    Note\_ID & & Integer & & \\
+    \hline
+    Response & & String & .\{1,140\} & The user's response to the posed question\\
+    \hline
+    \end{tabular}
+    \caption{Data table for the Questions Table}
+\end{table}
 
 \begin{table}[ht]
     \centering
@@ -1319,8 +1391,6 @@ Throughout this next section, I will be explaining the structure of the database
     \end{tabular}
     \caption{Data table for the Zeta Table}
 \end{table}
-
-\clearpage
 
 \begin{table}[ht]
     \centering
@@ -1710,5 +1780,8 @@ A more advanced version is where the user defines a range of value for the input
 
 The user will then be able to store the output values from this calculator in a database. The database will contain values of zeta that every user who uses the program calculates, and each input output pair calculated will be stored with the user who found out the value, then there will be a leaderboard of who has calculated the most values for the zeta function.
 
+\nocite{*}
+\printbibliography
+\addcontentsline{toc}{section}{References}
 
 \end{document}
