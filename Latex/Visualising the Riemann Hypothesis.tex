@@ -42,7 +42,7 @@
   escapeinside={(*@}{@*)}
 }
 \graphicspath{{./Media/Images}}
-% \setcounter{secnumdepth}{2}
+% \setcounter{secnumdepth}{4}
 
 \author{Jack Morgan}
 \title{Visualisation of the Riemann Hypothesis}
@@ -1223,7 +1223,7 @@ This would swap the arguments around so that the \textit{\_\_add\_\_} function i
 
 Throughout this next section, I will be explaining the structure of the database I will be using, creating data tables for each of the tables in the database, create designs for the key SQL queries that will be used, and I will create entity-relationship diagrams for the database.
 
-\subsubsection{Table Design}
+\subsubsection{Table Designs}
 In this subsection, I will be using data tables to represent the tables that will be present in my database.
 
 Within my database, there will be 8 tables, which are:
@@ -1244,6 +1244,7 @@ In each data table, I will show the table name and the name of each of the field
 With the regular expression used for validation, an item in the table will only be considered valid if the entire item itself is a match to the regex. For strings, I am limiting their size to 140 characters, such that the user will be unable to enter strings that are too long and potentially use up too much storage in the database.
 
 \clearpage
+\textbf{Users Table}
 
 The purpose of the Users Table will be to store the login credentials for each user registered to the program. The table will store the username, email, and hashed password of each of the users. This is the table that will be referenced when a user creates an account, or goes to login to an existing account.
 
@@ -1268,9 +1269,7 @@ The purpose of the Users Table will be to store the login credentials for each u
     \caption{Data table for the Users Table}
 \end{table}
 
-More explanation of the Users Table
-
-More explanation of the Users Table
+\textbf{Questions Table}
 
 Another table in the database is the Questions Table. At points throughout the program, the user will be asked questions. These are questions that the user can either get right or wrong and they are used to check that the user is able to use the program in the right way.
 
@@ -1299,6 +1298,12 @@ The table will store, for each question, the question number the actual question
 
 \clearpage
 
+\textbf{Answers Table}
+
+Users will be expected to give answers to the questions, throughout the program. The answers of each user will be stored in the Answers table.
+
+Every answer will have an associated Answer\_ID, which will be used in the User Answer table to determine answer corresponds to which user. The answer field will be used to record the various different answers said by the users, and the values in Answer, will be in the form of a set, such that two members in the Answer field will not be the same. The Question\_ID field is then used to match each answer up with the question that it was answering.
+
 \begin{table}[ht]
     \centering
     \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
@@ -1310,13 +1315,19 @@ The table will store, for each question, the question number the actual question
     \hline
     Answer\_ID & Primary & Integer & & \\
     \hline
-    Question\_ID & & Integer & & \\
-    \hline
     Answer & & String & .\{1,140\} & \\
+    \hline
+    Question\_ID & & Integer & & \\
     \hline
     \end{tabular}
     \caption{Data table for the Answers Table}
 \end{table}
+
+\textbf{User Answer Table}
+
+The User Answer table will link the user's answers to them. Formatting the table this way allows for minimal data to be stored. If the answer to one of the questions is 2, and the vast majority of users answer 2, then the value 2 will only need to be stored once in the answers table, we can then use the User Answers table to link the User\ID of everyone who answered 2, to the Answer\_ID of 2, rather than saving an answer over and over again.
+
+This table will only have two fields, the User\_ID, and the Answer\_ID.
 
 \begin{table}[ht]
     \centering
@@ -1334,6 +1345,13 @@ The table will store, for each question, the question number the actual question
     \end{tabular}
     \caption{Data table for the User Answer Table}
 \end{table}
+
+\clearpage
+\textbf{Notes Table}
+
+Similarly to the questions and answers that occur in the program, the user will also be able to make notes and comments on their findings.
+
+The difference between notes and questions is that there are no wrong or right answers (or responses as I name them) for the notes, whereas the answer to a question will either be right or wrong.
 
 \begin{table}[ht]
     \centering
@@ -1354,11 +1372,21 @@ The table will store, for each question, the question number the actual question
     \caption{Data table for the Questions Table}
 \end{table}
 
+\textbf{Responses Table}
+
+The responses table will act to the Notes table in a similar way to how the Answers table has a relationship with the Question Table.
+
+Whoever, there will of course be differences in how the tables relate to each other, how they are used, and differences in the information stored in each of the tables.
+
+Unlike with the Questions and Answers, the Responses to the Notes will most likely by completely unique from user to user. Therefore, creating a User Responses table, similar to the User Answer table will not be necessary.
+
+In the table will be stored each response, the Response\_ID, which will be a unique identifier for each response, the Note\_ID, which describes which note the response is for, and the User\_ID, showing which user said the response.
+
 \begin{table}[ht]
     \centering
     \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
     \hline
-    \multicolumn{5}{|c|}{\textbf{Table: Note Responses}}\\
+    \multicolumn{5}{|c|}{\textbf{Table: Responses}}\\
     \hline
     \hline
     \textbf{Field} & \textbf{Key} & \textbf{Data Type} & \textbf{Validation} & \textbf{Notes} \\
@@ -1369,9 +1397,21 @@ The table will store, for each question, the question number the actual question
     \hline
     Response & & String & .\{1,140\} & The user's response to the posed question\\
     \hline
+    User\_ID & & Integer & & \\
+    \hline
     \end{tabular}
     \caption{Data table for the Questions Table}
 \end{table}
+
+\clearpage
+\textbf{Zeta Table}
+
+The zeta table will be used to store values of the zeta function. The aim of this table is to be able to store possibly hundreds of input, output pairs for the zeta function.
+
+These input and output values will be complex numbers in the form $a+bi$, where $a$ and $b$ are two integers
+
+The Zeta\_ID Field, will be used in the User Zeta table, to determine which users have computed which values of the zeta function.
+
 
 \begin{table}[ht]
     \centering
@@ -1392,6 +1432,12 @@ The table will store, for each question, the question number the actual question
     \caption{Data table for the Zeta Table}
 \end{table}
 
+\textbf{User Zeta Table}
+
+The last table in the database will be the User Zeta table. Its fields will be Zeta\_ID and User\_ID and will be used to match up users and intput-output pairs that have been calcualted for the zeta function.
+
+This table will be used to calculated which users have computed which values of the riemann zeta function.
+
 \begin{table}[ht]
     \centering
     \begin{tabular}{ | p{0.15\linewidth} | p{0.1\linewidth} | p{0.16\linewidth} | p{0.14\linewidth} | p{0.25\linewidth} | }
@@ -1409,7 +1455,12 @@ The table will store, for each question, the question number the actual question
     \caption{Data table for the User Zeta Table}
 \end{table}
 
-% \subsubsection{Third Normal Form}
+\subsubsection{Third Normal Form}
+\subsubsection{Database-Program Connections}
+% SQL
+% Creating the tables
+% Retrieving data from the tables
+\subsubsection{Entity-Relationship Diagrams}
 \clearpage
 
 \subsection{Key Algorithms Design}
@@ -1677,8 +1728,41 @@ Now we have a very efficient program that can be used to calculate any value of 
 
 This function will be used extensively throughout my technical solution to plot graphs, find data points and to try to help provide some proof for the Riemann Hypothesis.
 
-% \subsection{Data Structure Design}
-% \subsection{File Structure}
+\subsection{Data Structure Design}
+
+\clearpage
+
+\subsection{File Structure}
+
+In this section, I will showcase the full planned File Structure for the program.
+
+\begin{itemize}
+    \item \textbf{program}
+    \begin{itemize}
+        \item \textbf{user\_interface}
+        \begin{itemize}
+            \item \textbf{login\_ui}
+            \begin{itemize}
+                \item \_\_init\_\_.py
+                \item forgotten\_password.py
+                \item forgotten\_password2.py
+                \item login.py
+                \item reset\_password.py
+                \item reset\_password2.py
+                \item sign\_up.py
+            \end{itemize}
+            \item \textbf{tutorial\_ui}
+            \item \_\_init\_\_.py
+            \item main\_menu.py
+        \end{itemize}
+        \item \_\_init\_\_.py
+        \item login\_section.py
+        \item main\_section.py
+    \end{itemize}
+    \item main.py
+\end{itemize}
+
+Description of the file structure
 
 \clearpage
 
