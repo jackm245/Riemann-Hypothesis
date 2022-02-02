@@ -45,7 +45,7 @@ def zeta(s, t=100):
 
 
 def animate(i, x_vals, y_vals):
-    _zeta = zeta((1/2)+(i*1j/25))
+    _zeta = zeta((3)+(i*1j/25))
     print(_zeta)
     x_vals.append(_zeta.real)
     y_vals.append(_zeta.imag)
