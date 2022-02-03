@@ -48,6 +48,16 @@ class Ui_PolarGraphScreen(object):
 "font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ZeroesTab.setObjectName("ZeroesTab")
+        self.PrimeTab = QtWidgets.QPushButton(self.TabBar)
+        self.PrimeTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.PrimeTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.PrimeTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.PrimeTab.setObjectName("PrimeTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -121,6 +131,7 @@ class Ui_PolarGraphScreen(object):
         self.Title.setText(_translate("PolarGraphScreen", "Graph Plots"))
         self.PolarTab.setText(_translate("PolarGraphScreen", "Polar"))
         self.ZeroesTab.setText(_translate("PolarGraphScreen", "Zeroes"))
+        self.PrimeTab.setText(_translate("PolarGraphScreen", "Prime"))
         self.PrevButton.setText(_translate("PolarGraphScreen", "Prev"))
         self.NextButton.setText(_translate("PolarGraphScreen", "Next"))
         self.GraphButton.setText(_translate("PolarGraphScreen", "Graph"))
@@ -129,3 +140,13 @@ class Ui_PolarGraphScreen(object):
         self.SubTitleText.setText(_translate("PolarGraphScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Polar Graph of the Riemann Zeta Function</span></p></body></html>"))
         self.MainText.setText(_translate("PolarGraphScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
         self.ErrorLabel.setText(_translate("PolarGraphScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    PolarGraphScreen = QtWidgets.QDialog()
+    ui = Ui_PolarGraphScreen()
+    ui.setupUi(PolarGraphScreen)
+    PolarGraphScreen.show()
+    sys.exit(app.exec_())

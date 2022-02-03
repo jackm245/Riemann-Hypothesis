@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PolarGraphScreen</class>
- <widget class="QDialog" name="PolarGraphScreen">
+ <class>PrimeCountingFunctionScreen</class>
+ <widget class="QDialog" name="PrimeCountingFunctionScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -56,30 +56,6 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(239, 239, 239);</string>
     </property>
-    <widget class="QPushButton" name="PolarTab">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-</string>
-     </property>
-     <property name="text">
-      <string>Polar</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="ZeroesTab">
      <property name="geometry">
       <rect>
@@ -104,6 +80,30 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Zeroes</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="PolarTab">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Polar</string>
+     </property>
+    </widget>
     <widget class="QPushButton" name="PrimeTab">
      <property name="geometry">
       <rect>
@@ -120,8 +120,8 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -193,7 +193,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QPushButton" name="GraphButton">
      <property name="geometry">
       <rect>
-       <x>680</x>
+       <x>570</x>
        <y>460</y>
        <width>200</width>
        <height>70</height>
@@ -214,37 +214,6 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Graph</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="GraphInput">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>460</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt; Re(s)&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(239, 239, 239);
-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;;
-border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-text-align: center;</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="cursorPosition">
-      <number>0</number>
-     </property>
-     <property name="placeholderText">
-      <string>          Re(s)</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="SubTitleText">
      <property name="geometry">
       <rect>
@@ -259,7 +228,7 @@ text-align: center;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Polar Graph of the Riemann Zeta Function&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;The Prime Counting Function&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="MainText">
@@ -280,23 +249,6 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="ErrorLabel">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>410</y>
-       <width>461</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 0, 0);
-font: 12pt &quot;Sans Serif&quot;;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>

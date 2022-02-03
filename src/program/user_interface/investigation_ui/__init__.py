@@ -1,3 +1,4 @@
 from .polar_graph import Ui_PolarGraphScreen
 from .polar_graph_mat_plot import Ui_PolarGraphMatPlotScreen
-
+from .prime_counting_function import Ui_PrimeCountingFunctionScreen
+from .prime_counting_function_mat_plot import Ui_PrimeCountingFunctionMatPlotScreen
