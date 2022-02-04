@@ -1,4 +1,4 @@
 from .main_menu import Ui_MainMenu
 from .login_ui import Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_LoginScreen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen, Ui_SignUpScreen
-from .investigation_ui import Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen
+from .investigation_ui import Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen
 from .mpl_widget import  MplWidget

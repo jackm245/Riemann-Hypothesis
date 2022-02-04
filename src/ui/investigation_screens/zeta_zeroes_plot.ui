@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ZetaZeroesScreen</class>
+ <widget class="QDialog" name="ZetaZeroesScreen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1340</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Visualising the Riemann Hypothesis - Investigation</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1340</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(69, 69, 69);</string>
+   </property>
+   <widget class="QLabel" name="Title">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>20</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239)</string>
+    </property>
+    <property name="text">
+     <string>Graph Plots</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="TabBar" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>1340</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(239, 239, 239);</string>
+    </property>
+    <widget class="QPushButton" name="PolarTab">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Polar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ZeroesTab">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+</string>
+     </property>
+     <property name="text">
+      <string>Zeroes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="PrimeTab">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Prime</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="MainWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>170</y>
+      <width>1320</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(239, 239, 239);
+border-radius: 20px;</string>
+    </property>
+    <widget class="QPushButton" name="PrevButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Prev</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="NextButton">
+     <property name="geometry">
+      <rect>
+       <x>1110</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Next</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GraphButton">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Graph</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SubTitleText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>681</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Zeroes of the Riemann Zeta Function&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="MainText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>80</y>
+       <width>1251</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
