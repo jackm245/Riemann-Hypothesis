@@ -5,11 +5,63 @@ import re
 from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen
+from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen
 
 
-class TableCalculator (QtWidgets.QDialog):
+class TableCalculator2(QtWidgets.QDialog):
+
+    def __init__(self, table_values):
+        super(TableCalculator2, self).__init__()
+        self.table_values = table_values
+        self.ui = Ui_TableCalculator2Screen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.SingleTab.clicked.connect(self.goto_single)
+        self.ui.PrevButton.clicked.connect(self.goto_table_calculator)
+        self.ui.NextButton.clicked.connect(self.goto_calculator)
+        self.ui.DatabaseButton.clicked.connect(self.saveto_database)
+        self.ui.FileButton.clicked.connect(self.saveto_file)
+
+        self.ui.ZetaTable.setRowCount(len(self.table_values))
+
+        for i, values in enumerate(self.table_values):
+            for j in range(len(values)):
+                self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(values[j])))
+                # .setTextAlignment(QtCore.Qt.AlignCenter)
+
+        #  self.ui.ZetaTable.resizeColumnsToContents()
+        #  self.ui.ZetaTable.resizeRowsToContents()
+        self.ui.ZetaTable.horizontalHeader().setStretchLastSection(True)
+        self.ui.ZetaTable.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch)
+        self.ui.ZetaTable.setColumnWidth(1, 100)
+
+        self.show()
+
+    def goto_single(self):
+        self.single = SingleCalculator()
+        self.hide()
+
+    def goto_table_calculator(self):
+        self.tale_calculator = TableCalculator()
+        self.hide()
+
+    def goto_calculator(self):
+        self.primes = Calculator()
+        self.hide()
+
+    def saveto_database(self):
+        pass
+
+    def saveto_file(self):
+        pass
+
+
+class TableCalculator(QtWidgets.QDialog):
 
     def __init__(self):
         super(TableCalculator, self).__init__()
@@ -24,44 +76,49 @@ class TableCalculator (QtWidgets.QDialog):
         self.ui.CalculateButton.clicked.connect(self.goto_table_calculator_2)
         self.show()
 
-    def is_complex(self, number):
+    def make_complex(self, number):
         try:
             number_complex = complex(number.replace('i', 'j'))
         except ValueError as e:
-            self.ui.ErrorLabel.setText('Input must be a complex number of the form a+bi')
             return False
         else:
             return number_complex
 
+    def make_int(self, number):
+        try:
+            number_int = int(number)
+        except ValueError as e:
+            return False
+        else:
+            return number_int
 
     def calculate_zeta(self):
         self.start_input = self.ui.StartInput.text()
-        self.end_input = self.ui.EndInput.text()
         self.step_input = self.ui.StepInput.text()
-        self.start_complex = self.is_complex(self.start_input)
-        self.end_complex = self.is_complex(self.end_input)
-        self.step_complex = self.is_complex(self.step_input)
-        if self.start_complex and self.end_complex and self.step_complex:
-            real_range = int((self.end_complex.real - self.start_complex.real) // self.step_complex.real)
-            imag_range = int((self.end_complex.imag - self.start_complex.imag) // self.step_complex.imag)
-            self.input_values = [self.start_complex + self.step_complex * i for i in range(min(real_range, imag_range)+1)]
-            #  print(self.complex_values)
+        self.range_input = self.ui.NoOfValuesInput.text()
+        self.start_complex = self.make_complex(self.start_input)
+        self.step_complex = self.make_complex(self.step_input)
+        self.range = self.make_int(self.range_input)
+        if self.start_complex and self.step_complex:
+            if 1 <= self.range <= 100:
+                self.ui.ErrorLabel.setText('')
+                self.input_values = [self.start_complex + self.step_complex * i for i in range(self.range)]
 
-            zetas = [zeta(i) for i in self.input_values]
-            self.output_values = [complex(round(i.real, 3), round(i.imag, 3)) for i in zetas]
-            for i, o in zip(self.input_values, self.output_values):
-                print(i, o)
-
-        #  else:
-            #  self.zeta_output = zeta(self.zeta_input)
-            #  self.zeta_output_printable = complex(round(self.zeta_output.real, 3), round(self.zeta_output.imag, 3))
-            #  self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-2]}i')
-            #  self.ui.ErrorLabel.setText('')
+                zetas = [zeta(i) for i in self.input_values]
+                self.output_values = [complex(round(i.real, 3), round(i.imag, 3)) for i in zetas]
+                self.table_values =  list(zip(self.input_values, self.output_values))
+            else:
+                self.ui.ErrorLabel.setText('No. Of Values must be a positive integer between 1 and 100')
+                self.table_values = False
+        else:
+            self.ui.ErrorLabel.setText('Start Value and Step must be complex numbers of the form a+bi')
+            self.table_values = False
 
     def goto_table_calculator_2(self):
         self.calculate_zeta()
-        #  self.calculator = Calculator()
-        #  self.hide()
+        if self.table_values:
+            self.table_calculator_2 = TableCalculator2(self.table_values)
+            self.hide()
 
     def goto_single(self):
         self.single = SingleCalculator()
@@ -85,8 +142,8 @@ class SingleCalculator(QtWidgets.QDialog):
         self.ui.PrevButton.clicked.connect(self.goto_calculator)
         self.ui.NextButton.clicked.connect(self.goto_table)
         self.ui.CalculateButton.clicked.connect(self.calculate_zeta)
-        self.ui.DatabaseButton.clicked.connect(self.storeto_database)
-        self.ui.FileButton.clicked.connect(self.storeto_file)
+        self.ui.DatabaseButton.clicked.connect(self.saveto_database)
+        self.ui.FileButton.clicked.connect(self.saveto_file)
         self.show()
 
     def calculate_zeta(self):
@@ -110,10 +167,10 @@ class SingleCalculator(QtWidgets.QDialog):
         self.table = TableCalculator()
         self.hide()
 
-    def storeto_database(self):
+    def saveto_database(self):
         pass
 
-    def storeto_file(self):
+    def saveto_file(self):
         pass
 
 

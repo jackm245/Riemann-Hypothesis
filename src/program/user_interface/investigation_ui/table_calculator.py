@@ -79,7 +79,7 @@ class Ui_TableCalculatorScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.StartInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.StartInput.setGeometry(QtCore.QRect(485, 110, 381, 81))
+        self.StartInput.setGeometry(QtCore.QRect(485, 110, 421, 81))
         self.StartInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 36pt \"Sans Serif\";\n"
@@ -95,7 +95,7 @@ class Ui_TableCalculatorScreen(object):
 "text-decoration: underline;")
         self.StartValueText.setObjectName("StartValueText")
         self.CalculateButton = QtWidgets.QPushButton(self.MainWidget)
-        self.CalculateButton.setGeometry(QtCore.QRect(960, 180, 221, 141))
+        self.CalculateButton.setGeometry(QtCore.QRect(980, 180, 221, 141))
         self.CalculateButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.CalculateButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -104,30 +104,14 @@ class Ui_TableCalculatorScreen(object):
 "font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.CalculateButton.setObjectName("CalculateButton")
-        self.EndValueText = QtWidgets.QLabel(self.MainWidget)
-        self.EndValueText.setGeometry(QtCore.QRect(100, 220, 291, 61))
-        self.EndValueText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239); padding: 5px;\n"
-"text-decoration: underline;")
-        self.EndValueText.setObjectName("EndValueText")
         self.StepText = QtWidgets.QLabel(self.MainWidget)
-        self.StepText.setGeometry(QtCore.QRect(100, 320, 291, 61))
+        self.StepText.setGeometry(QtCore.QRect(100, 220, 291, 61))
         self.StepText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;\n"
 "text-decoration: underline;")
         self.StepText.setObjectName("StepText")
-        self.EndInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.EndInput.setGeometry(QtCore.QRect(485, 210, 381, 81))
-        self.EndInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
-"color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\";\n"
-"border: 2px solid;\n"
-"border-radius: 20px;\n"
-"border-color:rgb(69, 69, 69);")
-        self.EndInput.setText("")
-        self.EndInput.setObjectName("EndInput")
         self.StepInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.StepInput.setGeometry(QtCore.QRect(485, 310, 381, 81))
+        self.StepInput.setGeometry(QtCore.QRect(485, 210, 421, 81))
         self.StepInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 36pt \"Sans Serif\";\n"
@@ -137,21 +121,37 @@ class Ui_TableCalculatorScreen(object):
         self.StepInput.setText("")
         self.StepInput.setObjectName("StepInput")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
-        self.ErrorLabel.setGeometry(QtCore.QRect(400, 410, 541, 61))
+        self.ErrorLabel.setGeometry(QtCore.QRect(400, 410, 701, 61))
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
+        self.NoOfValuesText = QtWidgets.QLabel(self.MainWidget)
+        self.NoOfValuesText.setGeometry(QtCore.QRect(10, 320, 381, 61))
+        self.NoOfValuesText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;\n"
+"text-decoration: underline;")
+        self.NoOfValuesText.setObjectName("NoOfValuesText")
+        self.NoOfValuesInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.NoOfValuesInput.setGeometry(QtCore.QRect(485, 310, 421, 81))
+        self.NoOfValuesInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.NoOfValuesInput.setText("")
+        self.NoOfValuesInput.setObjectName("NoOfValuesInput")
         self.PrevButton.raise_()
         self.NextButton.raise_()
         self.StartInput.raise_()
         self.SubTitleText.raise_()
         self.StartValueText.raise_()
         self.CalculateButton.raise_()
-        self.EndValueText.raise_()
         self.StepText.raise_()
-        self.EndInput.raise_()
         self.StepInput.raise_()
         self.ErrorLabel.raise_()
+        self.NoOfValuesText.raise_()
+        self.NoOfValuesInput.raise_()
 
         self.retranslateUi(TableCalculatorScreen)
         QtCore.QMetaObject.connectSlotsByName(TableCalculatorScreen)
@@ -169,11 +169,11 @@ class Ui_TableCalculatorScreen(object):
         self.StartValueText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">Start Value:</span></p></body></html>"))
         self.CalculateButton.setText(_translate("TableCalculatorScreen", "Calculate\n"
 "🠖"))
-        self.EndValueText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">End Value:</span></p></body></html>"))
         self.StepText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">Step:</span></p></body></html>"))
-        self.EndInput.setPlaceholderText(_translate("TableCalculatorScreen", "Enter End Value"))
         self.StepInput.setPlaceholderText(_translate("TableCalculatorScreen", "Enter Step Value"))
         self.ErrorLabel.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.NoOfValuesText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">No. of Values:</span></p></body></html>"))
+        self.NoOfValuesInput.setPlaceholderText(_translate("TableCalculatorScreen", "Enter No. of Values"))
 
 
 if __name__ == "__main__":
