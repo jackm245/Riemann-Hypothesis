@@ -168,7 +168,7 @@ class Ui_SingleCalculatorScreen(object):
 
     def retranslateUi(self, SingleCalculatorScreen):
         _translate = QtCore.QCoreApplication.translate
-        SingleCalculatorScreen.setWindowTitle(_translate("SingleCalculatorScreen", "Visualising the Riemann Hypothesis - Investigation"))
+        SingleCalculatorScreen.setWindowTitle(_translate("SingleCalculatorScreen", "Visualising the Riemann Hypothesis - Calculator"))
         self.Title.setText(_translate("SingleCalculatorScreen", "Calculator"))
         self.SingleTab.setText(_translate("SingleCalculatorScreen", "Single"))
         self.TableTab.setText(_translate("SingleCalculatorScreen", "Table"))

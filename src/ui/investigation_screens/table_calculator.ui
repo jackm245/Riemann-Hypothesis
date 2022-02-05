@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SingleCalculatorScreen</class>
- <widget class="QDialog" name="SingleCalculatorScreen">
+ <class>TableCalculatorScreen</class>
+ <widget class="QDialog" name="TableCalculatorScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -72,8 +72,8 @@
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239,239);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(69, 69,69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -96,8 +96,8 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -180,31 +180,15 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Single Zeta Calculation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Table Zeta Calculation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="EquationImage">
+    <widget class="QLineEdit" name="StartInput">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>30</y>
-       <width>1121</width>
-       <height>201</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap>../../media/riemanns-functional-equation.png</pixmap>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="ZetaInput">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>340</y>
-       <width>371</width>
+       <x>485</x>
+       <y>110</y>
+       <width>381</width>
        <height>81</height>
       </rect>
      </property>
@@ -219,34 +203,16 @@ border-color:rgb(69, 69, 69);</string>
      <property name="text">
       <string/>
      </property>
-    </widget>
-    <widget class="QLabel" name="ZetaOutput">
-     <property name="geometry">
-      <rect>
-       <x>800</x>
-       <y>340</y>
-       <width>431</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(239, 239, 239);
-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;;
-border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);</string>
-     </property>
-     <property name="text">
-      <string/>
+     <property name="placeholderText">
+      <string>Enter Start Value</string>
      </property>
     </widget>
-    <widget class="QLabel" name="InputText">
+    <widget class="QLabel" name="StartValueText">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>260</y>
-       <width>371</width>
+       <x>100</x>
+       <y>120</y>
+       <width>291</width>
        <height>61</height>
       </rect>
      </property>
@@ -256,97 +222,14 @@ background-color: rgb(239, 239, 239); padding: 5px;
 text-decoration: underline;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Input Value (s):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="OutputText">
-     <property name="geometry">
-      <rect>
-       <x>800</x>
-       <y>250</y>
-       <width>431</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239); padding: 5px;
-text-decoration: underline;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Output Value 𝜻(s):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="DatabaseButton">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>460</y>
-       <width>391</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Save to database</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="FileButton">
-     <property name="geometry">
-      <rect>
-       <x>680</x>
-       <y>460</y>
-       <width>391</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Save to file</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="ErrorLabel">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>220</y>
-       <width>541</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 0, 0);
-font: 18pt &quot;Sans Serif&quot;;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Start Value:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="CalculateButton">
      <property name="geometry">
       <rect>
-       <x>560</x>
-       <y>279</y>
+       <x>960</x>
+       <y>180</y>
        <width>221</width>
        <height>141</height>
       </rect>
@@ -367,18 +250,118 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 🠖</string>
      </property>
     </widget>
+    <widget class="QLabel" name="EndValueText">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>220</y>
+       <width>291</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;
+text-decoration: underline;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;End Value:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="StepText">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>320</y>
+       <width>291</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;
+text-decoration: underline;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Step:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="EndInput">
+     <property name="geometry">
+      <rect>
+       <x>485</x>
+       <y>210</y>
+       <width>381</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 239, 239);
+color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;;
+border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Enter End Value</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="StepInput">
+     <property name="geometry">
+      <rect>
+       <x>485</x>
+       <y>310</y>
+       <width>381</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 239, 239);
+color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;;
+border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Enter Step Value</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ErrorLabel">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>410</y>
+       <width>541</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
     <zorder>PrevButton</zorder>
     <zorder>NextButton</zorder>
-    <zorder>EquationImage</zorder>
-    <zorder>ZetaInput</zorder>
+    <zorder>StartInput</zorder>
     <zorder>SubTitleText</zorder>
-    <zorder>ZetaOutput</zorder>
-    <zorder>InputText</zorder>
-    <zorder>OutputText</zorder>
-    <zorder>DatabaseButton</zorder>
-    <zorder>FileButton</zorder>
-    <zorder>ErrorLabel</zorder>
+    <zorder>StartValueText</zorder>
     <zorder>CalculateButton</zorder>
+    <zorder>EndValueText</zorder>
+    <zorder>StepText</zorder>
+    <zorder>EndInput</zorder>
+    <zorder>StepInput</zorder>
+    <zorder>ErrorLabel</zorder>
    </widget>
   </widget>
  </widget>

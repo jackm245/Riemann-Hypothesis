@@ -6,7 +6,70 @@ from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_coun
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen
+from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen
+
+
+class TableCalculator (QtWidgets.QDialog):
+
+    def __init__(self):
+        super(TableCalculator, self).__init__()
+        self.ui = Ui_TableCalculatorScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.SingleTab.clicked.connect(self.goto_single)
+        self.ui.PrevButton.clicked.connect(self.goto_single)
+        self.ui.NextButton.clicked.connect(self.goto_calculator)
+        self.ui.CalculateButton.clicked.connect(self.goto_table_calculator_2)
+        self.show()
+
+    def is_complex(self, number):
+        try:
+            number_complex = complex(number.replace('i', 'j'))
+        except ValueError as e:
+            self.ui.ErrorLabel.setText('Input must be a complex number of the form a+bi')
+            return False
+        else:
+            return number_complex
+
+
+    def calculate_zeta(self):
+        self.start_input = self.ui.StartInput.text()
+        self.end_input = self.ui.EndInput.text()
+        self.step_input = self.ui.StepInput.text()
+        self.start_complex = self.is_complex(self.start_input)
+        self.end_complex = self.is_complex(self.end_input)
+        self.step_complex = self.is_complex(self.step_input)
+        if self.start_complex and self.end_complex and self.step_complex:
+            real_range = int((self.end_complex.real - self.start_complex.real) // self.step_complex.real)
+            imag_range = int((self.end_complex.imag - self.start_complex.imag) // self.step_complex.imag)
+            self.input_values = [self.start_complex + self.step_complex * i for i in range(min(real_range, imag_range)+1)]
+            #  print(self.complex_values)
+
+            zetas = [zeta(i) for i in self.input_values]
+            self.output_values = [complex(round(i.real, 3), round(i.imag, 3)) for i in zetas]
+            for i, o in zip(self.input_values, self.output_values):
+                print(i, o)
+
+        #  else:
+            #  self.zeta_output = zeta(self.zeta_input)
+            #  self.zeta_output_printable = complex(round(self.zeta_output.real, 3), round(self.zeta_output.imag, 3))
+            #  self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-2]}i')
+            #  self.ui.ErrorLabel.setText('')
+
+    def goto_table_calculator_2(self):
+        self.calculate_zeta()
+        #  self.calculator = Calculator()
+        #  self.hide()
+
+    def goto_single(self):
+        self.single = SingleCalculator()
+        self.hide()
+
+    def goto_calculator(self):
+        self.calculator = Calculator()
+        self.hide()
 
 
 class SingleCalculator(QtWidgets.QDialog):
@@ -27,15 +90,7 @@ class SingleCalculator(QtWidgets.QDialog):
         self.show()
 
     def calculate_zeta(self):
-        #  self.calculator = Calculator()
-        #  self.hide()
         self.zeta_user_input = self.ui.ZetaInput.text()
-        # a
-        # a.b
-        # a+ci
-        # a.b+ci
-        # a.b+c.di
-        # a+c.di
         try:
             self.zeta_input = complex(self.zeta_user_input.replace('i', 'j'))
         except ValueError as e:
@@ -44,39 +99,23 @@ class SingleCalculator(QtWidgets.QDialog):
         else:
             self.zeta_output = zeta(self.zeta_input)
             self.zeta_output_printable = complex(round(self.zeta_output.real, 3), round(self.zeta_output.imag, 3))
-            self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-1]}')
+            self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-2]}i')
             self.ui.ErrorLabel.setText('')
-
-        #  if re.fullmatch(r'^\d+(\.\d+)?(\+\d+(\.\d+)?i)?$', self.zeta_input):
-            #  self.zeta_output = zeta(complex(self.zeta_input))
-            #  self.zeta_output_printable = complex(round(self.zeta_output.real, 2), round(self.zeta_output.imag, 2))
-            #  self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)}i')
-        #  elif re.fullmatch(r'^(\d+(\.\d+)?\+)?\d+(\.\d+)?i$', self.zeta_input):
-        #  else:
-            #  self.ui.ErrorLabel.setText("Input must be a complex number of the form a+bi")
 
     def goto_calculator(self):
         self.calculator = Calculator()
         self.hide()
-        #  self.zeta_input = self.ui.ZetaInput.text()
-        #  if re.fullmatch(r'^(\d+(\.\d+)?(\+\d+(\.\d+)?i)?)|((\d+(\.\d+)?\+)?\d+(\.\d+)?i)$', self.zeta_input):
-            #  self.ui.ErrorLabel.setText("Match")
-        #  else:
-            #  self.ui.ErrorLabel.setText("Not Match")
-
 
     def goto_table(self):
         self.table = TableCalculator()
         self.hide()
-
-    def calculate(self):
-        pass
 
     def storeto_database(self):
         pass
 
     def storeto_file(self):
         pass
+
 
 class Calculator(QtWidgets.QDialog):
 

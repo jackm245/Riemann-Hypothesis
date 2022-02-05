@@ -1,5 +1,6 @@
 from .calculator import Ui_CalculatorScreen
 from .single_calculator import Ui_SingleCalculatorScreen
+from .table_calculator import Ui_TableCalculatorScreen
 from .graph_plots import Ui_GraphPlotsScreen
 from .polar_graph import Ui_PolarGraphScreen
 from .polar_graph_mat_plot import Ui_PolarGraphMatPlotScreen
