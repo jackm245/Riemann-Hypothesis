@@ -2,8 +2,10 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from program import MainMenu
 
-
-if __name__ == '__main__':
+def main():
     app = QtWidgets.QApplication(sys.argv)
     application = MainMenu()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()

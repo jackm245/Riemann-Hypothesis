@@ -1,11 +1,152 @@
 import sys
 import matplotlib
 import numpy as np
+import re
 from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen
+from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen
+
+
+class SingleCalculator(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(SingleCalculator, self).__init__()
+        self.ui = Ui_SingleCalculatorScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.TableTab.clicked.connect(self.goto_table)
+        self.ui.PrevButton.clicked.connect(self.goto_calculator)
+        self.ui.NextButton.clicked.connect(self.goto_table)
+        self.ui.CalculateButton.clicked.connect(self.calculate_zeta)
+        self.ui.DatabaseButton.clicked.connect(self.storeto_database)
+        self.ui.FileButton.clicked.connect(self.storeto_file)
+        self.show()
+
+    def calculate_zeta(self):
+        #  self.calculator = Calculator()
+        #  self.hide()
+        self.zeta_user_input = self.ui.ZetaInput.text()
+        # a
+        # a.b
+        # a+ci
+        # a.b+ci
+        # a.b+c.di
+        # a+c.di
+        try:
+            self.zeta_input = complex(self.zeta_user_input.replace('i', 'j'))
+        except ValueError as e:
+            self.ui.ErrorLabel.setText('Input must be a complex number of the form a+bi')
+            self.ui.ZetaOutput.setText('')
+        else:
+            self.zeta_output = zeta(self.zeta_input)
+            self.zeta_output_printable = complex(round(self.zeta_output.real, 3), round(self.zeta_output.imag, 3))
+            self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-1]}')
+            self.ui.ErrorLabel.setText('')
+
+        #  if re.fullmatch(r'^\d+(\.\d+)?(\+\d+(\.\d+)?i)?$', self.zeta_input):
+            #  self.zeta_output = zeta(complex(self.zeta_input))
+            #  self.zeta_output_printable = complex(round(self.zeta_output.real, 2), round(self.zeta_output.imag, 2))
+            #  self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)}i')
+        #  elif re.fullmatch(r'^(\d+(\.\d+)?\+)?\d+(\.\d+)?i$', self.zeta_input):
+        #  else:
+            #  self.ui.ErrorLabel.setText("Input must be a complex number of the form a+bi")
+
+    def goto_calculator(self):
+        self.calculator = Calculator()
+        self.hide()
+        #  self.zeta_input = self.ui.ZetaInput.text()
+        #  if re.fullmatch(r'^(\d+(\.\d+)?(\+\d+(\.\d+)?i)?)|((\d+(\.\d+)?\+)?\d+(\.\d+)?i)$', self.zeta_input):
+            #  self.ui.ErrorLabel.setText("Match")
+        #  else:
+            #  self.ui.ErrorLabel.setText("Not Match")
+
+
+    def goto_table(self):
+        self.table = TableCalculator()
+        self.hide()
+
+    def calculate(self):
+        pass
+
+    def storeto_database(self):
+        pass
+
+    def storeto_file(self):
+        pass
+
+class Calculator(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(Calculator, self).__init__()
+        self.ui = Ui_CalculatorScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.PrevButton.clicked.connect(self.goto_primes)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
+        self.ui.PrimesTab.clicked.connect(self.goto_primes)
+        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
+        self.ui.SingleButton.clicked.connect(self.goto_single)
+        self.ui.TableButton.clicked.connect(self.goto_table)
+
+        self.show()
+
+    def goto_graph_plots(self):
+        self.main_menu = GraphPlot()
+        self.hide()
+
+    def goto_primes(self):
+        self.primes = PrimeNumbers()
+        self.hide()
+
+    def goto_zeroes(self):
+        pass
+        #  self.zeroes = Zeroes()
+        #  self.hide()
+
+    def goto_single(self):
+        self.single = SingleCalculator()
+        self.hide()
+
+    def goto_table(self):
+        self.table = TableCalculator()
+        self.hide()
+
+
+class PrimeNumbers(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(PrimeNumbers, self).__init__()
+        self.ui = Ui_PrimeNumbersScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.PrevButton.clicked.connect(self.goto_graph_plots)
+        self.ui.NextButton.clicked.connect(self.goto_calculator)
+        self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
+        self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
+        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
+        self.show()
+
+
+    def goto_graph_plots(self):
+        self.main_menu = GraphPlot()
+        self.hide()
+
+    def goto_calculator(self):
+        self.calculator = Calculator()
+        self.hide()
+
+    def goto_zeroes(self):
+        self.zeroes = Zeroes()
+        self.hide()
 
 
 class PrimeCountingFunctionMatPlot(QtWidgets.QDialog):
@@ -87,7 +228,7 @@ class PrimeCountingFunction(QtWidgets.QDialog):
         self.graph = PrimeCountingFunctionMatPlot()
 
     def goto_graph_plots(self):
-        self.graph_plots = GraphPlotsScreen()
+        self.graph_plots = GraphPlot()
         self.hide()
 
 
@@ -229,7 +370,7 @@ class PolarGraph(QtWidgets.QDialog):
         self.hide()
 
     def goto_graph_plots(self):
-        self.graph_plots = GraphPlotsScreen()
+        self.graph_plots = GraphPlot()
         self.hide()
 
     def polar_graph(self):
@@ -245,20 +386,21 @@ class PolarGraph(QtWidgets.QDialog):
                 self.graph = PolarGraphMatPlot(self.real_input)
 
 
-class GraphPlotsScreen(QtWidgets.QDialog):
+class GraphPlot(QtWidgets.QDialog):
 
     def __init__(self):
-        super(GraphPlotsScreen, self).__init__()
+        super(GraphPlot, self).__init__()
         self.ui = Ui_GraphPlotsScreen()
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
 
-        #  self.ui.PrimeTab.clicked.connect(self.goto_prime)
         self.ui.PrevButton.clicked.connect(self.goto_main_menu)
+        self.ui.NextButton.clicked.connect(self.goto_primes)
         self.ui.GraphPlotsButton.clicked.connect(self.goto_polar)
+        self.ui.PrimesTab.clicked.connect(self.goto_primes)
+        self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
         self.show()
-
 
     def goto_main_menu(self):
         from .main_section import MainMenu
@@ -266,5 +408,13 @@ class GraphPlotsScreen(QtWidgets.QDialog):
         self.hide()
 
     def goto_polar(self):
-        self.main_menu = PolarGraph()
+        self.polar = PolarGraph()
+        self.hide()
+
+    def goto_primes(self):
+        self.primes = PrimeNumbers()
+        self.hide()
+
+    def goto_calculator(self):
+        self.primes = Calculator()
         self.hide()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>GraphPlotsScreen</class>
- <widget class="QDialog" name="GraphPlotsScreen">
+ <class>CalculatorScreen</class>
+ <widget class="QDialog" name="CalculatorScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -72,8 +72,8 @@
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(69, 69,69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -120,8 +120,8 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -214,30 +214,6 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Next</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="GraphPlotsButton">
-     <property name="geometry">
-      <rect>
-       <x>520</x>
-       <y>460</y>
-       <width>291</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Graphs Plots</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="SubTitleText">
      <property name="geometry">
       <rect>
@@ -252,7 +228,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Visualising the Riemann Hypothesis&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calcaulating the Riemann Zeta Function&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="MainText">
@@ -275,21 +251,52 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="ErrorLabel">
+    <widget class="QPushButton" name="SingleButton">
      <property name="geometry">
       <rect>
        <x>450</x>
-       <y>410</y>
-       <width>461</width>
-       <height>41</height>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 0, 0);
-font: 12pt &quot;Sans Serif&quot;;</string>
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Single</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="TableButton">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Table</string>
      </property>
     </widget>
    </widget>

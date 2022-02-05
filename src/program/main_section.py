@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 from .user_interface import Ui_MainMenu
 from .login_section import Login
-from .investigation_section import GraphPlotsScreen
+from .investigation_section import GraphPlot
 import sys
 
 class MainMenu(QtWidgets.QMainWindow):
@@ -34,7 +34,7 @@ class MainMenu(QtWidgets.QMainWindow):
 
 
     def goto_investigation(self):
-        self.login = GraphPlotsScreen()
+        self.login = GraphPlot()
         self.hide()
 
 
