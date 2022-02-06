@@ -1,1 +1,2 @@
 from .mathematical_functions import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral
+from .computational_functions import binary_insertion_sort

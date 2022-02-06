@@ -1,8 +1,10 @@
 import sys
+import os
+import csv
 import matplotlib
 import numpy as np
 import re
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
@@ -58,7 +60,32 @@ class TableCalculator2(QtWidgets.QDialog):
         pass
 
     def saveto_file(self):
-        pass
+        # put new and old in same list
+        # then sort values by int of joined numbers
+        # the save to file
+        # also show a message saying that it ahs been saved to the file and
+        # give file location
+        self.csv_values = [list(map(str, [input.real, input.imag, output.real, output.imag])) for input, output in self.table_values]
+        fieldnames = ['InputReal', 'InputImag', 'OutputReal', 'OutputImag']
+        filepath = 'files/zeta_values.csv'
+        with open(filepath, 'r') as csv_file:
+            # could make DictReader
+            self.csv_reader = csv.reader(csv_file)
+            for row in self.csv_reader:
+                if row != fieldnames:
+                    self.csv_values.append(list(map(str, row)))
+        # sort does not work
+        sorting_dict = {''.join(re.findall(r'\d+', ''.join(row))): row for row in self.csv_values}
+        sorted_keys = binary_insertion_sort(set(sorting_dict.keys()))
+        sorted_values = [sorting_dict[key] for key in sorted_keys]
+        with open(filepath, 'w') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            csv_writer.writerow(fieldnames)
+            # make set to remove any duplicates
+            for row in sorted_values:
+                csv_writer.writerow(row)
+        self.ui.ErrorLabel.setText(f'Table contents written to {filepath}')
+
 
 
 class TableCalculator(QtWidgets.QDialog):
