@@ -1,5 +1,4 @@
 import sys
-import os
 import csv
 import matplotlib
 import numpy as np
@@ -76,7 +75,7 @@ class TableCalculator2(QtWidgets.QDialog):
                     self.csv_values.append(list(map(str, row)))
         # sort does not work
         sorting_dict = {''.join(re.findall(r'\d+', ''.join(row))): row for row in self.csv_values}
-        sorted_keys = binary_insertion_sort(set(sorting_dict.keys()))
+        sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
         sorted_values = [sorting_dict[key] for key in sorted_keys]
         with open(filepath, 'w') as csv_file:
             csv_writer = csv.writer(csv_file)
@@ -85,7 +84,6 @@ class TableCalculator2(QtWidgets.QDialog):
             for row in sorted_values:
                 csv_writer.writerow(row)
         self.ui.ErrorLabel.setText(f'Table contents written to {filepath}')
-
 
 
 class TableCalculator(QtWidgets.QDialog):
