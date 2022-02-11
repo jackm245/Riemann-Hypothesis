@@ -1,5 +1,10 @@
 import random
 import time
+import csv
+import re
+import os
+
+
 # binary
 # for binary insertion sort
 # returns index where target should go in the list
@@ -25,7 +30,11 @@ def binary_search(data, target):
 
 
 def binary_insertion_sort(data):
-    queue = Queue(data)
+    try:
+        array = list(map(float, data ))
+    except ValueError:
+        array = data
+    queue = Queue(array)
     sorted = [queue.deQueue()]
     while not queue.is_empty():
         item = queue.deQueue()
@@ -36,7 +45,7 @@ def binary_insertion_sort(data):
         sorted.extend(bigger)
     return sorted
 
-# cyclical queue
+# circular queue
 class Queue():
 
     def __init__(self, input_queue, **kwargs):
@@ -84,3 +93,40 @@ class Queue():
 
     def __str__(self):
         return 'Queue(' + ', '.join([str(i) for i in self.queue]) + ')'
+
+
+def save_zeta_values_to_file(table_values, filepath, fieldnames=['InputReal', 'InputImag', 'OutputReal', 'OutputImag']):
+    # put new and old in same list
+    # then sort values by int of joined numbers
+    # the save to file
+    # also show a message saying that it has been saved to the file and
+    # give file location
+    csv_values = [list(map(str, [input.real, input.imag, output.real, output.imag])) for input, output in table_values]
+    regex = r'-?\d+\.\d+'
+    index = 0
+    save_zeta_to_file(csv_values, filepath, regex, index, fieldnames)
+
+
+def save_zeta_zeroes_to_file(table_values, filepath, fieldnames=['InputReal', 'InputImag', 'OutputReal', 'OutputImag']):
+    csv_values = [list(map(str, [real, imag])) for real, imag in table_values]
+    regex = r'-?\d+\.\d+'
+    index = 1
+    save_zeta_to_file(csv_values, filepath, regex, index, fieldnames)
+
+
+def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
+    if not os.path.isfile(filepath):
+        os.mknod(filepath)
+    with open(filepath, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for row in csv_reader:
+            if row != fieldnames:
+                csv_values.append(list(map(str, row)))
+    sorting_dict = {list(map(float, re.findall(regex, ','.join(row))))[index]: row for row in csv_values}
+    sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
+    sorted_values = [sorting_dict[key] for key in sorted_keys]
+    with open(filepath, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(fieldnames)
+        for row in sorted_values:
+            csv_writer.writerow(row)

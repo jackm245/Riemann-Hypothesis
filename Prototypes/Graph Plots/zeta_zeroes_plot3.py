@@ -17,13 +17,10 @@ def binom(n, k):
 
 def ncr(n, r):
     r = min(r, n-r)
-    numer = reduce(op.mul, range(n, n-r, -1), 1)
-    denom = reduce(op.mul, range(1, r+1), 1)
+    numerator = reduce(op.mul, range(n, n-r, -1), 1)
+    denominator = reduce(op.mul, range(1, r+1), 1)
     return numer // denom
 
-
-# formula (21) in http://mathworld.wolfram.com/RiemannZetaFunction.html
-# Global zeta function by Knopp and Hasse (s != 1)
 def zeta(s, t=100):
     if s == 1: return float("inf")
     term = (1 / 2 ** (n + 1) * sum((-1) ** k * ncr(n, k) * (k + 1) ** -s

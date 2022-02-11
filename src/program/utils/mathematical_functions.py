@@ -1,22 +1,28 @@
 from itertools import islice, count
+from functools import reduce
 import numpy as np
+import operator as op
 from math import ceil, sqrt, log, floor
 import scipy.integrate as integrate
 
 
-def binom(n, k):
-    v = 1
-    for i in range(k):
-        v *= (n - i) / (i + 1)
-    return v
+def ncr(n, r):
+    r = min(r, n-r)
+    numerator = reduce(op.mul, range(n, n-r, -1), 1)
+    denominator = reduce(op.mul, range(1, r+1), 1)
+    return numerator // denominator
 
 
 def zeta(s, t=100):
     if s == 1: return float("inf")
-    term = (1 / 2 ** (n + 1) * sum((-1) ** k * binom(n, k) * (k + 1) ** -s
+    term = (1 / 2 ** (n + 1) * sum((-1) ** k * ncr(n, k) * (k + 1) ** -s
                                    for k in range(n + 1)) for n in count(0))
     return sum(islice(term, t)) / (1 - 2 ** (1 - s))
 
+
+def is_zeta_zero(real, imag):
+    zeta_value = zeta(complex(real, imag))
+    return abs(zeta_value) < 10e-3
 
 # find the primes up to and including limit
 def sieve_of_eratosthenes(limit):
@@ -54,3 +60,21 @@ def prime_power_function(N):
     for r in range(1, floor(log(N, 2))+1):
         sum_ += sieve_of_eratosthenes(N**(1/r)).size
     return sum_
+
+
+def make_complex(number):
+    try:
+        number_complex = complex(number.replace('i', 'j'))
+    except ValueError as e:
+        return False
+    else:
+        return number_complex
+
+
+def make_int(number):
+    try:
+        number_int = int(number)
+    except ValueError as e:
+        return False
+    else:
+        return number_int

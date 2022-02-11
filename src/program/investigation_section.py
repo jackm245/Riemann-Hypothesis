@@ -1,14 +1,142 @@
 import sys
-import csv
 import matplotlib
 import numpy as np
-import re
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen
+from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen
+
+
+# the one with the table
+class CalculateZeroes2(QtWidgets.QDialog):
+
+    def __init__(self, zeroes):
+        super(CalculateZeroes2, self).__init__()
+        self.zeroes = zeroes
+        self.ui = Ui_CalculateZeroes2Screen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.PrevButton.clicked.connect(self.goto_calculate_zeroes)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+
+        self.ui.DatabaseButton.clicked.connect(self.saveto_database)
+        self.ui.FileButton.clicked.connect(self.saveto_file)
+
+        self.ui.ZetaTable.setRowCount(len(self.zeroes))
+
+        for i, values in enumerate(self.zeroes):
+            for j in range(len(values)):
+                self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(values[j])))
+        self.ui.ZetaTable.horizontalHeader().setStretchLastSection(True)
+        self.ui.ZetaTable.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch)
+        self.ui.ZetaTable.setColumnWidth(1, 100)
+
+        self.show()
+
+    def goto_calculate_zeroes(self):
+        self.calculate_zeroes = CalculateZeroes()
+        self.hide()
+
+    def goto_zeroes(self):
+        self.zeroes = ZeroesScreen()
+        self.hide()
+
+    def saveto_database(self):
+        pass
+
+    def saveto_file(self):
+        filepath = 'files/zeta_zeroes.csv'
+        fieldnames = ['InputReal', 'InputImag']
+        save_zeta_zeroes_to_file(self.zeroes, filepath, fieldnames=fieldnames)
+        self.ui.ErrorLabel.setText(f'Table contents written to {filepath}')
+
+class CalculateZeroes(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(CalculateZeroes, self).__init__()
+        self.ui = Ui_CalculateZeroesScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.PrevButton.clicked.connect(self.goto_zeroes)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.CalculateButton.clicked.connect(self.goto_calculate_zeroes_2)
+        self.show()
+
+    def calculate_zeroes(self):
+        self.no_of_zeroes_input = self.ui.NoOfZeroesInput.text()
+        self.no_of_zeroes = make_int(self.no_of_zeroes_input)
+        if self.no_of_zeroes:
+            if 0 < self.no_of_zeroes <= 100:
+                self.ui.ErrorLabel.setText(f'Calculated {self.no_of_zeroes} zeroes')
+                self.zeroes = []
+                count = 0
+                while len(self.zeroes) < self.no_of_zeroes:
+                    accuracy = count // 500 + 100
+                    real = 1/2
+                    imag = count / accuracy
+                    if is_zeta_zero(real, imag) and (real, round(imag, 1)) not in self.zeroes:
+                        self.zeroes.append((real, round(imag, 1)))
+                    count += 1
+                print(self.zeroes)
+            else:
+                self.ui.ErrorLabel.setText('No. of Zeroes must be between 1 and 100')
+        else:
+                self.ui.ErrorLabel.setText('No. Of Zeroes must be a positive integer between 1 and 100')
+
+    def goto_calculate_zeroes_2(self):
+        self.calculate_zeroes()
+        self.calculate_zeroes_2 = CalculateZeroes2(self.zeroes)
+        self.hide()
+
+    def goto_zeroes(self):
+        self.zeroes = ZeroesScreen()
+        self.hide()
+
+
+class ZeroesScreen(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(ZeroesScreen, self).__init__()
+        self.ui = Ui_ZeroesScreen()
+        self.ui.setupUi(self)
+        self.setFixedWidth(1340)
+        self.setFixedHeight(720)
+
+        self.ui.PrevButton.clicked.connect(self.goto_calculator)
+        self.ui.NextButton.clicked.connect(self.goto_main_menu)
+        self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
+        self.ui.PrimesTab.clicked.connect(self.goto_primes)
+        self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
+        self.ui.CalculateButton.clicked.connect(self.goto_calculate_zeroes)
+        self.show()
+
+    def goto_main_menu(self):
+        from .main_section import MainMenu
+        self.main_menu = MainMenu()
+        self.hide()
+
+    def goto_graph_plots(self):
+        self.polar = GraphPlot()
+        self.hide()
+
+    def goto_primes(self):
+        self.primes = PrimeNumbers()
+        self.hide()
+
+    def goto_calculator(self):
+        self.calculator = Calculator()
+        self.hide()
+
+    def goto_calculate_zeroes(self):
+        self.zeroes = CalculateZeroes()
+        self.hide()
 
 
 class TableCalculator2(QtWidgets.QDialog):
@@ -59,30 +187,8 @@ class TableCalculator2(QtWidgets.QDialog):
         pass
 
     def saveto_file(self):
-        # put new and old in same list
-        # then sort values by int of joined numbers
-        # the save to file
-        # also show a message saying that it ahs been saved to the file and
-        # give file location
-        self.csv_values = [list(map(str, [input.real, input.imag, output.real, output.imag])) for input, output in self.table_values]
-        fieldnames = ['InputReal', 'InputImag', 'OutputReal', 'OutputImag']
         filepath = 'files/zeta_values.csv'
-        with open(filepath, 'r') as csv_file:
-            # could make DictReader
-            self.csv_reader = csv.reader(csv_file)
-            for row in self.csv_reader:
-                if row != fieldnames:
-                    self.csv_values.append(list(map(str, row)))
-        # sort does not work
-        sorting_dict = {''.join(re.findall(r'\d+', ''.join(row))): row for row in self.csv_values}
-        sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
-        sorted_values = [sorting_dict[key] for key in sorted_keys]
-        with open(filepath, 'w') as csv_file:
-            csv_writer = csv.writer(csv_file)
-            csv_writer.writerow(fieldnames)
-            # make set to remove any duplicates
-            for row in sorted_values:
-                csv_writer.writerow(row)
+        save_zeta_values_to_file(self.table_values, filepath)
         self.ui.ErrorLabel.setText(f'Table contents written to {filepath}')
 
 
@@ -101,34 +207,18 @@ class TableCalculator(QtWidgets.QDialog):
         self.ui.CalculateButton.clicked.connect(self.goto_table_calculator_2)
         self.show()
 
-    def make_complex(self, number):
-        try:
-            number_complex = complex(number.replace('i', 'j'))
-        except ValueError as e:
-            return False
-        else:
-            return number_complex
-
-    def make_int(self, number):
-        try:
-            number_int = int(number)
-        except ValueError as e:
-            return False
-        else:
-            return number_int
 
     def calculate_zeta(self):
         self.start_input = self.ui.StartInput.text()
         self.step_input = self.ui.StepInput.text()
         self.range_input = self.ui.NoOfValuesInput.text()
-        self.start_complex = self.make_complex(self.start_input)
-        self.step_complex = self.make_complex(self.step_input)
-        self.range = self.make_int(self.range_input)
+        self.start_complex = make_complex(self.start_input)
+        self.step_complex = make_complex(self.step_input)
+        self.range = make_int(self.range_input)
         if self.start_complex and self.step_complex:
             if 1 <= self.range <= 100:
                 self.ui.ErrorLabel.setText('')
                 self.input_values = [self.start_complex + self.step_complex * i for i in range(self.range)]
-
                 zetas = [zeta(i) for i in self.input_values]
                 self.output_values = [complex(round(i.real, 3), round(i.imag, 3)) for i in zetas]
                 self.table_values =  list(zip(self.input_values, self.output_values))
@@ -181,6 +271,7 @@ class SingleCalculator(QtWidgets.QDialog):
         else:
             self.zeta_output = zeta(self.zeta_input)
             self.zeta_output_printable = complex(round(self.zeta_output.real, 3), round(self.zeta_output.imag, 3))
+            self.zeta_value = [(self.zeta_input, self.zeta_output_printable)]
             self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-2]}i')
             self.ui.ErrorLabel.setText('')
 
@@ -196,7 +287,9 @@ class SingleCalculator(QtWidgets.QDialog):
         pass
 
     def saveto_file(self):
-        pass
+        filepath = 'files/zeta_values.csv'
+        save_zeta_values_to_file(self.zeta_value, filepath)
+        self.ui.ErrorLabel.setText(f'Values written to {filepath}')
 
 
 class Calculator(QtWidgets.QDialog):
@@ -227,9 +320,8 @@ class Calculator(QtWidgets.QDialog):
         self.hide()
 
     def goto_zeroes(self):
-        pass
-        #  self.zeroes = Zeroes()
-        #  self.hide()
+        self.zeroes = ZeroesScreen()
+        self.hide()
 
     def goto_single(self):
         self.single = SingleCalculator()
@@ -266,7 +358,7 @@ class PrimeNumbers(QtWidgets.QDialog):
         self.hide()
 
     def goto_zeroes(self):
-        self.zeroes = Zeroes()
+        self.zeroes = ZeroesScreen()
         self.hide()
 
 
@@ -521,6 +613,7 @@ class GraphPlot(QtWidgets.QDialog):
         self.ui.GraphPlotsButton.clicked.connect(self.goto_polar)
         self.ui.PrimesTab.clicked.connect(self.goto_primes)
         self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
+        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
         self.show()
 
     def goto_main_menu(self):
@@ -538,4 +631,8 @@ class GraphPlot(QtWidgets.QDialog):
 
     def goto_calculator(self):
         self.primes = Calculator()
+        self.hide()
+
+    def goto_zeroes(self):
+        self.primes = ZeroesScreen()
         self.hide()
