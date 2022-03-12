@@ -45,6 +45,7 @@ def binary_insertion_sort(data):
         sorted.extend(bigger)
     return sorted
 
+
 # circular queue
 class Queue():
 
@@ -130,3 +131,23 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
         csv_writer.writerow(fieldnames)
         for row in sorted_values:
             csv_writer.writerow(row)
+
+
+def change_datatype(value, datatype):
+    match str(datatype):
+        case 'int':
+            return int(value)
+        case 'str':
+            return str(value)
+        case 'float':
+            return float(value)
+        case 'bool':
+            return bool(value)
+        case 'list':
+            return list(value)
+        case 'complex':
+            return Complex(value)
+        case 'fraction':
+            return Fraction(value)
+        case _:
+            raise TypeError(f'Trying to change vlaue \'{value}\' to invalid datatype \'{datatype}\'')

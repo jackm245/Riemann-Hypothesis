@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/SignUp.ui'
+# Form implementation generated from reading ui file 'ui/login_screens/signup.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -74,17 +74,17 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;")
         self.MainWidget.setObjectName("MainWidget")
         self.UsernameOrEmailText = QtWidgets.QLabel(self.MainWidget)
-        self.UsernameOrEmailText.setGeometry(QtCore.QRect(270, 60, 301, 61))
+        self.UsernameOrEmailText.setGeometry(QtCore.QRect(270, 40, 301, 61))
         self.UsernameOrEmailText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.UsernameOrEmailText.setObjectName("UsernameOrEmailText")
         self.EmailText = QtWidgets.QLabel(self.MainWidget)
-        self.EmailText.setGeometry(QtCore.QRect(290, 150, 281, 61))
+        self.EmailText.setGeometry(QtCore.QRect(290, 120, 281, 61))
         self.EmailText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.EmailText.setObjectName("EmailText")
         self.UsernameInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.UsernameInput.setGeometry(QtCore.QRect(680, 60, 231, 60))
+        self.UsernameInput.setGeometry(QtCore.QRect(680, 40, 231, 60))
         self.UsernameInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -95,7 +95,7 @@ class Ui_SignUpScreen(object):
         self.UsernameInput.setCursorPosition(0)
         self.UsernameInput.setObjectName("UsernameInput")
         self.EmailInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.EmailInput.setGeometry(QtCore.QRect(680, 150, 231, 60))
+        self.EmailInput.setGeometry(QtCore.QRect(680, 120, 231, 60))
         self.EmailInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -117,12 +117,12 @@ class Ui_SignUpScreen(object):
 "")
         self.SubmitButton.setObjectName("SubmitButton")
         self.PasswordText = QtWidgets.QLabel(self.MainWidget)
-        self.PasswordText.setGeometry(QtCore.QRect(290, 250, 281, 61))
+        self.PasswordText.setGeometry(QtCore.QRect(290, 200, 281, 61))
         self.PasswordText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.PasswordText.setObjectName("PasswordText")
         self.PasswordInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.PasswordInput.setGeometry(QtCore.QRect(680, 250, 231, 60))
+        self.PasswordInput.setGeometry(QtCore.QRect(680, 200, 231, 60))
         self.PasswordInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -134,12 +134,12 @@ class Ui_SignUpScreen(object):
         self.PasswordInput.setCursorPosition(0)
         self.PasswordInput.setObjectName("PasswordInput")
         self.PasswordText_2 = QtWidgets.QLabel(self.MainWidget)
-        self.PasswordText_2.setGeometry(QtCore.QRect(260, 350, 311, 61))
+        self.PasswordText_2.setGeometry(QtCore.QRect(260, 280, 311, 61))
         self.PasswordText_2.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.PasswordText_2.setObjectName("PasswordText_2")
         self.PasswordInput_2 = QtWidgets.QLineEdit(self.MainWidget)
-        self.PasswordInput_2.setGeometry(QtCore.QRect(680, 350, 231, 60))
+        self.PasswordInput_2.setGeometry(QtCore.QRect(680, 280, 231, 60))
         self.PasswordInput_2.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -150,6 +150,11 @@ class Ui_SignUpScreen(object):
         self.PasswordInput_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.PasswordInput_2.setCursorPosition(0)
         self.PasswordInput_2.setObjectName("PasswordInput_2")
+        self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
+        self.ErrorLabel.setGeometry(QtCore.QRect(365, 350, 611, 71))
+        self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.ErrorLabel.setObjectName("ErrorLabel")
 
         self.retranslateUi(SignUpScreen)
         QtCore.QMetaObject.connectSlotsByName(SignUpScreen)
@@ -171,6 +176,7 @@ class Ui_SignUpScreen(object):
         self.PasswordInput.setPlaceholderText(_translate("SignUpScreen", "Enter Password"))
         self.PasswordText_2.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"right\">Confirm Password:</p></body></html>"))
         self.PasswordInput_2.setPlaceholderText(_translate("SignUpScreen", "Re-enter Password"))
+        self.ErrorLabel.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

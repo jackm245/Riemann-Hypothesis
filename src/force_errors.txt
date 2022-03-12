@@ -10,3 +10,6 @@ create regex for zeta complex input
 #  elif re.fullmatch(r'^(\d+(\.\d+)?\+)?\d+(\.\d+)?i$', self.zeta_input):
 #  else:
     #  self.ui.ErrorLabel.setText("Input must be a complex number of the form a+bi")
+
+
+sql qmark input query

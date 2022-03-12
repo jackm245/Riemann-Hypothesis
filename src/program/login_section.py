@@ -1,6 +1,8 @@
 import sys
+import re
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .user_interface import Ui_LoginScreen, Ui_SignUpScreen, Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen
+from .utils import database_insert, database_select, encrypt_password, check_password
 from time import sleep
 
 
@@ -133,8 +135,50 @@ class SignUp(QtWidgets.QDialog):
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
+        self.ui.SubmitButton.clicked.connect(self.submit)
 
         self.show()
+
+    def submit(self):
+        from .main_section import MainMenu
+        self.username = self.ui.UsernameInput.text()
+        self.email = self.ui.EmailInput.text()
+        self.password  = self.ui.PasswordInput.text()
+        self.confirm_password  = self.ui.PasswordInput_2.text()
+        # check is of right form
+        if not re.fullmatch('\w{1,20}', self.username):
+            self.ui.ErrorLabel.setText("Username must be at 1-20 characters long\nand not contain special characters")
+        elif not re.fullmatch('.+@.+\..+', self.email):
+            self.ui.ErrorLabel.setText("Email address must be valid")
+        elif not re.fullmatch('(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}', self.password):
+            self.ui.ErrorLabel.setText("Password must contain lower case, upper case,\na number, and be at least 8 characters long")
+        elif self.password != self.confirm_password:
+            self.ui.ErrorLabel.setText("Passwords do not match")
+        else:
+            self.selection = database_select(['Username'], ['Users'])
+            self.Usernames = set([row[0] for row in self.selection])
+            if self.username in self.Usernames:
+                self.ui.ErrorLabel.setText("Username already taken")
+            else:
+                self.selection = database_select(['Email'], ['Users'])
+                self.Emails = set([row[0] for row in self.selection])
+                if self.email in self.Emails:
+                    self.ui.ErrorLabel.setText("Email already taken")
+                else:
+                    self.selection = database_select(['User_ID'], ['Users'])
+                    self.User_IDs = set([row[0] for row in self.selection])
+                    self.User_ID = self.get_user_id()
+                    self.hashed_password = encrypt_password(self.password)
+                    database_insert('Users', [self.User_ID, self.username, self.email, self.hashed_password])
+                    self.main_menu = MainMenu(self.username)
+                    self.hide()
+
+
+    def get_user_id(self, User_ID=0):
+        if User_ID not in self.User_IDs:
+            return User_ID
+        else:
+            return self.get_user_id(User_ID+1)
 
     def goto_login(self):
         self.login = Login()
@@ -183,10 +227,16 @@ class Login(QtWidgets.QDialog):
     def submit(self):
         from .main_section import MainMenu
         self.username = self.ui.UsernameInput.text()
-        #  password  = self.ui.PasswordInput.text()
-        #  self.ui.ErrorLabel.setText("Error")
-        self.main_menu = MainMenu(self.username)
-        self.hide()
+        self.password  = self.ui.PasswordInput.text()
+        self.selection = database_select(['User_ID', 'Username'], ['Users'])
+        self.id1 = [row[0] for row in self.selection if row[1] == self.username]
+        self.selection = database_select(['User_ID', 'Password'], ['Users'])
+        self.id2 = [row[0] for row in self.selection if check_password(self.password, row[1])]
+        if len(self.id1) == 0 or self.id1 != self.id2:
+            self.ui.ErrorLabel.setText("Username or password is not valid")
+        else:
+            self.main_menu = MainMenu(self.username)
+            self.hide()
 
     def show_hide(self):
         if self.show_or_hide == 'Show':
@@ -196,4 +246,3 @@ class Login(QtWidgets.QDialog):
             self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
             self.show_or_hide = 'Show'
         self.ui.ShowHideButton.setText(self.show_or_hide)
-

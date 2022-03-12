@@ -56,109 +56,109 @@ class Fraction(Number):
         repr()
 
         Miscellaneous
-        _simplify_fraction()
-        _get_reciprocal()
+        __simplify_fraction()
+        __get_reciprocal()
     """
 
     def __init__(self, numerator, denominator=1):
         super().__init__([numerator, denominator])
-        self.numerator = numerator
-        self.denominator = denominator
-        self._validate_input()
-        self._simplify_fraction()
+        self.__numerator = numerator
+        self.__denominator = denominator
+        self.__validate_input()
+        self.__simplify_fraction()
 
 
     # makes sure that numerator and denominator are valid numbers
     # accepts different data types (int, float, str, Fraction)
-    def _validate_input(self):
-        if isinstance(self.numerator, Fraction) and isinstance(self.denominator, Fraction):
-           self._convert_to_single_fraction(self.numerator, self.denominator)
-        elif isinstance(self.numerator, Fraction):
-            self.denominator *= self.numerator.denominator
-            self.numerator = self.numerator.numerator
-        elif isinstance(self.denominator, Fraction):
-            self.numerator *= self.denominator.denominator
-            self.denominator = self.denominator.numerator
-        elif not(isinstance(self.numerator, (float, int, str)) or isinstance(self.denominator, (float, int, str))):
-            raise ValueError(f'Fraction({self.numerator}, {self.denominator})\nData must be of type float, int, or str.\nNumerator of type \'{type(self.numerator)}\'.\nDenominator of type \'{type(self.denominator)}\'.')
-        elif isinstance(self.numerator, str):
+    def __validate_input(self):
+        if isinstance(self.__numerator, Fraction) and isinstance(self.__denominator, Fraction):
+           self.__convert_to_signal_fraction(self.__numerator, self.__denominator)
+        elif isinstance(self.__numerator, Fraction):
+            self.__denominator *= self.__numerator.denominator
+            self.__numerator = self.__numerator.numerator
+        elif isinstance(self.__denominator, Fraction):
+            self.__numerator *= self.__denominator.denominator
+            self.__denominator = self.__denominator.numerator
+        elif not(isinstance(self.__numerator, (float, int, str)) or isinstance(self.__denominator, (float, int, str))):
+            raise ValueError(f'Fraction({self.__numerator}, {self.__denominator})\nData must be of type float, int, or str.\nNumerator of type \'{type(self.__numerator)}\'.\nDenominator of type \'{type(self.__denominator)}\'.')
+        elif isinstance(self.__numerator, str):
             try:
-                float(self.numerator)
+                float(self.__numerator)
             except ValueError as numerator_value_error:
-                raise ValueError(f'{numerator_value_error}\nNumerator must be a number, not \'{self.numerator}\'').with_traceback(numerator_value_error.__traceback__)
-        elif isinstance(self.denominator, str):
+                raise ValueError(f'{numerator_value_error}\nNumerator must be a number, not \'{self.__numerator}\'').with_traceback(numerator_value_error.__traceback__)
+        elif isinstance(self.__denominator, str):
             try:
-                float(self.denominator)
+                float(self.__denominator)
             except ValueError as denominator_value_error:
-                raise ValueError(f'{denominator_value_error}\nDenominator must be a number, not \'{self.denominator}\'').with_traceback(denominator_value_error.__traceback__)
+                raise ValueError(f'{denominator_value_error}\nDenominator must be a number, not \'{self.__denominator}\'').with_traceback(denominator_value_error.__traceback__)
         # convert data types
-        if isinstance(self.numerator, str):
-            self.numerator = float(self.numerator)
-            if self.numerator == int(self.numerator):
-                self.numerator = int(self.numerator)
-        if isinstance(self.denominator, str):
-            self.denominator = float(self.denominator)
-            if self.denominator == int(self.denominator):
-                self.denominator = int(self.denominator)
-        if self.denominator == 0:
-            raise ZeroDivisionError(f'Fraction({self.numerator}, 0)')
+        if isinstance(self.__numerator, str):
+            self.__numerator = float(self.__numerator)
+            if self.__numerator == int(self.__numerator):
+                self.__numerator = int(self.__numerator)
+        if isinstance(self.__denominator, str):
+            self.__denominator = float(self.__denominator)
+            if self.__denominator == int(self.__denominator):
+                self.__denominator = int(self.__denominator)
+        if self.__denominator == 0:
+            raise ZeroDivisionError(f'Fraction({self.__numerator}, 0)')
 
 
     # where a fraction may consist of a fraction on the numerator or denominator
     # simplify this into a single fraction
-    def _convert_to_single_fraction(self, num, denom):
+    def __convert_to_signal_fraction(self, num, denom):
         # \frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a\cdot \:d}{b\cdot \:c}
         fraction = Fraction(num.numerator * denom.denominator, num.denominator * denom.numerator)
-        self.numerator = fraction.numerator
-        self.denominator = fraction.denominator
+        self.__numerator = fraction.numerator
+        self.__denominator = fraction.denominator
 
 
     # where numerator or denominator are decimals, covert the fraction into a decimal fraction
-    def _convert_to_decimal_fraction(self):
+    def __convert_to_decimal_fraction(self):
         # multiply by largest length
         numerator_decimals, denominator_decimals = 0, 0
-        if self.numerator != int(self.numerator):
-            numerator_decimals = len(re.search(r'(?<=.)\d+$', str(self.numerator))[0])
-        if self.denominator != int(self.denominator):
-            denominator_decimals = len(re.search(r'(?<=.)\d+$', str(self.denominator))[0])
+        if self.__numerator != int(self.__numerator):
+            numerator_decimals = len(re.search(r'(?<=.)\d+$', str(self.__numerator))[0])
+        if self.__denominator != int(self.__denominator):
+            denominator_decimals = len(re.search(r'(?<=.)\d+$', str(self.__denominator))[0])
         highest_decimal_places = max(numerator_decimals, denominator_decimals)
-        self.numerator = int(self.numerator*10**highest_decimal_places)
-        self.denominator = int(self.denominator*10**highest_decimal_places)
+        self.__numerator = int(self.__numerator*10**highest_decimal_places)
+        self.__denominator = int(self.__denominator*10**highest_decimal_places)
 
 
     # find the greatest common divisor (highest common factor) between numbers num1 and num2
-    def _get_greatest_common_divisor(self, num1, num2):
+    def __get_greatest_common_divisor(self, num1, num2):
         # euclidean algorithm
         if num2 == 0:
             return num1
         else:
-            return self._get_greatest_common_divisor(num2, num1 % num2)
+            return self.__get_greatest_common_divisor(num2, num1 % num2)
 
 
     # find the lowest common multiple between numbers num1 and num2
-    def _get_lowest_common_multiple(self, num1, num2):
+    def __get_lowest_common_multiple(self, num1, num2):
         # special case when num1 and num2 ignored as num2 cant be 0 for fractions
         # {\displaystyle \operatorname {lcm} (a,b)={\frac {|a\cdot b|}{\gcd(a,b)}}.}
-        return (abs(num1 * num2)) / self._get_greatest_common_divisor(num1, num2)
+        return (abs(num1 * num2)) / self.__get_greatest_common_divisor(num1, num2)
 
 
-    def _simplify_fraction(self):
+    def __simplify_fraction(self):
         # to a decimal fraction
-        self._convert_to_decimal_fraction()
+        self.__convert_to_decimal_fraction()
 
         # simplify down by dividing numerator and denominator by gcd
-        greatest_common_divisor = self._get_greatest_common_divisor(abs(self.numerator), abs(self.denominator))
-        self.numerator //= greatest_common_divisor
-        self.denominator //= greatest_common_divisor
+        greatest_common_divisor = self.__get_greatest_common_divisor(abs(self.__numerator), abs(self.__denominator))
+        self.__numerator //= greatest_common_divisor
+        self.__denominator //= greatest_common_divisor
 
         #make denominator positive
-        if self.denominator < 0:
-            self.denominator = -self.denominator
-            self.numerator = -self.numerator
+        if self.__denominator < 0:
+            self.__denominator = -self.__denominator
+            self.__numerator = -self.__numerator
 
 
-    def _get_reciprocal(self, fraction):
-        fraction = self._convert_to_fraction(fraction, 'reciprocal')
+    def __get_reciprocal(self, fraction):
+        fraction = self.__convert_to_fraction(fraction, 'reciprocal')
         if fraction.numerator != 0:
             return Fraction(fraction.denominator, fraction.numerator)
         else:
@@ -166,7 +166,7 @@ class Fraction(Number):
 
 
     # convert variable other to type Fraction
-    def _convert_to_fraction(self, other, operation):
+    def __convert_to_fraction(self, other, operation):
         if not isinstance(other, Fraction):
             try:
                 other = Fraction(other)
@@ -178,9 +178,9 @@ class Fraction(Number):
     ### Binary Operators ###
     def __add__(self, other):
         """ self + other """
-        other = self._convert_to_fraction(other, 'addition')
-        resulting_numerator = self.numerator * other.denominator + self.denominator * other.numerator
-        resulting_denominator = self.denominator * other.denominator
+        other = self.__convert_to_fraction(other, 'addition')
+        resulting_numerator = self.__numerator * self.__denominator + self.__denominator * self.__numerator
+        resulting_denominator = self.__denominator * self.__denominator
         return (Fraction(resulting_numerator, resulting_denominator))
 
 
@@ -191,9 +191,9 @@ class Fraction(Number):
 
     def __sub__(self, other):
         """ self - other """
-        other = self._convert_to_fraction(other, 'subtraction')
-        resulting_numerator = self.numerator * other.denominator - self.denominator * other.numerator
-        resulting_denominator = self.denominator * other.denominator
+        other = self.__convert_to_fraction(other, 'subtraction')
+        resulting_numerator = self.__numerator * self.__denominator - self.__denominator * self.__numerator
+        resulting_denominator = self.__denominator * self.__denominator
         return (Fraction(resulting_numerator, resulting_denominator))
 
 
@@ -204,8 +204,8 @@ class Fraction(Number):
 
     def __mul__(self, other):
         """ self * other """
-        other = self._convert_to_fraction(other, 'multiplication')
-        return Fraction(self.numerator * other.numerator, self.denominator * other.denominator)
+        other = self.__convert_to_fraction(other, 'multiplication')
+        return Fraction(self.__numerator * self.__numerator, self.__denominator * self.__denominator)
 
 
     def __rmul__(self, other):
@@ -215,39 +215,39 @@ class Fraction(Number):
 
     def __floordiv__(self, other):
         """ self // other """
-        other = self._convert_to_fraction(other, 'floor division')
+        other = self.__convert_to_fraction(other, 'floor division')
         return self.__truediv__(other).__int__()
 
 
     def __rfloordiv__(self, other):
         """ other // self """
-        #return self._get_reciprocal(self.__floordiv__(other)).__int__()
+        #return self.__get_reciprocal(self.__floordiv__(other)).__int__()
         return self.__rtruediv__(other).__int__()
 
 
     def __truediv__(self, other):
         """ self / other """
-        other = self._convert_to_fraction(other, 'true division')
+        other = self.__convert_to_fraction(other, 'true division')
         # \frac{a}{b}\div \frac{c}{d} \equiv \frac{a}{b}\cdot \frac{d}{c}
-        #return other.__mul__(self._get_reciprocal(self))
-        return Fraction(self.numerator * other.denominator, self.denominator * other.numerator)
+        #return other.__mul__(self.__get_reciprocal(self))
+        return Fraction(self.__numerator * self.__denominator, self.__denominator * self.__numerator)
 
 
     def __rtruediv__(self, other):
         """ other / self """
-        return self._get_reciprocal(self.__truediv__(other))
+        return self.__get_reciprocal(self.__truediv__(other))
 
 
     def __pow__(self, other):
         """ self ** other """
-        other = self._convert_to_fraction(other, 'power')
+        other = self.__convert_to_fraction(other, 'power')
         # X = exp(log(n)/x)
-        return Fraction(exp((other.numerator*log(self))/other.denominator))
+        return Fraction(exp((self.__numerator*log(self))/self.__denominator))
 
 
     def __rpow__(self, other):
         """ other ** self """
-        other = self._convert_to_fraction(other, 'right power')
+        other = self.__convert_to_fraction(other, 'right power')
         return other.__pow__(self)
 
 
@@ -257,72 +257,72 @@ class Fraction(Number):
     ### Unary Operators ###
     def __neg__(self):
         """ -self """
-        return Fraction(-self.numerator, self.denominator)
+        return Fraction(-self.__numerator, self.__denominator)
 
     def __pos__(self):
         """ +self """
-        return Fraction(+self.numerator, self.denominator)
+        return Fraction(+self.__numerator, self.__denominator)
 
 
     def __abs__(self):
         """ abs(self) """
-        if self.numerator < 0:
-            self.numerator = -self.numerator
-        return Fraction(self.numerator, self.denominator)
+        if self.__numerator < 0:
+            self.__numerator = -self.__numerator
+        return Fraction(self.__numerator, self.__denominator)
 
 
     ### Comparison Operators ###
     def __lt__(self, other):
         """ self < other """
-        other = self._convert_to_fraction(other, 'less than')
-        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
-        return self.numerator * lcm < other.numerator * lcm
+        other = self.__convert_to_fraction(other, 'less than')
+        lcm = self.__get_lowest_common_multiple(self.__denominator, self.__denominator)
+        return self.__numerator * lcm < self.__numerator * lcm
 
 
     def __le__(self, other):
         """ self <= other """
-        other = self._convert_to_fraction(other, 'less than or equal to')
-        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
-        return self.numerator * lcm <= other.numerator * lcm
+        other = self.__convert_to_fraction(other, 'less than or equal to')
+        lcm = self.__get_lowest_common_multiple(self.__denominator, self.__denominator)
+        return self.__numerator * lcm <= self.__numerator * lcm
 
 
     def __eq__(self, other):
         """ self == other """
-        other = self._convert_to_fraction(other, 'equal to')
-        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
-        return self.numerator * lcm == other.numerator * lcm
+        other = self.__convert_to_fraction(other, 'equal to')
+        lcm = self.__get_lowest_common_multiple(self.__denominator, self.__denominator)
+        return self.__numerator * lcm == self.__numerator * lcm
 
 
     def __ne__(self, other):
         """ self != other """
-        other = self._convert_to_fraction(other, 'not equal to')
-        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
-        return self.numerator * lcm != other.numerator * lcm
+        other = self.__convert_to_fraction(other, 'not equal to')
+        lcm = self.__get_lowest_common_multiple(self.__denominator, self.__denominator)
+        return self.__numerator * lcm != self.__numerator * lcm
 
 
     def __gt__(self, other):
         """ self > other """
-        other = self._convert_to_fraction(other, 'greater than')
-        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
-        return self.numerator * lcm > other.numerator * lcm
+        other = self.__convert_to_fraction(other, 'greater than')
+        lcm = self.__get_lowest_common_multiple(self.__denominator, self.__denominator)
+        return self.__numerator * lcm > self.__numerator * lcm
 
 
     def __ge__(self, other):
         """ self >= other """
-        other = self._convert_to_fraction(other, 'greater than or equal to')
-        lcm = self._get_lowest_common_multiple(self.denominator, other.denominator)
-        return self.numerator * lcm >= other.numerator * lcm
+        other = self.__convert_to_fraction(other, 'greater than or equal to')
+        lcm = self.__get_lowest_common_multiple(self.__denominator, self.__denominator)
+        return self.__numerator * lcm >= self.__numerator * lcm
 
 
     ### Type Conversion ###
     def __int__(self):
         """ int(self) """
-        return self.numerator // self.denominator
+        return self.__numerator // self.__denominator
 
 
     def __float__(self):
         """ float(self) """
-        return float(self.numerator / self.denominator)
+        return float(self.__numerator / self.__denominator)
 
 
     def dump(self):
@@ -331,12 +331,12 @@ class Fraction(Number):
 
     def __str__(self):
         """ str(self) """
-        return f'{self.numerator}/{self.denominator}'
+        return f'{self.__numerator}/{self.__denominator}'
 
 
     def __repr__(self):
         """ repr(self) """
-        return f'Fraction({self.numerator}, {self.denominator})'
+        return f'Fraction({self.__numerator}, {self.__denominator})'
 
 
 # print(int(Fraction(3, 4)))

@@ -13,7 +13,10 @@
 class Number:
 
     def __init__(self, number):
-        self.number = number
+        self.__number = number
+
+    def get_number(self):
+        return self.__number
 
     def __str__(self):
-        print(self.number)
+        print(self.__number)
