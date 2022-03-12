@@ -1,8 +1,9 @@
 import sys
 import re
+import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .user_interface import Ui_LoginScreen, Ui_SignUpScreen, Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen
-from .utils import database_insert, database_select, encrypt_password, check_password
+from .utils import database_insert, database_select, database_query, database_print, hash_password, check_password, send_verification_email, User
 from time import sleep
 
 
@@ -15,7 +16,20 @@ class ResetPassword2(QtWidgets.QDialog):
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
 
+        self.ui.SubmitButton.clicked.connect(self.submit)
         self.show()
+
+    def submit(self):
+        self.password1 = self.ui.PasswordInput.text()
+        self.password2 = self.ui.ConfirmPasswordInput.text()
+        self.pwds_invalid = are_invalid_passwords(self.password1, self.password2)
+        if self.pwds_invalid:
+            self.ui.ErrorLabel.setText(self.pwds_invalid)
+        else:
+            database_query("UPDATE Users SET Password=? WHERE User_ID=?",(hash_password(self.password1), User.GetUserID(),))
+            from .main_section import MainMenu
+            self.main_menu = MainMenu()
+            self.hide()
 
 
 class ResetPassword(QtWidgets.QDialog):
@@ -49,14 +63,29 @@ class ResetPassword(QtWidgets.QDialog):
 
     def submit(self):
         # Confirm Sign In
-        self.reset_password_2 = ResetPassword2()
-        self.hide()
+        self.username = self.ui.UsernameInput.text()
+        self.password  = self.ui.PasswordInput.text()
+        self.selection = database_select(['User_ID', 'Username'], ['Users'])
+        self.id1 = [row[0] for row in self.selection if row[1] == self.username]
+        self.selection = database_select(['User_ID', 'Password'], ['Users'])
+        self.id2 = [row[0] for row in self.selection if check_password(self.password, row[1])]
+        if len(self.id1) == 0 or self.id1 != self.id2:
+            self.ui.ErrorLabel.setText("Username or password is not valid")
+        else:
+            User.SetSignedIn(True)
+            User.SetUsername(self.username)
+            User.SetUserID(self.id1[0])
+            self.email = database_query("SELECT Email FROM Users WHERE User_ID=?", (self.id1[0],))[0][0]
+            User.SetEmail(self.email)
+            self.reset_password_2 = ResetPassword2()
+            self.hide()
 
 
 class ForgottenPassword2(QtWidgets.QDialog):
 
-    def __init__(self):
+    def __init__(self, verification_code):
         super(ForgottenPassword2, self).__init__()
+        self.verification_code = verification_code
         self.ui = Ui_ForgottenPassword2Screen()
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
@@ -84,8 +113,13 @@ class ForgottenPassword2(QtWidgets.QDialog):
 
     def submit(self):
         # Check verification code
-        self.reset_password_2 = ResetPassword2()
-        self.hide()
+        self.user_input = self.ui.VerificationCodeInput.text()
+        if self.user_input == self.verification_code:
+            User.SetSignedIn(True)
+            self.reset_password_2 = ResetPassword2()
+            self.hide()
+        else:
+            self.ui.ErrorsLabel.setText("Verification Code Incorrect")
 
 
 class ForgottenPassword(QtWidgets.QDialog):
@@ -118,9 +152,21 @@ class ForgottenPassword(QtWidgets.QDialog):
         self.hide()
 
     def submit(self):
-        # Send Email
-        self.forgotten_password_2 = ForgottenPassword2()
-        self.hide()
+        self.email  = self.ui.EmailInput.text()
+        self.selection = database_query("SELECT Email FROM Users WHERE Email=?", (self.email,))
+        if len(self.selection) == 0:
+            self.ui.ErrorLabel.setText("Email is not registered")
+        else:
+            # Send Email
+            self.verificaton_code = ''.join(list(map(str, [random.randint(0, 9) for _ in range(6)])))
+            self.user_id = database_query("SELECT User_ID FROM Users WHERE Email=?", (self.email,))[0][0]
+            self.username = database_query("SELECT Username FROM Users WHERE Email=?", (self.email,))[0][0]
+            User.SetUserID(self.user_id)
+            User.SetUsername(self.username)
+            User.SetEmail(self.email)
+            send_verification_email(self.verificaton_code)
+            self.forgotten_password_2 = ForgottenPassword2(self.verificaton_code)
+            self.hide()
 
 
 class SignUp(QtWidgets.QDialog):
@@ -145,15 +191,14 @@ class SignUp(QtWidgets.QDialog):
         self.email = self.ui.EmailInput.text()
         self.password  = self.ui.PasswordInput.text()
         self.confirm_password  = self.ui.PasswordInput_2.text()
+        self.pwds_invalid = are_invalid_passwords(self.password, self.confirm_password)
         # check is of right form
         if not re.fullmatch('\w{1,20}', self.username):
             self.ui.ErrorLabel.setText("Username must be at 1-20 characters long\nand not contain special characters")
         elif not re.fullmatch('.+@.+\..+', self.email):
             self.ui.ErrorLabel.setText("Email address must be valid")
-        elif not re.fullmatch('(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}', self.password):
-            self.ui.ErrorLabel.setText("Password must contain lower case, upper case,\na number, and be at least 8 characters long")
-        elif self.password != self.confirm_password:
-            self.ui.ErrorLabel.setText("Passwords do not match")
+        elif self.pwds_invalid:
+            self.ui.ErrorLabel.setText(self.pwds_invalid)
         else:
             self.selection = database_select(['Username'], ['Users'])
             self.Usernames = set([row[0] for row in self.selection])
@@ -168,11 +213,14 @@ class SignUp(QtWidgets.QDialog):
                     self.selection = database_select(['User_ID'], ['Users'])
                     self.User_IDs = set([row[0] for row in self.selection])
                     self.User_ID = self.get_user_id()
-                    self.hashed_password = encrypt_password(self.password)
+                    self.hashed_password = hash_password(self.password)
                     database_insert('Users', [self.User_ID, self.username, self.email, self.hashed_password])
-                    self.main_menu = MainMenu(self.username)
+                    User.SetSignedIn(True)
+                    User.SetUserID(self.User_ID)
+                    User.SetUsername(self.username)
+                    User.SetEmail(self.email)
+                    self.main_menu = MainMenu()
                     self.hide()
-
 
     def get_user_id(self, User_ID=0):
         if User_ID not in self.User_IDs:
@@ -206,11 +254,17 @@ class Login(QtWidgets.QDialog):
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
 
+        self.ui.BackButton.clicked.connect(self.goto_mainmenu)
         self.ui.SubmitButton.clicked.connect(self.submit)
         self.ui.ShowHideButton.clicked.connect(self.show_hide)
         self.show_or_hide = 'Show'
 
         self.show()
+
+    def goto_mainmenu(self):
+        from .main_section import MainMenu
+        self.main_menu = MainMenu()
+        self.hide()
 
     def goto_signup(self):
         self.signup = SignUp()
@@ -235,7 +289,12 @@ class Login(QtWidgets.QDialog):
         if len(self.id1) == 0 or self.id1 != self.id2:
             self.ui.ErrorLabel.setText("Username or password is not valid")
         else:
-            self.main_menu = MainMenu(self.username)
+            User.SetSignedIn(True)
+            User.SetUsername(self.username)
+            User.SetUserID(self.id1[0])
+            self.email = database_query("SELECT Email FROM Users WHERE User_ID=?", (self.id1[0],))[0][0]
+            User.SetEmail(self.email)
+            self.main_menu = MainMenu()
             self.hide()
 
     def show_hide(self):
@@ -246,3 +305,12 @@ class Login(QtWidgets.QDialog):
             self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
             self.show_or_hide = 'Show'
         self.ui.ShowHideButton.setText(self.show_or_hide)
+
+
+def are_invalid_passwords(password1, password2):
+    if not re.fullmatch('(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}', password1):
+        return "Password must contain lower case, upper case,\na number, and be at least 8 characters long"
+    elif password1 != password2:
+        return "Passwords do not match"
+    else:
+        return False

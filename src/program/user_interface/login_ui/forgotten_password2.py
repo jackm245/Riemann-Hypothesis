@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/ForgottenPassword2.ui'
+# Form implementation generated from reading ui file 'ui/login_screens/forgotten_password2.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -104,6 +104,11 @@ class Ui_ForgottenPassword2Screen(object):
         self.VerificationText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.VerificationText.setObjectName("VerificationText")
+        self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
+        self.ErrorLabel.setGeometry(QtCore.QRect(440, 350, 461, 71))
+        self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.ErrorLabel.setObjectName("ErrorLabel")
 
         self.retranslateUi(ForgottenPassword2Screen)
         QtCore.QMetaObject.connectSlotsByName(ForgottenPassword2Screen)
@@ -120,6 +125,7 @@ class Ui_ForgottenPassword2Screen(object):
         self.VerificationCodeInput.setPlaceholderText(_translate("ForgottenPassword2Screen", "Enter Verification Code"))
         self.SubmitButton.setText(_translate("ForgottenPassword2Screen", "Submit"))
         self.VerificationText.setText(_translate("ForgottenPassword2Screen", "<html><head/><body><p align=\"center\">A Verification Code has been sent to your email</p></body></html>"))
+        self.ErrorLabel.setText(_translate("ForgottenPassword2Screen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

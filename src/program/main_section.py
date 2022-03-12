@@ -2,21 +2,21 @@ from PyQt5 import QtWidgets
 from .user_interface import Ui_MainMenu
 from .login_section import Login
 from .investigation_section import GraphPlot
+from .utils import User
 import sys
 
 class MainMenu(QtWidgets.QMainWindow):
 
 
-    def __init__(self, username=''):
+    def __init__(self):
         super(MainMenu, self).__init__()
-        self.username = username
         self.ui = Ui_MainMenu()
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
 
-        if self.username:
-            self.ui.LoginLabel.setText(f"<html><head/><body><p align=\"center\">{self.username}</p></body></html>")
+        if User.username:
+            self.ui.LoginLabel.setText(f"<html><head/><body><p align=\"center\">{User.username}</p></body></html>")
             self.ui.LoginLabel.show()
         else:
             self.ui.LoginLabel.hide()

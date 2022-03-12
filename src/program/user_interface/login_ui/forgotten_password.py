@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ForgottenPassword.ui'
+# Form implementation generated from reading ui file 'ui/login_screens/forgotten_password.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -99,6 +99,11 @@ class Ui_ForgottenPasswordScreen(object):
 "font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SubmitButton.setObjectName("SubmitButton")
+        self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
+        self.ErrorLabel.setGeometry(QtCore.QRect(440, 320, 461, 71))
+        self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.ErrorLabel.setObjectName("ErrorLabel")
 
         self.retranslateUi(ForgottenPasswordScreen)
         QtCore.QMetaObject.connectSlotsByName(ForgottenPasswordScreen)
@@ -114,6 +119,7 @@ class Ui_ForgottenPasswordScreen(object):
         self.EmailText.setText(_translate("ForgottenPasswordScreen", "<html><head/><body><p align=\"right\">Email:</p></body></html>"))
         self.EmailInput.setPlaceholderText(_translate("ForgottenPasswordScreen", "Enter Email"))
         self.SubmitButton.setText(_translate("ForgottenPasswordScreen", "Submit"))
+        self.ErrorLabel.setText(_translate("ForgottenPasswordScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

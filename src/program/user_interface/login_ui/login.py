@@ -131,6 +131,16 @@ class Ui_LoginScreen(object):
 "font: 25pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ShowHideButton.setObjectName("ShowHideButton")
+        self.BackButton = QtWidgets.QPushButton(self.MainWidget)
+        self.BackButton.setGeometry(QtCore.QRect(10, 460, 200, 70))
+        self.BackButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.BackButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.BackButton.setObjectName("BackButton")
 
         self.retranslateUi(LoginScreen)
         QtCore.QMetaObject.connectSlotsByName(LoginScreen)
@@ -150,6 +160,7 @@ class Ui_LoginScreen(object):
         self.SubmitButton.setText(_translate("LoginScreen", "Submit"))
         self.ErrorLabel.setText(_translate("LoginScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.ShowHideButton.setText(_translate("LoginScreen", "Show"))
+        self.BackButton.setText(_translate("LoginScreen", "Back"))
 
 
 if __name__ == "__main__":

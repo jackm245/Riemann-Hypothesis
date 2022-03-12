@@ -26,5 +26,11 @@ def database_query(query, values=[], database='database.db'):
     conn.close()
     return rows
 
-#  print(database_query("DELETE FROM Users"))
-#  print(database_select(['*'], ['Users']))
+# delete when done and remove where imported
+def database_print():
+    print('-------------')
+    print("Table: Users")
+    print('-------------')
+    table = database_select(['*'], ['Users'])
+    for row in table:
+        print(row)
