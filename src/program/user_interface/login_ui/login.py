@@ -35,7 +35,7 @@ class Ui_LoginScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.LoginTab.setObjectName("LoginTab")
         self.SignUpTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,19 +45,10 @@ class Ui_LoginScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"padding: 7px;\n"
 "")
         self.SignUpTab.setObjectName("SignUpTab")
-        self.ForgottenPasswordTab = QtWidgets.QPushButton(self.TabBar)
-        self.ForgottenPasswordTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
-        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.ForgottenPasswordTab.setStyleSheet("border: 2px solid;\n"
-"border-radius: 20px;\n"
-"border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"")
-        self.ForgottenPasswordTab.setObjectName("ForgottenPasswordTab")
         self.ResetPasswordTab = QtWidgets.QPushButton(self.TabBar)
         self.ResetPasswordTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
         self.ResetPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -65,9 +56,33 @@ class Ui_LoginScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 20pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ResetPasswordTab.setObjectName("ResetPasswordTab")
+        self.ForgottenPasswordTab = QtWidgets.QPushButton(self.TabBar)
+        self.ForgottenPasswordTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ForgottenPasswordTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"border-color: rgba(0, 0, 0, 0);")
+        self.ForgottenPasswordTab.setText("")
+        self.ForgottenPasswordTab.setObjectName("ForgottenPasswordTab")
+        self.ForgottenPasswordLabel = QtWidgets.QLabel(self.TabBar)
+        self.ForgottenPasswordLabel.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.ForgottenPasswordLabel.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"padding: 7px;\n"
+"")
+        self.ForgottenPasswordLabel.setObjectName("ForgottenPasswordLabel")
+        self.LoginTab.raise_()
+        self.SignUpTab.raise_()
+        self.ResetPasswordTab.raise_()
+        self.ForgottenPasswordLabel.raise_()
+        self.ForgottenPasswordTab.raise_()
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -151,9 +166,9 @@ class Ui_LoginScreen(object):
         self.Title.setText(_translate("LoginScreen", "Login"))
         self.LoginTab.setText(_translate("LoginScreen", "Login"))
         self.SignUpTab.setText(_translate("LoginScreen", "Sign Up"))
-        self.ForgottenPasswordTab.setText(_translate("LoginScreen", "Forgotten Password"))
         self.ResetPasswordTab.setText(_translate("LoginScreen", "Reset Password"))
-        self.UsernameOrEmailText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Username / Email:</p></body></html>"))
+        self.ForgottenPasswordLabel.setText(_translate("LoginScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">Forgotten<br/>Password</span></p></body></html>"))
+        self.UsernameOrEmailText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Username:</p></body></html>"))
         self.PasswordText.setText(_translate("LoginScreen", "<html><head/><body><p align=\"right\">Password:</p></body></html>"))
         self.UsernameInput.setPlaceholderText(_translate("LoginScreen", "Enter Username"))
         self.PasswordInput.setPlaceholderText(_translate("LoginScreen", "Enter Password"))

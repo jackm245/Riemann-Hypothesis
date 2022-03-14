@@ -41,13 +41,24 @@ class ResetPassword(QtWidgets.QDialog):
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
 
+        self.show_or_hide = 'Show'
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.SignUpTab.clicked.connect(self.goto_signup)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
+        self.ui.ShowHideButton.clicked.connect(self.show_hide)
 
         self.ui.SubmitButton.clicked.connect(self.submit)
 
         self.show()
+
+    def show_hide(self):
+        if self.show_or_hide == 'Show':
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.show_or_hide = 'Hide'
+        else:
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.show_or_hide = 'Show'
+        self.ui.ShowHideButton.setText(self.show_or_hide)
 
     def goto_login(self):
         self.login = Login()
@@ -119,7 +130,7 @@ class ForgottenPassword2(QtWidgets.QDialog):
             self.reset_password_2 = ResetPassword2()
             self.hide()
         else:
-            self.ui.ErrorsLabel.setText("Verification Code Incorrect")
+            self.ui.ErrorLabel.setText("Verification Code Incorrect")
 
 
 class ForgottenPassword(QtWidgets.QDialog):
@@ -177,13 +188,35 @@ class SignUp(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.setFixedWidth(1340)
         self.setFixedHeight(720)
+        self.show_or_hide = 'Show'
+        self.show_or_hide_2 = 'Show'
 
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
+        self.ui.ShowHideButton.clicked.connect(self.show_hide)
+        self.ui.ShowHideButton_2.clicked.connect(self.show_hide_2)
         self.ui.SubmitButton.clicked.connect(self.submit)
 
         self.show()
+
+    def show_hide(self):
+        if self.show_or_hide == 'Show':
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.show_or_hide = 'Hide'
+        else:
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.show_or_hide = 'Show'
+        self.ui.ShowHideButton.setText(self.show_or_hide)
+
+    def show_hide_2(self):
+        if self.show_or_hide_2 == 'Show':
+            self.ui.PasswordInput_2.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.show_or_hide_2 = 'Hide'
+        else:
+            self.ui.PasswordInput_2.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.show_or_hide_2 = 'Show'
+        self.ui.ShowHideButton_2.setText(self.show_or_hide_2)
 
     def submit(self):
         from .main_section import MainMenu

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ResetPassword2Screen</class>
- <widget class="QDialog" name="ResetPassword2Screen">
+ <class>TutorialScreen</class>
+ <widget class="QDialog" name="TutorialScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>1340</width>
-    <height>720</height>
+    <height>723</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visualising the Riemann Hypothesis - Reset Password</string>
+   <string>Visualising the Riemann Hypothesis - Tutorial</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -31,9 +31,9 @@
    <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
-      <x>612</x>
+      <x>590</x>
       <y>20</y>
-      <width>116</width>
+      <width>161</width>
       <height>51</height>
      </rect>
     </property>
@@ -41,7 +41,7 @@
      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239)</string>
     </property>
     <property name="text">
-     <string>Login</string>
+     <string>Tutorial</string>
     </property>
    </widget>
    <widget class="QWidget" name="TabBar" native="true">
@@ -56,7 +56,7 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(239, 239, 239);</string>
     </property>
-    <widget class="QPushButton" name="LoginTab">
+    <widget class="QPushButton" name="TutorialTab">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -66,7 +66,31 @@
       </rect>
      </property>
      <property name="cursor">
-      <cursorShape>ArrowCursor</cursorShape>
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+</string>
+     </property>
+     <property name="text">
+      <string>Tutorial</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="LoginTab">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>221</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">border: 2px solid;
@@ -80,80 +104,10 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Login</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="SignUpTab">
+    <widget class="QPushButton" name="IntroductionTab">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>ArrowCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Sign Up</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="ResetPasswordTab">
-     <property name="geometry">
-      <rect>
-       <x>640</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>ArrowCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-</string>
-     </property>
-     <property name="text">
-      <string>Reset Password</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="ForgottenPasswordLabel">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-padding: 7px;
-</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Forgotten&lt;br/&gt;Password&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="ForgottenPasswordTab">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
+       <x>660</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
@@ -165,13 +119,113 @@ padding: 7px;
      <property name="styleSheet">
       <string notr="true">border: 2px solid;
 border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Introduction</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="InvestigationTab">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Investigation</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SummaryTab">
+     <property name="geometry">
+      <rect>
+       <x>1080</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Summary</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ProgramStructureTab">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
 background-color: rgba(0, 0, 0, 0);
-border-color: rgba(0, 0, 0, 0);</string>
+font: 18pt &quot;Sans Serif&quot;;
+</string>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="ProgramStructureLabel">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program&lt;br/&gt;Structure&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <zorder>TutorialTab</zorder>
+    <zorder>LoginTab</zorder>
+    <zorder>IntroductionTab</zorder>
+    <zorder>InvestigationTab</zorder>
+    <zorder>SummaryTab</zorder>
+    <zorder>ProgramStructureLabel</zorder>
+    <zorder>ProgramStructureTab</zorder>
    </widget>
    <widget class="QWidget" name="MainWidget" native="true">
     <property name="geometry">
@@ -186,105 +240,11 @@ border-color: rgba(0, 0, 0, 0);</string>
      <string notr="true">background-color: rgb(239, 239, 239);
 border-radius: 20px;</string>
     </property>
-    <widget class="QLabel" name="PasswordText">
+    <widget class="QPushButton" name="PrevButton">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>130</y>
-       <width>341</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239); padding: 5px;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Enter New Password:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="ConfirmPasswordText">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>280</y>
-       <width>391</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239); padding: 5px;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Confirm New Password:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="PasswordInput">
-     <property name="geometry">
-      <rect>
-       <x>720</x>
-       <y>130</y>
-       <width>280</width>
-       <height>60</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(239, 239, 239);
-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;;
-border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-     <property name="cursorPosition">
-      <number>0</number>
-     </property>
-     <property name="placeholderText">
-      <string>Enter New Password</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="ConfirmPasswordInput">
-     <property name="geometry">
-      <rect>
-       <x>720</x>
-       <y>280</y>
-       <width>280</width>
-       <height>60</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(239, 239, 239);
-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;;
-border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-     <property name="cursorPosition">
-      <number>0</number>
-     </property>
-     <property name="placeholderText">
-      <string>Re-enter New Password</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="SubmitButton">
-     <property name="geometry">
-      <rect>
-       <x>570</x>
-       <y>440</y>
+       <x>10</x>
+       <y>460</y>
        <width>200</width>
        <height>70</height>
       </rect>
@@ -301,16 +261,16 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Submit</string>
+      <string>Prev</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="ShowHideButton">
+    <widget class="QPushButton" name="NextButton">
      <property name="geometry">
       <rect>
-       <x>1030</x>
-       <y>290</y>
-       <width>111</width>
-       <height>41</height>
+       <x>1110</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
       </rect>
      </property>
      <property name="cursor">
@@ -321,11 +281,48 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 25pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Show</string>
+      <string>Next</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SubTitleText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>681</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Tutorial&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="MainText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>80</y>
+       <width>1251</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to the Tutorial Section of this program.&lt;/p&gt;&lt;p&gt;Click on any of the five other tabs above, or on the next button, to find out how to use this program to it's full extent&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

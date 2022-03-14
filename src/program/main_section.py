@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets
 from .user_interface import Ui_MainMenu
 from .login_section import Login
 from .investigation_section import GraphPlot
+from .tutorial_section import Tutorial
 from .utils import User
 import sys
 
@@ -22,6 +23,7 @@ class MainMenu(QtWidgets.QMainWindow):
             self.ui.LoginLabel.hide()
 
         self.ui.LogInButton.clicked.connect(self.goto_login)
+        self.ui.TutorialButton.clicked.connect(self.goto_tutorial)
         self.ui.InvestigationButton.clicked.connect(self.goto_investigation)
         self.ui.ExitButton.clicked.connect(self.exit)
 
@@ -32,6 +34,9 @@ class MainMenu(QtWidgets.QMainWindow):
         self.login = Login()
         self.hide()
 
+    def goto_tutorial(self):
+        self.tutorial = Tutorial()
+        self.hide()
 
     def goto_investigation(self):
         self.login = GraphPlot()

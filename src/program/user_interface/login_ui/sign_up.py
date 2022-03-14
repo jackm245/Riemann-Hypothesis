@@ -35,7 +35,7 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.LoginTab.setObjectName("LoginTab")
         self.SignUpTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,19 +45,9 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.SignUpTab.setObjectName("SignUpTab")
-        self.ForgottenPasswordTab = QtWidgets.QPushButton(self.TabBar)
-        self.ForgottenPasswordTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
-        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.ForgottenPasswordTab.setStyleSheet("border: 2px solid;\n"
-"border-radius: 20px;\n"
-"border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"")
-        self.ForgottenPasswordTab.setObjectName("ForgottenPasswordTab")
         self.ResetPasswordTab = QtWidgets.QPushButton(self.TabBar)
         self.ResetPasswordTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
         self.ResetPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -65,9 +55,28 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 20pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ResetPasswordTab.setObjectName("ResetPasswordTab")
+        self.ForgottenPasswordLabel = QtWidgets.QLabel(self.TabBar)
+        self.ForgottenPasswordLabel.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.ForgottenPasswordLabel.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"padding: 7px;\n"
+"")
+        self.ForgottenPasswordLabel.setObjectName("ForgottenPasswordLabel")
+        self.ForgottenPasswordTab = QtWidgets.QPushButton(self.TabBar)
+        self.ForgottenPasswordTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.ForgottenPasswordTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ForgottenPasswordTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"border-color: rgba(0, 0, 0, 0);")
+        self.ForgottenPasswordTab.setText("")
+        self.ForgottenPasswordTab.setObjectName("ForgottenPasswordTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -155,6 +164,26 @@ class Ui_SignUpScreen(object):
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
+        self.ShowHideButton_2 = QtWidgets.QPushButton(self.MainWidget)
+        self.ShowHideButton_2.setGeometry(QtCore.QRect(940, 290, 111, 41))
+        self.ShowHideButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ShowHideButton_2.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 25pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ShowHideButton_2.setObjectName("ShowHideButton_2")
+        self.ShowHideButton = QtWidgets.QPushButton(self.MainWidget)
+        self.ShowHideButton.setGeometry(QtCore.QRect(940, 210, 111, 41))
+        self.ShowHideButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ShowHideButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 25pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ShowHideButton.setObjectName("ShowHideButton")
 
         self.retranslateUi(SignUpScreen)
         QtCore.QMetaObject.connectSlotsByName(SignUpScreen)
@@ -165,8 +194,8 @@ class Ui_SignUpScreen(object):
         self.Title.setText(_translate("SignUpScreen", "Login"))
         self.LoginTab.setText(_translate("SignUpScreen", "Login"))
         self.SignUpTab.setText(_translate("SignUpScreen", "Sign Up"))
-        self.ForgottenPasswordTab.setText(_translate("SignUpScreen", "Forgotten Password"))
         self.ResetPasswordTab.setText(_translate("SignUpScreen", "Reset Password"))
+        self.ForgottenPasswordLabel.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">Forgotten<br/>Password</span></p></body></html>"))
         self.UsernameOrEmailText.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"right\">Username:</p></body></html>"))
         self.EmailText.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"right\">Email:</p></body></html>"))
         self.UsernameInput.setPlaceholderText(_translate("SignUpScreen", "Enter Username"))
@@ -177,6 +206,8 @@ class Ui_SignUpScreen(object):
         self.PasswordText_2.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"right\">Confirm Password:</p></body></html>"))
         self.PasswordInput_2.setPlaceholderText(_translate("SignUpScreen", "Re-enter Password"))
         self.ErrorLabel.setText(_translate("SignUpScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.ShowHideButton_2.setText(_translate("SignUpScreen", "Show"))
+        self.ShowHideButton.setText(_translate("SignUpScreen", "Show"))
 
 
 if __name__ == "__main__":
