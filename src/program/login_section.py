@@ -1,64 +1,14 @@
-import sys
 import re
 import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .user_interface import Ui_LoginScreen, Ui_SignUpScreen, Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen
-from .utils import database_insert, database_select, database_query, database_print, hash_password, check_password, send_verification_email, User
-from time import sleep
+from .utils import database_insert, database_select, database_query, database_print, hash_password, check_password, send_verification_email, User, Screen
 
 
-class ResetPassword2(QtWidgets.QDialog):
-
-    def __init__(self):
-        super(ResetPassword2, self).__init__()
-        self.ui = Ui_ResetPassword2Screen()
-        self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
-
-        self.ui.SubmitButton.clicked.connect(self.submit)
-        self.show()
-
-    def submit(self):
-        self.password1 = self.ui.PasswordInput.text()
-        self.password2 = self.ui.ConfirmPasswordInput.text()
-        self.pwds_invalid = are_invalid_passwords(self.password1, self.password2)
-        if self.pwds_invalid:
-            self.ui.ErrorLabel.setText(self.pwds_invalid)
-        else:
-            database_query("UPDATE Users SET Password=? WHERE User_ID=?",(hash_password(self.password1), User.GetUserID(),))
-            from .main_section import MainMenu
-            self.main_menu = MainMenu()
-            self.hide()
-
-
-class ResetPassword(QtWidgets.QDialog):
+class LoginSection(Screen):
 
     def __init__(self):
-        super(ResetPassword, self).__init__()
-        self.ui = Ui_ResetPasswordScreen()
-        self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
-
-        self.show_or_hide = 'Show'
-        self.ui.LoginTab.clicked.connect(self.goto_login)
-        self.ui.SignUpTab.clicked.connect(self.goto_signup)
-        self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
-        self.ui.ShowHideButton.clicked.connect(self.show_hide)
-
-        self.ui.SubmitButton.clicked.connect(self.submit)
-
-        self.show()
-
-    def show_hide(self):
-        if self.show_or_hide == 'Show':
-            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Normal)
-            self.show_or_hide = 'Hide'
-        else:
-            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
-            self.show_or_hide = 'Show'
-        self.ui.ShowHideButton.setText(self.show_or_hide)
+        super(LoginSection, self).__init__()
 
     def goto_login(self):
         self.login = Login()
@@ -71,6 +21,64 @@ class ResetPassword(QtWidgets.QDialog):
     def goto_forgotten_password(self):
         self.forgotten_password = ForgottenPassword()
         self.hide()
+
+    def goto_reset_password(self):
+        self.reset_password = ResetPassword()
+        self.hide()
+
+    def are_invalid_passwords(self):
+        if not re.fullmatch('(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}', self.password1):
+            return "Password must contain lower case, upper case,\na number, and be at least 8 characters long"
+        elif self.password1 != self.password2:
+            return "Passwords do not match"
+        else:
+            return False
+
+
+class ResetPassword2(LoginSection):
+
+    def __init__(self):
+        super(ResetPassword2, self).__init__()
+        self.ui = Ui_ResetPassword2Screen()
+        self.ui.setupUi(self)
+        self.ui.SubmitButton.clicked.connect(self.submit)
+        self.show()
+
+    def submit(self):
+        self.password1 = self.ui.PasswordInput.text()
+        self.password2 = self.ui.ConfirmPasswordInput.text()
+        self.pwds_invalid = self.are_invalid_passwords()
+        if self.pwds_invalid:
+            self.ui.ErrorLabel.setText(self.pwds_invalid)
+        else:
+            database_query("UPDATE Users SET Password=? WHERE User_ID=?",(hash_password(self.password1), User.GetUserID(),))
+            from .main_section import MainMenu
+            self.main_menu = MainMenu()
+            self.hide()
+
+
+class ResetPassword(LoginSection):
+
+    def __init__(self):
+        super(ResetPassword, self).__init__()
+        self.ui = Ui_ResetPasswordScreen()
+        self.ui.setupUi(self)
+        self.show_or_hide = 'Show'
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.SignUpTab.clicked.connect(self.goto_signup)
+        self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
+        self.ui.ShowHideButton.clicked.connect(self.show_hide)
+        self.ui.SubmitButton.clicked.connect(self.submit)
+        self.show()
+
+    def show_hide(self):
+        if self.show_or_hide == 'Show':
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.show_or_hide = 'Hide'
+        else:
+            self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.show_or_hide = 'Show'
+        self.ui.ShowHideButton.setText(self.show_or_hide)
 
     def submit(self):
         # Confirm Sign In
@@ -92,35 +100,18 @@ class ResetPassword(QtWidgets.QDialog):
             self.hide()
 
 
-class ForgottenPassword2(QtWidgets.QDialog):
+class ForgottenPassword2(LoginSection):
 
     def __init__(self, verification_code):
         super(ForgottenPassword2, self).__init__()
         self.verification_code = verification_code
         self.ui = Ui_ForgottenPassword2Screen()
         self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
-
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.SignUpTab.clicked.connect(self.goto_signup)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
-
         self.ui.SubmitButton.clicked.connect(self.submit)
-
         self.show()
-
-    def goto_login(self):
-        self.login = Login()
-        self.hide()
-
-    def goto_signup(self):
-        self.signup = SignUp()
-        self.hide()
-
-    def goto_reset_password(self):
-        self.reset_password = ResetPassword()
-        self.hide()
 
     def submit(self):
         # Check verification code
@@ -133,34 +124,17 @@ class ForgottenPassword2(QtWidgets.QDialog):
             self.ui.ErrorLabel.setText("Verification Code Incorrect")
 
 
-class ForgottenPassword(QtWidgets.QDialog):
+class ForgottenPassword(LoginSection):
 
     def __init__(self):
         super(ForgottenPassword, self).__init__()
         self.ui = Ui_ForgottenPasswordScreen()
         self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
-
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.SignUpTab.clicked.connect(self.goto_signup)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
-
         self.ui.SubmitButton.clicked.connect(self.submit)
-
         self.show()
-
-    def goto_login(self):
-        self.login = Login()
-        self.hide()
-
-    def goto_signup(self):
-        self.signup = SignUp()
-        self.hide()
-
-    def goto_reset_password(self):
-        self.reset_password = ResetPassword()
-        self.hide()
 
     def submit(self):
         self.email  = self.ui.EmailInput.text()
@@ -180,24 +154,20 @@ class ForgottenPassword(QtWidgets.QDialog):
             self.hide()
 
 
-class SignUp(QtWidgets.QDialog):
+class SignUp(LoginSection):
 
     def __init__(self):
         super(SignUp, self).__init__()
         self.ui = Ui_SignUpScreen()
         self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
         self.show_or_hide = 'Show'
         self.show_or_hide_2 = 'Show'
-
         self.ui.LoginTab.clicked.connect(self.goto_login)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
         self.ui.ShowHideButton.clicked.connect(self.show_hide)
         self.ui.ShowHideButton_2.clicked.connect(self.show_hide_2)
         self.ui.SubmitButton.clicked.connect(self.submit)
-
         self.show()
 
     def show_hide(self):
@@ -222,9 +192,9 @@ class SignUp(QtWidgets.QDialog):
         from .main_section import MainMenu
         self.username = self.ui.UsernameInput.text()
         self.email = self.ui.EmailInput.text()
-        self.password  = self.ui.PasswordInput.text()
-        self.confirm_password  = self.ui.PasswordInput_2.text()
-        self.pwds_invalid = are_invalid_passwords(self.password, self.confirm_password)
+        self.password1  = self.ui.PasswordInput.text()
+        self.password2  = self.ui.PasswordInput_2.text()
+        self.pwds_invalid = self.are_invalid_passwords()
         # check is of right form
         if not re.fullmatch('\w{1,20}', self.username):
             self.ui.ErrorLabel.setText("Username must be at 1-20 characters long\nand not contain special characters")
@@ -246,7 +216,7 @@ class SignUp(QtWidgets.QDialog):
                     self.selection = database_select(['User_ID'], ['Users'])
                     self.User_IDs = set([row[0] for row in self.selection])
                     self.User_ID = self.get_user_id()
-                    self.hashed_password = hash_password(self.password)
+                    self.hashed_password = hash_password(self.password1)
                     database_insert('Users', [self.User_ID, self.username, self.email, self.hashed_password])
                     User.SetSignedIn(True)
                     User.SetUserID(self.User_ID)
@@ -261,55 +231,21 @@ class SignUp(QtWidgets.QDialog):
         else:
             return self.get_user_id(User_ID+1)
 
-    def goto_login(self):
-        self.login = Login()
-        self.hide()
 
-    def goto_forgotten_password(self):
-        self.forgotten_password = ForgottenPassword()
-        self.hide()
-
-    def goto_reset_password(self):
-        self.reset_password = ResetPassword()
-        self.hide()
-
-
-class Login(QtWidgets.QDialog):
+class Login(LoginSection):
 
     def __init__(self):
         super(Login, self).__init__()
         self.ui = Ui_LoginScreen()
         self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
-
         self.ui.SignUpTab.clicked.connect(self.goto_signup)
         self.ui.ForgottenPasswordTab.clicked.connect(self.goto_forgotten_password)
         self.ui.ResetPasswordTab.clicked.connect(self.goto_reset_password)
-
         self.ui.BackButton.clicked.connect(self.goto_mainmenu)
         self.ui.SubmitButton.clicked.connect(self.submit)
         self.ui.ShowHideButton.clicked.connect(self.show_hide)
         self.show_or_hide = 'Show'
-
         self.show()
-
-    def goto_mainmenu(self):
-        from .main_section import MainMenu
-        self.main_menu = MainMenu()
-        self.hide()
-
-    def goto_signup(self):
-        self.signup = SignUp()
-        self.hide()
-
-    def goto_forgotten_password(self):
-        self.forgotten_password = ForgottenPassword()
-        self.hide()
-
-    def goto_reset_password(self):
-        self.reset_password = ResetPassword()
-        self.hide()
 
     def submit(self):
         from .main_section import MainMenu
@@ -338,12 +274,3 @@ class Login(QtWidgets.QDialog):
             self.ui.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
             self.show_or_hide = 'Show'
         self.ui.ShowHideButton.setText(self.show_or_hide)
-
-
-def are_invalid_passwords(password1, password2):
-    if not re.fullmatch('(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}', password1):
-        return "Password must contain lower case, upper case,\na number, and be at least 8 characters long"
-    elif password1 != password2:
-        return "Passwords do not match"
-    else:
-        return False
