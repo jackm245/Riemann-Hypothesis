@@ -1,6 +1,21 @@
-# will store the users credentials
+"""
+user.py
+=======
+
+Contains the ProgramUser class
+
+A single instance of this class is used to store the
+current user's credentials and data
+"""
 
 class ProgramUser():
+
+    """
+    The ProgramUser class is used to store the user's credentials
+
+    The class contains Setter and Getter methods in order to interact with these
+    credentials throughout the runtime of the program
+    """
 
     def __init__(self, signed_in=False, user_id=None, username=None, email=None):
         super(ProgramUser, self).__init__()
@@ -34,4 +49,9 @@ class ProgramUser():
         return self.email
 
 
+"""
+This instance of the ProgramUser is imported by various other namespaces
+and is used throughout the program, in order to interact with the ProgramUser
+class
+"""
 User = ProgramUser()

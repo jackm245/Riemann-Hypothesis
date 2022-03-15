@@ -1,9 +1,29 @@
+"""
+tutorial_section.py
+===================
+
+Contains all of the classes used to interact with the GUI for the
+tutorial section of the project
+
+Includes the Program Structure, Login, Introduction, Investigation
+and Summaru Tutorial Screens
+"""
+
 from PyQt5 import QtWidgets
 from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen
 from .utils import User, Screen
 
 
 class TutorialSection(Screen):
+
+    """
+    A class inherited by all of the Screens/Page classes in the tutorial section
+    of the program
+
+    The functions defined in this class allow for different pages to be loaded
+    and hidden, so that the user is able to navigate to different parts of the
+    program using the GUI
+    """
 
     def __init__(self):
         super(TutorialSection, self).__init__()
@@ -35,6 +55,13 @@ class TutorialSection(Screen):
 
 class Tutorial(TutorialSection):
 
+    """
+    The Tutorial Screen is the main entry point ot the tutorial section of the
+    program
+
+    This class displays said screen to the user
+    """
+
     def __init__(self):
         super(Tutorial, self).__init__()
         self.ui = Ui_TutorialScreen()
@@ -52,6 +79,11 @@ class Tutorial(TutorialSection):
 
 
 class ProgramStructure(TutorialSection):
+
+    """
+    This class displays the second screen in the tutorial section: the program
+    structure tutorial
+    """
 
     def __init__(self):
         super(ProgramStructure, self).__init__()
