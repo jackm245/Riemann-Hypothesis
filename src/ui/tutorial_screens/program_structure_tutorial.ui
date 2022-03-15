@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProgramStructureTutorialScreen</class>
+ <widget class="QDialog" name="ProgramStructureTutorialScreen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1340</width>
+    <height>723</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Visualising the Riemann Hypothesis - Tutorial</string>
+  </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1340</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(69, 69, 69);</string>
+   </property>
+   <widget class="QLabel" name="Title">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>20</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239)</string>
+    </property>
+    <property name="text">
+     <string>Tutorial</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="TabBar" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>1340</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(239, 239, 239);</string>
+    </property>
+    <widget class="QPushButton" name="TutorialTab">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Tutorial</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="LoginTab">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>221</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Login</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="IntroductionTab">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Introduction</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="InvestigationTab">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Investigation</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SummaryTab">
+     <property name="geometry">
+      <rect>
+       <x>1080</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Summary</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ProgramStructureTab">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ProgramStructureLabel">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program&lt;br/&gt;Structure&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <zorder>TutorialTab</zorder>
+    <zorder>LoginTab</zorder>
+    <zorder>IntroductionTab</zorder>
+    <zorder>InvestigationTab</zorder>
+    <zorder>SummaryTab</zorder>
+    <zorder>ProgramStructureLabel</zorder>
+    <zorder>ProgramStructureTab</zorder>
+   </widget>
+   <widget class="QWidget" name="MainWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>170</y>
+      <width>1320</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(239, 239, 239);
+border-radius: 20px;</string>
+    </property>
+    <widget class="QPushButton" name="PrevButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Prev</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="NextButton">
+     <property name="geometry">
+      <rect>
+       <x>1110</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Next</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SubTitleText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>311</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Program Structure&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="MainText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>80</y>
+       <width>1251</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This section of the tutorial aims to inform you how to navigate between each page in the program&lt;/p&gt;&lt;p&gt;Below is an image of an example screen design, and is labelled with how to navigate it&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="TemplateImage">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>150</y>
+       <width>941</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../../media/annotated-template-screen.png</pixmap>
+     </property>
+    </widget>
+    <zorder>SubTitleText</zorder>
+    <zorder>MainText</zorder>
+    <zorder>TemplateImage</zorder>
+    <zorder>PrevButton</zorder>
+    <zorder>NextButton</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

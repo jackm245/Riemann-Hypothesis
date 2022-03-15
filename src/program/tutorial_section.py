@@ -1,12 +1,16 @@
 from PyQt5 import QtWidgets
-from .user_interface import Ui_TutorialScreen
+from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen
 from .utils import User, Screen
 
 
 class TutorialSection(Screen):
 
     def __init__(self):
-        super(LoginSection, self).__init__()
+        super(TutorialSection, self).__init__()
+
+    def goto_tutorial(self):
+        self.tutorial= Tutorial()
+        self.hide()
 
     def goto_program_structure(self):
         self.program_structure = ProgramStructure()
@@ -44,4 +48,20 @@ class Tutorial(TutorialSection):
         self.ui.NextButton.clicked.connect(self.goto_program_structure)
         #  self.ui.InvestigationButton.clicked.connect(self.goto_investigation)
         #  self.ui.ExitButton.clicked.connect(self.exit)
+        self.show()
+
+
+class ProgramStructure(TutorialSection):
+
+    def __init__(self):
+        super(ProgramStructure, self).__init__()
+        self.ui = Ui_ProgramStructureTutorialScreen()
+        self.ui.setupUi(self)
+        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
+        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
+        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.ui.PrevButton.clicked.connect(self.goto_tutorial)
+        self.ui.NextButton.clicked.connect(self.goto_login)
         self.show()

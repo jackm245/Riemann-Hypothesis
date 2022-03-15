@@ -1,1 +1,2 @@
 from .tutorial import Ui_TutorialScreen
+from .program_structure_tutorial import Ui_ProgramStructureTutorialScreen
