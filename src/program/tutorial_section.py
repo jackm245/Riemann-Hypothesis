@@ -6,7 +6,7 @@ Contains all of the classes used to interact with the GUI for the
 tutorial section of the project
 
 Includes the Program Structure, Login, Introduction, Investigation
-and Summaru Tutorial Screens
+and Summary Tutorial Screens
 """
 
 from PyQt5 import QtWidgets

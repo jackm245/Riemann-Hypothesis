@@ -1,3 +1,13 @@
+"""
+investigation_section.py
+===================
+
+Contains all of the classes used to interact with the GUI for the
+investigation section of the project
+
+Includes the ... Screens
+"""
+
 import sys
 import matplotlib
 import numpy as np
@@ -8,7 +18,17 @@ from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen
 
+
 class InvestigationSection(Screen):
+
+    """
+    A class inherited by all of the Screens/Page classes in the investigation section
+    of the program
+
+    The functions defined in this class allow for different pages to be loaded
+    and hidden, so that the user is able to navigate to different parts of the
+    program using the GUI
+    """
 
     def __init__(self):
         super(InvestigationSection, self).__init__()
@@ -43,7 +63,7 @@ class InvestigationSection(Screen):
         self.calculator = Calculator()
         self.hide()
 
-    def goto_zeroes(self):
+    def goto_zeroes_screen(self):
         self.zeroes = ZeroesScreen()
         self.hide()
 
@@ -72,6 +92,13 @@ class InvestigationSection(Screen):
 
 
 class CalculateZeroes2(InvestigationSection):
+
+    """
+    The CalculateZeroes2 class is used to display the zeta zeroes that have
+    been calculated by the user
+
+    The user then has the option to save these to the database or to a file
+    """
 
     def __init__(self, zeroes):
         super(CalculateZeroes2, self).__init__()
@@ -103,6 +130,12 @@ class CalculateZeroes2(InvestigationSection):
 
 
 class CalculateZeroes(InvestigationSection):
+
+    """
+    The CalculateZeroes class is used to ask for input from the user as to how
+    many zeta zeroes they want to calculate. It then calculates these values
+    and displays them in the CalculateZeroes2 screen
+    """
 
     def __init__(self):
         super(CalculateZeroes, self).__init__()
@@ -138,6 +171,11 @@ class CalculateZeroes(InvestigationSection):
 
 class ZeroesScreen(InvestigationSection):
 
+    """
+    The ZeroesScreen class is used to display information about the zeta zeroes
+    to the user and will send them to the CalculateZeroes screen
+    """
+
     def __init__(self):
         super(ZeroesScreen, self).__init__()
         self.ui = Ui_ZeroesScreen()
@@ -152,6 +190,14 @@ class ZeroesScreen(InvestigationSection):
 
 
 class TableCalculator2(InvestigationSection):
+
+    """
+    The TableCalculator2 class is used to display the output values of the zeta
+    function for a range of input values, that were entered by the user on the
+    previous page
+
+    The user then has the option to save these to the database or to a file
+    """
 
     def __init__(self, table_values):
         super(TableCalculator2, self).__init__()
@@ -189,6 +235,12 @@ class TableCalculator2(InvestigationSection):
 
 class TableCalculator(InvestigationSection):
 
+    """
+    The TableCalculator class is used to display a calculator where
+    the user is able to calculate the value of the zeta function for a range of
+    input values of their choosing
+    """
+
     def __init__(self):
         super(TableCalculator, self).__init__()
         self.ui = Ui_TableCalculatorScreen()
@@ -222,6 +274,14 @@ class TableCalculator(InvestigationSection):
 
 
 class SingleCalculator(InvestigationSection):
+
+    """
+    The SingleCalculator class is used to display a calculator where
+    the user is able to calculate the value of the zeta function for a given
+    input of their choosing
+
+    The user then has the option to save this values to the database or to a file
+    """
 
     def __init__(self):
         super(SingleCalculator, self).__init__()
@@ -261,21 +321,33 @@ class SingleCalculator(InvestigationSection):
 
 class Calculator(InvestigationSection):
 
+    """
+    The Calculator class is used to display the calculator screen where
+    the user can choose to calculate the value of the zeta function for a single
+    value or for a table of values
+    """
+
     def __init__(self):
         super(Calculator, self).__init__()
         self.ui = Ui_CalculatorScreen()
         self.ui.setupUi(self)
         self.ui.PrevButton.clicked.connect(self.goto_primes)
-        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
         self.ui.PrimesTab.clicked.connect(self.goto_primes)
-        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
+        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes_screen)
         self.ui.SingleButton.clicked.connect(self.goto_single)
         self.ui.TableButton.clicked.connect(self.goto_table_calculator)
         self.show()
 
 
 class PrimeNumbers(InvestigationSection):
+
+    """
+    The PrimeNumbers class is used to display the prime numbers screen where
+    the user is given information about the prime numbers and how they relate
+    to the riemann zeta function
+    """
 
     def __init__(self):
         super(PrimeNumbers, self).__init__()
@@ -285,11 +357,17 @@ class PrimeNumbers(InvestigationSection):
         self.ui.NextButton.clicked.connect(self.goto_calculator)
         self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
         self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
-        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
+        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes_screen)
         self.show()
 
 
 class PrimeCountingFunctionMatPlot(InvestigationSection):
+
+    """
+    The PrimeCountingFunction class is used to display a graph of the
+    prime coutning function, the prime power function, the logarithmic integral
+    function and (x/log x) as an approximation for the prime counting function
+    """
 
     def __init__(self):
         super(PrimeCountingFunctionMatPlot, self).__init__()
@@ -334,6 +412,11 @@ class PrimeCountingFunctionMatPlot(InvestigationSection):
 
 class PrimeCountingFunction(InvestigationSection):
 
+    """
+    The PrimeCountingFunction class is used to display the prime counting function
+    screen
+    """
+
     def __init__(self):
         super(PrimeCountingFunction, self).__init__()
         self.ui = Ui_PrimeCountingFunctionScreen()
@@ -347,6 +430,11 @@ class PrimeCountingFunction(InvestigationSection):
 
 
 class ZetaZeroesMatPlot(InvestigationSection):
+
+    """
+    The ZetaZeroesMatPlot class is used to display a graph of the zeroes of the
+    riemann zeta function
+    """
 
     def __init__(self):
         super(ZetaZeroesMatPlot, self).__init__()
@@ -390,6 +478,14 @@ class ZetaZeroesMatPlot(InvestigationSection):
 
 class ZetaZeroes(InvestigationSection):
 
+    """
+    The ZetaZeroes class is used to display the Zeroes screen in the investigation
+    section
+
+    This is where the user is able to read about what the zeta zeroes are, and
+    be able to display a graph of the zeta zeroes
+    """
+
     def __init__(self):
         super(ZetaZeroes, self).__init__()
         self.ui = Ui_ZetaZeroesScreen()
@@ -407,6 +503,11 @@ class ZetaZeroes(InvestigationSection):
 
 
 class PolarGraphMatPlot(InvestigationSection):
+
+    """
+    The PolarGraphMatPlot class is used to display the polar graph of the riemann
+    zeta function
+    """
 
     def __init__(self, real_input):
         super(PolarGraphMatPlot, self).__init__()
@@ -441,6 +542,13 @@ class PolarGraphMatPlot(InvestigationSection):
 
 class PolarGraph(InvestigationSection):
 
+    """
+    The PolarGraph class is used to display the Polar Graph Screen
+
+    This is where the user is able to read about polar graphs, and be able to
+    display a polar graph of the riemann zeta function
+    """
+
     def __init__(self):
         super(PolarGraph, self).__init__()
         self.ui = Ui_PolarGraphScreen()
@@ -467,6 +575,13 @@ class PolarGraph(InvestigationSection):
 
 class GraphPlot(InvestigationSection):
 
+    """
+    This class is used to display the Graph Plots screen in the ionvestigation section
+
+    This is the first screen that the user will see in the investigation section
+    and will allow them to display many different types of graphs
+    """
+
     def __init__(self):
         super(GraphPlot, self).__init__()
         self.ui = Ui_GraphPlotsScreen()
@@ -476,5 +591,5 @@ class GraphPlot(InvestigationSection):
         self.ui.GraphPlotsButton.clicked.connect(self.goto_polar)
         self.ui.PrimesTab.clicked.connect(self.goto_primes)
         self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
-        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
+        self.ui.ZeroesTab.clicked.connect(self.goto_zeroes_screen)
         self.show()
