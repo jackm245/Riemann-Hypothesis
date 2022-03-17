@@ -11,8 +11,10 @@ Includes the Main Menu screen only
 from PyQt5 import QtWidgets
 from .user_interface import Ui_MainMenu
 from .login_section import Login
+from .introduction_section import Introduction
 from .investigation_section import GraphPlot
 from .tutorial_section import Tutorial
+from .summary_section import Summary
 from .utils import User, Screen
 import sys
 
@@ -34,7 +36,9 @@ class MainMenu(Screen):
             self.ui.LoginLabel.hide()
         self.ui.LogInButton.clicked.connect(self.goto_login)
         self.ui.TutorialButton.clicked.connect(self.goto_tutorial)
+        self.ui.IntroductionButton.clicked.connect(self.goto_introduction)
         self.ui.InvestigationButton.clicked.connect(self.goto_investigation)
+        self.ui.SummaryButton.clicked.connect(self.goto_summary)
         self.ui.ExitButton.clicked.connect(self.exit)
         self.show()
 
@@ -46,8 +50,16 @@ class MainMenu(Screen):
         self.tutorial = Tutorial()
         self.hide()
 
+    def goto_introduction(self):
+        self.introduction = Introduction()
+        self.hide()
+
     def goto_investigation(self):
-        self.login = GraphPlot()
+        self.investigation = GraphPlot()
+        self.hide()
+
+    def goto_summary(self):
+        self.summary = Summary()
         self.hide()
 
     def exit(self):

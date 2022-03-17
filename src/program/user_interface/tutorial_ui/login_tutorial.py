@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/tutorial_screens/tutorial.ui'
+# Form implementation generated from reading ui file 'ui/tutorial_screens/login_tutorial.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_TutorialScreen(object):
-    def setupUi(self, TutorialScreen):
-        TutorialScreen.setObjectName("TutorialScreen")
-        TutorialScreen.resize(1340, 723)
-        TutorialScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(TutorialScreen)
+class Ui_LoginTutorialScreen(object):
+    def setupUi(self, LoginTutorialScreen):
+        LoginTutorialScreen.setObjectName("LoginTutorialScreen")
+        LoginTutorialScreen.resize(1340, 723)
+        LoginTutorialScreen.setToolTipDuration(0)
+        LoginTutorialScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(LoginTutorialScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +35,8 @@ class Ui_TutorialScreen(object):
         self.TutorialTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.TutorialTab.setObjectName("TutorialTab")
         self.LoginTab = QtWidgets.QPushButton(self.TabBar)
@@ -44,8 +45,8 @@ class Ui_TutorialScreen(object):
         self.LoginTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.LoginTab.setObjectName("LoginTab")
         self.IntroductionTab = QtWidgets.QPushButton(self.TabBar)
@@ -129,41 +130,37 @@ class Ui_TutorialScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 681, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 311, 41))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
-        self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 91))
-        self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239); padding: 5px;")
-        self.MainText.setWordWrap(True)
-        self.MainText.setObjectName("MainText")
+        self.SubTitleText.raise_()
+        self.PrevButton.raise_()
+        self.NextButton.raise_()
 
-        self.retranslateUi(TutorialScreen)
-        QtCore.QMetaObject.connectSlotsByName(TutorialScreen)
+        self.retranslateUi(LoginTutorialScreen)
+        QtCore.QMetaObject.connectSlotsByName(LoginTutorialScreen)
 
-    def retranslateUi(self, TutorialScreen):
+    def retranslateUi(self, LoginTutorialScreen):
         _translate = QtCore.QCoreApplication.translate
-        TutorialScreen.setWindowTitle(_translate("TutorialScreen", "Visualising the Riemann Hypothesis - Tutorial"))
-        self.Title.setText(_translate("TutorialScreen", "Tutorial"))
-        self.TutorialTab.setText(_translate("TutorialScreen", "Tutorial"))
-        self.LoginTab.setText(_translate("TutorialScreen", "Login"))
-        self.IntroductionTab.setText(_translate("TutorialScreen", "Introduction"))
-        self.InvestigationTab.setText(_translate("TutorialScreen", "Investigation"))
-        self.SummaryTab.setText(_translate("TutorialScreen", "Summary"))
-        self.ProgramStructureLabel.setText(_translate("TutorialScreen", "<html><head/><body><p align=\"center\">Program<br/>Structure</p></body></html>"))
-        self.PrevButton.setText(_translate("TutorialScreen", "Prev"))
-        self.NextButton.setText(_translate("TutorialScreen", "Next"))
-        self.SubTitleText.setText(_translate("TutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Tutorial</span></p></body></html>"))
-        self.MainText.setText(_translate("TutorialScreen", "<html><head/><body><p>Welcome to the Tutorial Section of this program.</p><p>The aim of this is to teach you how to be able to use this program</p><p>Click on any of the five other tabs above, or on the next button, to find out how to use this program to it\'s full extent</p></body></html>"))
+        LoginTutorialScreen.setWindowTitle(_translate("LoginTutorialScreen", "Visualising the Riemann Hypothesis - Tutorial"))
+        self.Title.setText(_translate("LoginTutorialScreen", "Tutorial"))
+        self.TutorialTab.setText(_translate("LoginTutorialScreen", "Tutorial"))
+        self.LoginTab.setText(_translate("LoginTutorialScreen", "Login"))
+        self.IntroductionTab.setText(_translate("LoginTutorialScreen", "Introduction"))
+        self.InvestigationTab.setText(_translate("LoginTutorialScreen", "Investigation"))
+        self.SummaryTab.setText(_translate("LoginTutorialScreen", "Summary"))
+        self.ProgramStructureLabel.setText(_translate("LoginTutorialScreen", "<html><head/><body><p align=\"center\">Program<br/>Structure</p></body></html>"))
+        self.PrevButton.setText(_translate("LoginTutorialScreen", "Prev"))
+        self.NextButton.setText(_translate("LoginTutorialScreen", "Next"))
+        self.SubTitleText.setText(_translate("LoginTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Login</span></p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    TutorialScreen = QtWidgets.QDialog()
-    ui = Ui_TutorialScreen()
-    ui.setupUi(TutorialScreen)
-    TutorialScreen.show()
+    LoginTutorialScreen = QtWidgets.QDialog()
+    ui = Ui_LoginTutorialScreen()
+    ui.setupUi(LoginTutorialScreen)
+    LoginTutorialScreen.show()
     sys.exit(app.exec_())

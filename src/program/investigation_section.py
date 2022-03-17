@@ -1,6 +1,6 @@
 """
 investigation_section.py
-===================
+========================
 
 Contains all of the classes used to interact with the GUI for the
 investigation section of the project

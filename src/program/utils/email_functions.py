@@ -1,6 +1,6 @@
 """
 email_functions.py
-=========================
+==================
 
 Contains function that are used to send emails to the user's email address
 

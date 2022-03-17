@@ -10,7 +10,7 @@ and Summary Tutorial Screens
 """
 
 from PyQt5 import QtWidgets
-from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen
+from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen
 from .utils import User, Screen
 
 
@@ -73,8 +73,6 @@ class Tutorial(TutorialSection):
         self.ui.SummaryTab.clicked.connect(self.goto_summary)
         self.ui.PrevButton.clicked.connect(self.goto_mainmenu)
         self.ui.NextButton.clicked.connect(self.goto_program_structure)
-        #  self.ui.InvestigationButton.clicked.connect(self.goto_investigation)
-        #  self.ui.ExitButton.clicked.connect(self.exit)
         self.show()
 
 
@@ -96,4 +94,88 @@ class ProgramStructure(TutorialSection):
         self.ui.SummaryTab.clicked.connect(self.goto_summary)
         self.ui.PrevButton.clicked.connect(self.goto_tutorial)
         self.ui.NextButton.clicked.connect(self.goto_login)
+        self.show()
+
+
+class LoginTutorial(TutorialSection):
+
+    """
+    This class displays the third screen in the tutorial section: the
+    login tutorial
+    """
+
+    def __init__(self):
+        super(LoginTutorial, self).__init__()
+        self.ui = Ui_LoginTutorialScreen()
+        self.ui.setupUi(self)
+        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
+        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
+        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
+        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
+        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.ui.PrevButton.clicked.connect(self.goto_program_structure)
+        self.ui.NextButton.clicked.connect(self.goto_introduction)
+        self.show()
+
+
+class IntroductionTutorial(TutorialSection):
+
+    """
+    This class displays the fourth screen in the tutorial section: the
+    introduction tutorial
+    """
+
+    def __init__(self):
+        super(IntroductionTutorial, self).__init__()
+        self.ui = Ui_IntroductionTutorialScreen()
+        self.ui.setupUi(self)
+        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
+        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
+        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.ui.PrevButton.clicked.connect(self.goto_login)
+        self.ui.NextButton.clicked.connect(self.goto_investigation)
+        self.show()
+
+
+class InvestigationTutorial(TutorialSection):
+
+    """
+    This class displays the fifth screen in the tutorial section: the
+    investigation tutorial
+    """
+
+    def __init__(self):
+        super(InvestigationTutorial, self).__init__()
+        self.ui = Ui_InvestigationTutorialScreen()
+        self.ui.setupUi(self)
+        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
+        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
+        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.ui.PrevButton.clicked.connect(self.goto_introduction)
+        self.ui.NextButton.clicked.connect(self.goto_summary)
+        self.show()
+
+
+class SummaryTutorial(TutorialSection):
+
+    """
+    This class displays the sixth and last screen in the tutorial section: the
+    summary tutorial
+    """
+
+    def __init__(self):
+        super(SummaryTutorial, self).__init__()
+        self.ui = Ui_SummaryTutorialScreen()
+        self.ui.setupUi(self)
+        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
+        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
+        self.ui.LoginTab.clicked.connect(self.goto_login)
+        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
+        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
+        self.ui.PrevButton.clicked.connect(self.goto_investigation)
+        self.ui.NextButton.clicked.connect(self.goto_mainmenu)
         self.show()

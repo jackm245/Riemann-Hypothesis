@@ -1,5 +1,7 @@
 from .main_menu import Ui_MainMenu
 from .login_ui import Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_LoginScreen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen, Ui_SignUpScreen
-from .tutorial_ui import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen
+from .tutorial_ui import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen
 from .investigation_ui import Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen
+from .introduction_ui import Ui_IntroductionScreen
+from .summary_ui import Ui_SummaryScreen
 from .mpl_widget import  MplWidget

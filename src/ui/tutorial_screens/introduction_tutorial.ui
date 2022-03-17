@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TutorialScreen</class>
- <widget class="QDialog" name="TutorialScreen">
+ <class>IntroductionTutorialScreen</class>
+ <widget class="QDialog" name="IntroductionTutorialScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,6 +12,9 @@
   </property>
   <property name="windowTitle">
    <string>Visualising the Riemann Hypothesis - Tutorial</string>
+  </property>
+  <property name="toolTipDuration">
+   <number>0</number>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -72,8 +75,8 @@
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -120,8 +123,8 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -293,7 +296,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>681</width>
+       <width>311</width>
        <height>41</height>
       </rect>
      </property>
@@ -302,29 +305,12 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Tutorial&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Introduction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="MainText">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>80</y>
-       <width>1251</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239); padding: 5px;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to the Tutorial Section of this program.&lt;/p&gt;&lt;p&gt;The aim of this is to teach you how to be able to use this program&lt;/p&gt;&lt;p&gt;Click on any of the five other tabs above, or on the next button, to find out how to use this program to it's full extent&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <zorder>SubTitleText</zorder>
+    <zorder>PrevButton</zorder>
+    <zorder>NextButton</zorder>
    </widget>
   </widget>
  </widget>

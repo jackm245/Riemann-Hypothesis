@@ -1,6 +1,6 @@
 """
 database_functions.py
-=========================
+=====================
 
 Contains subroutines that are used to query and interact with SQL databases
 
