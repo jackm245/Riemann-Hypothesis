@@ -12,6 +12,8 @@ These subroutines include:
 
 import pandas as pd
 import sqlite3
+import os
+from file_handling import touch, remove
 
 
 def database_select(headings, tables):
@@ -52,6 +54,7 @@ def database_query(query, values=[], database='database.db'):
     conn.close()
     return rows
 
+
 # delete when done and remove where imported
 def database_print():
     print('-------------')
@@ -60,3 +63,39 @@ def database_print():
     table = database_select(['*'], ['Users'])
     for row in table:
         print(row)
+
+
+def create_users_table():
+    database_query(""" CREATE TABLE Users(
+    User_ID integer PRIMARY KEY,
+    Username text,
+    Email text,
+    Password text
+    )""")
+
+def create_questions_table():
+    database_query(""" CREATE TABLE Questions(
+    Question_ID integer PRIMARY KEY,
+    Question_No integer,
+    Question text,
+    Answer text
+    )""")
+
+
+def create_answers_table():
+    pass
+
+
+def create_database(database='database.db'):
+    touch(database)
+    create_users_table()
+    create_questions_table()
+
+
+def delete_database(database='database.db'):
+    remove(database)
+
+
+def reset_database(database='database.db''):
+    delete_database()
+    create_database()

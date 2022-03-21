@@ -211,7 +211,6 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
         for row in sorted_values:
             csv_writer.writerow(row)
 
-
 #  def change_datatype(value, datatype):
     #  match str(datatype):
         #  case 'int':
