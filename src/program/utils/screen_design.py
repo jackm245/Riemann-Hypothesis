@@ -5,7 +5,11 @@ screen_design.py
 Contains the Screen class
 """
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+__all__ = ['Screen']
 
 
 class Screen(QtWidgets.QDialog):

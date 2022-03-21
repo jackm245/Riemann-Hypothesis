@@ -10,10 +10,15 @@ These subroutines include:
     - database_query
 """
 
+
 import pandas as pd
 import sqlite3
 import os
-from file_handling import touch, remove
+from .file_handling import touch, remove
+
+
+__all__ = ['database_select', 'database_insert', 'database_query',
+        'create_database', 'reset_database', 'database_print']
 
 
 def database_select(headings, tables):
@@ -66,6 +71,9 @@ def database_print():
 
 
 def create_users_table():
+
+    """ Create the Users table in the database """
+
     database_query(""" CREATE TABLE Users(
     User_ID integer PRIMARY KEY,
     Username text,
@@ -73,7 +81,11 @@ def create_users_table():
     Password text
     )""")
 
+
 def create_questions_table():
+
+    """ Create the Questions table in the database """
+
     database_query(""" CREATE TABLE Questions(
     Question_ID integer PRIMARY KEY,
     Question_No integer,
@@ -83,19 +95,93 @@ def create_questions_table():
 
 
 def create_answers_table():
-    pass
+
+    """ Create the Answers table in the database """
+
+    database_query(""" CREATE TABLE Answers(
+    Answer_ID integer PRIMARY KEY,
+    Answer text,
+    Question_ID integer
+    )""")
+
+
+def create_user_answer_table():
+
+    """ Create the User Answer table in the database """
+
+    database_query(""" CREATE TABLE UserAnswer(
+    User_ID integer PRIMARY KEY,
+    Answer_ID integer
+    )""")
+
+
+def create_notes_table():
+
+    """ Create the Notes table in the database """
+
+    database_query(""" CREATE TABLE Notes(
+    Notes_ID integer PRIMARY KEY,
+    Note_No integer,
+    Question text
+    )""")
+
+
+def create_responses_table():
+
+    """ Create the Responses table in the database """
+
+    database_query(""" CREATE TABLE Responses(
+    Responses_ID integer PRIMARY KEY,
+    Notes_ID integer,
+    Response string,
+    User_ID integer
+    )""")
+
+
+def create_zeta_table():
+
+    """ Create the Zeta table in the database """
+
+    database_query(""" CREATE TABLE Zeta(
+    Zeta_ID integer PRIMARY KEY,
+    Input text,
+    Output text,
+    )""")
+
+
+def create_user_zeta_table():
+
+    """ Create the User Zeta table in the database """
+
+    database_query(""" CREATE TABLE UserZeta(
+    Zeta_ID integer PRIMARY KEY,
+    User_ID integer
+    )""")
 
 
 def create_database(database='database.db'):
-    touch(database)
-    create_users_table()
-    create_questions_table()
+
+    """
+    Create the database and all of the tables
+    If it doesnt already exist
+    """
+
+    if not os.path.isfile('database.db'):
+        touch(database)
+        create_users_table()
+        create_questions_table()
+        create_answers_table()
+        create_user_answer_table()
+        create_notes_table()
+        create_responses_table()
+        create_zeta_table()
+        create_user_zeta_table()
 
 
 def delete_database(database='database.db'):
     remove(database)
 
 
-def reset_database(database='database.db''):
+def reset_database(database='database.db'):
     delete_database()
     create_database()

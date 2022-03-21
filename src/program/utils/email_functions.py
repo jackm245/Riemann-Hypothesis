@@ -9,10 +9,14 @@ These Functions include:
     - send_email
 """
 
+
 from dotenv import load_dotenv, find_dotenv
 import smtplib
 import os
 from .user import User
+
+
+__all__ = ['send_verification_email', 'send_email']
 
 
 def send_verification_email(code):

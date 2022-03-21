@@ -1,6 +1,9 @@
 import os
 
 
+__all__ = ['touch', 'remove']
+
+
 def touch(path):
     try:
         with open(path, 'a'):

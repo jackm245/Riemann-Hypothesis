@@ -16,12 +16,18 @@ These Functions include:
     - make_int
 """
 
+
 from itertools import islice, count
 from functools import reduce
 import numpy as np
 import operator as op
 from math import ceil, sqrt, log, floor
 import scipy.integrate as integrate
+
+
+__all__ = ['ncr', 'zeta', 'sieve_of_eratosthenes', 'prime_power_function',
+        'exponential_integral', 'logarithmic_integral', 'prime_power_function',
+        'make_complex', 'make_int']
 
 
 def ncr(n, r):

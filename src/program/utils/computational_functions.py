@@ -7,7 +7,7 @@ Contains subroutines and classes that are used for various different algorithms
 These subroutines include:
     - binary_search
     - binary_insertion_sort
-    - save_zeta_values_to_file
+    - save_zeta_zeroes_to_file
     - save_zeta_values_to_file
     - save_zeta_to_file
     - change_datatype - POTENTIALLY
@@ -16,11 +16,16 @@ These classes include:
     - Queue
 """
 
+
 import random
 import time
 import csv
 import re
 import os
+
+
+__all__ = ['binary_insertion_sort, save_zeta_to_file', 'save_zeta_zeroes_to_file',
+        'save_zeta_values_to_file']
 
 
 # binary

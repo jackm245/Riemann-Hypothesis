@@ -8,6 +8,7 @@ A single instance of this class is used to store the
 current user's credentials and data
 """
 
+
 class ProgramUser():
 
     """
