@@ -35,7 +35,7 @@ class Ui_TableCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69,69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SingleTab.setObjectName("SingleTab")
         self.TableTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,9 +45,19 @@ class Ui_TableCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.TableTab.setObjectName("TableTab")
+        self.LeaderboardTab = QtWidgets.QPushButton(self.TabBar)
+        self.LeaderboardTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.LeaderboardTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.LeaderboardTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69,69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.LeaderboardTab.setObjectName("LeaderboardTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -60,7 +70,7 @@ class Ui_TableCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -70,7 +80,7 @@ class Ui_TableCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -82,7 +92,7 @@ class Ui_TableCalculatorScreen(object):
         self.StartInput.setGeometry(QtCore.QRect(485, 110, 421, 81))
         self.StartInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\";\n"
+"font: 18pt \"Sans Serif\";\n"
 "border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);")
@@ -95,13 +105,13 @@ class Ui_TableCalculatorScreen(object):
 "text-decoration: underline;")
         self.StartValueText.setObjectName("StartValueText")
         self.CalculateButton = QtWidgets.QPushButton(self.MainWidget)
-        self.CalculateButton.setGeometry(QtCore.QRect(980, 180, 221, 141))
+        self.CalculateButton.setGeometry(QtCore.QRect(980, 215, 200, 70))
         self.CalculateButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.CalculateButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.CalculateButton.setObjectName("CalculateButton")
         self.StepText = QtWidgets.QLabel(self.MainWidget)
@@ -114,7 +124,7 @@ class Ui_TableCalculatorScreen(object):
         self.StepInput.setGeometry(QtCore.QRect(485, 210, 421, 81))
         self.StepInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\";\n"
+"font: 18pt \"Sans Serif\";\n"
 "border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);")
@@ -135,7 +145,7 @@ class Ui_TableCalculatorScreen(object):
         self.NoOfValuesInput.setGeometry(QtCore.QRect(485, 310, 421, 81))
         self.NoOfValuesInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\";\n"
+"font: 18pt \"Sans Serif\";\n"
 "border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);")
@@ -162,18 +172,18 @@ class Ui_TableCalculatorScreen(object):
         self.Title.setText(_translate("TableCalculatorScreen", "Calculator"))
         self.SingleTab.setText(_translate("TableCalculatorScreen", "Single"))
         self.TableTab.setText(_translate("TableCalculatorScreen", "Table"))
+        self.LeaderboardTab.setText(_translate("TableCalculatorScreen", "Leaderboard"))
         self.PrevButton.setText(_translate("TableCalculatorScreen", "Prev"))
         self.NextButton.setText(_translate("TableCalculatorScreen", "Next"))
         self.SubTitleText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Table Zeta Calculation</span></p></body></html>"))
-        self.StartInput.setPlaceholderText(_translate("TableCalculatorScreen", "Enter Start Value"))
+        self.StartInput.setPlaceholderText(_translate("TableCalculatorScreen", "    Enter Start Value"))
         self.StartValueText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">Start Value:</span></p></body></html>"))
-        self.CalculateButton.setText(_translate("TableCalculatorScreen", "Calculate\n"
-"🠖"))
+        self.CalculateButton.setText(_translate("TableCalculatorScreen", "Calculate 🠖"))
         self.StepText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">Step:</span></p></body></html>"))
-        self.StepInput.setPlaceholderText(_translate("TableCalculatorScreen", "Enter Step Value"))
+        self.StepInput.setPlaceholderText(_translate("TableCalculatorScreen", "    Enter Step Value"))
         self.ErrorLabel.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.NoOfValuesText.setText(_translate("TableCalculatorScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">No. of Values:</span></p></body></html>"))
-        self.NoOfValuesInput.setPlaceholderText(_translate("TableCalculatorScreen", "Enter No. of Values"))
+        self.NoOfValuesInput.setPlaceholderText(_translate("TableCalculatorScreen", "    Enter No. of Values"))
 
 
 if __name__ == "__main__":

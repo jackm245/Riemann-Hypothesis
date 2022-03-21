@@ -35,7 +35,7 @@ class Ui_CalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69,69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.GraphsTab.setObjectName("GraphsTab")
         self.PrimesTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,7 +45,7 @@ class Ui_CalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrimesTab.setObjectName("PrimesTab")
         self.CalculatorTab = QtWidgets.QPushButton(self.TabBar)
@@ -55,7 +55,7 @@ class Ui_CalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.CalculatorTab.setObjectName("CalculatorTab")
         self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
@@ -65,7 +65,7 @@ class Ui_CalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ZeroesTab.setObjectName("ZeroesTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
@@ -80,7 +80,7 @@ class Ui_CalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -90,7 +90,7 @@ class Ui_CalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -104,26 +104,16 @@ class Ui_CalculatorScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
-        self.SingleButton = QtWidgets.QPushButton(self.MainWidget)
-        self.SingleButton.setGeometry(QtCore.QRect(450, 460, 200, 70))
-        self.SingleButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.SingleButton.setStyleSheet("border: 2px solid;\n"
+        self.ZetaCalculatorButton = QtWidgets.QPushButton(self.MainWidget)
+        self.ZetaCalculatorButton.setGeometry(QtCore.QRect(565, 460, 210, 70))
+        self.ZetaCalculatorButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ZetaCalculatorButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
-        self.SingleButton.setObjectName("SingleButton")
-        self.TableButton = QtWidgets.QPushButton(self.MainWidget)
-        self.TableButton.setGeometry(QtCore.QRect(680, 460, 200, 70))
-        self.TableButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.TableButton.setStyleSheet("border: 2px solid;\n"
-"border-radius: 20px;\n"
-"border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
-"")
-        self.TableButton.setObjectName("TableButton")
+        self.ZetaCalculatorButton.setObjectName("ZetaCalculatorButton")
 
         self.retranslateUi(CalculatorScreen)
         QtCore.QMetaObject.connectSlotsByName(CalculatorScreen)
@@ -140,8 +130,7 @@ class Ui_CalculatorScreen(object):
         self.NextButton.setText(_translate("CalculatorScreen", "Next"))
         self.SubTitleText.setText(_translate("CalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Calculating the Riemann Zeta Function</span></p></body></html>"))
         self.MainText.setText(_translate("CalculatorScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
-        self.SingleButton.setText(_translate("CalculatorScreen", "Single"))
-        self.TableButton.setText(_translate("CalculatorScreen", "Table"))
+        self.ZetaCalculatorButton.setText(_translate("CalculatorScreen", "Zeta Calculator"))
 
 
 if __name__ == "__main__":

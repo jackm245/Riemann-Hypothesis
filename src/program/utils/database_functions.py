@@ -18,7 +18,8 @@ from .file_handling import touch, remove
 
 
 __all__ = ['database_select', 'database_insert', 'database_query',
-        'create_database', 'reset_database', 'database_print']
+        'create_database', 'reset_database', 'get_user_id', 'get_zeta_id',
+        'database_print']
 
 
 def database_select(headings, tables):
@@ -62,12 +63,15 @@ def database_query(query, values=[], database='database.db'):
 
 # delete when done and remove where imported
 def database_print():
-    print('-------------')
-    print("Table: Users")
-    print('-------------')
-    table = database_select(['*'], ['Users'])
-    for row in table:
-        print(row)
+    tables = ['Users', 'Questions', 'Answers', 'UserAnswer', 'Notes', 'Responses',
+            'Zeta', 'UserZeta']
+    for table in tables:
+        print('-------------')
+        print(f"Table: {table}")
+        print('-------------')
+        rows = database_select(['*'], [table])
+        for row in rows:
+            print(row)
 
 
 def create_users_table():
@@ -145,7 +149,7 @@ def create_zeta_table():
     database_query(""" CREATE TABLE Zeta(
     Zeta_ID integer PRIMARY KEY,
     Input text,
-    Output text,
+    Output text
     )""")
 
 
@@ -179,9 +183,44 @@ def create_database(database='database.db'):
 
 
 def delete_database(database='database.db'):
+
+    """ remove the database file, thus deleting the database """
+
     remove(database)
 
 
 def reset_database(database='database.db'):
+
+    """ clear all of the data from inside the database """
     delete_database()
     create_database()
+
+
+def get_next_user_id(User_IDs, User_ID=0):
+    if User_ID not in User_IDs:
+        return User_ID
+    else:
+        return get_next_user_id(User_IDs, User_ID+1)
+
+
+def get_user_id():
+    selection = database_select(['User_ID'], ['Users'])
+    User_IDs = set([row[0] for row in selection])
+    User_ID = get_next_user_id(User_IDs)
+    return User_ID
+
+
+def get_next_zeta_id(Zeta_IDs, Zeta_ID=0):
+    if Zeta_ID not in Zeta_IDs:
+        return Zeta_ID
+    else:
+        return get_next_zeta_id(Zeta_IDs, Zeta_ID+1)
+
+
+def get_zeta_id():
+    selection = database_select(['Zeta_ID'], ['Zeta'])
+    Zeta_IDs = set([row[0] for row in selection])
+    Zeta_ID = get_next_zeta_id(Zeta_IDs)
+    return Zeta_ID
+
+database_print()

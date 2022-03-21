@@ -12,7 +12,7 @@ import re
 import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .user_interface import Ui_LoginScreen, Ui_SignUpScreen, Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen
-from .utils import database_insert, database_select, database_query, database_print, hash_password, check_password, send_verification_email, User, Screen
+from .utils import database_insert, database_select, database_query, database_print, get_user_id, hash_password, check_password, send_verification_email, User, Screen
 
 
 class LoginSection(Screen):
@@ -295,9 +295,7 @@ class SignUp(LoginSection):
                 if self.email in self.Emails:
                     self.ui.ErrorLabel.setText("Email already taken")
                 else:
-                    self.selection = database_select(['User_ID'], ['Users'])
-                    self.User_IDs = set([row[0] for row in self.selection])
-                    self.User_ID = self.get_user_id()
+                    self.User_ID = get_user_id()
                     self.hashed_password = hash_password(self.password1)
                     database_insert('Users', [self.User_ID, self.username, self.email, self.hashed_password])
                     User.SetSignedIn(True)
@@ -306,12 +304,6 @@ class SignUp(LoginSection):
                     User.SetEmail(self.email)
                     self.main_menu = MainMenu()
                     self.hide()
-
-    def get_user_id(self, User_ID=0):
-        if User_ID not in self.User_IDs:
-            return User_ID
-        else:
-            return self.get_user_id(User_ID+1)
 
 
 class Login(LoginSection):

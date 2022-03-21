@@ -24,8 +24,8 @@ import re
 import os
 
 
-__all__ = ['binary_insertion_sort, save_zeta_to_file', 'save_zeta_zeroes_to_file',
-        'save_zeta_values_to_file']
+__all__ = ['binary_insertion_sort, save_zeta_to_file',
+        'save_zeta_zeroes_to_file', 'save_zeta_values_to_file']
 
 
 # binary
@@ -58,7 +58,7 @@ def binary_search(data, target):
                 raise ValueError('Error: Input list was not a set')
 
 
-def binary_insertion_sort(data):
+def binary_insertion_sort(data, descending=False):
 
     """
     Sorts a list of data into ascending order using a binary insertion sort
@@ -77,7 +77,10 @@ def binary_insertion_sort(data):
         del sorted[index:]
         sorted.append(item)
         sorted.extend(bigger)
-    return sorted
+    if not descending:
+        return sorted
+    else:
+        return sorted[::-1]
 
 
 class Queue:
@@ -101,7 +104,8 @@ class Queue:
         else:
             self.max_size = len(self.input_queue)
         if self.size > self.max_size:
-            raise IndexError("max_size must be greater than or equal to the size of the input queue")
+            raise IndexError("max_size must be greater than or equal to the \
+                    size of the input queue")
         else:
             self.blanks = [False for i in range(self.max_size - self.size)]
             self.queue = self.input_queue + self.blanks
@@ -131,7 +135,7 @@ class Queue:
             raise IndexError("Tried to dequeue from an empty queue")
         else:
             item = self.queue[self.front]
-            self.queue[self.front] = False # not neccessary for computation but helps user readability
+            self.queue[self.front] = False
             self.front = (self.front+1) % self.max_size
             self.size -= 1
             return item
@@ -161,7 +165,8 @@ class Queue:
         return 'Queue(' + ', '.join([str(i) for i in self.queue]) + ')'
 
 
-def save_zeta_values_to_file(table_values, filepath, fieldnames=['InputReal', 'InputImag', 'OutputReal', 'OutputImag']):
+def save_zeta_values_to_file(table_values, filepath,
+        fieldnames=['InputReal', 'InputImag', 'OutputReal', 'OutputImag']):
 
     """
     Given a list of corresponding inputs and outputs of the zeta function,
@@ -173,13 +178,16 @@ def save_zeta_values_to_file(table_values, filepath, fieldnames=['InputReal', 'I
     # the save to file
     # also show a message saying that it has been saved to the file and
     # give file location
-    csv_values = [list(map(str, [input.real, input.imag, output.real, output.imag])) for input, output in table_values]
+    csv_values = [list(map(str,
+        [input.real, input.imag, output.real, output.imag]))
+        for input, output in table_values]
     regex = r'-?\d+\.\d+'
     index = 0
     save_zeta_to_file(csv_values, filepath, regex, index, fieldnames)
 
 
-def save_zeta_zeroes_to_file(table_values, filepath, fieldnames=['InputReal', 'InputImag', 'OutputReal', 'OutputImag']):
+def save_zeta_zeroes_to_file(table_values, filepath,
+        fieldnames=['InputReal', 'InputImag', 'OutputReal', 'OutputImag']):
 
     """
     Given a list of zeroes/roots of the zeta function,
@@ -207,7 +215,8 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
         for row in csv_reader:
             if row != fieldnames:
                 csv_values.append(list(map(str, row)))
-    sorting_dict = {list(map(float, re.findall(regex, ','.join(row))))[index]: row for row in csv_values}
+    sorting_dict = {list(map(float,
+        re.findall(regex, ','.join(row))))[index]: row for row in csv_values}
     sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
     sorted_values = [sorting_dict[key] for key in sorted_keys]
     with open(filepath, 'w') as csv_file:
@@ -216,21 +225,23 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
         for row in sorted_values:
             csv_writer.writerow(row)
 
-#  def change_datatype(value, datatype):
-    #  match str(datatype):
-        #  case 'int':
-            #  return int(value)
-        #  case 'str':
-            #  return str(value)
-        #  case 'float':
-            #  return float(value)
-        #  case 'bool':
-            #  return bool(value)
-        #  case 'list':
-            #  return list(value)
-        #  case 'complex':
-            #  return Complex(value)
-        #  case 'fraction':
-            #  return Fraction(value)
-        #  case _:
-            #  raise TypeError(f'Trying to change vlaue \'{value}\' to invalid datatype \'{datatype}\'')
+
+def change_datatype(value, datatype):
+    match str(datatype):
+        case 'int':
+            return int(value)
+        case 'str':
+            return str(value)
+        case 'float':
+            return float(value)
+        case 'bool':
+            return bool(value)
+        case 'list':
+            return list(value)
+        case 'complex':
+            return Complex(value)
+        case 'fraction':
+            return Fraction(value)
+        case _:
+            raise TypeError(f'Trying to change vlaue \'{value}\' \
+                    to invalid datatype \'{datatype}\'')

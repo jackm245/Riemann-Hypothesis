@@ -48,7 +48,8 @@ def zeta(s, t=100):
     """
     Riemann Zeta Function
     \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}
-             = \frac{1}{1-2^{1-s}}\sum_{n=0}^{\infty} \frac{1}{2^{n+1}} \sum_{k=0}^{n} (-1)^k {n \choose k}(k+1)^{-s}
+             = \frac{1}{1-2^{1-s}}\sum_{n=0}^{\infty} \frac{1}{2^{n+1}}
+             \sum_{k=0}^{n} (-1)^k {n \choose k}(k+1)^{-s}
 
     """
 
@@ -107,7 +108,8 @@ def exponential_integral(x, minfloat=1e-7, maxfloat=10000):
     def f(t):
         return np.exp(t) / t
     if x > 0:
-        return (integrate.quad(f, -maxfloat, -minfloat)[0] + integrate.quad(f, minfloat, x)[0])
+        return (integrate.quad(f, -maxfloat, -minfloat)[0]
+                + integrate.quad(f, minfloat, x)[0])
     else:
         return integrate.quad(f, -maxfloat, x)[0]
 
@@ -126,7 +128,8 @@ def prime_power_function(N):
 
     """
     Prime Power Function
-    \Pi(N) = \pi(N) + \frac{1}{2}\pi(N^{\frac{1}{2}}) + \frac{1}{3}\pi(N^{\frac{1}{3}}) + \dots
+    \Pi(N) = \pi(N) + \frac{1}{2}\pi(N^{\frac{1}{2}}) +
+             \frac{1}{3}\pi(N^{\frac{1}{3}}) + \dots
            =  \sum_{r=1}^{\lfloor log_2  N\rfloor} \pi(N^{\frac{1}{r}})
     """
 

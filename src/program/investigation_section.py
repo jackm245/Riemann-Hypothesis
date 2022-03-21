@@ -11,12 +11,12 @@ Includes the ... Screens
 import sys
 import matplotlib
 import numpy as np
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_zeta_id, database_print
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen
+from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen
 
 
 class InvestigationSection(Screen):
@@ -89,6 +89,10 @@ class InvestigationSection(Screen):
         if self.table_values:
             self.table_calculator_2 = TableCalculator2(self.table_values)
             self.hide()
+
+    def goto_calculator_leaderboard(self):
+        self.calculator_leaderboard = CalculatorLeaderboard()
+        self.hide()
 
 
 class CalculateZeroes2(InvestigationSection):
@@ -189,6 +193,55 @@ class ZeroesScreen(InvestigationSection):
         self.show()
 
 
+class CalculatorLeaderboard(InvestigationSection):
+
+    """
+    The CalculatorLeaderboard class is used to display how many zeta values
+    been calculated by each user
+    """
+
+    def __init__(self):
+        super(CalculatorLeaderboard, self).__init__()
+        self.ui = Ui_CalculatorLeaderboardScreen()
+        self.ui.setupUi(self)
+        self.get_rows()
+        self.sort_rows()
+        self.ui.SingleTab.clicked.connect(self.goto_single)
+        self.ui.TableTab.clicked.connect(self.goto_table_calculator)
+        self.ui.PrevButton.clicked.connect(self.goto_table_calculator)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.ZetaTable.setRowCount(len(self.sorted_rows))
+        for i, row in enumerate(self.sorted_rows):
+            for j in range(len(row)):
+                self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(row[j])))
+        self.ui.ZetaTable.horizontalHeader().setStretchLastSection(True)
+        self.ui.ZetaTable.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch)
+        self.ui.ZetaTable.setColumnWidth(1, 100)
+        self.show()
+
+    def get_rows(self):
+        self.rows = []
+        self.usernames = database_query('SELECT User_ID, Username FROM Users')
+        for id, name in self.usernames:
+            number_of_zeta_values_calculated = len(database_query(
+                    'SELECT Zeta_ID FROM UserZeta WHERE User_ID=?', [id]))
+            self.rows.append((name, number_of_zeta_values_calculated))
+
+    def sort_rows(self):
+        # sort rows by number of zeta values calculated
+        self.sorted_numbers = binary_insertion_sort(
+                set([row[-1] for row in self.rows]), descending=True)
+        self.sorted_rows = []
+        for _ in range(len(self.rows)):
+            for row in self.rows:
+                if row[-1] == self.sorted_numbers[0]:
+                    self.sorted_rows.append(row)
+                    self.rows.remove(row)
+                    if self.sorted_numbers[0] not in [row[-1] for row in self.rows]:
+                        del self.sorted_numbers[0]
+
+
 class TableCalculator2(InvestigationSection):
 
     """
@@ -205,13 +258,12 @@ class TableCalculator2(InvestigationSection):
         self.ui = Ui_TableCalculator2Screen()
         self.ui.setupUi(self)
         self.ui.SingleTab.clicked.connect(self.goto_single)
+        self.ui.LeaderboardTab.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.PrevButton.clicked.connect(self.goto_table_calculator)
-        self.ui.NextButton.clicked.connect(self.goto_calculator)
+        self.ui.NextButton.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.DatabaseButton.clicked.connect(self.saveto_database)
         self.ui.FileButton.clicked.connect(self.saveto_file)
-
         self.ui.ZetaTable.setRowCount(len(self.table_values))
-
         for i, values in enumerate(self.table_values):
             for j in range(len(values)):
                 self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(values[j])))
@@ -225,7 +277,18 @@ class TableCalculator2(InvestigationSection):
         self.show()
 
     def saveto_database(self):
-        pass
+        if User.GetUsername():
+            #  database_insert('Zeta', ['Zeta_ID', 'Input', 'Output'])
+            database_inputs = database_select(['Input'], ['Zeta'])
+            for input, output in self.table_values:
+                if input not in database_inputs:
+                    self.Zeta_ID = get_zeta_id()
+                    # only add to database if not already in database
+                    database_insert('Zeta', [self.Zeta_ID, str(input), str(output)])
+                    database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
+        else:
+            self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
+                    'save to the database')
 
     def saveto_file(self):
         filepath = 'files/zeta_values.csv'
@@ -246,8 +309,9 @@ class TableCalculator(InvestigationSection):
         self.ui = Ui_TableCalculatorScreen()
         self.ui.setupUi(self)
         self.ui.SingleTab.clicked.connect(self.goto_single)
+        self.ui.LeaderboardTab.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.PrevButton.clicked.connect(self.goto_single)
-        self.ui.NextButton.clicked.connect(self.goto_calculator)
+        self.ui.NextButton.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.CalculateButton.clicked.connect(self.goto_table_calculator_2)
         self.show()
 
@@ -261,15 +325,22 @@ class TableCalculator(InvestigationSection):
         if self.start_complex and self.step_complex:
             if 1 <= self.range <= 100:
                 self.ui.ErrorLabel.setText('')
-                self.input_values = [self.start_complex + self.step_complex * i for i in range(self.range)]
+                self.input_values = [
+                        self.start_complex + self.step_complex * i
+                        for i in range(self.range)]
                 zetas = [zeta(i) for i in self.input_values]
-                self.output_values = [complex(round(i.real, 3), round(i.imag, 3)) for i in zetas]
-                self.table_values =  list(zip(self.input_values, self.output_values))
+                self.output_values = [
+                        complex(round(i.real, 3),
+                        round(i.imag, 3)) for i in zetas]
+                self.table_values =  list(zip(
+                    self.input_values, self.output_values))
             else:
-                self.ui.ErrorLabel.setText('No. Of Values must be a positive integer between 1 and 100')
+                self.ui.ErrorLabel.setText('No. Of Values must be a positive \
+                        integer between 1 and 100')
                 self.table_values = False
         else:
-            self.ui.ErrorLabel.setText('Start Value and Step must be complex numbers of the form a+bi')
+            self.ui.ErrorLabel.setText('Start Value and Step must be complex \
+                    numbers of the form a+bi')
             self.table_values = False
 
 
@@ -289,6 +360,7 @@ class SingleCalculator(InvestigationSection):
         self.ui.setupUi(self)
         self.zeta_value = []
         self.ui.TableTab.clicked.connect(self.goto_table_calculator)
+        self.ui.LeaderboardTab.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.PrevButton.clicked.connect(self.goto_calculator)
         self.ui.NextButton.clicked.connect(self.goto_table_calculator)
         self.ui.CalculateButton.clicked.connect(self.calculate_zeta)
@@ -336,8 +408,7 @@ class Calculator(InvestigationSection):
         self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
         self.ui.PrimesTab.clicked.connect(self.goto_primes)
         self.ui.ZeroesTab.clicked.connect(self.goto_zeroes_screen)
-        self.ui.SingleButton.clicked.connect(self.goto_single)
-        self.ui.TableButton.clicked.connect(self.goto_table_calculator)
+        self.ui.ZetaCalculatorButton.clicked.connect(self.goto_single)
         self.show()
 
 

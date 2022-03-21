@@ -35,7 +35,7 @@ class Ui_SingleCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239,239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.SingleTab.setObjectName("SingleTab")
         self.TableTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,9 +45,19 @@ class Ui_SingleCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.TableTab.setObjectName("TableTab")
+        self.LeaderboardTab = QtWidgets.QPushButton(self.TabBar)
+        self.LeaderboardTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.LeaderboardTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.LeaderboardTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.LeaderboardTab.setObjectName("LeaderboardTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -60,7 +70,7 @@ class Ui_SingleCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -70,7 +80,7 @@ class Ui_SingleCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -79,7 +89,7 @@ class Ui_SingleCalculatorScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.EquationImage = QtWidgets.QLabel(self.MainWidget)
-        self.EquationImage.setGeometry(QtCore.QRect(110, 30, 1121, 201))
+        self.EquationImage.setGeometry(QtCore.QRect(110, 50, 1121, 201))
         self.EquationImage.setText("")
         self.EquationImage.setPixmap(QtGui.QPixmap("ui/investigation_screens/../../media/riemanns-functional-equation.png"))
         self.EquationImage.setObjectName("EquationImage")
@@ -116,23 +126,23 @@ class Ui_SingleCalculatorScreen(object):
 "text-decoration: underline;")
         self.OutputText.setObjectName("OutputText")
         self.DatabaseButton = QtWidgets.QPushButton(self.MainWidget)
-        self.DatabaseButton.setGeometry(QtCore.QRect(270, 460, 391, 70))
+        self.DatabaseButton.setGeometry(QtCore.QRect(440, 460, 200, 70))
         self.DatabaseButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.DatabaseButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.DatabaseButton.setObjectName("DatabaseButton")
         self.FileButton = QtWidgets.QPushButton(self.MainWidget)
-        self.FileButton.setGeometry(QtCore.QRect(680, 460, 391, 70))
+        self.FileButton.setGeometry(QtCore.QRect(700, 460, 200, 70))
         self.FileButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.FileButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.FileButton.setObjectName("FileButton")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
@@ -141,13 +151,13 @@ class Ui_SingleCalculatorScreen(object):
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
         self.CalculateButton = QtWidgets.QPushButton(self.MainWidget)
-        self.CalculateButton.setGeometry(QtCore.QRect(560, 279, 221, 141))
+        self.CalculateButton.setGeometry(QtCore.QRect(570, 350, 200, 70))
         self.CalculateButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.CalculateButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.CalculateButton.setObjectName("CalculateButton")
         self.PrevButton.raise_()
@@ -172,6 +182,7 @@ class Ui_SingleCalculatorScreen(object):
         self.Title.setText(_translate("SingleCalculatorScreen", "Calculator"))
         self.SingleTab.setText(_translate("SingleCalculatorScreen", "Single"))
         self.TableTab.setText(_translate("SingleCalculatorScreen", "Table"))
+        self.LeaderboardTab.setText(_translate("SingleCalculatorScreen", "Leaderboard"))
         self.PrevButton.setText(_translate("SingleCalculatorScreen", "Prev"))
         self.NextButton.setText(_translate("SingleCalculatorScreen", "Next"))
         self.SubTitleText.setText(_translate("SingleCalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Single Zeta Calculation</span></p></body></html>"))
@@ -180,8 +191,7 @@ class Ui_SingleCalculatorScreen(object):
         self.DatabaseButton.setText(_translate("SingleCalculatorScreen", "Save to database"))
         self.FileButton.setText(_translate("SingleCalculatorScreen", "Save to file"))
         self.ErrorLabel.setText(_translate("SingleCalculatorScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
-        self.CalculateButton.setText(_translate("SingleCalculatorScreen", "Calculate\n"
-"🠖"))
+        self.CalculateButton.setText(_translate("SingleCalculatorScreen", "Calculate 🠖"))
 
 
 if __name__ == "__main__":

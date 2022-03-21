@@ -73,7 +73,7 @@
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(239, 239,239);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -97,11 +97,35 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
       <string>Table</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="LeaderboardTab">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Leaderboard</string>
      </property>
     </widget>
    </widget>
@@ -135,7 +159,7 @@ border-radius: 20px;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -159,7 +183,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -187,7 +211,7 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>30</y>
+       <y>50</y>
        <width>1121</width>
        <height>201</height>
       </rect>
@@ -280,9 +304,9 @@ text-decoration: underline;</string>
     <widget class="QPushButton" name="DatabaseButton">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>440</x>
        <y>460</y>
-       <width>391</width>
+       <width>200</width>
        <height>70</height>
       </rect>
      </property>
@@ -294,7 +318,7 @@ text-decoration: underline;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -304,9 +328,9 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QPushButton" name="FileButton">
      <property name="geometry">
       <rect>
-       <x>680</x>
+       <x>700</x>
        <y>460</y>
-       <width>391</width>
+       <width>200</width>
        <height>70</height>
       </rect>
      </property>
@@ -318,7 +342,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -345,10 +369,10 @@ font: 18pt &quot;Sans Serif&quot;;</string>
     <widget class="QPushButton" name="CalculateButton">
      <property name="geometry">
       <rect>
-       <x>560</x>
-       <y>279</y>
-       <width>221</width>
-       <height>141</height>
+       <x>570</x>
+       <y>350</y>
+       <width>200</width>
+       <height>70</height>
       </rect>
      </property>
      <property name="cursor">
@@ -359,12 +383,11 @@ font: 18pt &quot;Sans Serif&quot;;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Calculate
-🠖</string>
+      <string>Calculate 🠖</string>
      </property>
     </widget>
     <zorder>PrevButton</zorder>

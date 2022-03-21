@@ -30,7 +30,7 @@ class Ui_MainMenu(object):
         self.MainWidget.setSizePolicy(sizePolicy)
         self.MainWidget.setObjectName("MainWidget")
         self.SideWidget = QtWidgets.QWidget(self.MainWidget)
-        self.SideWidget.setGeometry(QtCore.QRect(-50, 0, 512, 900))
+        self.SideWidget.setGeometry(QtCore.QRect(-50, 0, 512, 720))
         self.SideWidget.setStyleSheet("background-color:rgb(69, 69, 69) ;\n"
 "border-radius:40px;")
         self.SideWidget.setObjectName("SideWidget")
