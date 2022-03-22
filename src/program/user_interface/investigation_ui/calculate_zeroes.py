@@ -29,13 +29,13 @@ class Ui_CalculateZeroesScreen(object):
         self.TabBar.setStyleSheet("background-color: rgb(239, 239, 239);")
         self.TabBar.setObjectName("TabBar")
         self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
-        self.ZeroesTab.setGeometry(QtCore.QRect(10, 5, 401, 70))
+        self.ZeroesTab.setGeometry(QtCore.QRect(10, 5, 220, 70))
         self.ZeroesTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ZeroesTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239,239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.ZeroesTab.setObjectName("ZeroesTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
@@ -50,7 +50,7 @@ class Ui_CalculateZeroesScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -60,14 +60,14 @@ class Ui_CalculateZeroesScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.NoOfZeroesInput = QtWidgets.QLineEdit(self.MainWidget)
         self.NoOfZeroesInput.setGeometry(QtCore.QRect(405, 190, 531, 81))
         self.NoOfZeroesInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\";\n"
+"font: 18pt \"Sans Serif\";\n"
 "border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);")
@@ -80,13 +80,13 @@ class Ui_CalculateZeroesScreen(object):
 "text-decoration: underline;")
         self.NoOfZeroesText.setObjectName("NoOfZeroesText")
         self.CalculateButton = QtWidgets.QPushButton(self.MainWidget)
-        self.CalculateButton.setGeometry(QtCore.QRect(560, 390, 221, 140))
+        self.CalculateButton.setGeometry(QtCore.QRect(590, 400, 141, 91))
         self.CalculateButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.CalculateButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.CalculateButton.setObjectName("CalculateButton")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
@@ -105,7 +105,7 @@ class Ui_CalculateZeroesScreen(object):
         self.ZeroesTab.setText(_translate("CalculateZeroesScreen", "Zeroes Calculator"))
         self.PrevButton.setText(_translate("CalculateZeroesScreen", "Prev"))
         self.NextButton.setText(_translate("CalculateZeroesScreen", "Next"))
-        self.NoOfZeroesInput.setPlaceholderText(_translate("CalculateZeroesScreen", "Enter Number of Zeroes"))
+        self.NoOfZeroesInput.setPlaceholderText(_translate("CalculateZeroesScreen", "    Enter Number of Zeroes"))
         self.NoOfZeroesText.setText(_translate("CalculateZeroesScreen", "<html><head/><body><p align=\"right\"><span style=\" font-weight:600;\">How many zeroes would you like to calculate?</span></p></body></html>"))
         self.CalculateButton.setText(_translate("CalculateZeroesScreen", "Calculate\n"
 "🠖"))

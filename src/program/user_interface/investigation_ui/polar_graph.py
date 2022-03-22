@@ -35,7 +35,7 @@ class Ui_PolarGraphScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.PolarTab.setObjectName("PolarTab")
         self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,7 +45,7 @@ class Ui_PolarGraphScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ZeroesTab.setObjectName("ZeroesTab")
         self.PrimeTab = QtWidgets.QPushButton(self.TabBar)
@@ -55,7 +55,7 @@ class Ui_PolarGraphScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrimeTab.setObjectName("PrimeTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
@@ -70,7 +70,7 @@ class Ui_PolarGraphScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -80,7 +80,7 @@ class Ui_PolarGraphScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.GraphButton = QtWidgets.QPushButton(self.MainWidget)
@@ -90,7 +90,7 @@ class Ui_PolarGraphScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.GraphButton.setObjectName("GraphButton")
         self.GraphInput = QtWidgets.QLineEdit(self.MainWidget)

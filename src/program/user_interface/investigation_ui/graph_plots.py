@@ -35,7 +35,7 @@ class Ui_GraphPlotsScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.GraphsTab.setObjectName("GraphsTab")
         self.PrimesTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,7 +45,7 @@ class Ui_GraphPlotsScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrimesTab.setObjectName("PrimesTab")
         self.CalculatorTab = QtWidgets.QPushButton(self.TabBar)
@@ -55,7 +55,7 @@ class Ui_GraphPlotsScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.CalculatorTab.setObjectName("CalculatorTab")
         self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
@@ -65,7 +65,7 @@ class Ui_GraphPlotsScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ZeroesTab.setObjectName("ZeroesTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
@@ -80,7 +80,7 @@ class Ui_GraphPlotsScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -90,17 +90,17 @@ class Ui_GraphPlotsScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.GraphPlotsButton = QtWidgets.QPushButton(self.MainWidget)
-        self.GraphPlotsButton.setGeometry(QtCore.QRect(520, 460, 291, 70))
+        self.GraphPlotsButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
         self.GraphPlotsButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.GraphPlotsButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.GraphPlotsButton.setObjectName("GraphPlotsButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -135,7 +135,7 @@ class Ui_GraphPlotsScreen(object):
         self.NextButton.setText(_translate("GraphPlotsScreen", "Next"))
         self.GraphPlotsButton.setText(_translate("GraphPlotsScreen", "Graphs Plots"))
         self.SubTitleText.setText(_translate("GraphPlotsScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Visualising the Riemann Hypothesis</span></p></body></html>"))
-        self.MainText.setText(_translate("GraphPlotsScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
+        self.MainText.setText(_translate("GraphPlotsScreen", "<html><head/><body><p>As mentioned in the Investigation Section, there are numerous ways that the Riemann Hypothesiscan be visualised.</p><p>The main way of visualsing the Riemann Hypothesis is through the use of graphs, allowing for a visual representation of many different mathematical functions.</p><p>One of the most famous graphs of the Riemann Hypothesis is the polar graph of the Riemann Zeta Function, along the line Re(s) = 0.5. Polar Graphs allow for complex (2 dimensional) numbers to be represented visually. Unlike usual graphs where the x axis is the input to the function, and the y-axis is the output, the polar graph is only capable of displaying the output of the function, however, if the input domain is already defined and known, then this is not an issue<br/></p><p>Another graph used is the graph of the zeta zeroes. This graph plots complex numbers on an argand diagram, where these complex numbers are the roots, or zeroes of the Riemann Zeta Function. If that input is passed into the Riemann Zeta Function, and produces a result of 0, then that point is plotted onto the Graph.</p><p><br/></p><p>The last graph I am using to visualise the Riemann Hypothesis is the graph of the Prime Counting Function, and other functions that are used to approximate this. This allows you to visualsie Carl Gauss\' Prime Number Theorem, describing the distribution of prime numbers - A theorem that was proved using the Riemann Hypthesis</p><p><br/></p></body></html>"))
         self.ErrorLabel.setText(_translate("GraphPlotsScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
