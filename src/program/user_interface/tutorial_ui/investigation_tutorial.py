@@ -272,7 +272,7 @@ class Ui_InvestigationTutorialScreen(object):
         self.MText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">M:</span></p></body></html>"))
         self.CText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">C:</span></p></body></html>"))
         self.GraphButton.setText(_translate("InvestigationTutorialScreen", "Graph"))
-        self.MainText_2.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p>There will also be many oppurtunities to answer questions during this section. We\'ll start off easy, write in the box: What is 1+1?</p></body></html>"))
+        self.MainText_2.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p>There will also be many opportunities to answer questions during this section. We\'ll start off easy, write in the box: What is 1+1?</p></body></html>"))
         self.QuestionInput.setPlaceholderText(_translate("InvestigationTutorialScreen", "   1+1 = "))
         self.SubmitButton.setText(_translate("InvestigationTutorialScreen", "Submit"))
         self.MessageLabel.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))

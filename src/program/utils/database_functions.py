@@ -62,17 +62,19 @@ def database_query(query, values=[], database='database.db'):
 
 
 def database_print():
+    print('='*12)
+    print('= DATABASE =')
+    print('='*12)
     tables = [table[0] for table in database_query("""SELECT name FROM sqlite_master
     WHERE type='table';""")]
     for table in tables:
         name = f"- Table: {table} -"
         border = '-' * len(name)
-        print(border)
-        print(name)
-        print(border)
+        print(f'{border}\n{name}\n{border}')
         rows = database_select(['*'], [table])
         for row in rows:
             print(row)
+    print('=' * 20)
 
 
 def create_users_table():
@@ -232,31 +234,5 @@ def get_id(ID, table):
     IDs = set([row[0] for row in selection])
     ID_Number = get_next_id(IDs)
     return ID_Number
-
-
-#  def get_user_id():
-    #  selection = database_select(['User_ID'], ['Users'])
-    #  User_IDs = set([row[0] for row in selection])
-    #  User_ID = get_next_id(User_IDs)
-    #  return User_ID
-
-
-#  def get_zeta_id():
-    #  selection = database_select(['Zeta_ID'], ['Zeta'])
-    #  Zeta_IDs = set([row[0] for row in selection])
-    #  Zeta_ID = get_next_id(Zeta_IDs)
-    #  return Zeta_ID
-
-
-#  def get_zeta_zero_id():
-    #  selection = database_select(['Zeta_Zero_ID'], ['ZetaZero'])
-    #  Zeta_Zero_IDs = set([row[0] for row in selection])
-    #  Zeta_ID = get_next_id(Zeta_IDs)
-    #  return Zeta_ID
-
-# these can be improbed
-# make 1 function where it tales what it wants as a paramter
-#  database_query("DROP TABLE UserZetaZeroes")
-#  database_query("DROP TABLE ZetaZeroes")
 
 database_print()

@@ -4,3 +4,4 @@ from .introduction_tutorial import Ui_IntroductionTutorialScreen
 from .investigation_tutorial import Ui_InvestigationTutorialScreen
 from .login_tutorial import Ui_LoginTutorialScreen
 from .summary_tutorial import Ui_SummaryTutorialScreen
+from .graph_mat_plot import Ui_GraphMatPlotScreen

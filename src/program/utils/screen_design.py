@@ -38,12 +38,15 @@ class Screen(QtWidgets.QDialog):
         self.main_menu = MainMenu()
         self.hide()
 
+    def center_text(self, text):
+        return f'<html><head/><body><p align=\"center\">{text}</p></body></html>'
+
 
 class MplWidget(Screen):
     """ A Matplotlib Widget """
 
     def __init__(self, parent=None):
-        super(MplWidget, self).__init__(parent)
+        super(MplWidget, self).__init__()
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
         self.axes = self.figure.add_subplot(111)
@@ -52,26 +55,37 @@ class MplWidget(Screen):
         self.layoutvertical.addWidget(self.canvas)
 
 
-class GraphScreen(Screen):
+class StaticGraphScreen(Screen):
 
     """
     Graph Screen
     """
 
     def __init__(self):
-        super(GraphScreen, self).__init__()
-        self.init_widget()
-        self.timer = QtCore.QTimer(self)
-        self.timer.timeout.connect(self.update_figure)
-        self.timer.start(100)
+        super(StaticGraphScreen, self).__init__()
+        #  self.init_widget()
         self.x_vals = []
         self.y_vals= []
-        self.count = 0
 
     def init_widget(self):
         self.matplotlibwidget = MplWidget()
         self.layoutvertical = QtWidgets.QVBoxLayout(self)
         self.layoutvertical.addWidget(self.matplotlibwidget)
+
+class DynamicGraphScreen(StaticGraphScreen):
+
+    """
+    Graph Screen
+    """
+
+    def __init__(self):
+        super(DynamicGraphScreen, self).__init__()
+        #  self.init_widget()
+        self.timer = QtCore.QTimer(self)
+        self.timer.timeout.connect(self.update_figure)
+        self.timer.start(100)
+        self.count = 0
+
 
     def update_figure(self):
         self.x_vals.append(self.count)

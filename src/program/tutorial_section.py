@@ -9,9 +9,9 @@ Includes the Program Structure, Login, Introduction, Investigation
 and Summary Tutorial Screens
 """
 
-from PyQt5 import QtWidgets
-from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen
-from .utils import User, Screen
+from PyQt5 import QtWidgets, QtCore
+from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen, Ui_GraphMatPlotScreen
+from .utils import User, Screen, StaticGraphScreen
 
 
 class TutorialSection(Screen):
@@ -148,6 +148,8 @@ class InvestigationTutorial(TutorialSection):
 
     def __init__(self):
         super(InvestigationTutorial, self).__init__()
+        self.gradient = 0
+        self.y_intercept = 0
         self.ui = Ui_InvestigationTutorialScreen()
         self.ui.setupUi(self)
         self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
@@ -160,51 +162,82 @@ class InvestigationTutorial(TutorialSection):
         self.ui.MSlider.valueChanged.connect(self.M_value_changed)
         self.ui.CSlider.valueChanged.connect(self.C_value_changed)
         self.ui.GraphButton.clicked.connect(self.graph)
+        self.ui.SubmitButton.clicked.connect(self.submit)
         self.show()
 
     def M_value_changed(self):
         self.gradient = self.ui.MSlider.value()
-        self.ui.MDisplay.setText(' ' * 7 + str(self.gradient))
+        self.ui.MDisplay.setText(self.center_text(str(self.gradient)))
 
     def C_value_changed(self):
         self.y_intercept = self.ui.CSlider.value()
-        self.ui.CDisplay.setText(' ' * 7 + str(self.y_intercept))
+        self.ui.CDisplay.setText(self.center_text(str(self.y_intercept)))
 
     def graph(self):
-        self.plot = GraphMatPlot()
+        self.plot = GraphMatPlot(self.gradient, self.y_intercept)
+
+    def submit(self):
+        self.answer = self.ui.QuestionInput.text()
+        if self.answer == '2':
+            self.ui.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+                    "font: 18pt \"Sans Serif\";")
+            self.ui.MessageLabel.setText(self.center_text('Correct!'))
+        else:
+            self.ui.MessageLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+                    "font: 18pt \"Sans Serif\";")
+            self.ui.MessageLabel.setText(self.center_text('That is incorrect, try again'))
 
 
-class GraphMatPlot(InvestigationTutorial):
+
+class GraphMatPlot(StaticGraphScreen):
 
     """
     Graph Mat Plot
     """
 
-    def __init__(self):
+    def __init__(self, gradient, y_intercept):
         super(GraphMatPlot, self).__init__()
+        self.y_intercept = y_intercept
+        self.gradient = gradient
         self.ui = Ui_GraphMatPlotScreen()
         self.init_widget()
-        self.timer = QtCore.QTimer(self)
-        self.timer.timeout.connect(self.update_figure)
-        self.timer.start(100)
-        self.x_vals = []
-        self.y_vals= []
+        self.x_vals = list(range(21))
+        self.y_vals= [self.gradient * num + self.y_intercept for num in self.x_vals]
         self.count = 0
         self.show()
+        self.graph()
 
-    def init_widget(self):
-        self.matplotlibwidget = MplWidget()
-        self.layoutvertical = QtWidgets.QVBoxLayout(self)
-        self.layoutvertical.addWidget(self.matplotlibwidget)
+    def get_label(self, value, gradient=False):
+        if gradient:
+            match value:
+                case -1:
+                    return '-x'
+                case 0:
+                    return ''
+                case 1:
+                    return 'x'
+                case _:
+                    return f'{value}x'
+        elif value == 0:
+            if self.gradient == 0:
+                return '0'
+            else:
+                return ''
+        elif value > 0 and self.gradient != 0:
+            return f'+{value}'
+        else:
+            return str(value)
 
-    def update_figure(self):
-        self.x_vals.append(self.count)
-        self.y_vals.append(self.gradient * self.count + self.y_intercept)
+    def graph(self):
+        self.gradient_label = self.get_label(self.gradient, True)
+        self.intercept_label = self.get_label(self.y_intercept, False)
         self.matplotlibwidget.axes.cla()
-        self.matplotlibwidget.axes.plot(self.x_vals, self.y_vals, label=f'y={self.gradient}x+{self.y_intercept}', color='blue')
+        self.matplotlibwidget.axes.plot(
+                self.x_vals, self.y_vals,
+                label=f'y={self.gradient_label}{self.intercept_label}',
+                color='blue')
         self.matplotlibwidget.axes.legend(loc='upper left')
         self.matplotlibwidget.canvas.draw()
-        self.count += 1
 
 
 class SummaryTutorial(TutorialSection):
