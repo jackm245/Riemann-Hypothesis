@@ -61,14 +61,15 @@ def database_query(query, values=[], database='database.db'):
     return rows
 
 
-# delete when done and remove where imported
 def database_print():
-    tables = ['Users', 'Questions', 'Answers', 'UserAnswer', 'Notes', 'Responses',
-            'Zeta', 'UserZeta']
+    tables = [table[0] for table in database_query("""SELECT name FROM sqlite_master
+    WHERE type='table';""")]
     for table in tables:
-        print('-------------')
-        print(f"Table: {table}")
-        print('-------------')
+        name = f"- Table: {table} -"
+        border = '-' * len(name)
+        print(border)
+        print(name)
+        print(border)
         rows = database_select(['*'], [table])
         for row in rows:
             print(row)
@@ -163,6 +164,27 @@ def create_user_zeta_table():
     )""")
 
 
+def create_zeroes_table():
+
+    """ Create the Zeroes table in the database """
+
+    database_query(""" CREATE TABLE Zeroes(
+    Zero_ID integer PRIMARY KEY,
+    Zero_Real_Input real,
+    Zero_Imag_Input real
+    )""")
+
+
+def create_user_zeroes_table():
+
+    """ Create the User Zeta Zeroes table in the database """
+
+    database_query(""" CREATE TABLE UserZeroes(
+    Zero_ID integer PRIMARY KEY,
+    User_ID integer
+    )""")
+
+
 def create_database(database='database.db'):
 
     """
@@ -180,6 +202,8 @@ def create_database(database='database.db'):
         create_responses_table()
         create_zeta_table()
         create_user_zeta_table()
+        create_zeta_zeroes_table()
+        create_user_zeta_zeroes_table()
 
 
 def delete_database(database='database.db'):
@@ -192,35 +216,47 @@ def delete_database(database='database.db'):
 def reset_database(database='database.db'):
 
     """ clear all of the data from inside the database """
+
     delete_database()
     create_database()
 
 
-def get_next_user_id(User_IDs, User_ID=0):
-    if User_ID not in User_IDs:
-        return User_ID
+def get_next_id(IDs, ID=0):
+    if ID not in IDs:
+        return ID
     else:
-        return get_next_user_id(User_IDs, User_ID+1)
+        return get_next_id(IDs, ID+1)
+
+def get_id(ID, table):
+    selection = database_select([ID], [table])
+    IDs = set([row[0] for row in selection])
+    ID_Number = get_next_id(IDs)
+    return ID_Number
 
 
-def get_user_id():
-    selection = database_select(['User_ID'], ['Users'])
-    User_IDs = set([row[0] for row in selection])
-    User_ID = get_next_user_id(User_IDs)
-    return User_ID
+#  def get_user_id():
+    #  selection = database_select(['User_ID'], ['Users'])
+    #  User_IDs = set([row[0] for row in selection])
+    #  User_ID = get_next_id(User_IDs)
+    #  return User_ID
 
 
-def get_next_zeta_id(Zeta_IDs, Zeta_ID=0):
-    if Zeta_ID not in Zeta_IDs:
-        return Zeta_ID
-    else:
-        return get_next_zeta_id(Zeta_IDs, Zeta_ID+1)
+#  def get_zeta_id():
+    #  selection = database_select(['Zeta_ID'], ['Zeta'])
+    #  Zeta_IDs = set([row[0] for row in selection])
+    #  Zeta_ID = get_next_id(Zeta_IDs)
+    #  return Zeta_ID
 
 
-def get_zeta_id():
-    selection = database_select(['Zeta_ID'], ['Zeta'])
-    Zeta_IDs = set([row[0] for row in selection])
-    Zeta_ID = get_next_zeta_id(Zeta_IDs)
-    return Zeta_ID
+#  def get_zeta_zero_id():
+    #  selection = database_select(['Zeta_Zero_ID'], ['ZetaZero'])
+    #  Zeta_Zero_IDs = set([row[0] for row in selection])
+    #  Zeta_ID = get_next_id(Zeta_IDs)
+    #  return Zeta_ID
+
+# these can be improbed
+# make 1 function where it tales what it wants as a paramter
+#  database_query("DROP TABLE UserZetaZeroes")
+#  database_query("DROP TABLE ZetaZeroes")
 
 database_print()

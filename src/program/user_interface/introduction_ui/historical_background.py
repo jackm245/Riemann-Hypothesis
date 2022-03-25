@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/introduction_screens/introduction.ui'
+# Form implementation generated from reading ui file 'ui/introduction_screens/historical_background.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_IntroductionScreen(object):
-    def setupUi(self, IntroductionScreen):
-        IntroductionScreen.setObjectName("IntroductionScreen")
-        IntroductionScreen.resize(1340, 723)
-        IntroductionScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(IntroductionScreen)
+class Ui_HistoricalBackgroundScreen(object):
+    def setupUi(self, HistoricalBackgroundScreen):
+        HistoricalBackgroundScreen.setObjectName("HistoricalBackgroundScreen")
+        HistoricalBackgroundScreen.resize(1340, 723)
+        HistoricalBackgroundScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(HistoricalBackgroundScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_IntroductionScreen(object):
         self.IntroductionTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.IntroductionTab.setObjectName("IntroductionTab")
         self.HistoricalBackgroundLabel = QtWidgets.QLabel(self.TabBar)
@@ -43,8 +43,8 @@ class Ui_IntroductionScreen(object):
         self.HistoricalBackgroundLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.HistoricalBackgroundLabel.setObjectName("HistoricalBackgroundLabel")
         self.HistoricalBackgroundTab = QtWidgets.QPushButton(self.TabBar)
@@ -140,28 +140,28 @@ class Ui_IntroductionScreen(object):
         self.PrevButton.raise_()
         self.NextButton.raise_()
 
-        self.retranslateUi(IntroductionScreen)
-        QtCore.QMetaObject.connectSlotsByName(IntroductionScreen)
+        self.retranslateUi(HistoricalBackgroundScreen)
+        QtCore.QMetaObject.connectSlotsByName(HistoricalBackgroundScreen)
 
-    def retranslateUi(self, IntroductionScreen):
+    def retranslateUi(self, HistoricalBackgroundScreen):
         _translate = QtCore.QCoreApplication.translate
-        IntroductionScreen.setWindowTitle(_translate("IntroductionScreen", "Visualising the Riemann Hypothesis - Introduction"))
-        self.Title.setText(_translate("IntroductionScreen", "Introduction"))
-        self.IntroductionTab.setText(_translate("IntroductionScreen", "Introduction"))
-        self.HistoricalBackgroundLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">Historical<br>Background</p></body></html>"))
-        self.WhatIsTheRHLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">What is the<br>Riemann Hypothesis</p></body></html>"))
-        self.PracticalApplicationsLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">Practical<br>Applications</p></body></html>"))
-        self.PrevButton.setText(_translate("IntroductionScreen", "Prev"))
-        self.NextButton.setText(_translate("IntroductionScreen", "Next"))
-        self.SubTitleText.setText(_translate("IntroductionScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Introduction</span></p></body></html>"))
-        self.MainText.setText(_translate("IntroductionScreen", "<html><head/><body><p>..</p></body></html>"))
+        HistoricalBackgroundScreen.setWindowTitle(_translate("HistoricalBackgroundScreen", "Visualising the Riemann Hypothesis - Introduction"))
+        self.Title.setText(_translate("HistoricalBackgroundScreen", "Introduction"))
+        self.IntroductionTab.setText(_translate("HistoricalBackgroundScreen", "Introduction"))
+        self.HistoricalBackgroundLabel.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p align=\"center\">Historical<br>Background</p></body></html>"))
+        self.WhatIsTheRHLabel.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p align=\"center\">What is the<br>Riemann Hypothesis</p></body></html>"))
+        self.PracticalApplicationsLabel.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p align=\"center\">Practical<br>Applications</p></body></html>"))
+        self.PrevButton.setText(_translate("HistoricalBackgroundScreen", "Prev"))
+        self.NextButton.setText(_translate("HistoricalBackgroundScreen", "Next"))
+        self.SubTitleText.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Historical Background</span></p></body></html>"))
+        self.MainText.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p>The Riemann Hypothesis originates from a mathematical problem from hundreds of years back. In the 1730\'s, Leonhard Euler (A very smart mathematician), has been investigating the function that went on to be known as the Riemann Zeta Function. In 1737, Euler was able to prove that this function could be written as a product of prime numbers, this is known as Euler\'s product formula.</p><p>In 1859, Bernhard Riemann publsihed a paper \'On the Number of Primes Less Than a Given Magnitude\'. In this paper, he investigates the function previously looked at by Euler, but extends its definition to include Complex Numbers, as well as Real Numbers. It is in this paper that the Riemann Hypothesis was born. The Riemann Hypothesis states that the Riemann zeta function has its zeros only at the negative even integers and complex numbers with real part 0.5.</p><p>In 1900, the mathematician David Hibert released a list of mathematical problems that were all unsolved at the time. He called for other mathematicians to try and solve these problems. These problems included the a Proof of the Riemann Hypothesis, and many problems relating to it; many of which are still unsolved to this day</p><p>In 1915, GH Hardy managed to prove that there were an inifinite amount of numbers for which the Riemann Hypothesis was true, this showed that proving the Riemann Hypothesis would require a full proof, rather than a proof by exhaustion. </p><p>In 1986 van de Lune, te Riele &amp; Winter managed to find values for 1500000001 Zeta Zeroes.</p><p>Then in 2000, the Clay Mathematics Institure named the Riemann Hypothesis as one of their \'Millenium Problems\', with a reward of $1,000,000 for anyone who manages to prove it.</p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    IntroductionScreen = QtWidgets.QDialog()
-    ui = Ui_IntroductionScreen()
-    ui.setupUi(IntroductionScreen)
-    IntroductionScreen.show()
+    HistoricalBackgroundScreen = QtWidgets.QDialog()
+    ui = Ui_HistoricalBackgroundScreen()
+    ui.setupUi(HistoricalBackgroundScreen)
+    HistoricalBackgroundScreen.show()
     sys.exit(app.exec_())

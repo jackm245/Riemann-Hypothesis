@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/introduction_screens/introduction.ui'
+# Form implementation generated from reading ui file 'ui/introduction_screens/what_is_the_riemann_hypothesis.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_IntroductionScreen(object):
-    def setupUi(self, IntroductionScreen):
-        IntroductionScreen.setObjectName("IntroductionScreen")
-        IntroductionScreen.resize(1340, 723)
-        IntroductionScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(IntroductionScreen)
+class Ui_WhatIsTheRiemannHypothesisScreen(object):
+    def setupUi(self, WhatIsTheRiemannHypothesisScreen):
+        WhatIsTheRiemannHypothesisScreen.setObjectName("WhatIsTheRiemannHypothesisScreen")
+        WhatIsTheRiemannHypothesisScreen.resize(1340, 723)
+        WhatIsTheRiemannHypothesisScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(WhatIsTheRiemannHypothesisScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_IntroductionScreen(object):
         self.IntroductionTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.IntroductionTab.setObjectName("IntroductionTab")
         self.HistoricalBackgroundLabel = QtWidgets.QLabel(self.TabBar)
@@ -70,8 +70,8 @@ class Ui_IntroductionScreen(object):
         self.WhatIsTheRHLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.WhatIsTheRHLabel.setObjectName("WhatIsTheRHLabel")
         self.PracticalApplicationsLabel = QtWidgets.QLabel(self.TabBar)
@@ -125,7 +125,7 @@ class Ui_IntroductionScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 381, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 561, 41))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
@@ -140,28 +140,28 @@ class Ui_IntroductionScreen(object):
         self.PrevButton.raise_()
         self.NextButton.raise_()
 
-        self.retranslateUi(IntroductionScreen)
-        QtCore.QMetaObject.connectSlotsByName(IntroductionScreen)
+        self.retranslateUi(WhatIsTheRiemannHypothesisScreen)
+        QtCore.QMetaObject.connectSlotsByName(WhatIsTheRiemannHypothesisScreen)
 
-    def retranslateUi(self, IntroductionScreen):
+    def retranslateUi(self, WhatIsTheRiemannHypothesisScreen):
         _translate = QtCore.QCoreApplication.translate
-        IntroductionScreen.setWindowTitle(_translate("IntroductionScreen", "Visualising the Riemann Hypothesis - Introduction"))
-        self.Title.setText(_translate("IntroductionScreen", "Introduction"))
-        self.IntroductionTab.setText(_translate("IntroductionScreen", "Introduction"))
-        self.HistoricalBackgroundLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">Historical<br>Background</p></body></html>"))
-        self.WhatIsTheRHLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">What is the<br>Riemann Hypothesis</p></body></html>"))
-        self.PracticalApplicationsLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">Practical<br>Applications</p></body></html>"))
-        self.PrevButton.setText(_translate("IntroductionScreen", "Prev"))
-        self.NextButton.setText(_translate("IntroductionScreen", "Next"))
-        self.SubTitleText.setText(_translate("IntroductionScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Introduction</span></p></body></html>"))
-        self.MainText.setText(_translate("IntroductionScreen", "<html><head/><body><p>..</p></body></html>"))
+        WhatIsTheRiemannHypothesisScreen.setWindowTitle(_translate("WhatIsTheRiemannHypothesisScreen", "Visualising the Riemann Hypothesis - Introduction"))
+        self.Title.setText(_translate("WhatIsTheRiemannHypothesisScreen", "Introduction"))
+        self.IntroductionTab.setText(_translate("WhatIsTheRiemannHypothesisScreen", "Introduction"))
+        self.HistoricalBackgroundLabel.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p align=\"center\">Historical<br>Background</p></body></html>"))
+        self.WhatIsTheRHLabel.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p align=\"center\">What is the<br>Riemann Hypothesis</p></body></html>"))
+        self.PracticalApplicationsLabel.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p align=\"center\">Practical<br>Applications</p></body></html>"))
+        self.PrevButton.setText(_translate("WhatIsTheRiemannHypothesisScreen", "Prev"))
+        self.NextButton.setText(_translate("WhatIsTheRiemannHypothesisScreen", "Next"))
+        self.SubTitleText.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p><span style=\" font-weight:600;\">What is the Riemann Hypothesis</span></p></body></html>"))
+        self.MainText.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p>In his 1859 Paper \'On the Number of Primes Less Than a Given Magnitude\', Bernhard Riemann explored and researched the prime numbers. He did this using the riemann zeta function, which is the sum from 1 to infinity of n to the power -s, where s is the input to the function. <br/></p><p>Riemann used a process called analytic continuation to allow this function to be true for not just all real numbers, but also imaginary and complex numbers. Imaginary numbers are denoted by the imaginary unit i, where i is the square root of -1, a number that is undefined using just the real numbers. A complex number is one that has a real part and an imaginary part. </p><p><br/>Riemann used complex numbers in the Riemann Zeta function and found something very interesting. First was that whenever the input to the function was a negative even integer, then the function always output 0. Second, was that the function will also output Zero when the imaginary part of the input is between zero and one. The first point was relatively easy to explain as to why it happened, leading to the negative even integers being known as the trivial zeroes for this function. However, the second point was a little bit harder to explain. Riemann managed to prove this point, but also noticed that these zeroes only occur when the imaginary part of the input is 1/2. This was not so easy to prove, and thus these zeroes were known as the nontrivial zeroes.</p><p>The Riemann Hypothesis states that \'the real part of every nontrivial zero of the Riemann Zeta Function is 1/2\'. </p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    IntroductionScreen = QtWidgets.QDialog()
-    ui = Ui_IntroductionScreen()
-    ui.setupUi(IntroductionScreen)
-    IntroductionScreen.show()
+    WhatIsTheRiemannHypothesisScreen = QtWidgets.QDialog()
+    ui = Ui_WhatIsTheRiemannHypothesisScreen()
+    ui.setupUi(WhatIsTheRiemannHypothesisScreen)
+    WhatIsTheRiemannHypothesisScreen.show()
     sys.exit(app.exec_())

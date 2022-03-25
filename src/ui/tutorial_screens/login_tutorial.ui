@@ -260,7 +260,7 @@ border-radius: 20px;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -284,7 +284,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -308,9 +308,30 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Login&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+    <widget class="QLabel" name="MainText">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>60</y>
+       <width>1251</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Login section of this program allows you to sign in to an account.&lt;/p&gt;&lt;p&gt;The different options you have are: &lt;/p&gt;&lt;p&gt;Login In&lt;/p&gt;&lt;p&gt;Sign Up&lt;/p&gt;&lt;p&gt;Forgotten Password&lt;/p&gt;&lt;p&gt;Reset Password&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Although you can use this program without an account, once you create and sign in to an account you will be able to use this program to it's full extent. When signed into an account, you will be able to answer questions on the Riemann Hypothesis, make your own notes, and participate to the leaderboard&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
     <zorder>SubTitleText</zorder>
     <zorder>PrevButton</zorder>
     <zorder>NextButton</zorder>
+    <zorder>MainText</zorder>
    </widget>
   </widget>
  </widget>

@@ -89,9 +89,9 @@ class Ui_SingleCalculatorScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.EquationImage = QtWidgets.QLabel(self.MainWidget)
-        self.EquationImage.setGeometry(QtCore.QRect(110, 50, 1121, 201))
+        self.EquationImage.setGeometry(QtCore.QRect(155, 70, 1031, 131))
         self.EquationImage.setText("")
-        self.EquationImage.setPixmap(QtGui.QPixmap("ui/investigation_screens/../../media/riemanns-functional-equation.png"))
+        self.EquationImage.setPixmap(QtGui.QPixmap("ui/investigation_screens/../../media/riemanns_functional_equation.png"))
         self.EquationImage.setObjectName("EquationImage")
         self.ZetaInput = QtWidgets.QLineEdit(self.MainWidget)
         self.ZetaInput.setGeometry(QtCore.QRect(170, 340, 371, 81))
@@ -114,14 +114,14 @@ class Ui_SingleCalculatorScreen(object):
         self.ZetaOutput.setText("")
         self.ZetaOutput.setObjectName("ZetaOutput")
         self.InputText = QtWidgets.QLabel(self.MainWidget)
-        self.InputText.setGeometry(QtCore.QRect(170, 260, 371, 61))
-        self.InputText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+        self.InputText.setGeometry(QtCore.QRect(230, 270, 261, 51))
+        self.InputText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;\n"
 "text-decoration: underline;")
         self.InputText.setObjectName("InputText")
         self.OutputText = QtWidgets.QLabel(self.MainWidget)
-        self.OutputText.setGeometry(QtCore.QRect(800, 250, 431, 71))
-        self.OutputText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+        self.OutputText.setGeometry(QtCore.QRect(860, 250, 301, 61))
+        self.OutputText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;\n"
 "text-decoration: underline;")
         self.OutputText.setObjectName("OutputText")
@@ -146,7 +146,7 @@ class Ui_SingleCalculatorScreen(object):
 "")
         self.FileButton.setObjectName("FileButton")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
-        self.ErrorLabel.setGeometry(QtCore.QRect(400, 220, 541, 41))
+        self.ErrorLabel.setGeometry(QtCore.QRect(370, 210, 631, 41))
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
@@ -170,8 +170,8 @@ class Ui_SingleCalculatorScreen(object):
         self.OutputText.raise_()
         self.DatabaseButton.raise_()
         self.FileButton.raise_()
-        self.ErrorLabel.raise_()
         self.CalculateButton.raise_()
+        self.ErrorLabel.raise_()
 
         self.retranslateUi(SingleCalculatorScreen)
         QtCore.QMetaObject.connectSlotsByName(SingleCalculatorScreen)

@@ -116,7 +116,7 @@ class Ui_InvestigationTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -126,17 +126,130 @@ class Ui_InvestigationTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 311, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 311, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
+        self.MSlider = QtWidgets.QSlider(self.MainWidget)
+        self.MSlider.setGeometry(QtCore.QRect(400, 250, 181, 31))
+        self.MSlider.setMinimum(-10)
+        self.MSlider.setMaximum(10)
+        self.MSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.MSlider.setInvertedAppearance(False)
+        self.MSlider.setInvertedControls(False)
+        self.MSlider.setTickPosition(QtWidgets.QSlider.NoTicks)
+        self.MSlider.setObjectName("MSlider")
+        self.MainText = QtWidgets.QLabel(self.MainWidget)
+        self.MainText.setGeometry(QtCore.QRect(40, 70, 1251, 111))
+        self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setWordWrap(True)
+        self.MainText.setObjectName("MainText")
+        self.GraphText = QtWidgets.QLabel(self.MainWidget)
+        self.GraphText.setGeometry(QtCore.QRect(600, 170, 151, 61))
+        self.GraphText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.GraphText.setObjectName("GraphText")
+        self.CSlider = QtWidgets.QSlider(self.MainWidget)
+        self.CSlider.setGeometry(QtCore.QRect(760, 250, 181, 31))
+        self.CSlider.setMinimum(-10)
+        self.CSlider.setMaximum(10)
+        self.CSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.CSlider.setInvertedAppearance(False)
+        self.CSlider.setInvertedControls(False)
+        self.CSlider.setTickPosition(QtWidgets.QSlider.NoTicks)
+        self.CSlider.setObjectName("CSlider")
+        self.MText = QtWidgets.QLabel(self.MainWidget)
+        self.MText.setGeometry(QtCore.QRect(330, 220, 61, 61))
+        self.MText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MText.setObjectName("MText")
+        self.CText = QtWidgets.QLabel(self.MainWidget)
+        self.CText.setGeometry(QtCore.QRect(690, 220, 61, 61))
+        self.CText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.CText.setObjectName("CText")
+        self.GraphButton = QtWidgets.QPushButton(self.MainWidget)
+        self.GraphButton.setGeometry(QtCore.QRect(610, 290, 131, 51))
+        self.GraphButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.GraphButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.GraphButton.setObjectName("GraphButton")
+        self.MainText_2 = QtWidgets.QLabel(self.MainWidget)
+        self.MainText_2.setGeometry(QtCore.QRect(20, 350, 1041, 31))
+        self.MainText_2.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText_2.setWordWrap(True)
+        self.MainText_2.setObjectName("MainText_2")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(540, 380, 111, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setEchoMode(QtWidgets.QLineEdit.Normal)
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(690, 380, 131, 60))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(440, 450, 461, 71))
+        self.MessageLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setObjectName("MessageLabel")
+        self.MDisplay = QtWidgets.QLabel(self.MainWidget)
+        self.MDisplay.setGeometry(QtCore.QRect(430, 200, 120, 51))
+        self.MDisplay.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"")
+        self.MDisplay.setObjectName("MDisplay")
+        self.CDisplay = QtWidgets.QLabel(self.MainWidget)
+        self.CDisplay.setGeometry(QtCore.QRect(790, 200, 120, 51))
+        self.CDisplay.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"")
+        self.CDisplay.setObjectName("CDisplay")
         self.SubTitleText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.MSlider.raise_()
+        self.MainText.raise_()
+        self.GraphText.raise_()
+        self.CSlider.raise_()
+        self.MText.raise_()
+        self.CText.raise_()
+        self.GraphButton.raise_()
+        self.MainText_2.raise_()
+        self.QuestionInput.raise_()
+        self.SubmitButton.raise_()
+        self.MessageLabel.raise_()
+        self.MDisplay.raise_()
+        self.CDisplay.raise_()
 
         self.retranslateUi(InvestigationTutorialScreen)
         QtCore.QMetaObject.connectSlotsByName(InvestigationTutorialScreen)
@@ -154,6 +267,17 @@ class Ui_InvestigationTutorialScreen(object):
         self.PrevButton.setText(_translate("InvestigationTutorialScreen", "Prev"))
         self.NextButton.setText(_translate("InvestigationTutorialScreen", "Next"))
         self.SubTitleText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Investigation</span></p></body></html>"))
+        self.MainText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p>The Investigation Section is the main part of this program. It will allow you to conduct your own investigation into the Riemann Hypothesis and let you record your results, while asking you questions along the way</p><p>Lets get some practice with how this program will work. Slide the slides to adjust the equation, then press graph to display the graph. Change these values to see what happens.</p></body></html>"))
+        self.GraphText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">y=mx+c</span></p></body></html>"))
+        self.MText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">M:</span></p></body></html>"))
+        self.CText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">C:</span></p></body></html>"))
+        self.GraphButton.setText(_translate("InvestigationTutorialScreen", "Graph"))
+        self.MainText_2.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p>There will also be many oppurtunities to answer questions during this section. We\'ll start off easy, write in the box: What is 1+1?</p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("InvestigationTutorialScreen", "   1+1 = "))
+        self.SubmitButton.setText(_translate("InvestigationTutorialScreen", "Submit"))
+        self.MessageLabel.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.MDisplay.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\">0</p></body></html>"))
+        self.CDisplay.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\">0</p></body></html>"))
 
 
 if __name__ == "__main__":

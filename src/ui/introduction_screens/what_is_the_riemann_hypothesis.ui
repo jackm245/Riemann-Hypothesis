@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>IntroductionTutorialScreen</class>
- <widget class="QDialog" name="IntroductionTutorialScreen">
+ <class>WhatIsTheRiemannHypothesisScreen</class>
+ <widget class="QDialog" name="WhatIsTheRiemannHypothesisScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,10 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visualising the Riemann Hypothesis - Tutorial</string>
-  </property>
-  <property name="toolTipDuration">
-   <number>0</number>
+   <string>Visualising the Riemann Hypothesis - Introduction</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -34,9 +31,9 @@
    <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>545</x>
       <y>20</y>
-      <width>161</width>
+      <width>251</width>
       <height>51</height>
      </rect>
     </property>
@@ -44,7 +41,7 @@
      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239)</string>
     </property>
     <property name="text">
-     <string>Tutorial</string>
+     <string>Introduction</string>
     </property>
    </widget>
    <widget class="QWidget" name="TabBar" native="true">
@@ -59,7 +56,7 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(239, 239, 239);</string>
     </property>
-    <widget class="QPushButton" name="TutorialTab">
+    <widget class="QPushButton" name="IntroductionTab">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -80,68 +77,17 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Tutorial</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="LoginTab">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>5</y>
-       <width>221</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Login</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="IntroductionTab">
-     <property name="geometry">
-      <rect>
-       <x>660</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-</string>
-     </property>
-     <property name="text">
       <string>Introduction</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="InvestigationTab">
+    <widget class="QLabel" name="HistoricalBackgroundLabel">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>220</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
       </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">border: 2px solid;
@@ -152,34 +98,10 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Investigation</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Historical&lt;br&gt;Background&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="SummaryTab">
-     <property name="geometry">
-      <rect>
-       <x>1080</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Summary</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="ProgramStructureTab">
+    <widget class="QPushButton" name="HistoricalBackgroundTab">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -201,10 +123,53 @@ font: 18pt &quot;Sans Serif&quot;;
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="ProgramStructureLabel">
+    <widget class="QPushButton" name="WhatIsTheRHTab">
      <property name="geometry">
       <rect>
-       <x>220</x>
+       <x>430</x>
+       <y>5</y>
+       <width>240</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="WhatIsTheRHLabel">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>241</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;What is the&lt;br&gt;Riemann Hypothesis&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="PracticalApplicationsLabel">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
@@ -219,16 +184,38 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program&lt;br/&gt;Structure&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Practical&lt;br&gt;Applications&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <zorder>TutorialTab</zorder>
-    <zorder>LoginTab</zorder>
+    <widget class="QPushButton" name="PracticalApplicationsTab">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>5</y>
+       <width>201</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>WhatIsTheRHLabel</zorder>
     <zorder>IntroductionTab</zorder>
-    <zorder>InvestigationTab</zorder>
-    <zorder>SummaryTab</zorder>
-    <zorder>ProgramStructureLabel</zorder>
-    <zorder>ProgramStructureTab</zorder>
+    <zorder>HistoricalBackgroundLabel</zorder>
+    <zorder>HistoricalBackgroundTab</zorder>
+    <zorder>WhatIsTheRHTab</zorder>
+    <zorder>PracticalApplicationsLabel</zorder>
+    <zorder>PracticalApplicationsTab</zorder>
    </widget>
    <widget class="QWidget" name="MainWidget" native="true">
     <property name="geometry">
@@ -296,7 +283,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>311</width>
+       <width>561</width>
        <height>41</height>
       </rect>
      </property>
@@ -305,7 +292,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Introduction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;What is the Riemann Hypothesis&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="MainText">
@@ -314,7 +301,7 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
        <x>40</x>
        <y>60</y>
        <width>1251</width>
-       <height>391</height>
+       <height>401</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -322,16 +309,16 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The introduction section of this program is designed to give you a sufficient amount of knowledge about the Riemann Hypothesis, such that you will be able to understand the complicated mathematics behind this program so that you will be able to fully utilise the functionality of this program.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;This section will give you some Historical Background on the Riemann Hypothesis, it will explain what the Riemann Hypothesis actually is, and detail some Practical Applications of the Riemann Hypothesis.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;The introduction section will give you the basic knowledge you need to be able to understand this program, so it is strongly recommended to read this before started to use the program.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In his 1859 Paper 'On the Number of Primes Less Than a Given Magnitude', Bernhard Riemann explored and researched the prime numbers. He did this using the riemann zeta function, which is the sum from 1 to infinity of n to the power -s, where s is the input to the function. &lt;br/&gt;&lt;/p&gt;&lt;p&gt;Riemann used a process called analytic continuation to allow this function to be true for not just all real numbers, but also imaginary and complex numbers. Imaginary numbers are denoted by the imaginary unit i, where i is the square root of -1, a number that is undefined using just the real numbers. A complex number is one that has a real part and an imaginary part. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;Riemann used complex numbers in the Riemann Zeta function and found something very interesting. First was that whenever the input to the function was a negative even integer, then the function always output 0. Second, was that the function will also output Zero when the imaginary part of the input is between zero and one. The first point was relatively easy to explain as to why it happened, leading to the negative even integers being known as the trivial zeroes for this function. However, the second point was a little bit harder to explain. Riemann managed to prove this point, but also noticed that these zeroes only occur when the imaginary part of the input is 1/2. This was not so easy to prove, and thus these zeroes were known as the nontrivial zeroes.&lt;/p&gt;&lt;p&gt;The Riemann Hypothesis states that 'the real part of every nontrivial zero of the Riemann Zeta Function is 1/2'. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
     <zorder>SubTitleText</zorder>
+    <zorder>MainText</zorder>
     <zorder>PrevButton</zorder>
     <zorder>NextButton</zorder>
-    <zorder>MainText</zorder>
    </widget>
   </widget>
  </widget>

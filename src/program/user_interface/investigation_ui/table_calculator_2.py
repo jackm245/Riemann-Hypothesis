@@ -35,7 +35,7 @@ class Ui_TableCalculator2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69,69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SingleTab.setObjectName("SingleTab")
         self.TableTab = QtWidgets.QPushButton(self.TabBar)
@@ -45,9 +45,19 @@ class Ui_TableCalculator2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.TableTab.setObjectName("TableTab")
+        self.LeaderboardTab = QtWidgets.QPushButton(self.TabBar)
+        self.LeaderboardTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
+        self.LeaderboardTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.LeaderboardTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.LeaderboardTab.setObjectName("LeaderboardTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -60,7 +70,7 @@ class Ui_TableCalculator2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -70,7 +80,7 @@ class Ui_TableCalculator2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -105,23 +115,23 @@ class Ui_TableCalculator2Screen(object):
         item.setFont(font)
         self.ZetaTable.setHorizontalHeaderItem(1, item)
         self.DatabaseButton = QtWidgets.QPushButton(self.MainWidget)
-        self.DatabaseButton.setGeometry(QtCore.QRect(270, 460, 391, 70))
+        self.DatabaseButton.setGeometry(QtCore.QRect(420, 460, 200, 70))
         self.DatabaseButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.DatabaseButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.DatabaseButton.setObjectName("DatabaseButton")
         self.FileButton = QtWidgets.QPushButton(self.MainWidget)
-        self.FileButton.setGeometry(QtCore.QRect(680, 460, 391, 70))
+        self.FileButton.setGeometry(QtCore.QRect(720, 460, 200, 70))
         self.FileButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.FileButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.FileButton.setObjectName("FileButton")
 
@@ -134,6 +144,7 @@ class Ui_TableCalculator2Screen(object):
         self.Title.setText(_translate("TableCalculator2Screen", "Calculator"))
         self.SingleTab.setText(_translate("TableCalculator2Screen", "Single"))
         self.TableTab.setText(_translate("TableCalculator2Screen", "Table"))
+        self.LeaderboardTab.setText(_translate("TableCalculator2Screen", "Leaderboard"))
         self.PrevButton.setText(_translate("TableCalculator2Screen", "Prev"))
         self.NextButton.setText(_translate("TableCalculator2Screen", "Next"))
         self.SubTitleText.setText(_translate("TableCalculator2Screen", "<html><head/><body><p><span style=\" font-weight:600;\">Table Zeta Calculation</span></p></body></html>"))

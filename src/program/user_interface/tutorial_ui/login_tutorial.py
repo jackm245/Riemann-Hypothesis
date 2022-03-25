@@ -116,7 +116,7 @@ class Ui_LoginTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -126,7 +126,7 @@ class Ui_LoginTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -134,9 +134,16 @@ class Ui_LoginTutorialScreen(object):
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
+        self.MainText = QtWidgets.QLabel(self.MainWidget)
+        self.MainText.setGeometry(QtCore.QRect(40, 60, 1251, 391))
+        self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setWordWrap(True)
+        self.MainText.setObjectName("MainText")
         self.SubTitleText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.MainText.raise_()
 
         self.retranslateUi(LoginTutorialScreen)
         QtCore.QMetaObject.connectSlotsByName(LoginTutorialScreen)
@@ -154,6 +161,7 @@ class Ui_LoginTutorialScreen(object):
         self.PrevButton.setText(_translate("LoginTutorialScreen", "Prev"))
         self.NextButton.setText(_translate("LoginTutorialScreen", "Next"))
         self.SubTitleText.setText(_translate("LoginTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Login</span></p></body></html>"))
+        self.MainText.setText(_translate("LoginTutorialScreen", "<html><head/><body><p>The Login section of this program allows you to sign in to an account.</p><p>The different options you have are: </p><p>Login In</p><p>Sign Up</p><p>Forgotten Password</p><p>Reset Password</p><p><br/></p><p>Although you can use this program without an account, once you create and sign in to an account you will be able to use this program to it\'s full extent. When signed into an account, you will be able to answer questions on the Riemann Hypothesis, make your own notes, and participate to the leaderboard</p></body></html>"))
 
 
 if __name__ == "__main__":

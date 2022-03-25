@@ -210,17 +210,17 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
     <widget class="QLabel" name="EquationImage">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>50</y>
-       <width>1121</width>
-       <height>201</height>
+       <x>155</x>
+       <y>70</y>
+       <width>1031</width>
+       <height>131</height>
       </rect>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../media/riemanns-functional-equation.png</pixmap>
+      <pixmap>../../media/riemanns_functional_equation.png</pixmap>
      </property>
     </widget>
     <widget class="QLineEdit" name="ZetaInput">
@@ -268,14 +268,14 @@ border-color:rgb(69, 69, 69);</string>
     <widget class="QLabel" name="InputText">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>260</y>
-       <width>371</width>
-       <height>61</height>
+       <x>230</x>
+       <y>270</y>
+       <width>261</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 background-color: rgb(239, 239, 239); padding: 5px;
 text-decoration: underline;</string>
      </property>
@@ -286,14 +286,14 @@ text-decoration: underline;</string>
     <widget class="QLabel" name="OutputText">
      <property name="geometry">
       <rect>
-       <x>800</x>
+       <x>860</x>
        <y>250</y>
-       <width>431</width>
-       <height>71</height>
+       <width>301</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 background-color: rgb(239, 239, 239); padding: 5px;
 text-decoration: underline;</string>
      </property>
@@ -352,9 +352,9 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QLabel" name="ErrorLabel">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>220</y>
-       <width>541</width>
+       <x>370</x>
+       <y>210</y>
+       <width>631</width>
        <height>41</height>
       </rect>
      </property>
@@ -400,8 +400,8 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <zorder>OutputText</zorder>
     <zorder>DatabaseButton</zorder>
     <zorder>FileButton</zorder>
-    <zorder>ErrorLabel</zorder>
     <zorder>CalculateButton</zorder>
+    <zorder>ErrorLabel</zorder>
    </widget>
   </widget>
  </widget>

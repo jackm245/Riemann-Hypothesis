@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/introduction_screens/introduction.ui'
+# Form implementation generated from reading ui file 'ui/introduction_screens/practical_applications.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_IntroductionScreen(object):
-    def setupUi(self, IntroductionScreen):
-        IntroductionScreen.setObjectName("IntroductionScreen")
-        IntroductionScreen.resize(1340, 723)
-        IntroductionScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(IntroductionScreen)
+class Ui_PracticalApplicationsScreen(object):
+    def setupUi(self, PracticalApplicationsScreen):
+        PracticalApplicationsScreen.setObjectName("PracticalApplicationsScreen")
+        PracticalApplicationsScreen.resize(1340, 723)
+        PracticalApplicationsScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(PracticalApplicationsScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_IntroductionScreen(object):
         self.IntroductionTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.IntroductionTab.setObjectName("IntroductionTab")
         self.HistoricalBackgroundLabel = QtWidgets.QLabel(self.TabBar)
@@ -79,8 +79,8 @@ class Ui_IntroductionScreen(object):
         self.PracticalApplicationsLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.PracticalApplicationsLabel.setObjectName("PracticalApplicationsLabel")
         self.PracticalApplicationsTab = QtWidgets.QPushButton(self.TabBar)
@@ -125,7 +125,7 @@ class Ui_IntroductionScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 381, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 561, 41))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
@@ -140,28 +140,28 @@ class Ui_IntroductionScreen(object):
         self.PrevButton.raise_()
         self.NextButton.raise_()
 
-        self.retranslateUi(IntroductionScreen)
-        QtCore.QMetaObject.connectSlotsByName(IntroductionScreen)
+        self.retranslateUi(PracticalApplicationsScreen)
+        QtCore.QMetaObject.connectSlotsByName(PracticalApplicationsScreen)
 
-    def retranslateUi(self, IntroductionScreen):
+    def retranslateUi(self, PracticalApplicationsScreen):
         _translate = QtCore.QCoreApplication.translate
-        IntroductionScreen.setWindowTitle(_translate("IntroductionScreen", "Visualising the Riemann Hypothesis - Introduction"))
-        self.Title.setText(_translate("IntroductionScreen", "Introduction"))
-        self.IntroductionTab.setText(_translate("IntroductionScreen", "Introduction"))
-        self.HistoricalBackgroundLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">Historical<br>Background</p></body></html>"))
-        self.WhatIsTheRHLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">What is the<br>Riemann Hypothesis</p></body></html>"))
-        self.PracticalApplicationsLabel.setText(_translate("IntroductionScreen", "<html><head/><body><p align=\"center\">Practical<br>Applications</p></body></html>"))
-        self.PrevButton.setText(_translate("IntroductionScreen", "Prev"))
-        self.NextButton.setText(_translate("IntroductionScreen", "Next"))
-        self.SubTitleText.setText(_translate("IntroductionScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Introduction</span></p></body></html>"))
-        self.MainText.setText(_translate("IntroductionScreen", "<html><head/><body><p>..</p></body></html>"))
+        PracticalApplicationsScreen.setWindowTitle(_translate("PracticalApplicationsScreen", "Visualising the Riemann Hypothesis - Introduction"))
+        self.Title.setText(_translate("PracticalApplicationsScreen", "Introduction"))
+        self.IntroductionTab.setText(_translate("PracticalApplicationsScreen", "Introduction"))
+        self.HistoricalBackgroundLabel.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p align=\"center\">Historical<br>Background</p></body></html>"))
+        self.WhatIsTheRHLabel.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p align=\"center\">What is the<br>Riemann Hypothesis</p></body></html>"))
+        self.PracticalApplicationsLabel.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p align=\"center\">Practical<br>Applications</p></body></html>"))
+        self.PrevButton.setText(_translate("PracticalApplicationsScreen", "Prev"))
+        self.NextButton.setText(_translate("PracticalApplicationsScreen", "Next"))
+        self.SubTitleText.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Practical Applications</span></p></body></html>"))
+        self.MainText.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p>Although the Riemann Hypothesis uses a lot of theoretical mathematics, that isn\'t to say that it doesnt have any practical applications.</p><p>If the Riemann Hypothesis was proven to be true, then that would mean that many of theories and conjectures would alwasys be true. For example: The weak Goldbach conjecture - stating that all integers greater than 5 are the sum of three primes; Mills’ constants - numbers that allow you to generate prime numbers, The theory that there will always be at least one prime between consecutive cubes; and the theory that there is a maximum bound between consecutive prime numbers.</p><p>All of these conjectures involve prime numbers, and their distribution. If the Riemann Hypothesis and thus these conjectures were true, then very large prime numbers would be very easy to generate. This would make fields such as crypotography - that heavily rely on large prime numbers being hard to compute - change. Current crypotgraphy algorithms would become obsolete and would have to be replaced with more secure ones.</p><p>The Riemann Hypothesis also has a very interesting correlation to quantum physics. It was discovered in 1996 that the arrangement of the zeta zeroes exhibits the same pattern as the possible values of energy in a quantum chaotic system. </p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    IntroductionScreen = QtWidgets.QDialog()
-    ui = Ui_IntroductionScreen()
-    ui.setupUi(IntroductionScreen)
-    IntroductionScreen.show()
+    PracticalApplicationsScreen = QtWidgets.QDialog()
+    ui = Ui_PracticalApplicationsScreen()
+    ui.setupUi(PracticalApplicationsScreen)
+    PracticalApplicationsScreen.show()
     sys.exit(app.exec_())

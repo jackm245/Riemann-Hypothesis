@@ -80,6 +80,142 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
       <string>Introduction</string>
      </property>
     </widget>
+    <widget class="QLabel" name="HistoricalBackgroundLabel">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Historical&lt;br&gt;Background&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="HistoricalBackgroundTab">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="WhatIsTheRHTab">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>240</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="WhatIsTheRHLabel">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>5</y>
+       <width>241</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;What is the&lt;br&gt;Riemann Hypothesis&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="PracticalApplicationsLabel">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Practical&lt;br&gt;Applications&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="PracticalApplicationsTab">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>5</y>
+       <width>201</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>WhatIsTheRHLabel</zorder>
+    <zorder>IntroductionTab</zorder>
+    <zorder>HistoricalBackgroundLabel</zorder>
+    <zorder>HistoricalBackgroundTab</zorder>
+    <zorder>WhatIsTheRHTab</zorder>
+    <zorder>PracticalApplicationsLabel</zorder>
+    <zorder>PracticalApplicationsTab</zorder>
    </widget>
    <widget class="QWidget" name="MainWidget" native="true">
     <property name="geometry">
@@ -111,7 +247,7 @@ border-radius: 20px;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -135,7 +271,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -147,7 +283,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>681</width>
+       <width>381</width>
        <height>41</height>
       </rect>
      </property>
@@ -163,9 +299,9 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>80</y>
+       <y>60</y>
        <width>1251</width>
-       <height>91</height>
+       <height>401</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -173,12 +309,16 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the introduction to the program&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
+    <zorder>SubTitleText</zorder>
+    <zorder>MainText</zorder>
+    <zorder>PrevButton</zorder>
+    <zorder>NextButton</zorder>
    </widget>
   </widget>
  </widget>

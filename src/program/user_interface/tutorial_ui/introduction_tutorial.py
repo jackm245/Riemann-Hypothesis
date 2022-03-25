@@ -116,7 +116,7 @@ class Ui_IntroductionTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -126,7 +126,7 @@ class Ui_IntroductionTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -134,9 +134,16 @@ class Ui_IntroductionTutorialScreen(object):
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
+        self.MainText = QtWidgets.QLabel(self.MainWidget)
+        self.MainText.setGeometry(QtCore.QRect(40, 60, 1251, 391))
+        self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setWordWrap(True)
+        self.MainText.setObjectName("MainText")
         self.SubTitleText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.MainText.raise_()
 
         self.retranslateUi(IntroductionTutorialScreen)
         QtCore.QMetaObject.connectSlotsByName(IntroductionTutorialScreen)
@@ -154,6 +161,7 @@ class Ui_IntroductionTutorialScreen(object):
         self.PrevButton.setText(_translate("IntroductionTutorialScreen", "Prev"))
         self.NextButton.setText(_translate("IntroductionTutorialScreen", "Next"))
         self.SubTitleText.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Introduction</span></p></body></html>"))
+        self.MainText.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p>The introduction section of this program is designed to give you a sufficient amount of knowledge about the Riemann Hypothesis, such that you will be able to understand the complicated mathematics behind this program so that you will be able to fully utilise the functionality of this program.</p><p><br/></p><p>This section will give you some Historical Background on the Riemann Hypothesis, it will explain what the Riemann Hypothesis actually is, and detail some Practical Applications of the Riemann Hypothesis.</p><p><br/>The introduction section will give you the basic knowledge you need to be able to understand this program, so it is strongly recommended to read this before started to use the program.</p><p><br/></p><p><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

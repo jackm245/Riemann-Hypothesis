@@ -74,7 +74,7 @@ class Ui_CalculateZeroesScreen(object):
         self.NoOfZeroesInput.setText("")
         self.NoOfZeroesInput.setObjectName("NoOfZeroesInput")
         self.NoOfZeroesText = QtWidgets.QLabel(self.MainWidget)
-        self.NoOfZeroesText.setGeometry(QtCore.QRect(135, 80, 1071, 61))
+        self.NoOfZeroesText.setGeometry(QtCore.QRect(120, 80, 1101, 61))
         self.NoOfZeroesText.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;\n"
 "text-decoration: underline;")

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1340</width>
-    <height>720</height>
+    <height>735</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@
       <rect>
        <x>10</x>
        <y>5</y>
-       <width>401</width>
+       <width>220</width>
        <height>70</height>
       </rect>
      </property>
@@ -73,7 +73,7 @@
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(239, 239,239);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+font: 12pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -111,7 +111,7 @@ border-radius: 20px;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -135,7 +135,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -162,9 +162,9 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
     <widget class="QLabel" name="ErrorLabel">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>400</y>
-       <width>541</width>
+       <x>365</x>
+       <y>390</y>
+       <width>611</width>
        <height>61</height>
       </rect>
      </property>
@@ -219,9 +219,9 @@ font: 18pt &quot;Sans Serif&quot;;</string>
     <widget class="QPushButton" name="DatabaseButton">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>440</x>
        <y>460</y>
-       <width>391</width>
+       <width>200</width>
        <height>70</height>
       </rect>
      </property>
@@ -233,7 +233,7 @@ font: 18pt &quot;Sans Serif&quot;;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -243,9 +243,9 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QPushButton" name="FileButton">
      <property name="geometry">
       <rect>
-       <x>680</x>
+       <x>700</x>
        <y>460</y>
-       <width>391</width>
+       <width>200</width>
        <height>70</height>
       </rect>
      </property>
@@ -257,7 +257,7 @@ font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">

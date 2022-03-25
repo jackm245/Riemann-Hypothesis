@@ -11,7 +11,7 @@ Includes the ... Screens
 import sys
 import matplotlib
 import numpy as np
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_zeta_id, database_print
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
@@ -107,10 +107,11 @@ class CalculateZeroes2(InvestigationSection):
     def __init__(self, zeroes):
         super(CalculateZeroes2, self).__init__()
         self.zeroes = zeroes
+        print(self.zeroes)
         self.ui = Ui_CalculateZeroes2Screen()
         self.ui.setupUi(self)
         self.ui.PrevButton.clicked.connect(self.goto_calculate_zeroes)
-        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.DatabaseButton.clicked.connect(self.saveto_database)
         self.ui.FileButton.clicked.connect(self.saveto_file)
         self.ui.ZetaTable.setRowCount(len(self.zeroes))
@@ -124,7 +125,26 @@ class CalculateZeroes2(InvestigationSection):
         self.show()
 
     def saveto_database(self):
-        pass
+        if User.GetUsername():
+            #  real_database_inputs = database_select(['Zero_Real_Input'], ['ZetaZeroes'])
+            #  imag_database_inputs = database_select(['Zero_Imag_Input'], ['ZetaZeroes'])
+            database_inputs = database_select(['Zero_Real_Input', 'Zero_Imag_Input'], ['Zeroes'])
+            for real, imag in self.zeroes:
+                # if there is a row with the same real and imag
+                in_table = False
+                for ri, ii in database_inputs:
+                    if ri == real and ii == imag:
+                        in_table = True
+                # only add to database if not already in database
+                if not in_table:
+                    self.Zeta_Zero_ID = get_id('Zero_ID', 'Zeroes')
+                    database_insert('Zeroes', [self.Zeta_Zero_ID, real, imag])
+                    database_insert('UserZeroes', [self.Zeta_Zero_ID, User.GetUserID()])
+            self.ui.ErrorLabel.setText('Zeroes saved to database')
+        else:
+            self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
+                    'save to the database')
+        #  pass
 
     def saveto_file(self):
         filepath = 'files/zeta_zeroes.csv'
@@ -146,8 +166,8 @@ class CalculateZeroes(InvestigationSection):
         self.ui = Ui_CalculateZeroesScreen()
         self.zeroes = []
         self.ui.setupUi(self)
-        self.ui.PrevButton.clicked.connect(self.goto_zeroes)
-        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.PrevButton.clicked.connect(self.goto_zeroes_screen)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.CalculateButton.clicked.connect(self.goto_calculate_zeroes_2)
         self.show()
 
@@ -209,7 +229,7 @@ class CalculatorLeaderboard(InvestigationSection):
         self.ui.SingleTab.clicked.connect(self.goto_single)
         self.ui.TableTab.clicked.connect(self.goto_table_calculator)
         self.ui.PrevButton.clicked.connect(self.goto_table_calculator)
-        self.ui.NextButton.clicked.connect(self.goto_zeroes)
+        self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.ZetaTable.setRowCount(len(self.sorted_rows))
         for i, row in enumerate(self.sorted_rows):
             for j in range(len(row)):
@@ -278,14 +298,13 @@ class TableCalculator2(InvestigationSection):
 
     def saveto_database(self):
         if User.GetUsername():
-            #  database_insert('Zeta', ['Zeta_ID', 'Input', 'Output'])
             database_inputs = database_select(['Input'], ['Zeta'])
             for input, output in self.table_values:
                 if input not in database_inputs:
-                    self.Zeta_ID = get_zeta_id()
-                    # only add to database if not already in database
+                    self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
                     database_insert('Zeta', [self.Zeta_ID, str(input), str(output)])
                     database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
+            self.ui.ErrorLabel.setText('Value saved to database')
         else:
             self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
                     'save to the database')
@@ -383,7 +402,19 @@ class SingleCalculator(InvestigationSection):
             self.ui.ErrorLabel.setText('')
 
     def saveto_database(self):
-        pass
+        if User.GetUsername():
+            database_inputs = database_select(['Input'], ['Zeta'])
+            if self.zeta_input not in database_inputs:
+                self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
+                database_insert('Zeta',
+                        [self.Zeta_ID,
+                        str(self.zeta_input),
+                        str(self.zeta_output_printable)])
+                database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
+            self.ui.ErrorLabel.setText('Value saved to database')
+        else:
+            self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
+                    'save to the database')
 
     def saveto_file(self):
         filepath = 'files/zeta_values.csv'
@@ -444,8 +475,6 @@ class PrimeCountingFunctionMatPlot(InvestigationSection):
         super(PrimeCountingFunctionMatPlot, self).__init__()
         self.ui = Ui_PrimeCountingFunctionMatPlotScreen()
         self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
         self.init_widget()
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.update_figure)
@@ -514,17 +543,11 @@ class ZetaZeroesMatPlot(InvestigationSection):
         self.init_widget()
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.update_figure)
-        self.timer.start(100)
+        self.timer.start(1)
         self.x_vals = []
         self.y_vals = []
-
         self.count = 0
-
         self.show()
-
-    def is_root(self):
-        zeta_value = zeta(complex(1/2, self.count/self.accuracy))
-        return abs(zeta_value) < 10e-3
 
     def init_widget(self):
         self.matplotlibwidget = MplWidget()
@@ -533,7 +556,7 @@ class ZetaZeroesMatPlot(InvestigationSection):
 
     def update_figure(self):
         self.accuracy = self.count//500 + 100
-        if self.is_root():
+        if is_zeta_zero(1/2, self.count/self.accuracy):
             self.x_vals.append(1/2)
             self.y_vals.append(self.count/self.accuracy)
         self.matplotlibwidget.axes.cla()
@@ -561,8 +584,6 @@ class ZetaZeroes(InvestigationSection):
         super(ZetaZeroes, self).__init__()
         self.ui = Ui_ZetaZeroesScreen()
         self.ui.setupUi(self)
-        self.setFixedWidth(1340)
-        self.setFixedHeight(720)
         #  self.ui.PrimeTab.clicked.connect(self.goto_prime)
         self.ui.PolarTab.clicked.connect(self.goto_polar)
         self.ui.PrimeTab.clicked.connect(self.goto_prime)

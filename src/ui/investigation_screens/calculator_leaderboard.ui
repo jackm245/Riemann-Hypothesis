@@ -159,7 +159,7 @@ border-radius: 20px;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -183,7 +183,7 @@ font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 12pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">

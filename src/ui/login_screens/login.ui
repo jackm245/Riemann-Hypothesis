@@ -141,7 +141,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
-     <property name="styleSheet">
+    <property name="styleSheet">
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 background-color: rgba(0, 0, 0, 0);

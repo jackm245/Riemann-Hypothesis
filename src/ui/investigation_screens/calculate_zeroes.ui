@@ -169,9 +169,9 @@ border-color:rgb(69, 69, 69);</string>
     <widget class="QLabel" name="NoOfZeroesText">
      <property name="geometry">
       <rect>
-       <x>135</x>
+       <x>120</x>
        <y>80</y>
-       <width>1071</width>
+       <width>1101</width>
        <height>61</height>
       </rect>
      </property>

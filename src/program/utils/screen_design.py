@@ -7,6 +7,9 @@ Contains the Screen class
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import matplotlib
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 
 __all__ = ['Screen']
@@ -34,3 +37,47 @@ class Screen(QtWidgets.QDialog):
         from ..main_section import MainMenu
         self.main_menu = MainMenu()
         self.hide()
+
+
+class MplWidget(Screen):
+    """ A Matplotlib Widget """
+
+    def __init__(self, parent=None):
+        super(MplWidget, self).__init__(parent)
+        self.figure = Figure()
+        self.canvas = FigureCanvas(self.figure)
+        self.axes = self.figure.add_subplot(111)
+        self.layoutvertical = QtWidgets.QVBoxLayout(self)
+        self.layoutvertical.setGeometry(QtCore.QRect(500, 500, 500,500))
+        self.layoutvertical.addWidget(self.canvas)
+
+
+class GraphScreen(Screen):
+
+    """
+    Graph Screen
+    """
+
+    def __init__(self):
+        super(GraphScreen, self).__init__()
+        self.init_widget()
+        self.timer = QtCore.QTimer(self)
+        self.timer.timeout.connect(self.update_figure)
+        self.timer.start(100)
+        self.x_vals = []
+        self.y_vals= []
+        self.count = 0
+
+    def init_widget(self):
+        self.matplotlibwidget = MplWidget()
+        self.layoutvertical = QtWidgets.QVBoxLayout(self)
+        self.layoutvertical.addWidget(self.matplotlibwidget)
+
+    def update_figure(self):
+        self.x_vals.append(self.count)
+        self.y_vals.append(self.count)
+        self.matplotlibwidget.axes.cla()
+        self.matplotlibwidget.axes.plot(self.x_vals, self.y_vals, label=f'y=x', color='blue')
+        self.matplotlibwidget.axes.legend(loc='upper left')
+        self.matplotlibwidget.canvas.draw()
+        self.count += 1

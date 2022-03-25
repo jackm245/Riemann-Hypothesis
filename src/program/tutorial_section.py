@@ -157,7 +157,54 @@ class InvestigationTutorial(TutorialSection):
         self.ui.SummaryTab.clicked.connect(self.goto_summary)
         self.ui.PrevButton.clicked.connect(self.goto_introduction)
         self.ui.NextButton.clicked.connect(self.goto_summary)
+        self.ui.MSlider.valueChanged.connect(self.M_value_changed)
+        self.ui.CSlider.valueChanged.connect(self.C_value_changed)
+        self.ui.GraphButton.clicked.connect(self.graph)
         self.show()
+
+    def M_value_changed(self):
+        self.gradient = self.ui.MSlider.value()
+        self.ui.MDisplay.setText(' ' * 7 + str(self.gradient))
+
+    def C_value_changed(self):
+        self.y_intercept = self.ui.CSlider.value()
+        self.ui.CDisplay.setText(' ' * 7 + str(self.y_intercept))
+
+    def graph(self):
+        self.plot = GraphMatPlot()
+
+
+class GraphMatPlot(InvestigationTutorial):
+
+    """
+    Graph Mat Plot
+    """
+
+    def __init__(self):
+        super(GraphMatPlot, self).__init__()
+        self.ui = Ui_GraphMatPlotScreen()
+        self.init_widget()
+        self.timer = QtCore.QTimer(self)
+        self.timer.timeout.connect(self.update_figure)
+        self.timer.start(100)
+        self.x_vals = []
+        self.y_vals= []
+        self.count = 0
+        self.show()
+
+    def init_widget(self):
+        self.matplotlibwidget = MplWidget()
+        self.layoutvertical = QtWidgets.QVBoxLayout(self)
+        self.layoutvertical.addWidget(self.matplotlibwidget)
+
+    def update_figure(self):
+        self.x_vals.append(self.count)
+        self.y_vals.append(self.gradient * self.count + self.y_intercept)
+        self.matplotlibwidget.axes.cla()
+        self.matplotlibwidget.axes.plot(self.x_vals, self.y_vals, label=f'y={self.gradient}x+{self.y_intercept}', color='blue')
+        self.matplotlibwidget.axes.legend(loc='upper left')
+        self.matplotlibwidget.canvas.draw()
+        self.count += 1
 
 
 class SummaryTutorial(TutorialSection):

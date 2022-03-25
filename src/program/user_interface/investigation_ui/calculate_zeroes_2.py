@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_CalculateZeroes2Screen(object):
     def setupUi(self, CalculateZeroes2Screen):
         CalculateZeroes2Screen.setObjectName("CalculateZeroes2Screen")
-        CalculateZeroes2Screen.resize(1340, 720)
+        CalculateZeroes2Screen.resize(1340, 735)
         CalculateZeroes2Screen.setSizeGripEnabled(False)
         self.widget = QtWidgets.QWidget(CalculateZeroes2Screen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
@@ -29,13 +29,13 @@ class Ui_CalculateZeroes2Screen(object):
         self.TabBar.setStyleSheet("background-color: rgb(239, 239, 239);")
         self.TabBar.setObjectName("TabBar")
         self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
-        self.ZeroesTab.setGeometry(QtCore.QRect(10, 5, 401, 70))
+        self.ZeroesTab.setGeometry(QtCore.QRect(10, 5, 220, 70))
         self.ZeroesTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ZeroesTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239,239);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.ZeroesTab.setObjectName("ZeroesTab")
         self.MainWidget = QtWidgets.QWidget(self.widget)
@@ -50,7 +50,7 @@ class Ui_CalculateZeroes2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -60,7 +60,7 @@ class Ui_CalculateZeroes2Screen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -69,7 +69,7 @@ class Ui_CalculateZeroes2Screen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
-        self.ErrorLabel.setGeometry(QtCore.QRect(400, 400, 541, 61))
+        self.ErrorLabel.setGeometry(QtCore.QRect(365, 390, 611, 61))
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
@@ -95,23 +95,23 @@ class Ui_CalculateZeroes2Screen(object):
         item.setFont(font)
         self.ZetaTable.setHorizontalHeaderItem(1, item)
         self.DatabaseButton = QtWidgets.QPushButton(self.MainWidget)
-        self.DatabaseButton.setGeometry(QtCore.QRect(270, 460, 391, 70))
+        self.DatabaseButton.setGeometry(QtCore.QRect(440, 460, 200, 70))
         self.DatabaseButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.DatabaseButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.DatabaseButton.setObjectName("DatabaseButton")
         self.FileButton = QtWidgets.QPushButton(self.MainWidget)
-        self.FileButton.setGeometry(QtCore.QRect(680, 460, 391, 70))
+        self.FileButton.setGeometry(QtCore.QRect(700, 460, 200, 70))
         self.FileButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.FileButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.FileButton.setObjectName("FileButton")
 
