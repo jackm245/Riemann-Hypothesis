@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SummaryScreen</class>
- <widget class="QDialog" name="SummaryScreen">
+ <class>ImpactScreen</class>
+ <widget class="QDialog" name="ImpactScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -72,8 +72,8 @@
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -181,8 +181,8 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -300,7 +300,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>171</width>
+       <width>611</width>
        <height>51</height>
       </rect>
      </property>
@@ -309,16 +309,16 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Summary&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Impact of the Riemann Hypothesis&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="MainText">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>80</y>
+       <y>90</y>
        <width>1251</width>
-       <height>141</height>
+       <height>191</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -326,7 +326,10 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The summary section is the final part of this program.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Riemann Hypothesis is fundamental to the way we think about prime numbers. Although studying a single function may seem futile and even pointless, if this conjecture was proven to be true, it would be one of the most significant mathematical events to occur.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;It would radically change how prime numbers can be calculated and significantly increase our understanding of how prime numbers are distributed.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;As previously mentioned, this would affect fields such as crypotgraphy, and even quantum physics, completely revolutionising the way we view prime numbers.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

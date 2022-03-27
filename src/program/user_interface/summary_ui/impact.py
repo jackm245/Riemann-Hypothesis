@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/summary_screens/summary.ui'
+# Form implementation generated from reading ui file 'ui/summary_screens/impact.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_SummaryScreen(object):
-    def setupUi(self, SummaryScreen):
-        SummaryScreen.setObjectName("SummaryScreen")
-        SummaryScreen.resize(1340, 723)
-        SummaryScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(SummaryScreen)
+class Ui_ImpactScreen(object):
+    def setupUi(self, ImpactScreen):
+        ImpactScreen.setObjectName("ImpactScreen")
+        ImpactScreen.resize(1340, 723)
+        ImpactScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(ImpactScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_SummaryScreen(object):
         self.SummaryTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SummaryTab.setObjectName("SummaryTab")
         self.TheoryRecapTab = QtWidgets.QPushButton(self.TabBar)
@@ -80,8 +80,8 @@ class Ui_SummaryScreen(object):
         self.ImpactLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.ImpactLabel.setObjectName("ImpactLabel")
         self.ConclusionTab = QtWidgets.QPushButton(self.TabBar)
@@ -128,40 +128,41 @@ class Ui_SummaryScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 171, 51))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 611, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 141))
+        self.MainText.setGeometry(QtCore.QRect(40, 90, 1251, 191))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
 
-        self.retranslateUi(SummaryScreen)
-        QtCore.QMetaObject.connectSlotsByName(SummaryScreen)
+        self.retranslateUi(ImpactScreen)
+        QtCore.QMetaObject.connectSlotsByName(ImpactScreen)
 
-    def retranslateUi(self, SummaryScreen):
+    def retranslateUi(self, ImpactScreen):
         _translate = QtCore.QCoreApplication.translate
-        SummaryScreen.setWindowTitle(_translate("SummaryScreen", "Visualising the Riemann Hypothesis - Summary"))
-        self.Title.setText(_translate("SummaryScreen", "Summary"))
-        self.SummaryTab.setText(_translate("SummaryScreen", "Summary"))
-        self.TheoryRecapTab.setText(_translate("SummaryScreen", "Theory Recap"))
-        self.InvestigationResultsLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
-        self.ConclusionLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
-        self.ImpactLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
-        self.PrevButton.setText(_translate("SummaryScreen", "Prev"))
-        self.NextButton.setText(_translate("SummaryScreen", "Next"))
-        self.SubTitleText.setText(_translate("SummaryScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
-        self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.</p></body></html>"))
+        ImpactScreen.setWindowTitle(_translate("ImpactScreen", "Visualising the Riemann Hypothesis - Summary"))
+        self.Title.setText(_translate("ImpactScreen", "Summary"))
+        self.SummaryTab.setText(_translate("ImpactScreen", "Summary"))
+        self.TheoryRecapTab.setText(_translate("ImpactScreen", "Theory Recap"))
+        self.InvestigationResultsLabel.setText(_translate("ImpactScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
+        self.ConclusionLabel.setText(_translate("ImpactScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
+        self.ImpactLabel.setText(_translate("ImpactScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
+        self.PrevButton.setText(_translate("ImpactScreen", "Prev"))
+        self.NextButton.setText(_translate("ImpactScreen", "Next"))
+        self.SubTitleText.setText(_translate("ImpactScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Impact of the Riemann Hypothesis</span></p></body></html>"))
+        self.MainText.setText(_translate("ImpactScreen", "<html><head/><body><p>The Riemann Hypothesis is fundamental to the way we think about prime numbers. Although studying a single function may seem futile and even pointless, if this conjecture was proven to be true, it would be one of the most significant mathematical events to occur.<br/></p><p>It would radically change how prime numbers can be calculated and significantly increase our understanding of how prime numbers are distributed.<br/></p><p>As previously mentioned, this would affect fields such as crypotgraphy, and even quantum physics, completely revolutionising the way we view prime numbers.</p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    SummaryScreen = QtWidgets.QDialog()
-    ui = Ui_SummaryScreen()
-    ui.setupUi(SummaryScreen)
-    SummaryScreen.show()
+    ImpactScreen = QtWidgets.QDialog()
+    ui = Ui_ImpactScreen()
+    ui.setupUi(ImpactScreen)
+    ImpactScreen.show()
     sys.exit(app.exec_())

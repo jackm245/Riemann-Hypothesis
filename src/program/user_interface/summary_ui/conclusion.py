@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/summary_screens/summary.ui'
+# Form implementation generated from reading ui file 'ui/summary_screens/conclusion.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_SummaryScreen(object):
-    def setupUi(self, SummaryScreen):
-        SummaryScreen.setObjectName("SummaryScreen")
-        SummaryScreen.resize(1340, 723)
-        SummaryScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(SummaryScreen)
+class Ui_ConclusionScreen(object):
+    def setupUi(self, ConclusionScreen):
+        ConclusionScreen.setObjectName("ConclusionScreen")
+        ConclusionScreen.resize(1340, 723)
+        ConclusionScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(ConclusionScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_SummaryScreen(object):
         self.SummaryTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SummaryTab.setObjectName("SummaryTab")
         self.TheoryRecapTab = QtWidgets.QPushButton(self.TabBar)
@@ -71,8 +71,8 @@ class Ui_SummaryScreen(object):
         self.ConclusionLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.ConclusionLabel.setObjectName("ConclusionLabel")
         self.ImpactLabel = QtWidgets.QLabel(self.TabBar)
@@ -85,7 +85,7 @@ class Ui_SummaryScreen(object):
 "")
         self.ImpactLabel.setObjectName("ImpactLabel")
         self.ConclusionTab = QtWidgets.QPushButton(self.TabBar)
-        self.ConclusionTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
+        self.ConclusionTab.setGeometry(QtCore.QRect(650, 5, 200, 70))
         self.ConclusionTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ConclusionTab.setStyleSheet("border-radius: 20px;\n"
 "background-color: rgba(0, 0, 0, 0);\n"
@@ -128,40 +128,41 @@ class Ui_SummaryScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 171, 51))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 421, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 141))
+        self.MainText.setGeometry(QtCore.QRect(40, 90, 1251, 341))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
 
-        self.retranslateUi(SummaryScreen)
-        QtCore.QMetaObject.connectSlotsByName(SummaryScreen)
+        self.retranslateUi(ConclusionScreen)
+        QtCore.QMetaObject.connectSlotsByName(ConclusionScreen)
 
-    def retranslateUi(self, SummaryScreen):
+    def retranslateUi(self, ConclusionScreen):
         _translate = QtCore.QCoreApplication.translate
-        SummaryScreen.setWindowTitle(_translate("SummaryScreen", "Visualising the Riemann Hypothesis - Summary"))
-        self.Title.setText(_translate("SummaryScreen", "Summary"))
-        self.SummaryTab.setText(_translate("SummaryScreen", "Summary"))
-        self.TheoryRecapTab.setText(_translate("SummaryScreen", "Theory Recap"))
-        self.InvestigationResultsLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
-        self.ConclusionLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
-        self.ImpactLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
-        self.PrevButton.setText(_translate("SummaryScreen", "Prev"))
-        self.NextButton.setText(_translate("SummaryScreen", "Next"))
-        self.SubTitleText.setText(_translate("SummaryScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
-        self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.</p></body></html>"))
+        ConclusionScreen.setWindowTitle(_translate("ConclusionScreen", "Visualising the Riemann Hypothesis - Summary"))
+        self.Title.setText(_translate("ConclusionScreen", "Summary"))
+        self.SummaryTab.setText(_translate("ConclusionScreen", "Summary"))
+        self.TheoryRecapTab.setText(_translate("ConclusionScreen", "Theory Recap"))
+        self.InvestigationResultsLabel.setText(_translate("ConclusionScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
+        self.ConclusionLabel.setText(_translate("ConclusionScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
+        self.ImpactLabel.setText(_translate("ConclusionScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
+        self.PrevButton.setText(_translate("ConclusionScreen", "Prev"))
+        self.NextButton.setText(_translate("ConclusionScreen", "Next"))
+        self.SubTitleText.setText(_translate("ConclusionScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Conclusion &amp; Evaluation</span></p></body></html>"))
+        self.MainText.setText(_translate("ConclusionScreen", "<html><head/><body><p>Unfortunately, due to the fact that there are an infinite number of zeta zeroes, one could not prove the Riemann Hypothesis by simply trying to calculate every single zero. However, if a zero is calculated, where the real part of the input is not equal to 1/2, then this would instantly disprove the Riemann Hypothesis.</p><p><br/></p><p>However, disproving the Riemann Hypothesis would be quite the task, seeing as there are an infinite amount of numbers that you would need to try to possibly find a zero that does not comply with the hypothesis. <br/></p><p>Hopefully, by using this program, you have discovered zeta zeroes where the real part of the input is 1/2. This at least reinforces that idea that Riemann was correct with his conjecture, although it is by no means a solid proof.</p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    SummaryScreen = QtWidgets.QDialog()
-    ui = Ui_SummaryScreen()
-    ui.setupUi(SummaryScreen)
-    SummaryScreen.show()
+    ConclusionScreen = QtWidgets.QDialog()
+    ui = Ui_ConclusionScreen()
+    ui.setupUi(ConclusionScreen)
+    ConclusionScreen.show()
     sys.exit(app.exec_())

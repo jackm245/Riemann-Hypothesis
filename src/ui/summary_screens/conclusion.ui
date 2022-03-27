@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SummaryScreen</class>
- <widget class="QDialog" name="SummaryScreen">
+ <class>ConclusionScreen</class>
+ <widget class="QDialog" name="ConclusionScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -72,8 +72,8 @@
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -160,8 +160,8 @@ font: 18pt &quot;Sans Serif&quot;;
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
 </string>
      </property>
      <property name="text">
@@ -192,7 +192,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QPushButton" name="ConclusionTab">
      <property name="geometry">
       <rect>
-       <x>640</x>
+       <x>650</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
@@ -300,7 +300,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>171</width>
+       <width>421</width>
        <height>51</height>
       </rect>
      </property>
@@ -309,16 +309,16 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Summary&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Conclusion &amp;amp; Evaluation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="MainText">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>80</y>
+       <y>90</y>
        <width>1251</width>
-       <height>141</height>
+       <height>341</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -326,7 +326,10 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The summary section is the final part of this program.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unfortunately, due to the fact that there are an infinite number of zeta zeroes, one could not prove the Riemann Hypothesis by simply trying to calculate every single zero. However, if a zero is calculated, where the real part of the input is not equal to 1/2, then this would instantly disprove the Riemann Hypothesis.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;However, disproving the Riemann Hypothesis would be quite the task, seeing as there are an infinite amount of numbers that you would need to try to possibly find a zero that does not comply with the hypothesis. &lt;br/&gt;&lt;/p&gt;&lt;p&gt;Hopefully, by using this program, you have discovered zeta zeroes where the real part of the input is 1/2. This at least reinforces that idea that Riemann was correct with his conjecture, although it is by no means a solid proof.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

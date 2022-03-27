@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/summary_screens/summary.ui'
+# Form implementation generated from reading ui file 'ui/summary_screens/theory_recap.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_SummaryScreen(object):
-    def setupUi(self, SummaryScreen):
-        SummaryScreen.setObjectName("SummaryScreen")
-        SummaryScreen.resize(1340, 723)
-        SummaryScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(SummaryScreen)
+class Ui_TheoryRecapScreen(object):
+    def setupUi(self, TheoryRecapScreen):
+        TheoryRecapScreen.setObjectName("TheoryRecapScreen")
+        TheoryRecapScreen.resize(1340, 723)
+        TheoryRecapScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(TheoryRecapScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_SummaryScreen(object):
         self.SummaryTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SummaryTab.setObjectName("SummaryTab")
         self.TheoryRecapTab = QtWidgets.QPushButton(self.TabBar)
@@ -44,8 +44,8 @@ class Ui_SummaryScreen(object):
         self.TheoryRecapTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.TheoryRecapTab.setObjectName("TheoryRecapTab")
         self.InvestigationResultsLabel = QtWidgets.QLabel(self.TabBar)
@@ -128,40 +128,41 @@ class Ui_SummaryScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 171, 51))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 251, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 141))
+        self.MainText.setGeometry(QtCore.QRect(40, 90, 1251, 341))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
 
-        self.retranslateUi(SummaryScreen)
-        QtCore.QMetaObject.connectSlotsByName(SummaryScreen)
+        self.retranslateUi(TheoryRecapScreen)
+        QtCore.QMetaObject.connectSlotsByName(TheoryRecapScreen)
 
-    def retranslateUi(self, SummaryScreen):
+    def retranslateUi(self, TheoryRecapScreen):
         _translate = QtCore.QCoreApplication.translate
-        SummaryScreen.setWindowTitle(_translate("SummaryScreen", "Visualising the Riemann Hypothesis - Summary"))
-        self.Title.setText(_translate("SummaryScreen", "Summary"))
-        self.SummaryTab.setText(_translate("SummaryScreen", "Summary"))
-        self.TheoryRecapTab.setText(_translate("SummaryScreen", "Theory Recap"))
-        self.InvestigationResultsLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
-        self.ConclusionLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
-        self.ImpactLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
-        self.PrevButton.setText(_translate("SummaryScreen", "Prev"))
-        self.NextButton.setText(_translate("SummaryScreen", "Next"))
-        self.SubTitleText.setText(_translate("SummaryScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
-        self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.</p></body></html>"))
+        TheoryRecapScreen.setWindowTitle(_translate("TheoryRecapScreen", "Visualising the Riemann Hypothesis - Summary"))
+        self.Title.setText(_translate("TheoryRecapScreen", "Summary"))
+        self.SummaryTab.setText(_translate("TheoryRecapScreen", "Summary"))
+        self.TheoryRecapTab.setText(_translate("TheoryRecapScreen", "Theory Recap"))
+        self.InvestigationResultsLabel.setText(_translate("TheoryRecapScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
+        self.ConclusionLabel.setText(_translate("TheoryRecapScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
+        self.ImpactLabel.setText(_translate("TheoryRecapScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
+        self.PrevButton.setText(_translate("TheoryRecapScreen", "Prev"))
+        self.NextButton.setText(_translate("TheoryRecapScreen", "Next"))
+        self.SubTitleText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Theory Recap</span></p></body></html>"))
+        self.MainText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p>The Riemann Hypothesis, originating from Bernhard Riemann\'s 1859 paper \'On the Number Of Primes Less Than a Given Magnitude\', states that \'the real part of every nontrivial zero of the Riemann zeta function is 0.5\'. </p><p>Hopefully, by using this program, you have been able to investigate this conjecture.</p><p>The Riemann zeta function, is a more developed version of a function first studied by Leonhard Euler back in 1737. This function is the sum from n=1 to infinity of 1 dividid by n to the power s, where s is a complex number. A complex number is any number of the form a+bi, where a and b are real numbers, and i is the imaginary unit (equal to the square root of -1).</p><p>If proven to be true, the Riemann Zeta Function could be used to generate prime numbers and find their distribution, which would have profound effects in cryptography and even quantum physics</p><p><br/></p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    SummaryScreen = QtWidgets.QDialog()
-    ui = Ui_SummaryScreen()
-    ui.setupUi(SummaryScreen)
-    SummaryScreen.show()
+    TheoryRecapScreen = QtWidgets.QDialog()
+    ui = Ui_TheoryRecapScreen()
+    ui.setupUi(TheoryRecapScreen)
+    TheoryRecapScreen.show()
     sys.exit(app.exec_())

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/summary_screens/summary.ui'
+# Form implementation generated from reading ui file 'ui/summary_screens/investigation_results.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_SummaryScreen(object):
-    def setupUi(self, SummaryScreen):
-        SummaryScreen.setObjectName("SummaryScreen")
-        SummaryScreen.resize(1340, 723)
-        SummaryScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(SummaryScreen)
+class Ui_InvestigationResultsScreen(object):
+    def setupUi(self, InvestigationResultsScreen):
+        InvestigationResultsScreen.setObjectName("InvestigationResultsScreen")
+        InvestigationResultsScreen.resize(1340, 723)
+        InvestigationResultsScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(InvestigationResultsScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_SummaryScreen(object):
         self.SummaryTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SummaryTab.setObjectName("SummaryTab")
         self.TheoryRecapTab = QtWidgets.QPushButton(self.TabBar)
@@ -53,8 +53,8 @@ class Ui_SummaryScreen(object):
         self.InvestigationResultsLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.InvestigationResultsLabel.setObjectName("InvestigationResultsLabel")
         self.InvestigationResultsTab = QtWidgets.QPushButton(self.TabBar)
@@ -128,40 +128,66 @@ class Ui_SummaryScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 171, 51))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 361, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 141))
+        self.MainText.setGeometry(QtCore.QRect(40, 90, 711, 341))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.ZetaTable = QtWidgets.QTableWidget(self.MainWidget)
+        self.ZetaTable.setGeometry(QtCore.QRect(900, 70, 300, 351))
+        self.ZetaTable.setObjectName("ZetaTable")
+        self.ZetaTable.setColumnCount(2)
+        self.ZetaTable.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.ZetaTable.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.ZetaTable.setHorizontalHeaderItem(1, item)
 
-        self.retranslateUi(SummaryScreen)
-        QtCore.QMetaObject.connectSlotsByName(SummaryScreen)
+        self.retranslateUi(InvestigationResultsScreen)
+        QtCore.QMetaObject.connectSlotsByName(InvestigationResultsScreen)
 
-    def retranslateUi(self, SummaryScreen):
+    def retranslateUi(self, InvestigationResultsScreen):
         _translate = QtCore.QCoreApplication.translate
-        SummaryScreen.setWindowTitle(_translate("SummaryScreen", "Visualising the Riemann Hypothesis - Summary"))
-        self.Title.setText(_translate("SummaryScreen", "Summary"))
-        self.SummaryTab.setText(_translate("SummaryScreen", "Summary"))
-        self.TheoryRecapTab.setText(_translate("SummaryScreen", "Theory Recap"))
-        self.InvestigationResultsLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
-        self.ConclusionLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
-        self.ImpactLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
-        self.PrevButton.setText(_translate("SummaryScreen", "Prev"))
-        self.NextButton.setText(_translate("SummaryScreen", "Next"))
-        self.SubTitleText.setText(_translate("SummaryScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
-        self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.</p></body></html>"))
+        InvestigationResultsScreen.setWindowTitle(_translate("InvestigationResultsScreen", "Visualising the Riemann Hypothesis - Summary"))
+        self.Title.setText(_translate("InvestigationResultsScreen", "Summary"))
+        self.SummaryTab.setText(_translate("InvestigationResultsScreen", "Summary"))
+        self.TheoryRecapTab.setText(_translate("InvestigationResultsScreen", "Theory Recap"))
+        self.InvestigationResultsLabel.setText(_translate("InvestigationResultsScreen", "<html><head/><body><p align=\"center\">Investigation<br/>Results</p></body></html>"))
+        self.ConclusionLabel.setText(_translate("InvestigationResultsScreen", "<html><head/><body><p align=\"center\">Conclusion & <br/>Evaluation</p></body></html>"))
+        self.ImpactLabel.setText(_translate("InvestigationResultsScreen", "<html><head/><body><p align=\"center\">Impact of the <br/>Riemann Hypothesis</p></body></html>"))
+        self.PrevButton.setText(_translate("InvestigationResultsScreen", "Prev"))
+        self.NextButton.setText(_translate("InvestigationResultsScreen", "Next"))
+        self.SubTitleText.setText(_translate("InvestigationResultsScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Investigation Results</span></p></body></html>"))
+        self.MainText.setText(_translate("InvestigationResultsScreen", "<html><head/><body><p>Hopefully, throuhout this program you have been able to gather and record results from investigating the Riemann Hypothesis.</p><p>You should notice, that the zeroes of the Riemann Zeta function occur only when the real part of the input is 1 half. </p><p>Furthermore, you sghould have noticed the connection between the prime power function and the prime counting function, and how these are able to be approximated using other functions.</p><p>See the table to the right to look at various values of the Zeta Function that have been calculated by users of this program.</p></body></html>"))
+        item = self.ZetaTable.horizontalHeaderItem(0)
+        item.setText(_translate("InvestigationResultsScreen", "Input (s)"))
+        item = self.ZetaTable.horizontalHeaderItem(1)
+        item.setText(_translate("InvestigationResultsScreen", "Output ζ(s)"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    SummaryScreen = QtWidgets.QDialog()
-    ui = Ui_SummaryScreen()
-    ui.setupUi(SummaryScreen)
-    SummaryScreen.show()
+    InvestigationResultsScreen = QtWidgets.QDialog()
+    ui = Ui_InvestigationResultsScreen()
+    ui.setupUi(InvestigationResultsScreen)
+    InvestigationResultsScreen.show()
     sys.exit(app.exec_())
