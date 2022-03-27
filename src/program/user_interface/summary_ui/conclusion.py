@@ -139,6 +139,16 @@ class Ui_ConclusionScreen(object):
         self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
 
         self.retranslateUi(ConclusionScreen)
         QtCore.QMetaObject.connectSlotsByName(ConclusionScreen)
@@ -156,6 +166,7 @@ class Ui_ConclusionScreen(object):
         self.NextButton.setText(_translate("ConclusionScreen", "Next"))
         self.SubTitleText.setText(_translate("ConclusionScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Conclusion &amp; Evaluation</span></p></body></html>"))
         self.MainText.setText(_translate("ConclusionScreen", "<html><head/><body><p>Unfortunately, due to the fact that there are an infinite number of zeta zeroes, one could not prove the Riemann Hypothesis by simply trying to calculate every single zero. However, if a zero is calculated, where the real part of the input is not equal to 1/2, then this would instantly disprove the Riemann Hypothesis.</p><p><br/></p><p>However, disproving the Riemann Hypothesis would be quite the task, seeing as there are an infinite amount of numbers that you would need to try to possibly find a zero that does not comply with the hypothesis. <br/></p><p>Hopefully, by using this program, you have discovered zeta zeroes where the real part of the input is 1/2. This at least reinforces that idea that Riemann was correct with his conjecture, although it is by no means a solid proof.</p></body></html>"))
+        self.NotesButton.setText(_translate("ConclusionScreen", "Notes"))
 
 
 if __name__ == "__main__":

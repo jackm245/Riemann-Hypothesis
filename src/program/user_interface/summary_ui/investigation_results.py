@@ -160,6 +160,16 @@ class Ui_InvestigationResultsScreen(object):
         font.setWeight(75)
         item.setFont(font)
         self.ZetaTable.setHorizontalHeaderItem(1, item)
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
 
         self.retranslateUi(InvestigationResultsScreen)
         QtCore.QMetaObject.connectSlotsByName(InvestigationResultsScreen)
@@ -181,6 +191,7 @@ class Ui_InvestigationResultsScreen(object):
         item.setText(_translate("InvestigationResultsScreen", "Input (s)"))
         item = self.ZetaTable.horizontalHeaderItem(1)
         item.setText(_translate("InvestigationResultsScreen", "Output ζ(s)"))
+        self.NotesButton.setText(_translate("InvestigationResultsScreen", "Notes"))
 
 
 if __name__ == "__main__":

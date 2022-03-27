@@ -11,6 +11,7 @@ Includes the ...
 from PyQt5 import QtWidgets
 from .user_interface import Ui_SummaryScreen, Ui_TheoryRecapScreen, Ui_InvestigationResultsScreen, Ui_ConclusionScreen, Ui_ImpactScreen
 from .utils import User, Screen
+from .notes import SummaryNotes
 
 
 class SummarySection(Screen):
@@ -33,6 +34,7 @@ class SummarySection(Screen):
         self.ui.InvestigationResultsTab.clicked.connect(self.goto_investigation_results)
         self.ui.ConclusionTab.clicked.connect(self.goto_conclusion)
         self.ui.ImpactTab.clicked.connect(self.goto_impact)
+        self.ui.NotesButton.clicked.connect(self.goto_summary_notes)
 
     def goto_summary(self):
         self.summary = Summary()
@@ -53,6 +55,9 @@ class SummarySection(Screen):
     def goto_impact(self):
         self.impact = Impact()
         self.hide()
+
+    def goto_summary_notes(self):
+        self.summary_notes = SummaryNotes()
 
 
 class Summary(SummarySection):

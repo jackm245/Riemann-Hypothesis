@@ -139,6 +139,16 @@ class Ui_TheoryRecapScreen(object):
         self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
 
         self.retranslateUi(TheoryRecapScreen)
         QtCore.QMetaObject.connectSlotsByName(TheoryRecapScreen)
@@ -156,6 +166,7 @@ class Ui_TheoryRecapScreen(object):
         self.NextButton.setText(_translate("TheoryRecapScreen", "Next"))
         self.SubTitleText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Theory Recap</span></p></body></html>"))
         self.MainText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p>The Riemann Hypothesis, originating from Bernhard Riemann\'s 1859 paper \'On the Number Of Primes Less Than a Given Magnitude\', states that \'the real part of every nontrivial zero of the Riemann zeta function is 0.5\'. </p><p>Hopefully, by using this program, you have been able to investigate this conjecture.</p><p>The Riemann zeta function, is a more developed version of a function first studied by Leonhard Euler back in 1737. This function is the sum from n=1 to infinity of 1 dividid by n to the power s, where s is a complex number. A complex number is any number of the form a+bi, where a and b are real numbers, and i is the imaginary unit (equal to the square root of -1).</p><p>If proven to be true, the Riemann Zeta Function could be used to generate prime numbers and find their distribution, which would have profound effects in cryptography and even quantum physics</p><p><br/></p></body></html>"))
+        self.NotesButton.setText(_translate("TheoryRecapScreen", "Notes"))
 
 
 if __name__ == "__main__":

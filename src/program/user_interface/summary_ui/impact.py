@@ -139,6 +139,16 @@ class Ui_ImpactScreen(object):
         self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
 
         self.retranslateUi(ImpactScreen)
         QtCore.QMetaObject.connectSlotsByName(ImpactScreen)
@@ -156,6 +166,7 @@ class Ui_ImpactScreen(object):
         self.NextButton.setText(_translate("ImpactScreen", "Next"))
         self.SubTitleText.setText(_translate("ImpactScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Impact of the Riemann Hypothesis</span></p></body></html>"))
         self.MainText.setText(_translate("ImpactScreen", "<html><head/><body><p>The Riemann Hypothesis is fundamental to the way we think about prime numbers. Although studying a single function may seem futile and even pointless, if this conjecture was proven to be true, it would be one of the most significant mathematical events to occur.<br/></p><p>It would radically change how prime numbers can be calculated and significantly increase our understanding of how prime numbers are distributed.<br/></p><p>As previously mentioned, this would affect fields such as crypotgraphy, and even quantum physics, completely revolutionising the way we view prime numbers.</p></body></html>"))
+        self.NotesButton.setText(_translate("ImpactScreen", "Notes"))
 
 
 if __name__ == "__main__":

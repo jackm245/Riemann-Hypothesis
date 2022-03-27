@@ -138,6 +138,16 @@ class Ui_SummaryScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
 
         self.retranslateUi(SummaryScreen)
         QtCore.QMetaObject.connectSlotsByName(SummaryScreen)
@@ -155,6 +165,7 @@ class Ui_SummaryScreen(object):
         self.NextButton.setText(_translate("SummaryScreen", "Next"))
         self.SubTitleText.setText(_translate("SummaryScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
         self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.</p></body></html>"))
+        self.NotesButton.setText(_translate("SummaryScreen", "Notes"))
 
 
 if __name__ == "__main__":
