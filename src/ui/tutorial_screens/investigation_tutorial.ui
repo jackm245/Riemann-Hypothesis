@@ -439,7 +439,7 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
      <property name="geometry">
       <rect>
        <x>610</x>
-       <y>290</y>
+       <y>280</y>
        <width>131</width>
        <height>51</height>
       </rect>
@@ -464,7 +464,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>20</x>
        <y>350</y>
-       <width>1041</width>
+       <width>871</width>
        <height>31</height>
       </rect>
      </property>
@@ -473,7 +473,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;There will also be many opportunities to answer questions during this section. We'll start off easy, write in the box: What is 1+1?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;There will also be many opportunities to answer questions during this section. We'll start off easy, write in the box:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -483,7 +483,7 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
      <property name="geometry">
       <rect>
        <x>540</x>
-       <y>380</y>
+       <y>420</y>
        <width>111</width>
        <height>60</height>
       </rect>
@@ -513,7 +513,7 @@ border-color:rgb(69, 69, 69);</string>
      <property name="geometry">
       <rect>
        <x>690</x>
-       <y>380</y>
+       <y>420</y>
        <width>131</width>
        <height>60</height>
       </rect>
@@ -537,9 +537,9 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
      <property name="geometry">
       <rect>
        <x>440</x>
-       <y>450</y>
+       <y>480</y>
        <width>461</width>
-       <height>71</height>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -592,6 +592,26 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+    <widget class="QLabel" name="QuestionText">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>380</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Question&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
     <zorder>SubTitleText</zorder>
     <zorder>PrevButton</zorder>
     <zorder>NextButton</zorder>
@@ -608,6 +628,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
     <zorder>MessageLabel</zorder>
     <zorder>MDisplay</zorder>
     <zorder>CDisplay</zorder>
+    <zorder>QuestionText</zorder>
    </widget>
   </widget>
  </widget>

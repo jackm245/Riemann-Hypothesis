@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SummaryTutorialScreen</class>
- <widget class="QDialog" name="SummaryTutorialScreen">
+ <class>IntroductionNotesScreen</class>
+ <widget class="QDialog" name="IntroductionNotesScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,10 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visualising the Riemann Hypothesis - Tutorial</string>
-  </property>
-  <property name="toolTipDuration">
-   <number>0</number>
+   <string>Visualising the Riemann Hypothesis - Notes</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -34,9 +31,9 @@
    <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>605</x>
       <y>20</y>
-      <width>161</width>
+      <width>131</width>
       <height>51</height>
      </rect>
     </property>
@@ -44,7 +41,7 @@
      <string notr="true">font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239)</string>
     </property>
     <property name="text">
-     <string>Tutorial</string>
+     <string>Notes</string>
     </property>
    </widget>
    <widget class="QWidget" name="TabBar" native="true">
@@ -83,34 +80,10 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Tutorial</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="LoginTab">
+    <widget class="QPushButton" name="SummaryTab">
      <property name="geometry">
       <rect>
-       <x>430</x>
-       <y>5</y>
-       <width>221</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>Login</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="IntroductionTab">
-     <property name="geometry">
-      <rect>
-       <x>660</x>
+       <x>640</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
@@ -128,13 +101,37 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
+      <string>Summary</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="IntroductionTab">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+</string>
+     </property>
+     <property name="text">
       <string>Introduction</string>
      </property>
     </widget>
     <widget class="QPushButton" name="InvestigationTab">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>430</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
@@ -155,80 +152,6 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Investigation</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="SummaryTab">
-     <property name="geometry">
-      <rect>
-       <x>1080</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-</string>
-     </property>
-     <property name="text">
-      <string>Summary</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="ProgramStructureTab">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-radius: 20px;
-background-color: rgba(0, 0, 0, 0);
-font: 18pt &quot;Sans Serif&quot;;
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="ProgramStructureLabel">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>5</y>
-       <width>200</width>
-       <height>70</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 20px;
-border-color:rgb(69, 69, 69);
-background-color: rgb(69, 69, 69);
-font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
-</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program&lt;br/&gt;Structure&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <zorder>TutorialTab</zorder>
-    <zorder>LoginTab</zorder>
-    <zorder>IntroductionTab</zorder>
-    <zorder>InvestigationTab</zorder>
-    <zorder>SummaryTab</zorder>
-    <zorder>ProgramStructureLabel</zorder>
-    <zorder>ProgramStructureTab</zorder>
    </widget>
    <widget class="QWidget" name="MainWidget" native="true">
     <property name="geometry">
@@ -243,7 +166,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
      <string notr="true">background-color: rgb(239, 239, 239);
 border-radius: 20px;</string>
     </property>
-    <widget class="QPushButton" name="PrevButton">
+    <widget class="QPushButton" name="BackButton">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -264,7 +187,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Prev</string>
+      <string>Back</string>
      </property>
     </widget>
     <widget class="QPushButton" name="NextButton">
@@ -296,7 +219,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>311</width>
+       <width>231</width>
        <height>41</height>
       </rect>
      </property>
@@ -305,54 +228,45 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Summary&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Introduction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="MainText">
+    <widget class="QTextEdit" name="NotesText">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>60</y>
-       <width>1251</width>
-       <height>61</height>
+       <x>50</x>
+       <y>80</y>
+       <width>1211</width>
+       <height>371</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239); padding: 5px;</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Summary Section will be the final section of this program. It will be a chance for you, as the user, to be able to reflect on your own results that you have found from this program, and comparing these results to what would have been expected for the Riemann Hypothesis to be true.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="MainText_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>130</y>
-       <width>1251</width>
-       <height>101</height>
-      </rect>
+     <property name="cursor" stdset="0">
+      <cursorShape>IBeamCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
-background-color: rgb(239, 239, 239); padding: 5px;</string>
+      <string notr="true">background-color: rgb(239, 239, 239);
+color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;;
+border: 2px solid;
+border-color:rgb(69, 69, 69);
+border-radius: 0px;</string>
      </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Throughout this section, and previous other sections in the program, there will be various buttons saying 'Notes'. Clicking on these will allow you to write your own notes on what you have just learnt or found out from the program, for you to refer back to later.&lt;/p&gt;&lt;p&gt;Click on the notes button below to try it out!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <property name="readOnly">
+      <bool>false</bool>
      </property>
-     <property name="wordWrap">
-      <bool>true</bool>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:18pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="NotesButton">
+    <widget class="QPushButton" name="SaveButton">
      <property name="geometry">
       <rect>
-       <x>570</x>
-       <y>240</y>
+       <x>470</x>
+       <y>460</y>
        <width>200</width>
        <height>70</height>
       </rect>
@@ -369,15 +283,27 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
-      <string>Notes</string>
+      <string>Save</string>
      </property>
     </widget>
-    <zorder>SubTitleText</zorder>
-    <zorder>PrevButton</zorder>
-    <zorder>NextButton</zorder>
-    <zorder>MainText</zorder>
-    <zorder>MainText_2</zorder>
-    <zorder>NotesButton</zorder>
+    <widget class="QLabel" name="SavedText">
+     <property name="geometry">
+      <rect>
+       <x>690</x>
+       <y>465</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 25pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;
+border-radius: 0px</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

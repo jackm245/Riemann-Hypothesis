@@ -13,3 +13,8 @@ create regex for zeta complex input
 
 
 sql qmark input query
+
+calculate zeroes would go to next page even if no zeroes have been calculated due to wrong input
+solution : add in zeroes_calculated variable
+
+skipping zeroes so changing accuracy when calculating zeroes

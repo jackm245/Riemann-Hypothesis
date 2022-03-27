@@ -11,7 +11,8 @@ and Summary Tutorial Screens
 
 from PyQt5 import QtWidgets, QtCore
 from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen, Ui_GraphMatPlotScreen
-from .utils import User, Screen, StaticGraphScreen
+from .utils import User, Screen, StaticGraphScreen, database_query
+from .notes import TutorialNotes
 
 
 class TutorialSection(Screen):
@@ -51,6 +52,9 @@ class TutorialSection(Screen):
     def goto_summary(self):
         self.summary = SummaryTutorial()
         self.hide()
+
+    def goto_tutorial_notes(self):
+        self.tutorial_notes = TutorialNotes()
 
 
 class Tutorial(TutorialSection):
@@ -150,8 +154,12 @@ class InvestigationTutorial(TutorialSection):
         super(InvestigationTutorial, self).__init__()
         self.gradient = 0
         self.y_intercept = 0
+        self.question_no = 0
         self.ui = Ui_InvestigationTutorialScreen()
         self.ui.setupUi(self)
+        self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
+        self.text = database_query("SELECT Question FROM Questions WHERE Question_No=?", [self.question_no])[0][0]
+        self.ui.QuestionText.setText(self.center_text(self.text))
         self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
         self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
         self.ui.LoginTab.clicked.connect(self.goto_login)
@@ -186,7 +194,6 @@ class InvestigationTutorial(TutorialSection):
             self.ui.MessageLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
                     "font: 18pt \"Sans Serif\";")
             self.ui.MessageLabel.setText(self.center_text('That is incorrect, try again'))
-
 
 
 class GraphMatPlot(StaticGraphScreen):
@@ -258,4 +265,5 @@ class SummaryTutorial(TutorialSection):
         self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
         self.ui.PrevButton.clicked.connect(self.goto_investigation)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
+        self.ui.NotesButton.clicked.connect(self.goto_tutorial_notes)
         self.show()

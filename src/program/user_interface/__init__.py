@@ -4,4 +4,5 @@ from .tutorial_ui import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, U
 from .investigation_ui import Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen
 from .introduction_ui import Ui_IntroductionScreen, Ui_HistoricalBackgroundScreen, Ui_WhatIsTheRiemannHypothesisScreen, Ui_PracticalApplicationsScreen
 from .summary_ui import Ui_SummaryScreen
+from .notes_ui import Ui_TutorialNotesScreen, Ui_IntroductionNotesScreen, Ui_InvestigationNotesScreen, Ui_SummaryNotesScreen
 from .mpl_widget import  MplWidget

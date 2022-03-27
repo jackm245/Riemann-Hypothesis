@@ -11,7 +11,7 @@ Includes the ... Screens
 import sys
 import matplotlib
 import numpy as np
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
@@ -72,9 +72,11 @@ class InvestigationSection(Screen):
         self.hide()
 
     def goto_calculate_zeroes_2(self):
+        self.ui.ErrorLabel.setText(self.center_text(f'Calculating...'))
         self.calculate_zeroes()
-        self.calculate_zeroes_2 = CalculateZeroes2(self.zeroes)
-        self.hide()
+        if self.zeroes_calculated:
+            self.calculate_zeroes_2 = CalculateZeroes2(self.zeroes)
+            self.hide()
 
     def goto_single(self):
         self.single = SingleCalculator()
@@ -107,7 +109,6 @@ class CalculateZeroes2(InvestigationSection):
     def __init__(self, zeroes):
         super(CalculateZeroes2, self).__init__()
         self.zeroes = zeroes
-        print(self.zeroes)
         self.ui = Ui_CalculateZeroes2Screen()
         self.ui.setupUi(self)
         self.ui.PrevButton.clicked.connect(self.goto_calculate_zeroes)
@@ -140,17 +141,17 @@ class CalculateZeroes2(InvestigationSection):
                     self.Zeta_Zero_ID = get_id('Zero_ID', 'Zeroes')
                     database_insert('Zeroes', [self.Zeta_Zero_ID, real, imag])
                     database_insert('UserZeroes', [self.Zeta_Zero_ID, User.GetUserID()])
-            self.ui.ErrorLabel.setText('Zeroes saved to database')
+            self.ui.ErrorLabel.setText(self.center_text('Zeroes saved to database'))
         else:
-            self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
-                    'save to the database')
+            self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
+                    'save to the database'))
         #  pass
 
     def saveto_file(self):
         filepath = 'files/zeta_zeroes.csv'
         fieldnames = ['InputReal', 'InputImag']
         save_zeta_zeroes_to_file(self.zeroes, filepath, fieldnames=fieldnames)
-        self.ui.ErrorLabel.setText(f'Table contents written to {filepath}')
+        self.ui.ErrorLabel.setText(self.center_text(f'Table contents written to {filepath}'))
 
 
 class CalculateZeroes(InvestigationSection):
@@ -174,9 +175,10 @@ class CalculateZeroes(InvestigationSection):
     def calculate_zeroes(self):
         self.no_of_zeroes_input = self.ui.NoOfZeroesInput.text()
         self.no_of_zeroes = make_int(self.no_of_zeroes_input)
+        self.zeroes_calculated = False
         if self.no_of_zeroes:
             if 0 < self.no_of_zeroes <= 100:
-                self.ui.ErrorLabel.setText(f'Calculated {self.no_of_zeroes} zeroes')
+                self.zeroes_calculated = True
                 self.zeroes = []
                 count = 0
                 while len(self.zeroes) < self.no_of_zeroes:
@@ -186,11 +188,10 @@ class CalculateZeroes(InvestigationSection):
                     if is_zeta_zero(real, imag) and (real, round(imag, 1)) not in self.zeroes:
                         self.zeroes.append((real, round(imag, 1)))
                     count += 1
-                #  print(self.zeroes)
             else:
-                self.ui.ErrorLabel.setText('No. of Zeroes must be between 1 and 100')
+                self.ui.ErrorLabel.setText(self.center_text('No. of Zeroes must be between 1 and 100'))
         else:
-                self.ui.ErrorLabel.setText('No. Of Zeroes must be a positive integer between 1 and 100')
+                self.ui.ErrorLabel.setText(self.center_text('No. Of Zeroes must be a positive integer between 1 and 100'))
 
 
 class ZeroesScreen(InvestigationSection):
@@ -304,15 +305,15 @@ class TableCalculator2(InvestigationSection):
                     self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
                     database_insert('Zeta', [self.Zeta_ID, str(input), str(output)])
                     database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
-            self.ui.ErrorLabel.setText('Value saved to database')
+            self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
         else:
-            self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
-                    'save to the database')
+            self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
+                    'save to the database'))
 
     def saveto_file(self):
         filepath = 'files/zeta_values.csv'
         save_zeta_values_to_file(self.table_values, filepath)
-        self.ui.ErrorLabel.setText(f'Table contents written to {filepath}')
+        self.ui.ErrorLabel.setText(self.center_text(f'Table contents written to {filepath}'))
 
 
 class TableCalculator(InvestigationSection):
@@ -354,12 +355,12 @@ class TableCalculator(InvestigationSection):
                 self.table_values =  list(zip(
                     self.input_values, self.output_values))
             else:
-                self.ui.ErrorLabel.setText('No. Of Values must be a positive \
-                        integer between 1 and 100')
+                self.ui.ErrorLabel.setText(self.center_text('No. Of Values must be a positive \
+                        integer between 1 and 100'))
                 self.table_values = False
         else:
-            self.ui.ErrorLabel.setText('Start Value and Step must be complex \
-                    numbers of the form a+bi')
+            self.ui.ErrorLabel.setText(self.center_text('Start Value and Step must be complex \
+                    numbers of the form a+bi'))
             self.table_values = False
 
 
@@ -392,7 +393,7 @@ class SingleCalculator(InvestigationSection):
         try:
             self.zeta_input = complex(self.zeta_user_input.replace('i', 'j'))
         except ValueError as e:
-            self.ui.ErrorLabel.setText('Input must be a complex number of the form a+bi')
+            self.ui.ErrorLabel.setText(self.center_text('Input must be a complex number of the form a+bi'))
             self.ui.ZetaOutput.setText('')
         else:
             self.zeta_output = zeta(self.zeta_input)
@@ -411,15 +412,15 @@ class SingleCalculator(InvestigationSection):
                         str(self.zeta_input),
                         str(self.zeta_output_printable)])
                 database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
-            self.ui.ErrorLabel.setText('Value saved to database')
+            self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
         else:
-            self.ui.ErrorLabel.setText(f'You must be signed in to be able to '
-                    'save to the database')
+            self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
+                    'save to the database'))
 
     def saveto_file(self):
         filepath = 'files/zeta_values.csv'
         save_zeta_values_to_file(self.zeta_value, filepath)
-        self.ui.ErrorLabel.setText(f'Values written to {filepath}')
+        self.ui.ErrorLabel.setText(self.center_text(f'Values written to {filepath}'))
 
 
 class Calculator(InvestigationSection):
@@ -463,7 +464,7 @@ class PrimeNumbers(InvestigationSection):
         self.show()
 
 
-class PrimeCountingFunctionMatPlot(InvestigationSection):
+class PrimeCountingFunctionMatPlot(DynamicGraphScreen):
 
     """
     The PrimeCountingFunction class is used to display a graph of the
@@ -476,21 +477,12 @@ class PrimeCountingFunctionMatPlot(InvestigationSection):
         self.ui = Ui_PrimeCountingFunctionMatPlotScreen()
         self.ui.setupUi(self)
         self.init_widget()
-        self.timer = QtCore.QTimer(self)
-        self.timer.timeout.connect(self.update_figure)
-        self.timer.start(100)
-        self.x_vals = []
         self.y_vals_pcf = []
         self.y_vals_x_logx= []
         self.y_vals_li = []
         self.y_vals_ppf = []
         self.count = 2
         self.show()
-
-    def init_widget(self):
-        self.matplotlibwidget = MplWidget()
-        self.layoutvertical = QtWidgets.QVBoxLayout(self)
-        self.layoutvertical.addWidget(self.matplotlibwidget)
 
     def update_figure(self):
         self.x_vals.append(self.count)
@@ -529,7 +521,7 @@ class PrimeCountingFunction(InvestigationSection):
         self.show()
 
 
-class ZetaZeroesMatPlot(InvestigationSection):
+class ZetaZeroesMatPlot(DynamicGraphScreen):
 
     """
     The ZetaZeroesMatPlot class is used to display a graph of the zeroes of the
@@ -541,18 +533,7 @@ class ZetaZeroesMatPlot(InvestigationSection):
         self.ui = Ui_ZetaZeroesMatPlotScreen()
         self.ui.setupUi(self)
         self.init_widget()
-        self.timer = QtCore.QTimer(self)
-        self.timer.timeout.connect(self.update_figure)
-        self.timer.start(1)
-        self.x_vals = []
-        self.y_vals = []
-        self.count = 0
         self.show()
-
-    def init_widget(self):
-        self.matplotlibwidget = MplWidget()
-        self.layoutvertical = QtWidgets.QVBoxLayout(self)
-        self.layoutvertical.addWidget(self.matplotlibwidget)
 
     def update_figure(self):
         self.accuracy = self.count//500 + 100
@@ -594,7 +575,7 @@ class ZetaZeroes(InvestigationSection):
 
 
 
-class PolarGraphMatPlot(InvestigationSection):
+class PolarGraphMatPlot(DynamicGraphScreen):
 
     """
     The PolarGraphMatPlot class is used to display the polar graph of the riemann
@@ -607,18 +588,7 @@ class PolarGraphMatPlot(InvestigationSection):
         self.ui = Ui_PolarGraphMatPlotScreen()
         self.ui.setupUi(self)
         self.init_widget()
-        self.timer = QtCore.QTimer(self)
-        self.timer.timeout.connect(self.update_figure)
-        self.timer.start(100)
-        self.x_vals = []
-        self.y_vals = []
-        self.count = 0
         self.show()
-
-    def init_widget(self):
-        self.matplotlibwidget = MplWidget()
-        self.layoutvertical = QtWidgets.QVBoxLayout(self)
-        self.layoutvertical.addWidget(self.matplotlibwidget)
 
     def update_figure(self):
         new_zeta = zeta(complex(self.real_input, self.count/25))
@@ -657,18 +627,19 @@ class PolarGraph(InvestigationSection):
         try:
             self.real_input = float(self.real_input)
         except ValueError:
-            self.ui.ErrorLabel.setText("Error: Input must be whole number or a decimal")
+            self.ui.ErrorLabel.setText(self.center_text("Error: Input must be whole number or a decimal"))
         else:
             if self.real_input == 1:
-                self.ui.ErrorLabel.setText("Error: Input must not be equal to 1")
+                self.ui.ErrorLabel.setText(self.center_text("Error: Input must not be equal to 1"))
             else:
+                self.ui.ErrorLabel.setText('')
                 self.graph = PolarGraphMatPlot(self.real_input)
 
 
 class GraphPlot(InvestigationSection):
 
     """
-    This class is used to display the Graph Plots screen in the ionvestigation section
+    This class is used to display the Graph Plots screen in the investigation section
 
     This is the first screen that the user will see in the investigation section
     and will allow them to display many different types of graphs

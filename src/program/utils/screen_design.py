@@ -40,6 +40,7 @@ class Screen(QtWidgets.QDialog):
 
     def center_text(self, text):
         return f'<html><head/><body><p align=\"center\">{text}</p></body></html>'
+        #  return f'<html><head/><body><p align=\"center\"><span style=\"{style}\"{text}</span></p></body></html>'
 
 
 class MplWidget(Screen):
@@ -58,7 +59,7 @@ class MplWidget(Screen):
 class StaticGraphScreen(Screen):
 
     """
-    Graph Screen
+    Static Graph Screen
     """
 
     def __init__(self):
@@ -72,10 +73,11 @@ class StaticGraphScreen(Screen):
         self.layoutvertical = QtWidgets.QVBoxLayout(self)
         self.layoutvertical.addWidget(self.matplotlibwidget)
 
+
 class DynamicGraphScreen(StaticGraphScreen):
 
     """
-    Graph Screen
+    Dynamic Graph Screen
     """
 
     def __init__(self):
@@ -85,7 +87,6 @@ class DynamicGraphScreen(StaticGraphScreen):
         self.timer.timeout.connect(self.update_figure)
         self.timer.start(100)
         self.count = 0
-
 
     def update_figure(self):
         self.x_vals.append(self.count)

@@ -75,6 +75,7 @@ def database_print():
         for row in rows:
             print(row)
     print('=' * 20)
+    print(tables)
 
 
 def create_users_table():
@@ -99,6 +100,11 @@ def create_questions_table():
     Question text,
     Answer text
     )""")
+    questions_and_answers = [('What is 1+1?', '2')]
+    for question_number, (question, answer) in enumerate(questions_and_answers):
+        print(question_number, question, answer)
+        question_id = get_id('Question_ID', 'Questions')
+        database_insert('Questions', [question_id, question_number, question, answer])
 
 
 def create_answers_table():
@@ -127,20 +133,9 @@ def create_notes_table():
     """ Create the Notes table in the database """
 
     database_query(""" CREATE TABLE Notes(
-    Notes_ID integer PRIMARY KEY,
-    Note_No integer,
-    Question text
-    )""")
-
-
-def create_responses_table():
-
-    """ Create the Responses table in the database """
-
-    database_query(""" CREATE TABLE Responses(
-    Responses_ID integer PRIMARY KEY,
-    Notes_ID integer,
-    Response string,
+    Note_ID integer PRIMARY KEY,
+    Section text,
+    Text text,
     User_ID integer
     )""")
 
@@ -187,6 +182,13 @@ def create_user_zeroes_table():
     )""")
 
 
+def delete_table(table):
+    try:
+        database_query(f"DROP TABLE IF EXISTS {table}")
+    except sqlite3.OperationalError as error:
+        print(error)
+
+
 def create_database(database='database.db'):
 
     """
@@ -201,7 +203,6 @@ def create_database(database='database.db'):
         create_answers_table()
         create_user_answer_table()
         create_notes_table()
-        create_responses_table()
         create_zeta_table()
         create_user_zeta_table()
         create_zeta_zeroes_table()
@@ -234,5 +235,6 @@ def get_id(ID, table):
     IDs = set([row[0] for row in selection])
     ID_Number = get_next_id(IDs)
     return ID_Number
+
 
 database_print()

@@ -116,7 +116,7 @@ class Ui_SummaryTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrevButton.setObjectName("PrevButton")
         self.NextButton = QtWidgets.QPushButton(self.MainWidget)
@@ -126,7 +126,7 @@ class Ui_SummaryTutorialScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
@@ -134,9 +134,34 @@ class Ui_SummaryTutorialScreen(object):
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
+        self.MainText = QtWidgets.QLabel(self.MainWidget)
+        self.MainText.setGeometry(QtCore.QRect(40, 60, 1251, 61))
+        self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setWordWrap(True)
+        self.MainText.setObjectName("MainText")
+        self.MainText_2 = QtWidgets.QLabel(self.MainWidget)
+        self.MainText_2.setGeometry(QtCore.QRect(40, 130, 1251, 101))
+        self.MainText_2.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText_2.setWordWrap(True)
+        self.MainText_2.setObjectName("MainText_2")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 240, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
         self.SubTitleText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.MainText.raise_()
+        self.MainText_2.raise_()
+        self.NotesButton.raise_()
 
         self.retranslateUi(SummaryTutorialScreen)
         QtCore.QMetaObject.connectSlotsByName(SummaryTutorialScreen)
@@ -154,6 +179,9 @@ class Ui_SummaryTutorialScreen(object):
         self.PrevButton.setText(_translate("SummaryTutorialScreen", "Prev"))
         self.NextButton.setText(_translate("SummaryTutorialScreen", "Next"))
         self.SubTitleText.setText(_translate("SummaryTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
+        self.MainText.setText(_translate("SummaryTutorialScreen", "<html><head/><body><p>The Summary Section will be the final section of this program. It will be a chance for you, as the user, to be able to reflect on your own results that you have found from this program, and comparing these results to what would have been expected for the Riemann Hypothesis to be true.</p></body></html>"))
+        self.MainText_2.setText(_translate("SummaryTutorialScreen", "<html><head/><body><p>Throughout this section, and previous other sections in the program, there will be various buttons saying \'Notes\'. Clicking on these will allow you to write your own notes on what you have just learnt or found out from the program, for you to refer back to later.</p><p>Click on the notes button below to try it out!</p></body></html>"))
+        self.NotesButton.setText(_translate("SummaryTutorialScreen", "Notes"))
 
 
 if __name__ == "__main__":

@@ -174,7 +174,7 @@ class Ui_InvestigationTutorialScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.CText.setObjectName("CText")
         self.GraphButton = QtWidgets.QPushButton(self.MainWidget)
-        self.GraphButton.setGeometry(QtCore.QRect(610, 290, 131, 51))
+        self.GraphButton.setGeometry(QtCore.QRect(610, 280, 131, 51))
         self.GraphButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.GraphButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -184,13 +184,13 @@ class Ui_InvestigationTutorialScreen(object):
 "")
         self.GraphButton.setObjectName("GraphButton")
         self.MainText_2 = QtWidgets.QLabel(self.MainWidget)
-        self.MainText_2.setGeometry(QtCore.QRect(20, 350, 1041, 31))
+        self.MainText_2.setGeometry(QtCore.QRect(20, 350, 871, 31))
         self.MainText_2.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText_2.setWordWrap(True)
         self.MainText_2.setObjectName("MainText_2")
         self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
-        self.QuestionInput.setGeometry(QtCore.QRect(540, 380, 111, 60))
+        self.QuestionInput.setGeometry(QtCore.QRect(540, 420, 111, 60))
         self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
 "color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\";\n"
@@ -202,7 +202,7 @@ class Ui_InvestigationTutorialScreen(object):
         self.QuestionInput.setCursorPosition(0)
         self.QuestionInput.setObjectName("QuestionInput")
         self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
-        self.SubmitButton.setGeometry(QtCore.QRect(690, 380, 131, 60))
+        self.SubmitButton.setGeometry(QtCore.QRect(690, 420, 131, 60))
         self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.SubmitButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -212,7 +212,7 @@ class Ui_InvestigationTutorialScreen(object):
 "")
         self.SubmitButton.setObjectName("SubmitButton")
         self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
-        self.MessageLabel.setGeometry(QtCore.QRect(440, 450, 461, 71))
+        self.MessageLabel.setGeometry(QtCore.QRect(440, 480, 461, 41))
         self.MessageLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.MessageLabel.setObjectName("MessageLabel")
@@ -234,6 +234,12 @@ class Ui_InvestigationTutorialScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.CDisplay.setObjectName("CDisplay")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(590, 380, 161, 31))
+        self.QuestionText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
         self.SubTitleText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
@@ -250,6 +256,7 @@ class Ui_InvestigationTutorialScreen(object):
         self.MessageLabel.raise_()
         self.MDisplay.raise_()
         self.CDisplay.raise_()
+        self.QuestionText.raise_()
 
         self.retranslateUi(InvestigationTutorialScreen)
         QtCore.QMetaObject.connectSlotsByName(InvestigationTutorialScreen)
@@ -272,12 +279,13 @@ class Ui_InvestigationTutorialScreen(object):
         self.MText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">M:</span></p></body></html>"))
         self.CText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">C:</span></p></body></html>"))
         self.GraphButton.setText(_translate("InvestigationTutorialScreen", "Graph"))
-        self.MainText_2.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p>There will also be many opportunities to answer questions during this section. We\'ll start off easy, write in the box: What is 1+1?</p></body></html>"))
+        self.MainText_2.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p>There will also be many opportunities to answer questions during this section. We\'ll start off easy, write in the box:</p></body></html>"))
         self.QuestionInput.setPlaceholderText(_translate("InvestigationTutorialScreen", "   1+1 = "))
         self.SubmitButton.setText(_translate("InvestigationTutorialScreen", "Submit"))
         self.MessageLabel.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.MDisplay.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\">0</p></body></html>"))
         self.CDisplay.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p align=\"center\">0</p></body></html>"))
+        self.QuestionText.setText(_translate("InvestigationTutorialScreen", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
 
 
 if __name__ == "__main__":

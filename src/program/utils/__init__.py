@@ -4,5 +4,5 @@ from .database_functions import database_insert, database_select, database_query
 from .cryptography_functions import hash_password, check_password
 from .email_functions import send_verification_email
 from .user import User
-from .screen_design import Screen, StaticGraphScreen
+from .screen_design import Screen, StaticGraphScreen, DynamicGraphScreen
 from .number_systems import Number, Complex, Fraction
