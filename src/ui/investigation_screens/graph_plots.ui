@@ -109,7 +109,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>430</x>
        <y>5</y>
-       <width>221</width>
+       <width>200</width>
        <height>70</height>
       </rect>
      </property>
@@ -131,7 +131,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QPushButton" name="ZeroesTab">
      <property name="geometry">
       <rect>
-       <x>660</x>
+       <x>640</x>
        <y>5</y>
        <width>200</width>
        <height>70</height>
@@ -217,7 +217,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
     <widget class="QPushButton" name="GraphPlotsButton">
      <property name="geometry">
       <rect>
-       <x>570</x>
+       <x>440</x>
        <y>460</y>
        <width>200</width>
        <height>70</height>
@@ -244,7 +244,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
        <x>40</x>
        <y>20</y>
        <width>681</width>
-       <height>41</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -290,6 +290,30 @@ font: 12pt &quot;Sans Serif&quot;;</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="NotesButton">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>460</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Notes</string>
      </property>
     </widget>
    </widget>

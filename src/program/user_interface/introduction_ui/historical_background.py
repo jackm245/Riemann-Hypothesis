@@ -135,10 +135,21 @@ class Ui_HistoricalBackgroundScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
         self.SubTitleText.raise_()
         self.MainText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.NotesButton.raise_()
 
         self.retranslateUi(HistoricalBackgroundScreen)
         QtCore.QMetaObject.connectSlotsByName(HistoricalBackgroundScreen)
@@ -155,6 +166,7 @@ class Ui_HistoricalBackgroundScreen(object):
         self.NextButton.setText(_translate("HistoricalBackgroundScreen", "Next"))
         self.SubTitleText.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Historical Background</span></p></body></html>"))
         self.MainText.setText(_translate("HistoricalBackgroundScreen", "<html><head/><body><p>The Riemann Hypothesis originates from a mathematical problem from hundreds of years back. In the 1730\'s, Leonhard Euler (A very smart mathematician), has been investigating the function that went on to be known as the Riemann Zeta Function. In 1737, Euler was able to prove that this function could be written as a product of prime numbers, this is known as Euler\'s product formula.</p><p>In 1859, Bernhard Riemann publsihed a paper \'On the Number of Primes Less Than a Given Magnitude\'. In this paper, he investigates the function previously looked at by Euler, but extends its definition to include Complex Numbers, as well as Real Numbers. It is in this paper that the Riemann Hypothesis was born. The Riemann Hypothesis states that the Riemann zeta function has its zeros only at the negative even integers and complex numbers with real part 0.5.</p><p>In 1900, the mathematician David Hibert released a list of mathematical problems that were all unsolved at the time. He called for other mathematicians to try and solve these problems. These problems included the a Proof of the Riemann Hypothesis, and many problems relating to it; many of which are still unsolved to this day</p><p>In 1915, GH Hardy managed to prove that there were an inifinite amount of numbers for which the Riemann Hypothesis was true, this showed that proving the Riemann Hypothesis would require a full proof, rather than a proof by exhaustion. </p><p>In 1986 van de Lune, te Riele &amp; Winter managed to find values for 1500000001 Zeta Zeroes.</p><p>Then in 2000, the Clay Mathematics Institure named the Riemann Hypothesis as one of their \'Millenium Problems\', with a reward of $1,000,000 for anyone who manages to prove it.</p></body></html>"))
+        self.NotesButton.setText(_translate("HistoricalBackgroundScreen", "Notes"))
 
 
 if __name__ == "__main__":

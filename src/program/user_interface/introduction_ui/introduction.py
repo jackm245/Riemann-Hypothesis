@@ -135,10 +135,21 @@ class Ui_IntroductionScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
         self.SubTitleText.raise_()
         self.MainText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.NotesButton.raise_()
 
         self.retranslateUi(IntroductionScreen)
         QtCore.QMetaObject.connectSlotsByName(IntroductionScreen)
@@ -154,7 +165,8 @@ class Ui_IntroductionScreen(object):
         self.PrevButton.setText(_translate("IntroductionScreen", "Prev"))
         self.NextButton.setText(_translate("IntroductionScreen", "Next"))
         self.SubTitleText.setText(_translate("IntroductionScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Introduction</span></p></body></html>"))
-        self.MainText.setText(_translate("IntroductionScreen", "<html><head/><body><p>..</p></body></html>"))
+        self.MainText.setText(_translate("IntroductionScreen", "<html><head/><body><p>This is the introduction section of the program. The purpose of this section is to teach you about the Riemann Hypothesis.</p><p><br/></p><p>This section will cover some important theory behind the Hypothesis, such as the Historical Background behind the problem, What the Riemann Hypothesis actually is, and the Practical Applications of the hypothesis - why it is actually important.</p><p><br/></p><p>There is a lot of fundamental theory in this section that you should know to be able to use this progrma to it\'s full extent, so make sure that you keep on clicking the notes buttons on each screen so that you can record useful information.</p></body></html>"))
+        self.NotesButton.setText(_translate("IntroductionScreen", "Notes"))
 
 
 if __name__ == "__main__":

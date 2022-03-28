@@ -135,10 +135,21 @@ class Ui_PracticalApplicationsScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
         self.SubTitleText.raise_()
         self.MainText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.NotesButton.raise_()
 
         self.retranslateUi(PracticalApplicationsScreen)
         QtCore.QMetaObject.connectSlotsByName(PracticalApplicationsScreen)
@@ -155,6 +166,7 @@ class Ui_PracticalApplicationsScreen(object):
         self.NextButton.setText(_translate("PracticalApplicationsScreen", "Next"))
         self.SubTitleText.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Practical Applications</span></p></body></html>"))
         self.MainText.setText(_translate("PracticalApplicationsScreen", "<html><head/><body><p>Although the Riemann Hypothesis uses a lot of theoretical mathematics, that isn\'t to say that it doesnt have any practical applications.</p><p>If the Riemann Hypothesis was proven to be true, then that would mean that many of theories and conjectures would alwasys be true. For example: The weak Goldbach conjecture - stating that all integers greater than 5 are the sum of three primes; Mills’ constants - numbers that allow you to generate prime numbers, The theory that there will always be at least one prime between consecutive cubes; and the theory that there is a maximum bound between consecutive prime numbers.</p><p>All of these conjectures involve prime numbers, and their distribution. If the Riemann Hypothesis and thus these conjectures were true, then very large prime numbers would be very easy to generate. This would make fields such as crypotography - that heavily rely on large prime numbers being hard to compute - change. Current crypotgraphy algorithms would become obsolete and would have to be replaced with more secure ones.</p><p>The Riemann Hypothesis also has a very interesting correlation to quantum physics. It was discovered in 1996 that the arrangement of the zeta zeroes exhibits the same pattern as the possible values of energy in a quantum chaotic system. </p></body></html>"))
+        self.NotesButton.setText(_translate("PracticalApplicationsScreen", "Notes"))
 
 
 if __name__ == "__main__":

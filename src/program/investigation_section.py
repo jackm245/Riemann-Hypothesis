@@ -12,6 +12,7 @@ import sys
 import matplotlib
 import numpy as np
 from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen
+from .notes import InvestigationNotes
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
@@ -32,6 +33,12 @@ class InvestigationSection(Screen):
 
     def __init__(self):
         super(InvestigationSection, self).__init__()
+
+    def setup_tabs(self):
+        try:
+            self.ui.NotesButton.clicked.connect(self.goto_investigation_notes)
+        except AttributeError:
+            pass
 
     def goto_polar(self):
         self.polar = PolarGraph()
@@ -96,6 +103,9 @@ class InvestigationSection(Screen):
         self.calculator_leaderboard = CalculatorLeaderboard()
         self.hide()
 
+    def goto_investigation_notes(self):
+        self.investigation_notes = InvestigationNotes()
+
 
 class CalculateZeroes2(InvestigationSection):
 
@@ -111,6 +121,7 @@ class CalculateZeroes2(InvestigationSection):
         self.zeroes = zeroes
         self.ui = Ui_CalculateZeroes2Screen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_calculate_zeroes)
         self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.DatabaseButton.clicked.connect(self.saveto_database)
@@ -167,6 +178,7 @@ class CalculateZeroes(InvestigationSection):
         self.ui = Ui_CalculateZeroesScreen()
         self.zeroes = []
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.CalculateButton.clicked.connect(self.goto_calculate_zeroes_2)
@@ -205,6 +217,7 @@ class ZeroesScreen(InvestigationSection):
         super(ZeroesScreen, self).__init__()
         self.ui = Ui_ZeroesScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_calculator)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
         self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
@@ -225,6 +238,7 @@ class CalculatorLeaderboard(InvestigationSection):
         super(CalculatorLeaderboard, self).__init__()
         self.ui = Ui_CalculatorLeaderboardScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.get_rows()
         self.sort_rows()
         self.ui.SingleTab.clicked.connect(self.goto_single)
@@ -278,6 +292,7 @@ class TableCalculator2(InvestigationSection):
         self.table_values = table_values
         self.ui = Ui_TableCalculator2Screen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.SingleTab.clicked.connect(self.goto_single)
         self.ui.LeaderboardTab.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.PrevButton.clicked.connect(self.goto_table_calculator)
@@ -328,6 +343,7 @@ class TableCalculator(InvestigationSection):
         super(TableCalculator, self).__init__()
         self.ui = Ui_TableCalculatorScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.SingleTab.clicked.connect(self.goto_single)
         self.ui.LeaderboardTab.clicked.connect(self.goto_calculator_leaderboard)
         self.ui.PrevButton.clicked.connect(self.goto_single)
@@ -378,6 +394,7 @@ class SingleCalculator(InvestigationSection):
         super(SingleCalculator, self).__init__()
         self.ui = Ui_SingleCalculatorScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.zeta_value = []
         self.ui.TableTab.clicked.connect(self.goto_table_calculator)
         self.ui.LeaderboardTab.clicked.connect(self.goto_calculator_leaderboard)
@@ -435,6 +452,7 @@ class Calculator(InvestigationSection):
         super(Calculator, self).__init__()
         self.ui = Ui_CalculatorScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_primes)
         self.ui.NextButton.clicked.connect(self.goto_zeroes_screen)
         self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
@@ -456,6 +474,7 @@ class PrimeNumbers(InvestigationSection):
         super(PrimeNumbers, self).__init__()
         self.ui = Ui_PrimeNumbersScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_graph_plots)
         self.ui.NextButton.clicked.connect(self.goto_calculator)
         self.ui.GraphsTab.clicked.connect(self.goto_graph_plots)
@@ -513,6 +532,7 @@ class PrimeCountingFunction(InvestigationSection):
         super(PrimeCountingFunction, self).__init__()
         self.ui = Ui_PrimeCountingFunctionScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PolarTab.clicked.connect(self.goto_polar)
         self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
         self.ui.PrevButton.clicked.connect(self.goto_zeroes)
@@ -565,6 +585,7 @@ class ZetaZeroes(InvestigationSection):
         super(ZetaZeroes, self).__init__()
         self.ui = Ui_ZetaZeroesScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         #  self.ui.PrimeTab.clicked.connect(self.goto_prime)
         self.ui.PolarTab.clicked.connect(self.goto_polar)
         self.ui.PrimeTab.clicked.connect(self.goto_prime)
@@ -615,6 +636,7 @@ class PolarGraph(InvestigationSection):
         super(PolarGraph, self).__init__()
         self.ui = Ui_PolarGraphScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.ZeroesTab.clicked.connect(self.goto_zeroes)
         self.ui.PrimeTab.clicked.connect(self.goto_prime)
         self.ui.PrevButton.clicked.connect(self.goto_graph_plots)
@@ -649,10 +671,11 @@ class GraphPlot(InvestigationSection):
         super(GraphPlot, self).__init__()
         self.ui = Ui_GraphPlotsScreen()
         self.ui.setupUi(self)
-        self.ui.PrevButton.clicked.connect(self.goto_mainmenu)
-        self.ui.NextButton.clicked.connect(self.goto_primes)
+        self.setup_tabs()
         self.ui.GraphPlotsButton.clicked.connect(self.goto_polar)
         self.ui.PrimesTab.clicked.connect(self.goto_primes)
         self.ui.CalculatorTab.clicked.connect(self.goto_calculator)
         self.ui.ZeroesTab.clicked.connect(self.goto_zeroes_screen)
+        self.ui.PrevButton.clicked.connect(self.goto_mainmenu)
+        self.ui.NextButton.clicked.connect(self.goto_primes)
         self.show()

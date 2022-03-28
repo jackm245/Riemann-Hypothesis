@@ -49,7 +49,7 @@ class Ui_GraphPlotsScreen(object):
 "")
         self.PrimesTab.setObjectName("PrimesTab")
         self.CalculatorTab = QtWidgets.QPushButton(self.TabBar)
-        self.CalculatorTab.setGeometry(QtCore.QRect(430, 5, 221, 70))
+        self.CalculatorTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
         self.CalculatorTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.CalculatorTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -59,7 +59,7 @@ class Ui_GraphPlotsScreen(object):
 "")
         self.CalculatorTab.setObjectName("CalculatorTab")
         self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
-        self.ZeroesTab.setGeometry(QtCore.QRect(660, 5, 200, 70))
+        self.ZeroesTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
         self.ZeroesTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ZeroesTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -94,7 +94,7 @@ class Ui_GraphPlotsScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.GraphPlotsButton = QtWidgets.QPushButton(self.MainWidget)
-        self.GraphPlotsButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.GraphPlotsButton.setGeometry(QtCore.QRect(440, 460, 200, 70))
         self.GraphPlotsButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.GraphPlotsButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -104,7 +104,7 @@ class Ui_GraphPlotsScreen(object):
 "")
         self.GraphPlotsButton.setObjectName("GraphPlotsButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 681, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 681, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
@@ -119,6 +119,16 @@ class Ui_GraphPlotsScreen(object):
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 12pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(700, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
 
         self.retranslateUi(GraphPlotsScreen)
         QtCore.QMetaObject.connectSlotsByName(GraphPlotsScreen)
@@ -137,6 +147,7 @@ class Ui_GraphPlotsScreen(object):
         self.SubTitleText.setText(_translate("GraphPlotsScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Visualising the Riemann Hypothesis</span></p></body></html>"))
         self.MainText.setText(_translate("GraphPlotsScreen", "<html><head/><body><p>As mentioned in the Investigation Section, there are numerous ways that the Riemann Hypothesiscan be visualised.</p><p>The main way of visualsing the Riemann Hypothesis is through the use of graphs, allowing for a visual representation of many different mathematical functions.</p><p>One of the most famous graphs of the Riemann Hypothesis is the polar graph of the Riemann Zeta Function, along the line Re(s) = 0.5. Polar Graphs allow for complex (2 dimensional) numbers to be represented visually. Unlike usual graphs where the x axis is the input to the function, and the y-axis is the output, the polar graph is only capable of displaying the output of the function, however, if the input domain is already defined and known, then this is not an issue<br/></p><p>Another graph used is the graph of the zeta zeroes. This graph plots complex numbers on an argand diagram, where these complex numbers are the roots, or zeroes of the Riemann Zeta Function. If that input is passed into the Riemann Zeta Function, and produces a result of 0, then that point is plotted onto the Graph.</p><p><br/></p><p>The last graph I am using to visualise the Riemann Hypothesis is the graph of the Prime Counting Function, and other functions that are used to approximate this. This allows you to visualsie Carl Gauss\' Prime Number Theorem, describing the distribution of prime numbers - A theorem that was proved using the Riemann Hypthesis</p><p><br/></p></body></html>"))
         self.ErrorLabel.setText(_translate("GraphPlotsScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.NotesButton.setText(_translate("GraphPlotsScreen", "Notes"))
 
 
 if __name__ == "__main__":

@@ -89,7 +89,7 @@ class Ui_TableCalculator2Screen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
-        self.ErrorLabel.setGeometry(QtCore.QRect(400, 400, 541, 61))
+        self.ErrorLabel.setGeometry(QtCore.QRect(110, 395, 1120, 61))
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 18pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")

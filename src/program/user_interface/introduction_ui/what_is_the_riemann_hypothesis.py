@@ -135,10 +135,21 @@ class Ui_WhatIsTheRiemannHypothesisScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
+        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
+        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.NotesButton.setObjectName("NotesButton")
         self.SubTitleText.raise_()
         self.MainText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
+        self.NotesButton.raise_()
 
         self.retranslateUi(WhatIsTheRiemannHypothesisScreen)
         QtCore.QMetaObject.connectSlotsByName(WhatIsTheRiemannHypothesisScreen)
@@ -155,6 +166,7 @@ class Ui_WhatIsTheRiemannHypothesisScreen(object):
         self.NextButton.setText(_translate("WhatIsTheRiemannHypothesisScreen", "Next"))
         self.SubTitleText.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p><span style=\" font-weight:600;\">What is the Riemann Hypothesis</span></p></body></html>"))
         self.MainText.setText(_translate("WhatIsTheRiemannHypothesisScreen", "<html><head/><body><p>In his 1859 Paper \'On the Number of Primes Less Than a Given Magnitude\', Bernhard Riemann explored and researched the prime numbers. He did this using the riemann zeta function, which is the sum from 1 to infinity of n to the power -s, where s is the input to the function. <br/></p><p>Riemann used a process called analytic continuation to allow this function to be true for not just all real numbers, but also imaginary and complex numbers. Imaginary numbers are denoted by the imaginary unit i, where i is the square root of -1, a number that is undefined using just the real numbers. A complex number is one that has a real part and an imaginary part. </p><p><br/>Riemann used complex numbers in the Riemann Zeta function and found something very interesting. First was that whenever the input to the function was a negative even integer, then the function always output 0. Second, was that the function will also output Zero when the imaginary part of the input is between zero and one. The first point was relatively easy to explain as to why it happened, leading to the negative even integers being known as the trivial zeroes for this function. However, the second point was a little bit harder to explain. Riemann managed to prove this point, but also noticed that these zeroes only occur when the imaginary part of the input is 1/2. This was not so easy to prove, and thus these zeroes were known as the nontrivial zeroes.</p><p>The Riemann Hypothesis states that \'the real part of every nontrivial zero of the Riemann Zeta Function is 1/2\'. </p></body></html>"))
+        self.NotesButton.setText(_translate("WhatIsTheRiemannHypothesisScreen", "Notes"))
 
 
 if __name__ == "__main__":

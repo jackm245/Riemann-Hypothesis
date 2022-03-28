@@ -210,9 +210,9 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
     <widget class="QLabel" name="ErrorLabel">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>400</y>
-       <width>541</width>
+       <x>110</x>
+       <y>395</y>
+       <width>1120</width>
        <height>61</height>
       </rect>
      </property>

@@ -11,6 +11,7 @@ Includes the ...
 from PyQt5 import QtWidgets
 from .user_interface import Ui_IntroductionScreen, Ui_HistoricalBackgroundScreen, Ui_WhatIsTheRiemannHypothesisScreen, Ui_PracticalApplicationsScreen
 from .utils import User, Screen
+from .notes import IntroductionNotes
 
 
 class IntroductionSection(Screen):
@@ -26,6 +27,28 @@ class IntroductionSection(Screen):
 
     def __init__(self):
         super(IntroductionSection, self).__init__()
+
+    def setup_tabs(self):
+        try:
+            self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
+        except AttributeError:
+            pass
+        try:
+            self.ui.HistoricalBackgroundTab.clicked.connect(self.goto_historical_background)
+        except AttributeError:
+            pass
+        try:
+            self.ui.WhatIsTheRHTab.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
+        except AttributeError:
+            pass
+        try:
+            self.ui.PracticalApplicationsTab.clicked.connect(self.goto_practical_applications)
+        except AttributeError:
+            pass
+        try:
+            self.ui.NotesButton.clicked.connect(self.goto_introduction_notes)
+        except AttributeError:
+            pass
 
     def goto_introduction(self):
         self.introduction = Introduction()
@@ -43,6 +66,10 @@ class IntroductionSection(Screen):
         self.practical_applications = PracticalApplications()
         self.hide()
 
+    def goto_introduction_notes(self):
+        self.introduction_notes = IntroductionNotes()
+
+
 class Introduction(IntroductionSection):
 
     """
@@ -56,11 +83,9 @@ class Introduction(IntroductionSection):
         super(Introduction, self).__init__()
         self.ui = Ui_IntroductionScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_mainmenu)
         self.ui.NextButton.clicked.connect(self.goto_historical_background)
-        self.ui.HistoricalBackgroundTab.clicked.connect(self.goto_historical_background)
-        self.ui.WhatIsTheRHTab.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
-        self.ui.PracticalApplicationsTab.clicked.connect(self.goto_practical_applications)
         self.show()
 
 
@@ -74,11 +99,9 @@ class HistoricalBackground(IntroductionSection):
         super(HistoricalBackground, self).__init__()
         self.ui = Ui_HistoricalBackgroundScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_introduction)
         self.ui.NextButton.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.WhatIsTheRHTab.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
-        self.ui.PracticalApplicationsTab.clicked.connect(self.goto_practical_applications)
         self.show()
 
 
@@ -92,11 +115,9 @@ class WhatIsTheRiemannHypothesis(IntroductionSection):
         super(WhatIsTheRiemannHypothesis, self).__init__()
         self.ui = Ui_WhatIsTheRiemannHypothesisScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_historical_background)
         self.ui.NextButton.clicked.connect(self.goto_practical_applications)
-        self.ui.PracticalApplicationsTab.clicked.connect(self.goto_practical_applications)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.HistoricalBackgroundTab.clicked.connect(self.goto_historical_background)
         self.show()
 
 
@@ -110,9 +131,7 @@ class PracticalApplications(IntroductionSection):
         super(PracticalApplications, self).__init__()
         self.ui = Ui_PracticalApplicationsScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.HistoricalBackgroundTab.clicked.connect(self.goto_historical_background)
-        self.ui.WhatIsTheRHTab.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
         self.show()

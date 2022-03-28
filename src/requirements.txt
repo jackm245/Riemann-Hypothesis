@@ -1,0 +1,7 @@
+numpy
+argon2-cffi
+matplotlib
+scipy
+pyqt5
+pandas
+python-dotenv
