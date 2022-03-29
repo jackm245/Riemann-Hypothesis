@@ -38,16 +38,16 @@ class Ui_PolarGraphScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.PolarTab.setObjectName("PolarTab")
-        self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
-        self.ZeroesTab.setGeometry(QtCore.QRect(220, 5, 200, 70))
-        self.ZeroesTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.ZeroesTab.setStyleSheet("border: 2px solid;\n"
+        self.ZetaZeroesPlotTab = QtWidgets.QPushButton(self.TabBar)
+        self.ZetaZeroesPlotTab.setGeometry(QtCore.QRect(220, 5, 200, 70))
+        self.ZetaZeroesPlotTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ZetaZeroesPlotTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
-        self.ZeroesTab.setObjectName("ZeroesTab")
+        self.ZetaZeroesPlotTab.setObjectName("ZetaZeroesPlotTab")
         self.PrimeTab = QtWidgets.QPushButton(self.TabBar)
         self.PrimeTab.setGeometry(QtCore.QRect(430, 5, 200, 70))
         self.PrimeTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -130,7 +130,7 @@ class Ui_PolarGraphScreen(object):
         PolarGraphScreen.setWindowTitle(_translate("PolarGraphScreen", "Visualising the Riemann Hypothesis - Investigation"))
         self.Title.setText(_translate("PolarGraphScreen", "Graph Plots"))
         self.PolarTab.setText(_translate("PolarGraphScreen", "Polar"))
-        self.ZeroesTab.setText(_translate("PolarGraphScreen", "Zeroes"))
+        self.ZetaZeroesPlotTab.setText(_translate("PolarGraphScreen", "Zeroes"))
         self.PrimeTab.setText(_translate("PolarGraphScreen", "Prime"))
         self.PrevButton.setText(_translate("PolarGraphScreen", "Prev"))
         self.NextButton.setText(_translate("PolarGraphScreen", "Next"))

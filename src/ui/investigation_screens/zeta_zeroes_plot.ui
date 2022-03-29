@@ -80,7 +80,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Polar</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="ZeroesTab">
+    <widget class="QPushButton" name="ZetaZeroesPlotTab">
      <property name="geometry">
       <rect>
        <x>220</x>

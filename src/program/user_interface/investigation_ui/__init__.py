@@ -10,4 +10,4 @@ from .prime_numbers import Ui_PrimeNumbersScreen
 from .zeroes import Ui_ZeroesScreen
 from .calculate_zeroes import Ui_CalculateZeroesScreen
 from .calculate_zeroes_2 import Ui_CalculateZeroes2Screen
-from .zeta_zeroes_plot import Ui_ZetaZeroesScreen
+from .zeta_zeroes_plot import Ui_ZetaZeroesPlotScreen

@@ -28,16 +28,16 @@ class Ui_PrimeCountingFunctionScreen(object):
         self.TabBar.setGeometry(QtCore.QRect(0, 80, 1340, 80))
         self.TabBar.setStyleSheet("background-color: rgb(239, 239, 239);")
         self.TabBar.setObjectName("TabBar")
-        self.ZeroesTab = QtWidgets.QPushButton(self.TabBar)
-        self.ZeroesTab.setGeometry(QtCore.QRect(220, 5, 200, 70))
-        self.ZeroesTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.ZeroesTab.setStyleSheet("border: 2px solid;\n"
+        self.ZetaZeroesPlotTab = QtWidgets.QPushButton(self.TabBar)
+        self.ZetaZeroesPlotTab.setGeometry(QtCore.QRect(220, 5, 200, 70))
+        self.ZetaZeroesPlotTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ZetaZeroesPlotTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
-        self.ZeroesTab.setObjectName("ZeroesTab")
+        self.ZetaZeroesPlotTab.setObjectName("ZetaZeroesPlotTab")
         self.PolarTab = QtWidgets.QPushButton(self.TabBar)
         self.PolarTab.setGeometry(QtCore.QRect(10, 5, 200, 70))
         self.PolarTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -112,7 +112,7 @@ class Ui_PrimeCountingFunctionScreen(object):
         _translate = QtCore.QCoreApplication.translate
         PrimeCountingFunctionScreen.setWindowTitle(_translate("PrimeCountingFunctionScreen", "Visualising the Riemann Hypothesis - Investigation"))
         self.Title.setText(_translate("PrimeCountingFunctionScreen", "Graph Plots"))
-        self.ZeroesTab.setText(_translate("PrimeCountingFunctionScreen", "Zeroes"))
+        self.ZetaZeroesPlotTab.setText(_translate("PrimeCountingFunctionScreen", "Zeroes"))
         self.PolarTab.setText(_translate("PrimeCountingFunctionScreen", "Polar"))
         self.PrimeTab.setText(_translate("PrimeCountingFunctionScreen", "Prime"))
         self.PrevButton.setText(_translate("PrimeCountingFunctionScreen", "Prev"))
