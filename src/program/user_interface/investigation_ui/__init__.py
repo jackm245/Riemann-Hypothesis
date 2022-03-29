@@ -5,12 +5,9 @@ from .table_calculator_2 import Ui_TableCalculator2Screen
 from .calculator_leaderboard import Ui_CalculatorLeaderboardScreen
 from .graph_plots import Ui_GraphPlotsScreen
 from .polar_graph import Ui_PolarGraphScreen
-from .polar_graph_mat_plot import Ui_PolarGraphMatPlotScreen
 from .prime_counting_function import Ui_PrimeCountingFunctionScreen
-from .prime_counting_function_mat_plot import Ui_PrimeCountingFunctionMatPlotScreen
 from .prime_numbers import Ui_PrimeNumbersScreen
 from .zeroes import Ui_ZeroesScreen
 from .calculate_zeroes import Ui_CalculateZeroesScreen
 from .calculate_zeroes_2 import Ui_CalculateZeroes2Screen
 from .zeta_zeroes_plot import Ui_ZetaZeroesScreen
-from .zeta_zeroes_plot_mat_plot import Ui_ZetaZeroesMatPlotScreen

@@ -17,7 +17,7 @@ from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from .user_interface import MplWidget, Ui_PolarGraphScreen, Ui_PolarGraphMatPlotScreen, Ui_PrimeCountingFunctionScreen, Ui_PrimeCountingFunctionMatPlotScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_ZetaZeroesMatPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen
+from .user_interface import Ui_PolarGraphScreen, Ui_PrimeCountingFunctionScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_ZeroesScreen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen, Ui_MatPlotScreen
 
 
 class InvestigationSection(Screen):
@@ -493,9 +493,6 @@ class PrimeCountingFunctionMatPlot(DynamicGraphScreen):
 
     def __init__(self):
         super(PrimeCountingFunctionMatPlot, self).__init__()
-        self.ui = Ui_PrimeCountingFunctionMatPlotScreen()
-        self.ui.setupUi(self)
-        self.init_widget()
         self.y_vals_pcf = []
         self.y_vals_x_logx= []
         self.y_vals_li = []
@@ -550,9 +547,6 @@ class ZetaZeroesMatPlot(DynamicGraphScreen):
 
     def __init__(self):
         super(ZetaZeroesMatPlot, self).__init__()
-        self.ui = Ui_ZetaZeroesMatPlotScreen()
-        self.ui.setupUi(self)
-        self.init_widget()
         self.show()
 
     def update_figure(self):
@@ -586,7 +580,6 @@ class ZetaZeroes(InvestigationSection):
         self.ui = Ui_ZetaZeroesScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
-        #  self.ui.PrimeTab.clicked.connect(self.goto_prime)
         self.ui.PolarTab.clicked.connect(self.goto_polar)
         self.ui.PrimeTab.clicked.connect(self.goto_prime)
         self.ui.PrevButton.clicked.connect(self.goto_polar)
@@ -606,9 +599,6 @@ class PolarGraphMatPlot(DynamicGraphScreen):
     def __init__(self, real_input):
         super(PolarGraphMatPlot, self).__init__()
         self.real_input = real_input
-        self.ui = Ui_PolarGraphMatPlotScreen()
-        self.ui.setupUi(self)
-        self.init_widget()
         self.show()
 
     def update_figure(self):
@@ -617,8 +607,6 @@ class PolarGraphMatPlot(DynamicGraphScreen):
         self.y_vals.append(new_zeta.imag)
         self.matplotlibwidget.axes.cla()
         self.matplotlibwidget.axes.plot(self.x_vals, self.y_vals, 'r')
-        #  self.axes.xlabel('Re')
-        #  self.axes.ylabel('Im')
         self.matplotlibwidget.canvas.draw()
         self.count += 1
 

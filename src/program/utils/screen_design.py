@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import matplotlib
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+from ..user_interface import Ui_MatPlotScreen
 
 
 __all__ = ['Screen']
@@ -52,7 +53,6 @@ class MplWidget(Screen):
         self.canvas = FigureCanvas(self.figure)
         self.axes = self.figure.add_subplot(111)
         self.layoutvertical = QtWidgets.QVBoxLayout(self)
-        self.layoutvertical.setGeometry(QtCore.QRect(500, 500, 500,500))
         self.layoutvertical.addWidget(self.canvas)
 
 
@@ -64,7 +64,9 @@ class StaticGraphScreen(Screen):
 
     def __init__(self):
         super(StaticGraphScreen, self).__init__()
-        #  self.init_widget()
+        self.ui = Ui_MatPlotScreen()
+        self.ui.setupUi(self)
+        self.init_widget()
         self.x_vals = []
         self.y_vals= []
 
@@ -82,7 +84,6 @@ class DynamicGraphScreen(StaticGraphScreen):
 
     def __init__(self):
         super(DynamicGraphScreen, self).__init__()
-        #  self.init_widget()
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.update_figure)
         self.timer.start(100)

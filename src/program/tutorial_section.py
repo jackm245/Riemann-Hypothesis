@@ -29,6 +29,32 @@ class TutorialSection(Screen):
     def __init__(self):
         super(TutorialSection, self).__init__()
 
+    def setup_tabs(self):
+        try:
+            self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
+        except AttributeError:
+            pass
+        try:
+            self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
+        except AttributeError:
+            pass
+        try:
+            self.ui.LoginTab.clicked.connect(self.goto_login)
+        except AttributeError:
+            pass
+        try:
+            self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
+        except AttributeError:
+            pass
+        try:
+            self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
+        except AttributeError:
+            pass
+        try:
+            self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        except AttributeError:
+            pass
+
     def goto_tutorial(self):
         self.tutorial= Tutorial()
         self.hide()
@@ -70,11 +96,7 @@ class Tutorial(TutorialSection):
         super(Tutorial, self).__init__()
         self.ui = Ui_TutorialScreen()
         self.ui.setupUi(self)
-        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
-        self.ui.LoginTab.clicked.connect(self.goto_login)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
-        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_mainmenu)
         self.ui.NextButton.clicked.connect(self.goto_program_structure)
         self.show()
@@ -91,11 +113,7 @@ class ProgramStructure(TutorialSection):
         super(ProgramStructure, self).__init__()
         self.ui = Ui_ProgramStructureTutorialScreen()
         self.ui.setupUi(self)
-        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
-        self.ui.LoginTab.clicked.connect(self.goto_login)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
-        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_tutorial)
         self.ui.NextButton.clicked.connect(self.goto_login)
         self.show()
@@ -112,11 +130,7 @@ class LoginTutorial(TutorialSection):
         super(LoginTutorial, self).__init__()
         self.ui = Ui_LoginTutorialScreen()
         self.ui.setupUi(self)
-        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
-        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
-        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_program_structure)
         self.ui.NextButton.clicked.connect(self.goto_introduction)
         self.show()
@@ -133,11 +147,7 @@ class IntroductionTutorial(TutorialSection):
         super(IntroductionTutorial, self).__init__()
         self.ui = Ui_IntroductionTutorialScreen()
         self.ui.setupUi(self)
-        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
-        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
-        self.ui.LoginTab.clicked.connect(self.goto_login)
-        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
-        self.ui.SummaryTab.clicked.connect(self.goto_summary)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_login)
         self.ui.NextButton.clicked.connect(self.goto_investigation)
         self.show()
@@ -160,11 +170,6 @@ class InvestigationTutorial(TutorialSection):
         self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
         self.text = database_query("SELECT Question FROM Questions WHERE Question_No=?", [self.question_no])[0][0]
         self.ui.QuestionText.setText(self.center_text(self.text))
-        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
-        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
-        self.ui.LoginTab.clicked.connect(self.goto_login)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.SummaryTab.clicked.connect(self.goto_summary)
         self.ui.PrevButton.clicked.connect(self.goto_introduction)
         self.ui.NextButton.clicked.connect(self.goto_summary)
         self.ui.MSlider.valueChanged.connect(self.M_value_changed)
@@ -206,8 +211,6 @@ class GraphMatPlot(StaticGraphScreen):
         super(GraphMatPlot, self).__init__()
         self.y_intercept = y_intercept
         self.gradient = gradient
-        self.ui = Ui_GraphMatPlotScreen()
-        self.init_widget()
         self.x_vals = list(range(21))
         self.y_vals= [self.gradient * num + self.y_intercept for num in self.x_vals]
         self.count = 0
@@ -238,7 +241,6 @@ class GraphMatPlot(StaticGraphScreen):
     def graph(self):
         self.gradient_label = self.get_label(self.gradient, True)
         self.intercept_label = self.get_label(self.y_intercept, False)
-        self.matplotlibwidget.axes.cla()
         self.matplotlibwidget.axes.plot(
                 self.x_vals, self.y_vals,
                 label=f'y={self.gradient_label}{self.intercept_label}',
@@ -258,11 +260,7 @@ class SummaryTutorial(TutorialSection):
         super(SummaryTutorial, self).__init__()
         self.ui = Ui_SummaryTutorialScreen()
         self.ui.setupUi(self)
-        self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
-        self.ui.ProgramStructureTab.clicked.connect(self.goto_program_structure)
-        self.ui.LoginTab.clicked.connect(self.goto_login)
-        self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
-        self.ui.InvestigationTab.clicked.connect(self.goto_investigation)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_investigation)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
         self.ui.NotesButton.clicked.connect(self.goto_tutorial_notes)
