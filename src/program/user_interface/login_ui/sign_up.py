@@ -122,7 +122,7 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SubmitButton.setObjectName("SubmitButton")
         self.PasswordText = QtWidgets.QLabel(self.MainWidget)
@@ -171,7 +171,7 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 25pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ShowHideButton_2.setObjectName("ShowHideButton_2")
         self.ShowHideButton = QtWidgets.QPushButton(self.MainWidget)
@@ -181,7 +181,7 @@ class Ui_SignUpScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 25pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ShowHideButton.setObjectName("ShowHideButton")
 

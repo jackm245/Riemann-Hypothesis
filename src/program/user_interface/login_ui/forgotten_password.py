@@ -105,7 +105,7 @@ class Ui_ForgottenPasswordScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
-"font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.SubmitButton.setObjectName("SubmitButton")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)

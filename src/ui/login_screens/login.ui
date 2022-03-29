@@ -141,7 +141,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
-    <property name="styleSheet">
+     <property name="styleSheet">
       <string notr="true">border: 2px solid;
 border-radius: 20px;
 background-color: rgba(0, 0, 0, 0);
@@ -300,7 +300,7 @@ border-color:rgb(69, 69, 69);</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -341,7 +341,7 @@ font: 18pt &quot;Sans Serif&quot;;</string>
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 25pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
@@ -365,7 +365,7 @@ font: 25pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 border-radius: 20px;
 border-color:rgb(69, 69, 69);
 background-color: rgb(69, 69, 69);
-font: 36pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 </string>
      </property>
      <property name="text">
