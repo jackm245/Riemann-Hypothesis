@@ -152,7 +152,6 @@ class IntroductionTutorial(TutorialSection):
         self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_login)
         self.ui.NextButton.clicked.connect(self.goto_investigation)
-        self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.show()
 
 
@@ -177,7 +176,6 @@ class InvestigationTutorial(TutorialSection):
         self.ui.MSlider.valueChanged.connect(self.M_value_changed)
         self.ui.CSlider.valueChanged.connect(self.C_value_changed)
         self.ui.GraphButton.clicked.connect(self.graph)
-        self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.show()
 
     def M_value_changed(self):
