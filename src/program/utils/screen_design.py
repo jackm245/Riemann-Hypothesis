@@ -41,7 +41,7 @@ class Screen(QtWidgets.QDialog):
     def setup_question(self):
         self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
-        self.text, self.correct_answer_id = database_query("SELECT Question, Answer_ID FROM Questions WHERE Question_No=?", [self.question_no])[0]
+        self.text, self.correct_answer_id = database_query("SELECT Question, Answer_ID FROM Questions WHERE Question_ID=?", [self.question_no])[0]
         self.correct_answer = database_query("SELECT Answer From Answers WHERE Answer_ID=?", [self.correct_answer_id])[0][0]
         self.ui.QuestionText.setText(self.center_text(self.text))
         if User.GetSignedIn():

@@ -104,14 +104,12 @@ def create_questions_table(questions_and_answers):
 
     database_query(""" CREATE TABLE Questions(
     Question_ID integer PRIMARY KEY,
-    Question_No integer,
     Question text,
     Answer_ID integer
     )""")
-    for question_no, (question, answer) in enumerate(questions_and_answers):
-        question_id = get_id('Question_ID', 'Questions')
+    for question_id, (question, answer) in enumerate(questions_and_answers):
         answer_id = database_query("SELECT Answer_ID FROM Answers WHERE Answer=?", [answer])[0][0]
-        database_insert('Questions', [question_id, question_no, question, answer_id])
+        database_insert('Questions', [question_id, question, answer_id])
 
 
 def create_user_answer_table():
@@ -196,7 +194,8 @@ def create_database(database='database.db'):
     if not os.path.isfile('database.db'):
         questions_and_answers = [
         ('Error', 'Error'),
-        ('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'), ('What is 1+1?', '2')
+        ('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'),
+        ('What is 1+1?', '2')
         ]
         touch(database)
         create_users_table()
@@ -238,14 +237,4 @@ def get_id(ID, table):
     return ID_Number
 
 
-#  questions_and_answers = [
-#  ('Error', 'Error'),
-#  ('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'), ('What is 1+1?', '2')
-#  ]
-#  delete_table('Answers')
-#  delete_table('UserAnswer')
-#  delete_table('Questions')
-#  create_answers_table(questions_and_answers)
-#  create_user_answer_table()
-#  create_questions_table(questions_and_answers)
 database_print()
