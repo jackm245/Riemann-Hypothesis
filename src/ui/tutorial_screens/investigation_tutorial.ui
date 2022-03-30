@@ -464,7 +464,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>20</x>
        <y>350</y>
-       <width>871</width>
+       <width>941</width>
        <height>31</height>
       </rect>
      </property>
@@ -504,6 +504,9 @@ border-color:rgb(69, 69, 69);</string>
      </property>
      <property name="cursorPosition">
       <number>0</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
      <property name="placeholderText">
       <string>   1+1 = </string>

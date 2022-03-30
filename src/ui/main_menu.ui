@@ -53,9 +53,9 @@ border-radius:40px;</string>
     <widget class="QLabel" name="Title">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>90</x>
        <y>30</y>
-       <width>371</width>
+       <width>381</width>
        <height>121</height>
       </rect>
      </property>

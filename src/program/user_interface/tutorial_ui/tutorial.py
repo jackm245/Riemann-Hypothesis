@@ -134,9 +134,10 @@ class Ui_TutorialScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 91))
+        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 151))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
 

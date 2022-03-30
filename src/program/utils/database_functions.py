@@ -100,9 +100,8 @@ def create_questions_table():
     Question text,
     Answer text
     )""")
-    questions_and_answers = [('What is 1+1?', '2')]
+    questions_and_answers = [('Error', 'Error'), ('What is the name of this program?<br>Visualising the ___ Hypothesis', 'riemann'), ('What is 1+1?', '2')]
     for question_number, (question, answer) in enumerate(questions_and_answers):
-        print(question_number, question, answer)
         question_id = get_id('Question_ID', 'Questions')
         database_insert('Questions', [question_id, question_number, question, answer])
 
@@ -237,4 +236,6 @@ def get_id(ID, table):
     return ID_Number
 
 
+#  delete_table('Questions')
+#  create_questions_table()
 database_print()

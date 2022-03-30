@@ -145,11 +145,14 @@ class IntroductionTutorial(TutorialSection):
 
     def __init__(self):
         super(IntroductionTutorial, self).__init__()
+        self.question_no = 1
         self.ui = Ui_IntroductionTutorialScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_login)
         self.ui.NextButton.clicked.connect(self.goto_investigation)
+        self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.show()
 
 
@@ -164,18 +167,17 @@ class InvestigationTutorial(TutorialSection):
         super(InvestigationTutorial, self).__init__()
         self.gradient = 0
         self.y_intercept = 0
-        self.question_no = 0
+        self.question_no = 2
         self.ui = Ui_InvestigationTutorialScreen()
         self.ui.setupUi(self)
-        self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
-        self.text = database_query("SELECT Question FROM Questions WHERE Question_No=?", [self.question_no])[0][0]
-        self.ui.QuestionText.setText(self.center_text(self.text))
+        self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_introduction)
         self.ui.NextButton.clicked.connect(self.goto_summary)
         self.ui.MSlider.valueChanged.connect(self.M_value_changed)
         self.ui.CSlider.valueChanged.connect(self.C_value_changed)
         self.ui.GraphButton.clicked.connect(self.graph)
-        self.ui.SubmitButton.clicked.connect(self.submit)
+        self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.show()
 
     def M_value_changed(self):
@@ -188,17 +190,6 @@ class InvestigationTutorial(TutorialSection):
 
     def graph(self):
         self.plot = GraphMatPlot(self.gradient, self.y_intercept)
-
-    def submit(self):
-        self.answer = self.ui.QuestionInput.text()
-        if self.answer == '2':
-            self.ui.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
-                    "font: 18pt \"Sans Serif\";")
-            self.ui.MessageLabel.setText(self.center_text('Correct!'))
-        else:
-            self.ui.MessageLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
-                    "font: 18pt \"Sans Serif\";")
-            self.ui.MessageLabel.setText(self.center_text('That is incorrect, try again'))
 
 
 class GraphMatPlot(StaticGraphScreen):

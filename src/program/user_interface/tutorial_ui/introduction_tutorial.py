@@ -138,12 +138,49 @@ class Ui_IntroductionTutorialScreen(object):
         self.MainText.setGeometry(QtCore.QRect(40, 60, 1251, 391))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(555, 410, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 330, 501, 71))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setObjectName("QuestionText")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(405, 480, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setObjectName("MessageLabel")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(820, 415, 121, 51))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
         self.SubTitleText.raise_()
         self.PrevButton.raise_()
         self.NextButton.raise_()
         self.MainText.raise_()
+        self.QuestionText.raise_()
+        self.QuestionInput.raise_()
+        self.MessageLabel.raise_()
+        self.SubmitButton.raise_()
 
         self.retranslateUi(IntroductionTutorialScreen)
         QtCore.QMetaObject.connectSlotsByName(IntroductionTutorialScreen)
@@ -161,7 +198,11 @@ class Ui_IntroductionTutorialScreen(object):
         self.PrevButton.setText(_translate("IntroductionTutorialScreen", "Prev"))
         self.NextButton.setText(_translate("IntroductionTutorialScreen", "Next"))
         self.SubTitleText.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Introduction</span></p></body></html>"))
-        self.MainText.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p>The introduction section of this program is designed to give you a sufficient amount of knowledge about the Riemann Hypothesis, such that you will be able to understand the complicated mathematics behind this program so that you will be able to fully utilise the functionality of this program.</p><p><br/></p><p>This section will give you some Historical Background on the Riemann Hypothesis, it will explain what the Riemann Hypothesis actually is, and detail some Practical Applications of the Riemann Hypothesis.</p><p><br/>The introduction section will give you the basic knowledge you need to be able to understand this program, so it is strongly recommended to read this before started to use the program.</p><p><br/></p><p><br/></p></body></html>"))
+        self.MainText.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p>The introduction section of this program is designed to give you a sufficient amount of knowledge about the Riemann Hypothesis, such that you will be able to understand the complicated mathematics behind this program so that you will be able to fully utilise the functionality of this program.</p><p>This section will give you some Historical Background on the Riemann Hypothesis, it will explain what the Riemann Hypothesis actually is, and detail some Practical Applications of the Riemann Hypothesis.</p><p><br/>The introduction section will give you the basic knowledge you need to be able to understand this program, so it is strongly recommended to read this before started to use the program.</p><p>Throughout the Introduction Section, and the rest of the program, will be varioues questions. Answer these questions correctly to be able to learn mroe about the Riemann Hypothesis! When you answer the question correctly, it will say that you have it correct. Otherwise, keep on trying to get the right answer.</p><p>Here is an example below:</p><p><br/></p><p><br/></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("IntroductionTutorialScreen", "Answer"))
+        self.QuestionText.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.MessageLabel.setText(_translate("IntroductionTutorialScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.SubmitButton.setText(_translate("IntroductionTutorialScreen", "Submit"))
 
 
 if __name__ == "__main__":

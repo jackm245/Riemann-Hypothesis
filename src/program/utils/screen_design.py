@@ -11,6 +11,7 @@ import matplotlib
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from ..user_interface import Ui_MatPlotScreen
+from .database_functions import database_query
 
 
 __all__ = ['Screen']
@@ -39,9 +40,25 @@ class Screen(QtWidgets.QDialog):
         self.main_menu = MainMenu()
         self.hide()
 
+    def setup_question(self):
+        self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
+        self.text, self.correct_answer = database_query("SELECT Question, Answer  FROM Questions WHERE Question_No=?", [self.question_no])[0]
+        self.ui.QuestionText.setText(self.center_text(self.text))
+
+    def check_answer(self):
+        self.answer = self.ui.QuestionInput.text()
+        if self.answer == self.correct_answer:
+            self.ui.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+                    "font: 18pt \"Sans Serif\";")
+            self.ui.MessageLabel.setText(self.center_text('Correct!'))
+        else:
+            self.ui.MessageLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
+                    "font: 18pt \"Sans Serif\";")
+            self.ui.MessageLabel.setText(self.center_text('Incorrect, try again'))
+
     def center_text(self, text):
         return f'<html><head/><body><p align=\"center\">{text}</p></body></html>'
-        #  return f'<html><head/><body><p align=\"center\"><span style=\"{style}\"{text}</span></p></body></html>'
+
 
 
 class MplWidget(Screen):

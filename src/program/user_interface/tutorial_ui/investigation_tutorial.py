@@ -184,7 +184,7 @@ class Ui_InvestigationTutorialScreen(object):
 "")
         self.GraphButton.setObjectName("GraphButton")
         self.MainText_2 = QtWidgets.QLabel(self.MainWidget)
-        self.MainText_2.setGeometry(QtCore.QRect(20, 350, 871, 31))
+        self.MainText_2.setGeometry(QtCore.QRect(20, 350, 941, 31))
         self.MainText_2.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText_2.setWordWrap(True)
@@ -200,6 +200,7 @@ class Ui_InvestigationTutorialScreen(object):
         self.QuestionInput.setText("")
         self.QuestionInput.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
         self.QuestionInput.setObjectName("QuestionInput")
         self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
         self.SubmitButton.setGeometry(QtCore.QRect(690, 420, 131, 60))

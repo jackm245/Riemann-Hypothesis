@@ -106,7 +106,7 @@ class Ui_PolarGraphScreen(object):
         self.GraphInput.setCursorPosition(0)
         self.GraphInput.setObjectName("GraphInput")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 681, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 701, 41))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")

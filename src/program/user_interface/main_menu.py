@@ -35,7 +35,7 @@ class Ui_MainMenu(object):
 "border-radius:40px;")
         self.SideWidget.setObjectName("SideWidget")
         self.Title = QtWidgets.QLabel(self.SideWidget)
-        self.Title.setGeometry(QtCore.QRect(100, 30, 371, 121))
+        self.Title.setGeometry(QtCore.QRect(90, 30, 381, 121))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
         self.InvestigationButton = QtWidgets.QPushButton(self.SideWidget)
