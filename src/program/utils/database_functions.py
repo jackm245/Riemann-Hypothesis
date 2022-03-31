@@ -195,7 +195,8 @@ def create_database(database='database.db'):
         questions_and_answers = [
         ('Error', 'Error'),
         ('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'),
-        ('What is 1+1?', '2')
+        ('What is 1+1?', '2'),
+        ('What character is used to denote the imaginary unit?', 'i')
         ]
         touch(database)
         create_users_table()
@@ -237,4 +238,14 @@ def get_id(ID, table):
     return ID_Number
 
 
+questions_and_answers = [
+('Error', 'Error'),
+('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'),
+('What is 1+1?', '2'),
+('What character is used to denote the imaginary unit?', 'i')
+]
+delete_table('Answers')
+delete_table('Questions')
+create_answers_table(questions_and_answers)
+create_questions_table(questions_and_answers)
 database_print()

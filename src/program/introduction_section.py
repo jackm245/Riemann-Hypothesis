@@ -113,9 +113,11 @@ class WhatIsTheRiemannHypothesis(IntroductionSection):
 
     def __init__(self):
         super(WhatIsTheRiemannHypothesis, self).__init__()
+        self.question_no = 3
         self.ui = Ui_WhatIsTheRiemannHypothesisScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_historical_background)
         self.ui.NextButton.clicked.connect(self.goto_practical_applications)
         self.show()

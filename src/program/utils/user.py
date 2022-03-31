@@ -24,6 +24,7 @@ class ProgramUser():
         self.user_id = user_id
         self.username = username
         self.email = email
+        # save data for user not signed in
 
     def SetSignedIn(self, signed_in):
         self.signed_in = signed_in
