@@ -29,8 +29,8 @@ class MainMenu(Screen):
         super(MainMenu, self).__init__()
         self.ui = Ui_MainMenu()
         self.ui.setupUi(self)
-        if User.username:
-            self.ui.LoginLabel.setText(f"<html><head/><body><p align=\"center\">{User.username}</p></body></html>")
+        if User.GetSignedIn():
+            self.ui.LoginLabel.setText(f"<html><head/><body><p align=\"center\">{User.GetUsername()}</p></body></html>")
             self.ui.LoginLabel.show()
         else:
             self.ui.LoginLabel.hide()

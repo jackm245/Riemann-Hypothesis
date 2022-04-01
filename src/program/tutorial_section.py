@@ -200,7 +200,7 @@ class GraphMatPlot(StaticGraphScreen):
         super(GraphMatPlot, self).__init__()
         self.y_intercept = y_intercept
         self.gradient = gradient
-        self.x_vals = list(range(21))
+        self.x_vals = list(range(6))
         self.y_vals= [self.gradient * num + self.y_intercept for num in self.x_vals]
         self.count = 0
         self.show()
@@ -234,6 +234,7 @@ class GraphMatPlot(StaticGraphScreen):
                 self.x_vals, self.y_vals,
                 label=f'y={self.gradient_label}{self.intercept_label}',
                 color='blue')
+        self.matplotlibwidget.axes.grid()
         self.matplotlibwidget.axes.legend(loc='upper left')
         self.matplotlibwidget.canvas.draw()
 
