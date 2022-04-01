@@ -46,14 +46,14 @@ class Screen(QtWidgets.QDialog):
         """
         self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
-        self.text = database_query("SELECT Question FROM Questions WHERE Question_No=?", [self.question_no])[0][0]
-        self.correct_answers = [answer[0] for answer in database_query("SELECT CorrectAnswer From CorrectAnswers WHERE Question_No=?", [self.question_no])]
+        self.text = database_query("SELECT Question FROM Questions WHERE Question_No=?", self.question_no)[0][0]
+        self.correct_answers = [answer[0] for answer in database_query("SELECT CorrectAnswer From CorrectAnswers WHERE Question_No=?", self.question_no)]
         self.lowercase_correct_answers = list(map(lambda answer : answer.lower(), self.correct_answers))
         self.ui.QuestionText.setText(self.center_text(self.text))
         if User.GetSignedIn():
-            self.usernames = [username[0] for username in database_query("SELECT Username FROM UsersAnswers WHERE Question_No=?", [self.question_no])]
+            self.usernames = [username[0] for username in database_query("SELECT Username FROM UsersAnswers WHERE Question_No=?", self.question_no)]
             if User.GetUsername() in self.usernames:
-                self.users_answer = str(database_query("SELECT UsersAnswer FROM UsersAnswers WHERE Question_No=? AND Username=?", [self.question_no, User.GetUsername()])[0][0])
+                self.users_answer = str(database_query("SELECT UsersAnswer FROM UsersAnswers WHERE Question_No=? AND Username=?", self.question_no, User.GetUsername())[0][0])
                 if self.users_answer.lower() in self.lowercase_correct_answers:
                     self.ui.QuestionInput.setText(self.users_answer)
                     self.set_label_correct()
@@ -88,8 +88,8 @@ class Screen(QtWidgets.QDialog):
         If User had already answered the question, the record in the database
         will need to be deleted before the new one is inserted.
         """
-        database_query("DELETE FROM UsersAnswers WHERE Username=? AND Question_No=?", [User.GetUsername(), self.question_no])
-        database_insert('UsersAnswers', [self.question_no, User.GetUsername(), self.users_answer])
+        database_query("DELETE FROM UsersAnswers WHERE Username=? AND Question_No=?", User.GetUsername(), self.question_no)
+        database_insert('UsersAnswers', self.question_no, User.GetUsername(), self.users_answer)
 
     def center_text(self, text):
         return f'<html><head/><body><p align=\"center\">{text}</p></body></html>'

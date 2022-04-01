@@ -109,7 +109,7 @@ class LoginSection(Screen):
         self.username = self.ui.UsernameInput.text()
         self.password  = self.ui.PasswordInput.text()
         try:
-            self.correct_hashed_password = database_query("SELECT Password FROM Users WHERE Username=?", [self.username])[0][0]
+            self.correct_hashed_password = database_query("SELECT Password FROM Users WHERE Username=?", self.username)[0][0]
         except IndexError:
             self.ui.ErrorLabel.setText("Username or password is not valid")
         else:
@@ -118,7 +118,7 @@ class LoginSection(Screen):
             else:
                 User.SetSignedIn(True)
                 User.SetUsername(self.username)
-                self.email = database_query("SELECT Email FROM Users WHERE Username=?", [self.username])[0][0]
+                self.email = database_query("SELECT Email FROM Users WHERE Username=?", self.username)[0][0]
                 User.SetEmail(self.email)
                 self.main_menu = MainMenu()
                 self.hide()
@@ -174,7 +174,7 @@ class ResetPassword2(LoginSection):
         if self.pwds_invalid:
             self.ui.ErrorLabel.setText(self.pwds_invalid)
         else:
-            database_query("UPDATE Users SET Password=? WHERE Username=?",[hash_password(self.password1), User.GetUsername()])
+            database_query("UPDATE Users SET Password=? WHERE Username=?", hash_password(self.password1), User.GetUsername())
             from .main_section import MainMenu
             self.main_menu = MainMenu()
             self.hide()
@@ -260,7 +260,7 @@ class ForgottenPassword(LoginSection):
         else:
             # Send Email
             self.verificaton_code = ''.join(list(map(str, [random.randint(0, 9) for _ in range(6)])))
-            self.username = database_query("SELECT Username FROM Users WHERE Email=?", (self.email,))[0][0]
+            self.username = database_query("SELECT Username FROM Users WHERE Email=?", self.email)[0][0]
             User.SetUsername(self.username)
             User.SetEmail(self.email)
             send_verification_email(self.verificaton_code)

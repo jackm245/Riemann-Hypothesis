@@ -28,17 +28,17 @@ def database_select(headings, tables):
     return database_query(query)
 
 
-def database_insert(table, values):
+def database_insert(table, *args):
 
     """
-    database_insert inserts the paramter values into a desired table in the database
+    database_insert inserts the arguments into a desired table in the database
     """
 
-    query = f"INSERT INTO {table} VALUES ({', '.join('?' for _ in values)})"
-    database_query(query, values)
+    query = f"INSERT INTO {table} VALUES ({', '.join('?' for _ in args)})"
+    database_query(query, *args)
 
 
-def database_query(query, values=[], database='database.db'):
+def database_query(query, *args, database='database.db'):
 
     """
     database_query takes in a query as an input, and executes it on the database
@@ -49,7 +49,7 @@ def database_query(query, values=[], database='database.db'):
 
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
-    cursor.execute(query, values)
+    cursor.execute(query, args)
     rows = cursor.fetchall()
     conn.commit()
     conn.close()
@@ -57,11 +57,11 @@ def database_query(query, values=[], database='database.db'):
 
 
 def database_print():
-    print('='*12)
-    print('= DATABASE =')
-    print('='*12)
+    print('='*16)
+    print('=   DATABASE   =')
+    print('='*16)
     tables = [table[0] for table in database_query("""SELECT name FROM sqlite_master
-    WHERE type='table';""")]
+    WHERE type='table'""")]
     for table in tables:
         name = f"- Table: {table} -"
         border = '-' * len(name)
@@ -71,7 +71,6 @@ def database_print():
         for row in rows:
             print(row)
     print('=' * 20)
-    print(tables)
 
 
 def create_users_table():
@@ -95,7 +94,7 @@ def create_correct_answers_table(questions_and_answers):
     )""")
     for question_no, dict in enumerate(questions_and_answers):
         for answer in dict["Answers"]:
-            database_insert('CorrectAnswers', [question_no, answer])
+            database_insert('CorrectAnswers', question_no, answer)
 
 
 def create_questions_table(questions_and_answers):
@@ -107,7 +106,7 @@ def create_questions_table(questions_and_answers):
     Question text
     )""")
     for question_no, dict in enumerate(questions_and_answers):
-        database_insert('Questions', [question_no, dict["Question"]])
+        database_insert('Questions', question_no, dict["Question"])
 
 
 def create_user_answer_table():
@@ -234,6 +233,7 @@ def get_next_id(IDs, ID=0):
     else:
         return get_next_id(IDs, ID+1)
 
+
 def get_id(ID, table):
     selection = database_select([ID], [table])
     IDs = set([row[0] for row in selection])
@@ -241,9 +241,9 @@ def get_id(ID, table):
     return ID_Number
 
 
-#  delete_table('CorrectAnswers')
-#  delete_table('Questions')
-#  create_correct_answers_table(questions_and_answers)
-#  create_questions_table(questions_and_answers)
+#  delete_table('Zeta')
+#  delete_table('UserZeta')
+#  create_user_zeta_table()
+#  create_zeta_table()
 #  reset_database()
 database_print()

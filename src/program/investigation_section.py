@@ -188,13 +188,12 @@ class CalculateZeroes2(InvestigationSection):
                 # only add to database if not already in database
                 if not in_table:
                     self.Zeta_Zero_ID = get_id('Zero_ID', 'Zeroes')
-                    database_insert('Zeroes', [self.Zeta_Zero_ID, real, imag])
-                    database_insert('UserZeroes', [self.Zeta_Zero_ID, User.GetUserID()])
+                    database_insert('Zeroes', self.Zeta_Zero_ID, real, imag)
+                    database_insert('UserZeroes', self.Zeta_Zero_ID, User.GetUsername())
             self.ui.ErrorLabel.setText(self.center_text('Zeroes saved to database'))
         else:
             self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
                     'save to the database'))
-        #  pass
 
     def saveto_file(self):
         filepath = 'files/zeta_zeroes.csv'
@@ -288,11 +287,11 @@ class CalculatorLeaderboard(InvestigationSection):
 
     def get_rows(self):
         self.rows = []
-        self.usernames = database_query('SELECT User_ID, Username FROM Users')
-        for id, name in self.usernames:
+        self.usernames = [username[0] for username in database_select(['Username'], ['Users'])]
+        for username in self.usernames:
             number_of_zeta_values_calculated = len(database_query(
-                    'SELECT Zeta_ID FROM UserZeta WHERE User_ID=?', [id]))
-            self.rows.append((name, number_of_zeta_values_calculated))
+                    'SELECT * FROM UserZeta WHERE Username=?', username))
+            self.rows.append((username, number_of_zeta_values_calculated))
 
     def sort_rows(self):
         # sort rows by number of zeta values calculated
@@ -344,8 +343,8 @@ class TableCalculator2(InvestigationSection):
             for input, output in self.table_values:
                 if input not in database_inputs:
                     self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
-                    database_insert('Zeta', [self.Zeta_ID, str(input), str(output)])
-                    database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
+                    database_insert('Zeta', self.Zeta_ID, str(input), str(output))
+                    database_insert('UserZeta', self.Zeta_ID, User.GetUsername())
             self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
         else:
             self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
@@ -442,18 +441,25 @@ class SingleCalculator(InvestigationSection):
             self.ui.ErrorLabel.setText('')
 
     def saveto_database(self):
-        if User.GetUsername():
-            database_inputs = database_select(['Input'], ['Zeta'])
-            if self.zeta_input not in database_inputs:
+        if User.GetSignedIn():
+            database_inputs = database_select(['Input_Real', 'Input_Imag'], ['Zeta'])
+            self.zeta_input_real = self.zeta_input.real
+            self.zeta_input_imag = self.zeta_input.imag
+            if (self.zeta_input_real, self.zeta_input_imag) not in database_inputs:
                 self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
                 database_insert('Zeta',
-                        [self.Zeta_ID,
-                        str(self.zeta_input),
-                        str(self.zeta_output_printable)])
-                database_insert('UserZeta', [self.Zeta_ID, User.GetUserID()])
-            self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
+                        self.Zeta_ID,
+                        self.zeta_input.real,
+                        self.zeta_input.imag,
+                        self.zeta_output_printable.real,
+                        self.zeta_output_printable.imag)
+                database_insert('UserZeta', self.Zeta_ID, User.GetUsername())
+                self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
+            else:
+                self.ui.ErrorLabel.setText(self.center_text('Value has already been recorded in the database'))
         else:
-            self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
+            self.ui.ErrorLabel.setText(
+                    self.center_text('You must be signed in to be able to '
                     'save to the database'))
 
     def saveto_file(self):
