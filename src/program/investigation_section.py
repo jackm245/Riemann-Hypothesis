@@ -11,13 +11,13 @@ Includes the ... Screens
 import sys
 import matplotlib
 import numpy as np
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen
-from .notes import InvestigationNotes
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from .notes import InvestigationNotes
 from .user_interface import Ui_PolarGraphScreen, Ui_PrimeCountingFunctionScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen, Ui_MatPlotScreen, Ui_ZeroesScreen
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen
 
 
 class InvestigationSection(Screen):

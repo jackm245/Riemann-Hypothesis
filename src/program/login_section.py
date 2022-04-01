@@ -8,6 +8,7 @@ Login section of the project
 Includes the Login, Sign Up, Forgotten Password, and Reset Password Screens
 """
 
+
 import re
 import random
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -102,6 +103,26 @@ class LoginSection(Screen):
             self.show_or_hide_2 = 'Show'
         self.ui.ShowHideButton_2.setText(self.show_or_hide_2)
 
+    def login(self):
+        """Used as default login behaviour"""
+        from .main_section import MainMenu
+        self.username = self.ui.UsernameInput.text()
+        self.password  = self.ui.PasswordInput.text()
+        try:
+            self.correct_hashed_password = database_query("SELECT Password FROM Users WHERE Username=?", [self.username])[0][0]
+        except IndexError:
+            self.ui.ErrorLabel.setText("Username or password is not valid")
+        else:
+            if not check_password(self.password, self.correct_hashed_password):
+                self.ui.ErrorLabel.setText("Username or password is not valid")
+            else:
+                User.SetSignedIn(True)
+                User.SetUsername(self.username)
+                self.email = database_query("SELECT Email FROM Users WHERE Username=?", [self.username])[0][0]
+                User.SetEmail(self.email)
+                self.main_menu = MainMenu()
+                self.hide()
+
     def are_invalid_passwords(self):
 
         """
@@ -153,7 +174,7 @@ class ResetPassword2(LoginSection):
         if self.pwds_invalid:
             self.ui.ErrorLabel.setText(self.pwds_invalid)
         else:
-            database_query("UPDATE Users SET Password=? WHERE User_ID=?",(hash_password(self.password1), User.GetUserID(),))
+            database_query("UPDATE Users SET Password=? WHERE Username=?",[hash_password(self.password1), User.GetUsername()])
             from .main_section import MainMenu
             self.main_menu = MainMenu()
             self.hide()
@@ -176,20 +197,8 @@ class ResetPassword(LoginSection):
         self.show()
 
     def submit(self):
-        self.username = self.ui.UsernameInput.text()
-        self.password  = self.ui.PasswordInput.text()
-        self.selection = database_select(['User_ID', 'Username'], ['Users'])
-        self.id1 = [row[0] for row in self.selection if row[1] == self.username]
-        self.selection = database_select(['User_ID', 'Password'], ['Users'])
-        self.id2 = [row[0] for row in self.selection if check_password(self.password, row[1])]
-        if len(self.id1) == 0 or self.id1 != self.id2:
-            self.ui.ErrorLabel.setText("Username or password is not valid")
-        else:
-            User.SetSignedIn(True)
-            User.SetUsername(self.username)
-            User.SetUserID(self.id1[0])
-            self.email = database_query("SELECT Email FROM Users WHERE User_ID=?", (self.id1[0],))[0][0]
-            User.SetEmail(self.email)
+        from .main_section import MainMenu
+        if self.login():
             self.reset_password_2 = ResetPassword2()
             self.hide()
 
@@ -251,9 +260,7 @@ class ForgottenPassword(LoginSection):
         else:
             # Send Email
             self.verificaton_code = ''.join(list(map(str, [random.randint(0, 9) for _ in range(6)])))
-            self.user_id = database_query("SELECT User_ID FROM Users WHERE Email=?", (self.email,))[0][0]
             self.username = database_query("SELECT Username FROM Users WHERE Email=?", (self.email,))[0][0]
-            User.SetUserID(self.user_id)
             User.SetUsername(self.username)
             User.SetEmail(self.email)
             send_verification_email(self.verificaton_code)
@@ -294,21 +301,19 @@ class SignUp(LoginSection):
         elif self.pwds_invalid:
             self.ui.ErrorLabel.setText(self.pwds_invalid)
         else:
-            self.selection = database_select(['Username'], ['Users'])
-            self.Usernames = set([row[0] for row in self.selection])
-            if self.username in self.Usernames:
+            self.username_query = database_select(['Username'], ['Users'])
+            self.usernames = set([row[0].lower() for row in self.username_query])
+            if self.username.lower() in self.usernames:
                 self.ui.ErrorLabel.setText("Username already taken")
             else:
-                self.selection = database_select(['Email'], ['Users'])
-                self.Emails = set([row[0] for row in self.selection])
-                if self.email in self.Emails:
+                self.emaill_query = database_select(['Email'], ['Users'])
+                self.emails = set([row[0].lower() for row in self.emaill_query])
+                if self.email.lower() in self.emails:
                     self.ui.ErrorLabel.setText("Email already taken")
                 else:
-                    self.User_ID = get_id('USER_ID', 'Users')
                     self.hashed_password = hash_password(self.password1)
-                    database_insert('Users', [self.User_ID, self.username, self.email, self.hashed_password])
+                    database_insert('Users', [self.username, self.email, self.hashed_password])
                     User.SetSignedIn(True)
-                    User.SetUserID(self.User_ID)
                     User.SetUsername(self.username)
                     User.SetEmail(self.email)
                     self.main_menu = MainMenu()
@@ -334,19 +339,6 @@ class Login(LoginSection):
 
     def submit(self):
         from .main_section import MainMenu
-        self.username = self.ui.UsernameInput.text()
-        self.password  = self.ui.PasswordInput.text()
-        self.selection = database_select(['User_ID', 'Username'], ['Users'])
-        self.id1 = [row[0] for row in self.selection if row[1] == self.username]
-        self.selection = database_select(['User_ID', 'Password'], ['Users'])
-        self.id2 = [row[0] for row in self.selection if check_password(self.password, row[1])]
-        if len(self.id1) == 0 or self.id1 != self.id2:
-            self.ui.ErrorLabel.setText("Username or password is not valid")
-        else:
-            User.SetSignedIn(True)
-            User.SetUsername(self.username)
-            User.SetUserID(self.id1[0])
-            self.email = database_query("SELECT Email FROM Users WHERE User_ID=?", (self.id1[0],))[0][0]
-            User.SetEmail(self.email)
+        if self.login():
             self.main_menu = MainMenu()
             self.hide()

@@ -79,23 +79,23 @@ def create_users_table():
     """ Create the Users table in the database """
 
     database_query(""" CREATE TABLE Users(
-    User_ID integer PRIMARY KEY,
-    Username text,
+    Username text PRIMARY KEY,
     Email text,
     Password text
     )""")
 
-def create_answers_table(questions_and_answers):
+def create_correct_answers_table(questions_and_answers):
 
     """ Create the Answers table in the database """
 
-    database_query(""" CREATE TABLE Answers(
-    Answer_ID integer PRIMARY KEY,
-    Answer text
+    database_query(""" CREATE TABLE CorrectAnswers(
+    Question_No integer,
+    CorrectAnswer text,
+    PRIMARY KEY (Question_No, CorrectAnswer)
     )""")
-
-    for answer_id, (question, answer) in enumerate(questions_and_answers):
-        database_insert('Answers', [answer_id, answer])
+    for question_no, dict in enumerate(questions_and_answers):
+        for answer in dict["Answers"]:
+            database_insert('CorrectAnswers', [question_no, answer])
 
 
 def create_questions_table(questions_and_answers):
@@ -103,23 +103,22 @@ def create_questions_table(questions_and_answers):
     """ Create the Questions table in the database """
 
     database_query(""" CREATE TABLE Questions(
-    Question_ID integer PRIMARY KEY,
-    Question text,
-    Answer_ID integer
+    Question_No integer PRIMARY KEY,
+    Question text
     )""")
-    for question_id, (question, answer) in enumerate(questions_and_answers):
-        answer_id = database_query("SELECT Answer_ID FROM Answers WHERE Answer=?", [answer])[0][0]
-        database_insert('Questions', [question_id, question, answer_id])
+    for question_no, dict in enumerate(questions_and_answers):
+        database_insert('Questions', [question_no, dict["Question"]])
 
 
 def create_user_answer_table():
 
     """ Create the User Answer table in the database """
 
-    database_query(""" CREATE TABLE UserAnswer(
-    User_ID integer,
-    Question_ID integer,
-    Answer_ID integer
+    database_query(""" CREATE TABLE UsersAnswers(
+    Question_No integer,
+    Username integer,
+    UsersAnswer integer,
+    PRIMARY KEY (Question_No, Username)
     )""")
 
 
@@ -128,10 +127,10 @@ def create_notes_table():
     """ Create the Notes table in the database """
 
     database_query(""" CREATE TABLE Notes(
-    Note_ID integer PRIMARY KEY,
+    Username integer,
     Section text,
     Text text,
-    User_ID integer
+    PRIMARY KEY (Username, Section)
     )""")
 
 
@@ -141,8 +140,10 @@ def create_zeta_table():
 
     database_query(""" CREATE TABLE Zeta(
     Zeta_ID integer PRIMARY KEY,
-    Input text,
-    Output text
+    Input_Real REAL,
+    Input_Imag REAL,
+    Output_Real REAL,
+    Output_imag REAL
     )""")
 
 
@@ -151,8 +152,9 @@ def create_user_zeta_table():
     """ Create the User Zeta table in the database """
 
     database_query(""" CREATE TABLE UserZeta(
-    Zeta_ID integer PRIMARY KEY,
-    User_ID integer
+    Zeta_ID integer,
+    Username integer,
+    PRIMARY KEY (Zeta_ID, Username)
     )""")
 
 
@@ -172,8 +174,9 @@ def create_user_zeroes_table():
     """ Create the User Zeta Zeroes table in the database """
 
     database_query(""" CREATE TABLE UserZeroes(
-    Zero_ID integer PRIMARY KEY,
-    User_ID integer
+    Zero_ID integer,
+    Username integer,
+    PRIMARY KEY (Zero_ID, Username)
     )""")
 
 
@@ -193,21 +196,21 @@ def create_database(database='database.db'):
 
     if not os.path.isfile('database.db'):
         questions_and_answers = [
-        ('Error', 'Error'),
-        ('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'),
-        ('What is 1+1?', '2'),
-        ('What character is used to denote the imaginary unit?', 'i')
+        {'Question': 'Error', 'Answers': ['Error']},
+        {'Question': 'What is the name of this program?<br>Visualising the ___ Hypothesis', 'Answers': ['Riemann']},
+        {'Question': 'What is 1+1?', 'Answers': ['2', 'Two']},
+        {'Question': 'Which character is used to denote the imaginary unit?', 'Answers': ['i', 'j']}
         ]
         touch(database)
         create_users_table()
-        create_answers_table(questions_and_answers)
+        create_correct_answers_table(questions_and_answers)
         create_questions_table(questions_and_answers)
         create_user_answer_table()
         create_notes_table()
         create_zeta_table()
         create_user_zeta_table()
-        create_zeta_zeroes_table()
-        create_user_zeta_zeroes_table()
+        create_zeroes_table()
+        create_user_zeroes_table()
 
 
 def delete_database(database='database.db'):
@@ -238,14 +241,9 @@ def get_id(ID, table):
     return ID_Number
 
 
-questions_and_answers = [
-('Error', 'Error'),
-('What is the name of this program?<br>Visualising the ___ Hypothesis', 'Riemann'),
-('What is 1+1?', '2'),
-('What character is used to denote the imaginary unit?', 'i')
-]
-delete_table('Answers')
-delete_table('Questions')
-create_answers_table(questions_and_answers)
-create_questions_table(questions_and_answers)
+#  delete_table('CorrectAnswers')
+#  delete_table('Questions')
+#  create_correct_answers_table(questions_and_answers)
+#  create_questions_table(questions_and_answers)
+#  reset_database()
 database_print()

@@ -18,19 +18,15 @@ class ProgramUser():
     credentials throughout the runtime of the program
     """
 
-    def __init__(self, signed_in=False, user_id=None, username=None, email=None):
+    def __init__(self, signed_in=False, username=None, email=None):
         super(ProgramUser, self).__init__()
         self.signed_in = signed_in
-        self.user_id = user_id
         self.username = username
         self.email = email
         # save data for user not signed in
 
     def SetSignedIn(self, signed_in):
         self.signed_in = signed_in
-
-    def SetUserID(self, user_id):
-        self.user_id = user_id
 
     def SetUsername(self, username):
         self.username = username
@@ -40,9 +36,6 @@ class ProgramUser():
 
     def GetSignedIn(self):
         return self.signed_in
-
-    def GetUserID(self):
-        return self.user_id
 
     def GetUsername(self):
         return self.username

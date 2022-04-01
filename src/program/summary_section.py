@@ -1,6 +1,6 @@
 """
 summary_section.py
-=======================
+==================
 
 Contains all of the classes used to interact with the GUI for the
 summary section of the project

@@ -39,30 +39,28 @@ class Screen(QtWidgets.QDialog):
         self.hide()
 
     def setup_question(self):
+        """
+        This function is only called if there is a question that the user can answer on that page
+
+        This function will set the QuestionText label in the gui to the question that is being asked, and if the user is signed in, and has previously answered the question correctly, then their previous answer will be displayed
+        """
         self.ui.SubmitButton.clicked.connect(self.check_answer)
         self.ui.QuestionText.setStyleSheet("font-size: 16pt; font-weight: 600;")
-        self.text, self.correct_answer_id = database_query("SELECT Question, Answer_ID FROM Questions WHERE Question_ID=?", [self.question_no])[0]
-        self.correct_answer = database_query("SELECT Answer From Answers WHERE Answer_ID=?", [self.correct_answer_id])[0][0]
+        self.text = database_query("SELECT Question FROM Questions WHERE Question_No=?", [self.question_no])[0][0]
+        self.correct_answers = [answer[0] for answer in database_query("SELECT CorrectAnswer From CorrectAnswers WHERE Question_No=?", [self.question_no])]
+        self.lowercase_correct_answers = list(map(lambda answer : answer.lower(), self.correct_answers))
         self.ui.QuestionText.setText(self.center_text(self.text))
         if User.GetSignedIn():
-            # if already got correct, display answer, correct, and make read only
-            # if user_id in useranswers
-            self.user_ids = [id[0] for id in database_query("SELECT User_ID FROM UserAnswer WHERE Question_ID=?", [self.question_no])]
-            #  print('uid ', self.user_ids)
-            if User.GetUserID() in self.user_ids:
-                # if user has already answered the quetsion
-                self.answer_id = database_query("SELECT Answer_ID FROM UserAnswer WHERE User_ID=? AND Question_ID=?", [User.GetUserID(), self.question_no])[0][0]
-                #  self.users_answers = database_query("SELECT Answer FROM Answers WHERE Answer_ID=?", [self.answer_id])
-                self.users_answer = database_query("SELECT Answer FROM Answers WHERE Answer_ID=?", [self.answer_id])[0][0]
-                #  print(self.users_answers)
-                #  print(self.users_answer.lower(), self.correct_answer.lower())
-                if self.users_answer.lower() == self.correct_answer.lower():
-                    self.ui.QuestionInput.setText(self.correct_answer)
+            self.usernames = [username[0] for username in database_query("SELECT Username FROM UsersAnswers WHERE Question_No=?", [self.question_no])]
+            if User.GetUsername() in self.usernames:
+                self.users_answer = str(database_query("SELECT UsersAnswer FROM UsersAnswers WHERE Question_No=? AND Username=?", [self.question_no, User.GetUsername()])[0][0])
+                if self.users_answer.lower() in self.lowercase_correct_answers:
+                    self.ui.QuestionInput.setText(self.users_answer)
                     self.set_label_correct()
 
     def check_answer(self):
-        self.answer = self.ui.QuestionInput.text().lower()
-        if self.answer == self.correct_answer.lower():
+        self.users_answer = self.ui.QuestionInput.text().lower()
+        if self.users_answer.lower() in self.lowercase_correct_answers:
             self.set_label_correct()
         else:
             self.set_label_incorrect()
@@ -81,23 +79,17 @@ class Screen(QtWidgets.QDialog):
         self.ui.MessageLabel.setText(self.center_text('Incorrect, try again'))
 
     def add_answer_to_db(self):
-        # also need to add to UserAnswer //
-        # so will need to be signed in //
-        # also if they are signed in and have the q already right, autocomplete and say correct so dont add it again //
-        # also need to remove old entries so dont have repeats if they got it wrong //
-        # potentially get rid of either question_id or question_no as repeated
+        """
+        This function is only run if the user is already signed in
+        Add the User's Answer to the question to the database, whether it's
+        right or wrong
 
-        # add answer if not already in answers
-        self.answers = [answer[0].lower() for answer in database_select(['Answer'], ['Answers'])]
-        #  print(self.answers)
-        if self.answer not in self.answers:
-            database_insert('Answers', [get_id('Answer_ID', 'Answers'), self.answer])
-        self.answer_id = database_query('SELECT Answer_ID FROM Answers WHERE LOWER(Answer)=?', [self.answer])[0][0]
-        # remove userid's record if already in and replace with new one
-        #  self.user_ids = database_select(['User_IDs'], ['UserAnswer'])
-        #  if User.GetUserID() in self.user_ids:
-        database_query("DELETE FROM UserAnswer WHERE User_ID=? AND Question_ID=?", [User.GetUserID(), self.question_no])
-        database_insert('UserAnswer', [User.GetUserID(), self.question_no, self.answer_id])
+        Will add the user's answer to UserAnswer table
+        If User had already answered the question, the record in the database
+        will need to be deleted before the new one is inserted.
+        """
+        database_query("DELETE FROM UsersAnswers WHERE Username=? AND Question_No=?", [User.GetUsername(), self.question_no])
+        database_insert('UsersAnswers', [self.question_no, User.GetUsername(), self.users_answer])
 
     def center_text(self, text):
         return f'<html><head/><body><p align=\"center\">{text}</p></body></html>'
