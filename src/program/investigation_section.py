@@ -17,7 +17,7 @@ from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from .notes import InvestigationNotes
 from .user_interface import Ui_PolarGraphScreen, Ui_PrimeCountingFunctionScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen, Ui_MatPlotScreen, Ui_ZeroesScreen
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen, Complex
 
 
 class InvestigationSection(Screen):
@@ -387,10 +387,10 @@ class TableCalculator(InvestigationSection):
                 self.input_values = [
                         self.start_complex + self.step_complex * i
                         for i in range(self.range)]
-                zetas = [zeta(i) for i in self.input_values]
+                zetas = [zeta(value.get_real(), value.get_imag()) for value in self.input_values]
                 self.output_values = [
-                        complex(round(i.real, 3),
-                        round(i.imag, 3)) for i in zetas]
+                        make_complex(round(i.get_real(), 3),
+                        round(i.get_imag(), 3)) for i in zetas]
                 self.table_values =  list(zip(
                     self.input_values, self.output_values))
             else:
@@ -419,6 +419,7 @@ class SingleCalculator(InvestigationSection):
         self.ui.setupUi(self)
         self.setup_tabs()
         self.zeta_value = []
+        self.valid_input = False
         self.ui.PrevButton.clicked.connect(self.goto_calculator)
         self.ui.NextButton.clicked.connect(self.goto_table_calculator)
         self.ui.CalculateButton.clicked.connect(self.calculate_zeta)
@@ -427,40 +428,51 @@ class SingleCalculator(InvestigationSection):
         self.show()
 
     def calculate_zeta(self):
-        self.zeta_user_input = self.ui.ZetaInput.text()
+        self.zeta_user_input = str(self.ui.ZetaInput.text())
         try:
-            self.zeta_input = complex(self.zeta_user_input.replace('i', 'j'))
-        except ValueError as e:
+            self.split_input = self.zeta_user_input.split('+')
+            assert len(self.split_input) == 2
+            self.zeta_input = make_complex(self.split_input[0], self.split_input[1][:-1])
+        except (AssertionError, ValueError):
             self.ui.ErrorLabel.setText(self.center_text('Input must be a complex number of the form a+bi'))
             self.ui.ZetaOutput.setText('')
+            self.valid_input = False
         else:
-            self.zeta_output = zeta(self.zeta_input)
-            self.zeta_output_printable = complex(round(self.zeta_output.real, 3), round(self.zeta_output.imag, 3))
+            self.zeta_output = zeta(self.zeta_input.get_real(), self.zeta_input.get_imag())
+            self.zeta_output_printable = make_complex(round(self.zeta_output.get_real(), 3), round(self.zeta_output.get_imag(), 3))
             self.zeta_value = [(self.zeta_input, self.zeta_output_printable)]
-            self.ui.ZetaOutput.setText(f'{str(self.zeta_output_printable)[1:-2]}i')
+            self.ui.ZetaOutput.setText(str(self.zeta_output_printable)[1:-1])
             self.ui.ErrorLabel.setText('')
+            self.valid_input = True
 
     def saveto_database(self):
-        if User.GetSignedIn():
-            database_inputs = database_select(['Input_Real', 'Input_Imag'], ['Zeta'])
-            self.zeta_input_real = self.zeta_input.real
-            self.zeta_input_imag = self.zeta_input.imag
-            if (self.zeta_input_real, self.zeta_input_imag) not in database_inputs:
-                self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
-                database_insert('Zeta',
-                        self.Zeta_ID,
-                        self.zeta_input.real,
-                        self.zeta_input.imag,
-                        self.zeta_output_printable.real,
-                        self.zeta_output_printable.imag)
-                database_insert('UserZeta', self.Zeta_ID, User.GetUsername())
-                self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
+        if self.valid_input:
+            if User.GetSignedIn():
+                database_inputs = database_select(['Input_Real', 'Input_Imag'], ['Zeta'])
+                self.zeta_input_real = self.zeta_input.get_real()
+                self.zeta_input_imag = self.zeta_input.get_imag()
+                self.zeta_output_real = self.zeta_output_printable.get_real()
+                self.zeta_output_imag = self.zeta_output_printable.get_imag()
+                if (self.zeta_input_real, self.zeta_input_imag) not in database_inputs:
+                    self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
+                    database_insert('Zeta',
+                            self.Zeta_ID,
+                            self.zeta_input_real,
+                            self.zeta_input_imag,
+                            self.zeta_output_real,
+                            self.zeta_output_imag)
+                    database_insert('UserZeta', self.Zeta_ID, User.GetUsername())
+                    self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
+                else:
+                    self.ui.ErrorLabel.setText(self.center_text('Value has already been recorded in the database'))
             else:
-                self.ui.ErrorLabel.setText(self.center_text('Value has already been recorded in the database'))
+                self.ui.ErrorLabel.setText(
+                        self.center_text('You must be signed in to be able to '
+                        'save to the database'))
         else:
             self.ui.ErrorLabel.setText(
-                    self.center_text('You must be signed in to be able to '
-                    'save to the database'))
+                    self.center_text('Input value is not valid'))
+
 
     def saveto_file(self):
         filepath = 'files/zeta_values.csv'
@@ -616,7 +628,7 @@ class PolarGraphMatPlot(DynamicGraphScreen):
         self.show()
 
     def update_figure(self):
-        new_zeta = zeta(complex(self.real_input, self.count/25))
+        new_zeta = zeta(self.real_input, self.count/25)
         self.x_vals.append(new_zeta.real)
         self.y_vals.append(new_zeta.imag)
         self.matplotlibwidget.axes.cla()
