@@ -14,15 +14,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_CalculatorScreen(object):
     def setupUi(self, CalculatorScreen):
         CalculatorScreen.setObjectName("CalculatorScreen")
-        CalculatorScreen.resize(1340, 720)
+        CalculatorScreen.resize(1340, 713)
         CalculatorScreen.setSizeGripEnabled(False)
         self.widget = QtWidgets.QWidget(CalculatorScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
         self.Title = QtWidgets.QLabel(self.widget)
-        self.Title.setGeometry(QtCore.QRect(540, 20, 271, 51))
+        self.Title.setGeometry(QtCore.QRect(520, 20, 300, 51))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
+        self.Title.setAlignment(QtCore.Qt.AlignCenter)
         self.Title.setObjectName("Title")
         self.TabBar = QtWidgets.QWidget(self.widget)
         self.TabBar.setGeometry(QtCore.QRect(0, 80, 1340, 80))
@@ -94,12 +95,12 @@ class Ui_CalculatorScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 681, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 681, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 341))
+        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 121))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
@@ -124,6 +125,41 @@ class Ui_CalculatorScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NotesButton.setObjectName("NotesButton")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 210, 501, 101))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(410, 330, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(700, 330, 121, 61))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(410, 400, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.MessageLabel.setObjectName("MessageLabel")
 
         self.retranslateUi(CalculatorScreen)
         QtCore.QMetaObject.connectSlotsByName(CalculatorScreen)
@@ -139,9 +175,13 @@ class Ui_CalculatorScreen(object):
         self.PrevButton.setText(_translate("CalculatorScreen", "Prev"))
         self.NextButton.setText(_translate("CalculatorScreen", "Next"))
         self.SubTitleText.setText(_translate("CalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Calculating the Riemann Zeta Function</span></p></body></html>"))
-        self.MainText.setText(_translate("CalculatorScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
+        self.MainText.setText(_translate("CalculatorScreen", "<html><head/><body><p>By hand, working out values of the Riemann Zeta Function, is almost impossible and would take a lot of effort. However, using a computer program to do this instead is a much better idea.</p><p>Press the Zeta Calculator button below to calculate various values of the zeta function, you could even see if you manage to find a zeta zero.</p><p>Be sure to also answer this question!</p></body></html>"))
         self.ZetaCalculatorButton.setText(_translate("CalculatorScreen", "Zeta Calculator"))
         self.NotesButton.setText(_translate("CalculatorScreen", "Notes"))
+        self.QuestionText.setText(_translate("CalculatorScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("CalculatorScreen", "Answer"))
+        self.SubmitButton.setText(_translate("CalculatorScreen", "Submit"))
+        self.MessageLabel.setText(_translate("CalculatorScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

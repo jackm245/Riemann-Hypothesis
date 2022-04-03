@@ -64,7 +64,7 @@ def zeta(real_term, imag_term, number_of_terms=100):
     """
     s = complex(real_term, imag_term)
     if s == 1:
-        return float("inf")
+        return Complex('inf')
     else:
         const = 1 / (1 - 2 ** (1 - s))
         term = (1 / 2 ** (n + 1) * sum((-1) ** k * ncr(n, k) * (k + 1) ** (-s)

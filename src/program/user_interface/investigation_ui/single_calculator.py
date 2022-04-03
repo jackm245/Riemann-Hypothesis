@@ -84,7 +84,7 @@ class Ui_SingleCalculatorScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 381, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 421, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
@@ -112,21 +112,22 @@ class Ui_SingleCalculatorScreen(object):
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);")
         self.ZetaOutput.setText("")
+        self.ZetaOutput.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.ZetaOutput.setObjectName("ZetaOutput")
         self.InputText = QtWidgets.QLabel(self.MainWidget)
-        self.InputText.setGeometry(QtCore.QRect(230, 270, 261, 51))
+        self.InputText.setGeometry(QtCore.QRect(230, 270, 281, 51))
         self.InputText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;\n"
 "text-decoration: underline;")
         self.InputText.setObjectName("InputText")
         self.OutputText = QtWidgets.QLabel(self.MainWidget)
-        self.OutputText.setGeometry(QtCore.QRect(860, 250, 301, 61))
+        self.OutputText.setGeometry(QtCore.QRect(860, 250, 321, 61))
         self.OutputText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;\n"
 "text-decoration: underline;")
         self.OutputText.setObjectName("OutputText")
         self.DatabaseButton = QtWidgets.QPushButton(self.MainWidget)
-        self.DatabaseButton.setGeometry(QtCore.QRect(440, 460, 200, 70))
+        self.DatabaseButton.setGeometry(QtCore.QRect(429, 460, 211, 70))
         self.DatabaseButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.DatabaseButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
@@ -185,7 +186,7 @@ class Ui_SingleCalculatorScreen(object):
         self.LeaderboardTab.setText(_translate("SingleCalculatorScreen", "Leaderboard"))
         self.PrevButton.setText(_translate("SingleCalculatorScreen", "Prev"))
         self.NextButton.setText(_translate("SingleCalculatorScreen", "Next"))
-        self.SubTitleText.setText(_translate("SingleCalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Single Zeta Calculation</span></p></body></html>"))
+        self.SubTitleText.setText(_translate("SingleCalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Single Zeta Calculator</span></p></body></html>"))
         self.InputText.setText(_translate("SingleCalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Input Value (s):</span></p></body></html>"))
         self.OutputText.setText(_translate("SingleCalculatorScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Output Value 𝜻(s):</span></p></body></html>"))
         self.DatabaseButton.setText(_translate("SingleCalculatorScreen", "Save to database"))

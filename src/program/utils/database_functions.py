@@ -242,7 +242,8 @@ questions_and_answers = [
 {'Question': 'Which character is used to denote the imaginary unit?', 'Answers': ['i', 'j']},
 {'Question': 'What is one practical appication of the Riemann Hypothesis?', 'Answers': ['Cryptography', 'Quantum Physics', 'Prime Numbers']},
 {'Question': 'What is the value of the first non-trivial zeta zero?', 'Answers': ['14.1', '0.5+14.1i', '0.5 + 14.1i', '0.5+14.ij', '0.5 + 14.1j']},
-{'Question': 'What is hypothesised to be the real part of every non-trivial zero of the riemann zeta function?', 'Answers': ['0.5', '1/2']}
+{'Question': 'What is hypothesised to be the real part of every non-trivial zero of the riemann zeta function?', 'Answers': ['0.5', '1/2']},
+{'Question': 'What is the value of ζ(5+5i)', 'Answers': ['0.974+0.012i', '0.974+0.012j']}
 ]
 delete_table('CorrectAnswers')
 delete_table('Questions')

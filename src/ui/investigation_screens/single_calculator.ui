@@ -195,8 +195,8 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>381</width>
-       <height>41</height>
+       <width>421</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -204,7 +204,7 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Single Zeta Calculation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Single Zeta Calculator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="EquationImage">
@@ -264,13 +264,16 @@ border-color:rgb(69, 69, 69);</string>
      <property name="text">
       <string/>
      </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+     </property>
     </widget>
     <widget class="QLabel" name="InputText">
      <property name="geometry">
       <rect>
        <x>230</x>
        <y>270</y>
-       <width>261</width>
+       <width>281</width>
        <height>51</height>
       </rect>
      </property>
@@ -288,7 +291,7 @@ text-decoration: underline;</string>
       <rect>
        <x>860</x>
        <y>250</y>
-       <width>301</width>
+       <width>321</width>
        <height>61</height>
       </rect>
      </property>
@@ -304,9 +307,9 @@ text-decoration: underline;</string>
     <widget class="QPushButton" name="DatabaseButton">
      <property name="geometry">
       <rect>
-       <x>440</x>
+       <x>429</x>
        <y>460</y>
-       <width>200</width>
+       <width>211</width>
        <height>70</height>
       </rect>
      </property>

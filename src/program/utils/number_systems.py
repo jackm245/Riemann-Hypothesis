@@ -48,18 +48,27 @@ class Complex(Number):
             self.__real = r * cos(phi)
             self.__imag = r * sin(phi)
         else:
-            if isinstance(args[0], Complex):
+            if isinstance(self.args[0], Complex):
                 # if already in Complex form
-                self.__real = args[0].get_real()
-                self.__imag = args[0].get_imag()
-            elif isinstance(args[0], complex):
+                self.__real = self.args[0].get_real()
+                self.__imag = self.args[0].get_imag()
+            elif isinstance(self.args[0], complex):
                 # if already in python complex form
-                self.__real = args[0].real
-                self.__imag = args[0].imag
+                self.__real = self.args[0].real
+                self.__imag = self.args[0].imag
+            #  elif self.args[0] == 'inf':
+                #  self.__real = float(self.args[0])
+                #  self.__imag = float(self.args[0])
             else:
                 # for rect coordinates
                 self.__real = float(self.args[0])
-                self.__imag = float(self.args[1]) if len(self.args) > 1 else 0
+                if len(self.args) > 1:
+                    self.__imag = float(args[1])
+                elif self.args[0] == "inf":
+                    self.__imag = float(self.args[0])
+                else:
+                    self.__imag = 0
+                #  self.__imag = float(self.args[1]) if len(self.args) > 1 or self.args[0] == 'inf' else 0
 
 
     # make the number complex, if possible

@@ -429,23 +429,43 @@ class SingleCalculator(InvestigationSection):
         self.ui.FileButton.clicked.connect(self.saveto_file)
         self.show()
 
+    def validate_input(self):
+        self.split_input = self.zeta_user_input.split(self.split_char)
+        assert 0 < len(self.split_input) <= 2
+        if len(self.split_input) == 2:
+            assert self.zeta_user_input[-1] in ['i', 'j']
+            self.split_input[1] = self.split_input[1][:-1]
+        self.zeta_input = Complex(*self.split_input)
+
+
     def calculate_zeta(self):
-        self.zeta_user_input = str(self.ui.ZetaInput.text())
+        self.zeta_user_input = str(self.ui.ZetaInput.text()).strip()
+        # user input can be a real number, imag number, or complex numbers
+        self.valid_input = True
+        self.is_real_negative = False
         try:
-            self.split_input = self.zeta_user_input.split('+')
-            assert len(self.split_input) == 2
-            self.zeta_input = make_complex(self.split_input[0], self.split_input[1][:-1])
+            self.split_char = '+'
+            self.validate_input()
         except (AssertionError, ValueError):
-            self.ui.ErrorLabel.setText(self.center_text('Input must be a complex number of the form a+bi'))
-            self.ui.ZetaOutput.setText('')
-            self.valid_input = False
-        else:
+            try:
+                if self.zeta_user_input[0] == '-':
+                    self.zeta_user_input = self.zeta_user_input[1:]
+                    self.is_real_negative = True
+                self.split_char = '-'
+                self.validate_input()
+                if self.is_real_negative:
+                    self.zeta_input = Complex((-1)*self.zeta_input.get_real(), self.zeta_input.get_imag())
+            except (AssertionError, ValueError):
+                self.valid_input = False
+        if self.valid_input:
             self.zeta_output = zeta(self.zeta_input.get_real(), self.zeta_input.get_imag())
-            self.zeta_output_printable = make_complex(round(self.zeta_output.get_real(), 3), round(self.zeta_output.get_imag(), 3))
+            self.zeta_output_printable = Complex(round(self.zeta_output.get_real(), 3), round(self.zeta_output.get_imag(), 3))
             self.zeta_value = [(self.zeta_input, self.zeta_output_printable)]
             self.ui.ZetaOutput.setText(str(self.zeta_output_printable)[1:-1])
             self.ui.ErrorLabel.setText('')
-            self.valid_input = True
+        else:
+            self.ui.ErrorLabel.setText(self.center_text('Input must be a complex number of the form a+bi'))
+            self.ui.ZetaOutput.setText('')
 
     def saveto_database(self):
         if self.valid_input:
@@ -492,9 +512,11 @@ class Calculator(InvestigationSection):
 
     def __init__(self):
         super(Calculator, self).__init__()
+        self.question_no = 7
         self.ui = Ui_CalculatorScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_primes)
         self.ui.NextButton.clicked.connect(self.goto_zeroes)
         self.ui.ZetaCalculatorButton.clicked.connect(self.goto_single)
