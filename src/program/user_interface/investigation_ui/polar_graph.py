@@ -21,7 +21,7 @@ class Ui_PolarGraphScreen(object):
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
         self.Title = QtWidgets.QLabel(self.widget)
-        self.Title.setGeometry(QtCore.QRect(550, 20, 251, 51))
+        self.Title.setGeometry(QtCore.QRect(550, 20, 281, 51))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
         self.TabBar = QtWidgets.QWidget(self.widget)
@@ -106,12 +106,12 @@ class Ui_PolarGraphScreen(object):
         self.GraphInput.setCursorPosition(0)
         self.GraphInput.setObjectName("GraphInput")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 701, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 821, 41))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 341))
+        self.MainText.setGeometry(QtCore.QRect(50, 80, 1251, 341))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
@@ -138,7 +138,7 @@ class Ui_PolarGraphScreen(object):
         self.GraphInput.setToolTip(_translate("PolarGraphScreen", "<html><head/><body><p align=\"center\"> Re(s)</body></html>"))
         self.GraphInput.setPlaceholderText(_translate("PolarGraphScreen", "          Re(s)"))
         self.SubTitleText.setText(_translate("PolarGraphScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Polar Graph of the Riemann Zeta Function</span></p></body></html>"))
-        self.MainText.setText(_translate("PolarGraphScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
+        self.MainText.setText(_translate("PolarGraphScreen", "<html><head/><body><p>The polar graph of the Riemann Zeta Function, is very well known due to it\'s mesmerising shape, and mathematical beauty.</p><p>The zeta function has two inputs and two outputs, that is a real and imaginary input, and a real and imaginary output.</p><p>The graph takes 1 input, this corresponds to the real input to the zeta function. The imaginary input is determined by time. Time and the imaginary input are directly proportional, such that as time increases, the imaginary input increases by a linear amount.</p><p>Then at any given time, the graph will plot the point that is the output of the zeta function at that moment, and all of the previous outputs. Because the graph depends on time, it will be constantly changing, and plotting new points.</p><p><br/></p><p>Try it out below! Enter 0.5 for the best results.</p></body></html>"))
         self.ErrorLabel.setText(_translate("PolarGraphScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 

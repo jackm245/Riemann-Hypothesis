@@ -311,6 +311,9 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Although the Riemann Hypothesis uses a lot of theoretical mathematics, that isn't to say that it doesnt have any practical applications.&lt;/p&gt;&lt;p&gt;If the Riemann Hypothesis was proven to be true, then that would mean that many of theories and conjectures would alwasys be true. For example: The weak Goldbach conjecture - stating that all integers greater than 5 are the sum of three primes; Mills’ constants - numbers that allow you to generate prime numbers, The theory that there will always be at least one prime between consecutive cubes; and the theory that there is a maximum bound between consecutive prime numbers.&lt;/p&gt;&lt;p&gt;All of these conjectures involve prime numbers, and their distribution. If the Riemann Hypothesis and thus these conjectures were true, then very large prime numbers would be very easy to generate. This would make fields such as crypotography - that heavily rely on large prime numbers being hard to compute - change. Current crypotgraphy algorithms would become obsolete and would have to be replaced with more secure ones.&lt;/p&gt;&lt;p&gt;The Riemann Hypothesis also has a very interesting correlation to quantum physics. It was discovered in 1996 that the arrangement of the zeta zeroes exhibits the same pattern as the possible values of energy in a quantum chaotic system. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
@@ -339,11 +342,109 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Notes</string>
      </property>
     </widget>
+    <widget class="QLabel" name="QuestionText">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>290</y>
+       <width>561</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;Sans Serif&quot;; color:rgb(69, 69, 69);
+background-color: rgb(239, 239, 239); padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="QuestionInput">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>350</y>
+       <width>231</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 239, 239);
+color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;;
+border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+     <property name="cursorPosition">
+      <number>0</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>Answer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SubmitButton">
+     <property name="geometry">
+      <rect>
+       <x>690</x>
+       <y>350</y>
+       <width>131</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="MessageLabel">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>410</y>
+       <width>461</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
     <zorder>SubTitleText</zorder>
     <zorder>MainText</zorder>
     <zorder>PrevButton</zorder>
     <zorder>NextButton</zorder>
     <zorder>NotesButton</zorder>
+    <zorder>QuestionInput</zorder>
+    <zorder>SubmitButton</zorder>
+    <zorder>QuestionText</zorder>
+    <zorder>MessageLabel</zorder>
    </widget>
   </widget>
  </widget>

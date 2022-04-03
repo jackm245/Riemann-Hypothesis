@@ -14,14 +14,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ZetaZeroesPlotScreen(object):
     def setupUi(self, ZetaZeroesPlotScreen):
         ZetaZeroesPlotScreen.setObjectName("ZetaZeroesPlotScreen")
-        ZetaZeroesPlotScreen.resize(1340, 720)
+        ZetaZeroesPlotScreen.resize(1340, 722)
         ZetaZeroesPlotScreen.setSizeGripEnabled(False)
         self.widget = QtWidgets.QWidget(ZetaZeroesPlotScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
         self.Title = QtWidgets.QLabel(self.widget)
-        self.Title.setGeometry(QtCore.QRect(550, 20, 251, 51))
+        self.Title.setGeometry(QtCore.QRect(550, 20, 271, 51))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
         self.TabBar = QtWidgets.QWidget(self.widget)
@@ -99,11 +99,67 @@ class Ui_ZetaZeroesPlotScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 341))
+        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 141))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
+        self.ZeroesTab = QtWidgets.QPushButton(self.MainWidget)
+        self.ZeroesTab.setGeometry(QtCore.QRect(640, 70, 171, 51))
+        self.ZeroesTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ZeroesTab.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 12pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ZeroesTab.setObjectName("ZeroesTab")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 230, 501, 101))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(390, 350, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(720, 350, 121, 61))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(410, 410, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.MessageLabel.setObjectName("MessageLabel")
+        self.PrevButton.raise_()
+        self.NextButton.raise_()
+        self.GraphButton.raise_()
+        self.SubTitleText.raise_()
+        self.MainText.raise_()
+        self.ZeroesTab.raise_()
+        self.QuestionText.raise_()
+        self.QuestionInput.raise_()
+        self.MessageLabel.raise_()
+        self.SubmitButton.raise_()
 
         self.retranslateUi(ZetaZeroesPlotScreen)
         QtCore.QMetaObject.connectSlotsByName(ZetaZeroesPlotScreen)
@@ -119,7 +175,12 @@ class Ui_ZetaZeroesPlotScreen(object):
         self.NextButton.setText(_translate("ZetaZeroesPlotScreen", "Next"))
         self.GraphButton.setText(_translate("ZetaZeroesPlotScreen", "Graph"))
         self.SubTitleText.setText(_translate("ZetaZeroesPlotScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Zeroes of the Riemann Zeta Function</span></p></body></html>"))
-        self.MainText.setText(_translate("ZetaZeroesPlotScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
+        self.MainText.setText(_translate("ZetaZeroesPlotScreen", "<html><head/><body><p>As also mentioned in the zeroes calculator section of the investigation --&gt;<br/></p><p>The non-trivial zeroes of the riemann zeta function are input values between 0 and 1, for which the output of the function is zero.</p><p>This graph will aim to calculate each zeta zero, and then plot them on a graph; allowing you to see the distribution of the non-trivial zeta zeroes along the critical line.</p></body></html>"))
+        self.ZeroesTab.setText(_translate("ZetaZeroesPlotScreen", "Zeroes Calculator"))
+        self.QuestionText.setText(_translate("ZetaZeroesPlotScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("ZetaZeroesPlotScreen", "Answer"))
+        self.SubmitButton.setText(_translate("ZetaZeroesPlotScreen", "Submit"))
+        self.MessageLabel.setText(_translate("ZetaZeroesPlotScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

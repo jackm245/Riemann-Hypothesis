@@ -21,7 +21,7 @@ class Ui_ZeroesScreen(object):
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
         self.Title = QtWidgets.QLabel(self.widget)
-        self.Title.setGeometry(QtCore.QRect(540, 20, 271, 51))
+        self.Title.setGeometry(QtCore.QRect(530, 20, 291, 51))
         self.Title.setStyleSheet("font: 36pt \"Sans Serif\"; color:rgb(239, 239, 239)")
         self.Title.setObjectName("Title")
         self.TabBar = QtWidgets.QWidget(self.widget)
@@ -94,12 +94,12 @@ class Ui_ZeroesScreen(object):
 "")
         self.NextButton.setObjectName("NextButton")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
-        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 871, 41))
+        self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 901, 51))
         self.SubTitleText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 341))
+        self.MainText.setGeometry(QtCore.QRect(30, 70, 1251, 211))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setWordWrap(True)
@@ -124,6 +124,51 @@ class Ui_ZeroesScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NotesButton.setObjectName("NotesButton")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 270, 501, 71))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(390, 350, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(720, 350, 121, 61))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(410, 410, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.MessageLabel.setObjectName("MessageLabel")
+        self.PrevButton.raise_()
+        self.NextButton.raise_()
+        self.MainText.raise_()
+        self.CalculateButton.raise_()
+        self.NotesButton.raise_()
+        self.QuestionText.raise_()
+        self.QuestionInput.raise_()
+        self.MessageLabel.raise_()
+        self.SubTitleText.raise_()
+        self.SubmitButton.raise_()
 
         self.retranslateUi(ZeroesScreen)
         QtCore.QMetaObject.connectSlotsByName(ZeroesScreen)
@@ -139,9 +184,13 @@ class Ui_ZeroesScreen(object):
         self.PrevButton.setText(_translate("ZeroesScreen", "Prev"))
         self.NextButton.setText(_translate("ZeroesScreen", "Next"))
         self.SubTitleText.setText(_translate("ZeroesScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Calculating the Zeroes of the Riemann Zeta Function</span></p></body></html>"))
-        self.MainText.setText(_translate("ZeroesScreen", "<html><head/><body><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis magna ante, mollis mattis lectus imperdiet vitae. Aliquam luctus felis nec leo finibus, vitae varius lorem ullamcorper. Aenean congue orci ut mi viverra auctor. Aliquam erat volutpat. Etiam quis porta nunc. Phasellus efficitur feugiat lorem sit amet fermentum. Vestibulum justo lorem, porta et pellentesque vitae, malesuada aliquet orci. In eget ultricies massa. In placerat dui dui, id vulputate turpis rutrum sagittis. Vivamus ut dui ut mi interdum sollicitudin. Pellentesque ut felis felis. Donec id felis leo. Suspendisse quis quam a turpis elementum tempus eget consequat ipsum. Nullam laoreet accumsan justo sed egestas. Integer sed lectus ex. Praesent laoreet id lacus ut molestie. Aliquam at eros sapien. Mauris scelerisque nibh ex, id consequat turpis pellentesque sit amet. Phasellus in nulla eget lacus vestibulum iaculis vitae sed diam. Sed lacinia metus id molestie feugiat. Aenean vitae cursus nibh, a posuere magna. Nunc id orci non ipsum eleifend dignissim. Donec sodales, nulla ac egestas facilisis, urna eros vulputate nisl, ac tempus nibh leo quis magna. Fusce in massa felis. Phasellus sollicitudin mollis ante, quis imperdiet orci egestas id. In velit lacus, gravida eget mauris id, venenatis dictum augue. Proin at orci sed mauris rutrum aliquet in eu tortor. Integer sapien purus, varius nec cursus eget, laoreet eu massa. In varius magna ac eros congue pretium. Donec vehicula a urna vel auctor. Proin convallis magna congue ex commodo, sit amet sodales velit tincidunt. Sed finibus elementum felis vel posuere. Nam turpis justo, pulvinar et accumsan nec, eleifend non ligula. Etiam tempor in mi eget dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sollicitudin arcu mollis, iaculis tellus eget, commodo justo. Mauris mattis eget mi nec molestie. Sed nec lectus tristique, tempus elit pretium, consectetur magna. Integer dignissim augue in condimentum maximus. Fusce volutpat, nisl ac congue congue, lorem ligula tempus est, quis facilisis lacus dui ultrices ipsum. Aenean quis velit in arcu luctus eleifend vel semper ex. Duis efficitur placerat malesuada. Curabitur nec lacinia magna, sit amet cursus arcu. Pellentesque tristique lacus tincidunt ultricies ultricies. Sed congue odio ac tempor suscipit. Mauris imperdiet magna dolor, eu bibendum metus aliquam in. Quisque felis ex, consectetur id mi et, iaculis scelerisque arcu. Donec tincidunt volutpat risus, et tincidunt augue viverra non. Nulla gravida arcu a ornare aliquam.</p></body></html>"))
+        self.MainText.setText(_translate("ZeroesScreen", "<html><head/><body><p>The zeroes of the Riemann Zeta Function is where the mystery of the Riemann Hypothesis lies.</p><p>A zero, also called a root, of the function f(x) is the x value such that f(x) = 0. For the zeta function, these roots are in two categories, trival, and non-trivial zeroes. The trivial zeroes, are much simply to understand. These occur when the input to the zeta function, is a negative even integer. There is solid proof for this. However, the non-trivial zeroes are mcuh more complex. The Riemann Hypothesis states that these non-trivial zeroes occur when the real part of the input to the zeta function is equal to 1/2. Although it has been proven that the zeroes must occur when the real part of the input is between 0 and 1, it is no more specific than that. Although all non-trivial zeroes every calculated have had real part 1/2.</p><p>There is no proof for why the non-trivial zeroes occur at 1/2, but we can try to calculate the non-trivial zeroes by setting the real part of our input to the zeta function to be 1/2, and varying the imaginary part. Click Calculate Zeroes to try and find the values of some of the non-trivial zeroes of the zeta function.</p></body></html>"))
         self.CalculateButton.setText(_translate("ZeroesScreen", "Calculate Zeroes"))
         self.NotesButton.setText(_translate("ZeroesScreen", "Notes"))
+        self.QuestionText.setText(_translate("ZeroesScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("ZeroesScreen", "Answer"))
+        self.SubmitButton.setText(_translate("ZeroesScreen", "Submit"))
+        self.MessageLabel.setText(_translate("ZeroesScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

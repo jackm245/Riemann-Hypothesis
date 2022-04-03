@@ -250,9 +250,11 @@ class Zeroes(InvestigationSection):
 
     def __init__(self):
         super(Zeroes, self).__init__()
+        self.question_no = 5
         self.ui = Ui_ZeroesScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_calculator)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
         self.ui.CalculateButton.clicked.connect(self.goto_calculate_zeroes)
@@ -605,9 +607,11 @@ class ZetaZeroesPlot(InvestigationSection):
 
     def __init__(self):
         super(ZetaZeroesPlot, self).__init__()
+        self.question_no=6
         self.ui = Ui_ZetaZeroesPlotScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_polar)
         self.ui.NextButton.clicked.connect(self.goto_prime)
         self.ui.GraphButton.clicked.connect(self.goto_zeta_zeroes_graph)
@@ -629,8 +633,8 @@ class PolarGraphMatPlot(DynamicGraphScreen):
 
     def update_figure(self):
         new_zeta = zeta(self.real_input, self.count/25)
-        self.x_vals.append(new_zeta.real)
-        self.y_vals.append(new_zeta.imag)
+        self.x_vals.append(new_zeta.get_real())
+        self.y_vals.append(new_zeta.get_imag())
         self.matplotlibwidget.axes.cla()
         self.matplotlibwidget.axes.plot(self.x_vals, self.y_vals, 'r')
         self.matplotlibwidget.canvas.draw()
@@ -665,6 +669,8 @@ class PolarGraph(InvestigationSection):
         else:
             if self.real_input == 1:
                 self.ui.ErrorLabel.setText(self.center_text("Error: Input must not be equal to 1"))
+            elif not -10 < self.real_input < 45:
+                self.ui.ErrorLabel.setText(self.center_text("Error: Input value must be between -10 and 45"))
             else:
                 self.ui.ErrorLabel.setText('')
                 self.graph = PolarGraphMatPlot(self.real_input)

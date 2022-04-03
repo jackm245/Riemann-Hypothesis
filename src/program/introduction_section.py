@@ -131,9 +131,11 @@ class PracticalApplications(IntroductionSection):
 
     def __init__(self):
         super(PracticalApplications, self).__init__()
+        self.question_no = 4
         self.ui = Ui_PracticalApplicationsScreen()
         self.ui.setupUi(self)
         self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_what_is_the_riemann_hypothesis)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
         self.show()

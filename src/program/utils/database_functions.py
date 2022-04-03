@@ -193,13 +193,7 @@ def create_database(database='database.db'):
     If it doesnt already exist
     """
 
-    if not os.path.isfile('database.db'):
-        questions_and_answers = [
-        {'Question': 'Error', 'Answers': ['Error']},
-        {'Question': 'What is the name of this program?<br>Visualising the ___ Hypothesis', 'Answers': ['Riemann']},
-        {'Question': 'What is 1+1?', 'Answers': ['2', 'Two']},
-        {'Question': 'Which character is used to denote the imaginary unit?', 'Answers': ['i', 'j']}
-        ]
+    if not os.path.isfile(database):
         touch(database)
         create_users_table()
         create_correct_answers_table(questions_and_answers)
@@ -241,9 +235,17 @@ def get_id(ID, table):
     return ID_Number
 
 
-#  delete_table('Zeta')
-#  delete_table('UserZeta')
-#  create_user_zeta_table()
-#  create_zeta_table()
-#  reset_database()
+questions_and_answers = [
+{'Question': 'Error', 'Answers': ['Error']},
+{'Question': 'What is the name of this program?<br>Visualising the ___ Hypothesis', 'Answers': ['Riemann']},
+{'Question': 'What is 1+1?', 'Answers': ['2', 'Two']},
+{'Question': 'Which character is used to denote the imaginary unit?', 'Answers': ['i', 'j']},
+{'Question': 'What is one practical appication of the Riemann Hypothesis?', 'Answers': ['Cryptography', 'Quantum Physics', 'Prime Numbers']},
+{'Question': 'What is the value of the first non-trivial zeta zero?', 'Answers': ['14.1', '0.5+14.1i', '0.5 + 14.1i', '0.5+14.ij', '0.5 + 14.1j']},
+{'Question': 'What is hypothesised to be the real part of every non-trivial zero of the riemann zeta function?', 'Answers': ['0.5', '1/2']}
+]
+delete_table('CorrectAnswers')
+delete_table('Questions')
+create_correct_answers_table(questions_and_answers)
+create_questions_table(questions_and_answers)
 database_print()
