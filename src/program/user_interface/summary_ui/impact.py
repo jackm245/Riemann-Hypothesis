@@ -149,6 +149,41 @@ class Ui_ImpactScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NotesButton.setObjectName("NotesButton")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 240, 501, 81))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(410, 330, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(700, 330, 121, 61))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(410, 400, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.MessageLabel.setObjectName("MessageLabel")
 
         self.retranslateUi(ImpactScreen)
         QtCore.QMetaObject.connectSlotsByName(ImpactScreen)
@@ -167,6 +202,10 @@ class Ui_ImpactScreen(object):
         self.SubTitleText.setText(_translate("ImpactScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Impact of the Riemann Hypothesis</span></p></body></html>"))
         self.MainText.setText(_translate("ImpactScreen", "<html><head/><body><p>The Riemann Hypothesis is fundamental to the way we think about prime numbers. Although studying a single function may seem futile and even pointless, if this conjecture was proven to be true, it would be one of the most significant mathematical events to occur.<br/></p><p>It would radically change how prime numbers can be calculated and significantly increase our understanding of how prime numbers are distributed.<br/></p><p>As previously mentioned, this would affect fields such as crypotgraphy, and even quantum physics, completely revolutionising the way we view prime numbers.</p></body></html>"))
         self.NotesButton.setText(_translate("ImpactScreen", "Notes"))
+        self.QuestionText.setText(_translate("ImpactScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("ImpactScreen", "Answer"))
+        self.SubmitButton.setText(_translate("ImpactScreen", "Submit"))
+        self.MessageLabel.setText(_translate("ImpactScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

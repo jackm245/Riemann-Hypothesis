@@ -148,6 +148,41 @@ class Ui_SummaryScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.NotesButton.setObjectName("NotesButton")
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 210, 501, 101))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(410, 330, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(700, 330, 121, 61))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(410, 400, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.MessageLabel.setObjectName("MessageLabel")
 
         self.retranslateUi(SummaryScreen)
         QtCore.QMetaObject.connectSlotsByName(SummaryScreen)
@@ -164,8 +199,12 @@ class Ui_SummaryScreen(object):
         self.PrevButton.setText(_translate("SummaryScreen", "Prev"))
         self.NextButton.setText(_translate("SummaryScreen", "Next"))
         self.SubTitleText.setText(_translate("SummaryScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Summary</span></p></body></html>"))
-        self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, and learn about the significance of the results that you have obtained.</p></body></html>"))
+        self.MainText.setText(_translate("SummaryScreen", "<html><head/><body><p>The summary section is the final part of this program.</p><p><br/></p><p>Use this section to compare your results to the expected results, make any notes you need to, learn about the significance of the results that you have obtained, and answer the remaining questions.</p></body></html>"))
         self.NotesButton.setText(_translate("SummaryScreen", "Notes"))
+        self.QuestionText.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("SummaryScreen", "Answer"))
+        self.SubmitButton.setText(_translate("SummaryScreen", "Submit"))
+        self.MessageLabel.setText(_translate("SummaryScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

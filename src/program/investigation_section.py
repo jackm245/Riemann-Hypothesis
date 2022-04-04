@@ -16,7 +16,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from .notes import InvestigationNotes
-from .user_interface import Ui_PolarGraphScreen, Ui_PrimeCountingFunctionScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen, Ui_MatPlotScreen, Ui_ZeroesScreen
+from .user_interface import Ui_PolarGraphScreen, Ui_PrimeCountingFunctionScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen, Ui_MatPlotScreen, Ui_ZeroesScreen, Ui_ZetaApproximationScreen
 from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen, Complex
 
 
@@ -79,6 +79,10 @@ class InvestigationSection(Screen):
             self.ui.SingleTab.clicked.connect(self.goto_single)
         except AttributeError:
             pass
+        try:
+            self.ui.ZetaApproximationTab.clicked.connect(self.goto_zeta_approximation)
+        except AttributeError:
+            pass
 
     def goto_polar(self):
         self.polar = PolarGraph()
@@ -95,7 +99,7 @@ class InvestigationSection(Screen):
     def goto_zeta_zeroes_graph(self):
         self.zeta_zeroes_graph = ZetaZeroesMatPlot()
 
-    def pcf_graph(self):
+    def goto_pcf_graph(self):
         self.graph = PrimeCountingFunctionMatPlot()
 
     def goto_graph_plots(self):
@@ -145,6 +149,36 @@ class InvestigationSection(Screen):
 
     def goto_investigation_notes(self):
         self.investigation_notes = InvestigationNotes()
+
+    def goto_zeta_approximation(self):
+        self.zeta_approximation = ZetaApproximation()
+        self.hide()
+
+    def validate_input(self, complex_user_input, split_char):
+        split_input = complex_user_input.split(split_char)
+        assert 0 < len(split_input) <= 2
+        if len(split_input) == 2:
+            assert complex_user_input[-1] in ['i', 'j']
+            split_input[1] = split_input[1][:-1]
+        return Complex(*split_input)
+
+    def get_valid_complex_input(self, complex_user_input):
+        is_real_negative = False
+        try:
+            complex_input = self.validate_input(complex_user_input, '+')
+        except (AssertionError, ValueError):
+            try:
+                if complex_user_input[0] == '-':
+                    complex_user_input = complex_user_input[1:]
+                    is_real_negative = True
+                complex_input = self.validate_input(complex_user_input, '-')
+                if is_real_negative:
+                    complex_input = Complex((-1)*complex_input.get_real(), (-1)*complex_input.get_imag())
+                else:
+                    complex_input = Complex(complex_input.get_real(), (-1)*complex_input.get_imag())
+            except (AssertionError, ValueError):
+                complex_input = None
+        return complex_input
 
 
 class CalculateZeroes2(InvestigationSection):
@@ -340,14 +374,17 @@ class TableCalculator2(InvestigationSection):
         self.show()
 
     def saveto_database(self):
+        """NEEDS FIXING, which ones to save to db"""
         if User.GetUsername():
-            database_inputs = database_select(['Input'], ['Zeta'])
+            database_inputs = database_select(['Input_Real', 'Input_Imag'], ['Zeta'])
+            print('dbi', database_inputs)
             for input, output in self.table_values:
-                if input not in database_inputs:
+                print(f'in {input} out{output}')
+                if (input.get_real(), input.get_imag()) not in database_inputs:
                     self.Zeta_ID = get_id('Zeta_ID', 'Zeta')
-                    database_insert('Zeta', self.Zeta_ID, str(input), str(output))
+                    database_insert('Zeta', self.Zeta_ID, input.get_real(), input.get_imag(), output.get_real(), output.get_imag())
                     database_insert('UserZeta', self.Zeta_ID, User.GetUsername())
-            self.ui.ErrorLabel.setText(self.center_text('Value saved to database'))
+            self.ui.ErrorLabel.setText(self.center_text('Values saved to database'))
         else:
             self.ui.ErrorLabel.setText(self.center_text(f'You must be signed in to be able to '
                     'save to the database'))
@@ -380,10 +417,11 @@ class TableCalculator(InvestigationSection):
         self.start_input = self.ui.StartInput.text()
         self.step_input = self.ui.StepInput.text()
         self.range_input = self.ui.NoOfValuesInput.text()
-        self.start_complex = make_complex(self.start_input)
-        self.step_complex = make_complex(self.step_input)
+        self.start_complex = self.get_valid_complex_input(self.start_input)
+        self.step_complex = self.get_valid_complex_input(self.step_input)
         self.range = make_int(self.range_input)
-        if self.start_complex and self.step_complex:
+        print(self.start_complex, self.step_complex)
+        if self.start_complex is not None and self.step_complex is not None:
             if 1 <= self.range <= 100:
                 self.ui.ErrorLabel.setText('')
                 self.input_values = [
@@ -391,7 +429,7 @@ class TableCalculator(InvestigationSection):
                         for i in range(self.range)]
                 zetas = [zeta(value.get_real(), value.get_imag()) for value in self.input_values]
                 self.output_values = [
-                        make_complex(round(i.get_real(), 3),
+                        Complex(round(i.get_real(), 3),
                         round(i.get_imag(), 3)) for i in zetas]
                 self.table_values =  list(zip(
                     self.input_values, self.output_values))
@@ -429,35 +467,11 @@ class SingleCalculator(InvestigationSection):
         self.ui.FileButton.clicked.connect(self.saveto_file)
         self.show()
 
-    def validate_input(self):
-        self.split_input = self.zeta_user_input.split(self.split_char)
-        assert 0 < len(self.split_input) <= 2
-        if len(self.split_input) == 2:
-            assert self.zeta_user_input[-1] in ['i', 'j']
-            self.split_input[1] = self.split_input[1][:-1]
-        self.zeta_input = Complex(*self.split_input)
-
-
     def calculate_zeta(self):
         self.zeta_user_input = str(self.ui.ZetaInput.text()).strip()
-        # user input can be a real number, imag number, or complex numbers
-        self.valid_input = True
-        self.is_real_negative = False
-        try:
-            self.split_char = '+'
-            self.validate_input()
-        except (AssertionError, ValueError):
-            try:
-                if self.zeta_user_input[0] == '-':
-                    self.zeta_user_input = self.zeta_user_input[1:]
-                    self.is_real_negative = True
-                self.split_char = '-'
-                self.validate_input()
-                if self.is_real_negative:
-                    self.zeta_input = Complex((-1)*self.zeta_input.get_real(), self.zeta_input.get_imag())
-            except (AssertionError, ValueError):
-                self.valid_input = False
-        if self.valid_input:
+        self.zeta_input = self.get_valid_complex_input(self.zeta_user_input)
+        print(self.zeta_input)
+        if self.zeta_input is not None:
             self.zeta_output = zeta(self.zeta_input.get_real(), self.zeta_input.get_imag())
             self.zeta_output_printable = Complex(round(self.zeta_output.get_real(), 3), round(self.zeta_output.get_imag(), 3))
             self.zeta_value = [(self.zeta_input, self.zeta_output_printable)]
@@ -468,7 +482,10 @@ class SingleCalculator(InvestigationSection):
             self.ui.ZetaOutput.setText('')
 
     def saveto_database(self):
-        if self.valid_input:
+        # may have toa dd error checking here
+        #  self.zeta_user_input = str(self.ui.ZetaInput.text()).strip()
+        #  self.zeta_input = self.get_valid_complex_input(self.zeta_user_input)
+        if self.zeta_input is not None:
             if User.GetSignedIn():
                 database_inputs = database_select(['Input_Real', 'Input_Imag'], ['Zeta'])
                 self.zeta_input_real = self.zeta_input.get_real()
@@ -494,7 +511,6 @@ class SingleCalculator(InvestigationSection):
         else:
             self.ui.ErrorLabel.setText(
                     self.center_text('Input value is not valid'))
-
 
     def saveto_file(self):
         filepath = 'files/zeta_values.csv'
@@ -539,6 +555,56 @@ class PrimeNumbers(InvestigationSection):
         self.ui.PrevButton.clicked.connect(self.goto_graph_plots)
         self.ui.NextButton.clicked.connect(self.goto_calculator)
         self.show()
+
+
+class ZetaApproximationMatPlot(DynamicGraphScreen):
+
+    """
+    The ZetaApprozimation Mat Plot
+    """
+
+    def __init__(self, complex_input):
+        super(ZetaApproximationMatPlot, self).__init__()
+        self.complex_input = complex_input
+        self.show()
+
+    def update_figure(self):
+        self.zeta_value = zeta(self.complex_input.get_real(), self.complex_input.get_imag(), self.count)
+        self.x_vals.append(self.zeta_value.get_real())
+        self.y_vals.append(self.zeta_value.get_imag())
+        self.matplotlibwidget.axes.cla()
+        self.matplotlibwidget.axes.plot(self.x_vals, self.y_vals, color='green')
+        self.matplotlibwidget.canvas.draw()
+        self.count += 1
+
+
+class ZetaApproximation(InvestigationSection):
+
+    """
+    The ZetaApproximation
+    """
+
+    def __init__(self):
+        super(ZetaApproximation, self).__init__()
+        self.ui = Ui_ZetaApproximationScreen()
+        self.ui.setupUi(self)
+        self.setup_tabs()
+        self.ui.PrevButton.clicked.connect(self.goto_prime)
+        self.ui.NextButton.clicked.connect(self.goto_primes)
+        self.ui.GraphButton.clicked.connect(self.get_complex_input)
+        self.show()
+
+    def get_complex_input(self):
+        self.graph_user_input = str(self.ui.GraphInput.text()).strip()
+        self.graph_input = self.get_valid_complex_input(self.graph_user_input)
+        # make sure that the value entered is within range
+        if self.graph_input is None:
+            self.ui.ErrorLabel.setText(self.center_text('Input must be a complex number of the form a+bi'))
+            self.ui.ZetaOutput.setText('')
+        else:
+            self.zeta_approximation_graph = ZetaApproximationMatPlot(self.graph_input)
+
+
 
 
 class PrimeCountingFunctionMatPlot(DynamicGraphScreen):
@@ -588,7 +654,7 @@ class PrimeCountingFunction(InvestigationSection):
         self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_zeta_zeroes_plot)
         self.ui.NextButton.clicked.connect(self.goto_graph_plots)
-        self.ui.GraphButton.clicked.connect(self.pcf_graph)
+        self.ui.GraphButton.clicked.connect(self.goto_pcf_graph)
         self.show()
 
 

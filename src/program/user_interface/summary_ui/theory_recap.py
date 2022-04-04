@@ -139,16 +139,41 @@ class Ui_TheoryRecapScreen(object):
         self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
-        self.NotesButton = QtWidgets.QPushButton(self.MainWidget)
-        self.NotesButton.setGeometry(QtCore.QRect(570, 460, 200, 70))
-        self.NotesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.NotesButton.setStyleSheet("border: 2px solid;\n"
+        self.QuestionText = QtWidgets.QLabel(self.MainWidget)
+        self.QuestionText.setGeometry(QtCore.QRect(420, 280, 501, 101))
+        self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.QuestionText.setWordWrap(True)
+        self.QuestionText.setObjectName("QuestionText")
+        self.QuestionInput = QtWidgets.QLineEdit(self.MainWidget)
+        self.QuestionInput.setGeometry(QtCore.QRect(410, 400, 230, 60))
+        self.QuestionInput.setStyleSheet("background-color: rgb(239, 239, 239);\n"
+"color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\";\n"
+"border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);")
+        self.QuestionInput.setText("")
+        self.QuestionInput.setCursorPosition(0)
+        self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
+        self.QuestionInput.setObjectName("QuestionInput")
+        self.SubmitButton = QtWidgets.QPushButton(self.MainWidget)
+        self.SubmitButton.setGeometry(QtCore.QRect(700, 400, 121, 61))
+        self.SubmitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.SubmitButton.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
 "background-color: rgb(69, 69, 69);\n"
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
-        self.NotesButton.setObjectName("NotesButton")
+        self.SubmitButton.setObjectName("SubmitButton")
+        self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
+        self.MessageLabel.setGeometry(QtCore.QRect(410, 470, 530, 41))
+        self.MessageLabel.setStyleSheet("color: rgb(0, 140, 0);\n"
+"font: 18pt \"Sans Serif\";")
+        self.MessageLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.MessageLabel.setObjectName("MessageLabel")
 
         self.retranslateUi(TheoryRecapScreen)
         QtCore.QMetaObject.connectSlotsByName(TheoryRecapScreen)
@@ -165,8 +190,11 @@ class Ui_TheoryRecapScreen(object):
         self.PrevButton.setText(_translate("TheoryRecapScreen", "Prev"))
         self.NextButton.setText(_translate("TheoryRecapScreen", "Next"))
         self.SubTitleText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Theory Recap</span></p></body></html>"))
-        self.MainText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p>The Riemann Hypothesis, originating from Bernhard Riemann\'s 1859 paper \'On the Number Of Primes Less Than a Given Magnitude\', states that \'the real part of every nontrivial zero of the Riemann zeta function is 0.5\'. </p><p>Hopefully, by using this program, you have been able to investigate this conjecture.</p><p>The Riemann zeta function, is a more developed version of a function first studied by Leonhard Euler back in 1737. This function is the sum from n=1 to infinity of 1 dividid by n to the power s, where s is a complex number. A complex number is any number of the form a+bi, where a and b are real numbers, and i is the imaginary unit (equal to the square root of -1).</p><p>If proven to be true, the Riemann Zeta Function could be used to generate prime numbers and find their distribution, which would have profound effects in cryptography and even quantum physics</p><p><br/></p></body></html>"))
-        self.NotesButton.setText(_translate("TheoryRecapScreen", "Notes"))
+        self.MainText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p>The Riemann Hypothesis, originating from Bernhard Riemann\'s 1859 paper \'On the Number Of Primes Less Than a Given Magnitude\', states that \'the real part of every nontrivial zero of the Riemann zeta function is 0.5\'. </p><p>Hopefully, by using this program, you have been able to investigate this conjecture.</p><p>The Riemann zeta function, is a more developed version of a function first studied by Leonhard Euler back in 1737. This function is the sum from n=1 to infinity of 1 dividid by n to the power s, where s is a complex number. A complex number is any number of the form a+bi, where a and b are real numbers, and i is the imaginary unit (equal to the square root of -1).</p><p>If proven to be true, the Riemann Zeta Function could be used to generate prime numbers and find their distribution, which would have profound effects in cryptography and even quantum physics.</p><p><br/></p></body></html>"))
+        self.QuestionText.setText(_translate("TheoryRecapScreen", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">Question</span></p></body></html>"))
+        self.QuestionInput.setPlaceholderText(_translate("TheoryRecapScreen", "Answer"))
+        self.SubmitButton.setText(_translate("TheoryRecapScreen", "Submit"))
+        self.MessageLabel.setText(_translate("TheoryRecapScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":

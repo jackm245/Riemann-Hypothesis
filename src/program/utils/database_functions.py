@@ -237,13 +237,16 @@ def get_id(ID, table):
 
 questions_and_answers = [
 {'Question': 'Error', 'Answers': ['Error']},
-{'Question': 'What is the name of this program?<br>Visualising the ___ Hypothesis', 'Answers': ['Riemann']},
+{'Question': 'What is the name of this program? Visualising the ___ Hypothesis', 'Answers': ['Riemann']},
 {'Question': 'What is 1+1?', 'Answers': ['2', 'Two']},
 {'Question': 'Which character is used to denote the imaginary unit?', 'Answers': ['i', 'j']},
 {'Question': 'What is one practical appication of the Riemann Hypothesis?', 'Answers': ['Cryptography', 'Quantum Physics', 'Prime Numbers']},
-{'Question': 'What is the value of the first non-trivial zeta zero?', 'Answers': ['14.1', '0.5+14.1i', '0.5 + 14.1i', '0.5+14.ij', '0.5 + 14.1j']},
+{'Question': 'What is the value of the first non-trivial zeta zero?', 'Answers': ['14.1', '0.5+14.1i', '0.5 + 14.1i', '0.5+14.1j', '0.5 + 14.1j']},
 {'Question': 'What is hypothesised to be the real part of every non-trivial zero of the riemann zeta function?', 'Answers': ['0.5', '1/2']},
-{'Question': 'What is the value of ζ(5+5i)', 'Answers': ['0.974+0.012i', '0.974+0.012j']}
+{'Question': 'What is the value of ζ(5+5i)', 'Answers': ['0.974+0.012i', '0.974+0.012j']},
+{'Question': 'What prize would you get from the Clay Mathematics Institute if you managed to prove the Riemann Hypothesis?', 'Answers': ['$1000000', '$1,000,000', 'One Million Dollars', 'A Million Dollars']},
+{'Question': 'What is the name of Riemann\'s 1859 paper where he first conjectured the Riemann Hypothesis?', 'Answers': ['On The Number Of Primes Less Than a Given Magnitude']},
+{'Question': 'What type of numbers would proving the Riemann Hypothesis have an impact over?', 'Answers': ['Prime Numbers', 'Primes', 'Prime']},
 ]
 delete_table('CorrectAnswers')
 delete_table('Questions')

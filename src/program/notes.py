@@ -50,8 +50,8 @@ class Notes(Screen):
 
     def saveto_database(self):
         self.text = self.ui.NotesText.toPlainText()
-        database_query("DELETE FROM Notes WHERE User_ID=? AND Section=?", [User.GetUserID(), self.section])
-        database_insert('Notes', [get_id('Note_ID', 'Notes'), self.section, self.text, User.GetUserID()])
+        database_query("DELETE FROM Notes WHERE Section=? AND Username=?", self.section, User.GetUsername())
+        database_insert('Notes', get_id('Note_ID', 'Notes'), self.section, self.text, User.GetUsername())
         self.set_text_saved()
 
     def set_text_saved(self):
@@ -65,7 +65,7 @@ class Notes(Screen):
         self.ui.SavedText.setText('Unsaved')
 
     def set_text(self):
-        self.db_text = database_query("SELECT Text FROM Notes WHERE Section=? AND User_ID=?", [self.section, User.GetUserID()])
+        self.db_text = database_query("SELECT Text FROM Notes WHERE Section=? AND Username=?", self.section, User.GetUsername())
         if len(self.db_text) == 0:
             self.text = ''
         else:

@@ -312,7 +312,7 @@ class SignUp(LoginSection):
                     self.ui.ErrorLabel.setText("Email already taken")
                 else:
                     self.hashed_password = hash_password(self.password1)
-                    database_insert('Users', [self.username, self.email, self.hashed_password])
+                    database_insert('Users', self.username, self.email, self.hashed_password)
                     User.SetSignedIn(True)
                     User.SetUsername(self.username)
                     User.SetEmail(self.email)

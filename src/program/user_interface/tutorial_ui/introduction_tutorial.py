@@ -154,9 +154,10 @@ class Ui_IntroductionTutorialScreen(object):
         self.QuestionInput.setAlignment(QtCore.Qt.AlignCenter)
         self.QuestionInput.setObjectName("QuestionInput")
         self.QuestionText = QtWidgets.QLabel(self.MainWidget)
-        self.QuestionText.setGeometry(QtCore.QRect(420, 330, 501, 71))
+        self.QuestionText.setGeometry(QtCore.QRect(470, 330, 391, 71))
         self.QuestionText.setStyleSheet("font: 25pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.QuestionText.setWordWrap(True)
         self.QuestionText.setObjectName("QuestionText")
         self.MessageLabel = QtWidgets.QLabel(self.MainWidget)
         self.MessageLabel.setGeometry(QtCore.QRect(405, 480, 530, 41))

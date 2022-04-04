@@ -58,6 +58,24 @@ class Ui_ZetaZeroesPlotScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PrimeTab.setObjectName("PrimeTab")
+        self.ZetaApproximationTab = QtWidgets.QPushButton(self.TabBar)
+        self.ZetaApproximationTab.setGeometry(QtCore.QRect(640, 5, 200, 70))
+        self.ZetaApproximationTab.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ZetaApproximationTab.setStyleSheet("border-radius: 20px;\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 18pt \"Sans Serif\";\n"
+"")
+        self.ZetaApproximationTab.setText("")
+        self.ZetaApproximationTab.setObjectName("ZetaApproximationTab")
+        self.ZetaApproximationLabel = QtWidgets.QLabel(self.TabBar)
+        self.ZetaApproximationLabel.setGeometry(QtCore.QRect(640, 5, 200, 70))
+        self.ZetaApproximationLabel.setStyleSheet("border: 2px solid;\n"
+"border-radius: 20px;\n"
+"border-color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"")
+        self.ZetaApproximationLabel.setObjectName("ZetaApproximationLabel")
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"
@@ -171,6 +189,7 @@ class Ui_ZetaZeroesPlotScreen(object):
         self.PolarTab.setText(_translate("ZetaZeroesPlotScreen", "Polar"))
         self.ZetaZeroesPlotTab.setText(_translate("ZetaZeroesPlotScreen", "Zeroes"))
         self.PrimeTab.setText(_translate("ZetaZeroesPlotScreen", "Prime"))
+        self.ZetaApproximationLabel.setText(_translate("ZetaZeroesPlotScreen", "<html><head/><body><p align=\"center\">Zeta<br/>Approximation</p></body></html>"))
         self.PrevButton.setText(_translate("ZetaZeroesPlotScreen", "Prev"))
         self.NextButton.setText(_translate("ZetaZeroesPlotScreen", "Next"))
         self.GraphButton.setText(_translate("ZetaZeroesPlotScreen", "Graph"))

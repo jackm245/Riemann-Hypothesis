@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/investigation_screens/polar_graph.ui'
+# Form implementation generated from reading ui file 'ui/investigation_screens/zeta_approximation.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_PolarGraphScreen(object):
-    def setupUi(self, PolarGraphScreen):
-        PolarGraphScreen.setObjectName("PolarGraphScreen")
-        PolarGraphScreen.resize(1340, 720)
-        PolarGraphScreen.setSizeGripEnabled(False)
-        self.widget = QtWidgets.QWidget(PolarGraphScreen)
+class Ui_ZetaApproximationScreen(object):
+    def setupUi(self, ZetaApproximationScreen):
+        ZetaApproximationScreen.setObjectName("ZetaApproximationScreen")
+        ZetaApproximationScreen.resize(1340, 720)
+        ZetaApproximationScreen.setSizeGripEnabled(False)
+        self.widget = QtWidgets.QWidget(ZetaApproximationScreen)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1340, 720))
         self.widget.setStyleSheet("background-color: rgb(69, 69, 69);")
         self.widget.setObjectName("widget")
@@ -34,8 +34,8 @@ class Ui_PolarGraphScreen(object):
         self.PolarTab.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(239, 239, 239);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
+"background-color: rgb(69, 69, 69);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.PolarTab.setObjectName("PolarTab")
         self.ZetaZeroesPlotTab = QtWidgets.QPushButton(self.TabBar)
@@ -63,8 +63,8 @@ class Ui_PolarGraphScreen(object):
         self.ZetaApproximationLabel.setStyleSheet("border: 2px solid;\n"
 "border-radius: 20px;\n"
 "border-color:rgb(69, 69, 69);\n"
-"background-color: rgb(69, 69, 69);\n"
-"font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
+"background-color: rgb(239, 239, 239);\n"
+"font: 18pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "")
         self.ZetaApproximationLabel.setObjectName("ZetaApproximationLabel")
         self.ZetaApproximationTab = QtWidgets.QPushButton(self.TabBar)
@@ -122,6 +122,7 @@ class Ui_PolarGraphScreen(object):
 "text-align: center;")
         self.GraphInput.setText("")
         self.GraphInput.setCursorPosition(0)
+        self.GraphInput.setAlignment(QtCore.Qt.AlignCenter)
         self.GraphInput.setObjectName("GraphInput")
         self.SubTitleText = QtWidgets.QLabel(self.MainWidget)
         self.SubTitleText.setGeometry(QtCore.QRect(40, 20, 821, 41))
@@ -129,43 +130,44 @@ class Ui_PolarGraphScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(50, 80, 1251, 341))
+        self.MainText.setGeometry(QtCore.QRect(50, 80, 1251, 201))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
+        self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.MainText.setWordWrap(True)
         self.MainText.setObjectName("MainText")
         self.ErrorLabel = QtWidgets.QLabel(self.MainWidget)
-        self.ErrorLabel.setGeometry(QtCore.QRect(450, 410, 461, 41))
+        self.ErrorLabel.setGeometry(QtCore.QRect(310, 400, 721, 41))
         self.ErrorLabel.setStyleSheet("color: rgb(255, 0, 0);\n"
 "font: 12pt \"Sans Serif\";")
         self.ErrorLabel.setObjectName("ErrorLabel")
 
-        self.retranslateUi(PolarGraphScreen)
-        QtCore.QMetaObject.connectSlotsByName(PolarGraphScreen)
+        self.retranslateUi(ZetaApproximationScreen)
+        QtCore.QMetaObject.connectSlotsByName(ZetaApproximationScreen)
 
-    def retranslateUi(self, PolarGraphScreen):
+    def retranslateUi(self, ZetaApproximationScreen):
         _translate = QtCore.QCoreApplication.translate
-        PolarGraphScreen.setWindowTitle(_translate("PolarGraphScreen", "Visualising the Riemann Hypothesis - Investigation"))
-        self.Title.setText(_translate("PolarGraphScreen", "Graph Plots"))
-        self.PolarTab.setText(_translate("PolarGraphScreen", "Polar"))
-        self.ZetaZeroesPlotTab.setText(_translate("PolarGraphScreen", "Zeroes"))
-        self.PrimeTab.setText(_translate("PolarGraphScreen", "Prime"))
-        self.ZetaApproximationLabel.setText(_translate("PolarGraphScreen", "<html><head/><body><p align=\"center\">Zeta<br/>Approximation</p></body></html>"))
-        self.PrevButton.setText(_translate("PolarGraphScreen", "Prev"))
-        self.NextButton.setText(_translate("PolarGraphScreen", "Next"))
-        self.GraphButton.setText(_translate("PolarGraphScreen", "Graph"))
-        self.GraphInput.setToolTip(_translate("PolarGraphScreen", "<html><head/><body><p align=\"center\"> Re(s)</body></html>"))
-        self.GraphInput.setPlaceholderText(_translate("PolarGraphScreen", "          Re(s)"))
-        self.SubTitleText.setText(_translate("PolarGraphScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Polar Graph of the Riemann Zeta Function</span></p></body></html>"))
-        self.MainText.setText(_translate("PolarGraphScreen", "<html><head/><body><p>The polar graph of the Riemann Zeta Function, is very well known due to it\'s mesmerising shape, and mathematical beauty.</p><p>The zeta function has two inputs and two outputs, that is a real and imaginary input, and a real and imaginary output.</p><p>The graph takes 1 input, this corresponds to the real input to the zeta function. The imaginary input is determined by time. Time and the imaginary input are directly proportional, such that as time increases, the imaginary input increases by a linear amount.</p><p>Then at any given time, the graph will plot the point that is the output of the zeta function at that moment, and all of the previous outputs. Because the graph depends on time, it will be constantly changing, and plotting new points.</p><p><br/></p><p>Try it out below! Enter 0.5 for the best results.</p></body></html>"))
-        self.ErrorLabel.setText(_translate("PolarGraphScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        ZetaApproximationScreen.setWindowTitle(_translate("ZetaApproximationScreen", "Visualising the Riemann Hypothesis - Investigation"))
+        self.Title.setText(_translate("ZetaApproximationScreen", "Graph Plots"))
+        self.PolarTab.setText(_translate("ZetaApproximationScreen", "Polar"))
+        self.ZetaZeroesPlotTab.setText(_translate("ZetaApproximationScreen", "Zeroes"))
+        self.PrimeTab.setText(_translate("ZetaApproximationScreen", "Prime"))
+        self.ZetaApproximationLabel.setText(_translate("ZetaApproximationScreen", "<html><head/><body><p align=\"center\">Zeta<br/>Approximation</p></body></html>"))
+        self.PrevButton.setText(_translate("ZetaApproximationScreen", "Prev"))
+        self.NextButton.setText(_translate("ZetaApproximationScreen", "Next"))
+        self.GraphButton.setText(_translate("ZetaApproximationScreen", "Graph"))
+        self.GraphInput.setToolTip(_translate("ZetaApproximationScreen", "<html><head/><body><p align=\"center\"> Re(s)</body></html>"))
+        self.GraphInput.setPlaceholderText(_translate("ZetaApproximationScreen", "Input"))
+        self.SubTitleText.setText(_translate("ZetaApproximationScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Approximation of the Riemann Zeta Function</span></p></body></html>"))
+        self.MainText.setText(_translate("ZetaApproximationScreen", "<html><head/><body><p>Due to the infinite and recursive nature of the zeta function, it would be impossbile to calculate any exact values for the zeta function using a computer program.</p><p><br/></p><p>The aim of this graph, is to demonstrate how the program uses sums with increasing amounts of accuracy to find values of the zeta function.</p><p><br/></p><p>Type any complex number into the box, and click graph!</p></body></html>"))
+        self.ErrorLabel.setText(_translate("ZetaApproximationScreen", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    PolarGraphScreen = QtWidgets.QDialog()
-    ui = Ui_PolarGraphScreen()
-    ui.setupUi(PolarGraphScreen)
-    PolarGraphScreen.show()
+    ZetaApproximationScreen = QtWidgets.QDialog()
+    ui = Ui_ZetaApproximationScreen()
+    ui.setupUi(ZetaApproximationScreen)
+    ZetaApproximationScreen.show()
     sys.exit(app.exec_())

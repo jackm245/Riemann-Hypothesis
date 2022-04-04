@@ -9,8 +9,9 @@ Includes the ...
 """
 
 from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from .user_interface import Ui_SummaryScreen, Ui_TheoryRecapScreen, Ui_InvestigationResultsScreen, Ui_ConclusionScreen, Ui_ImpactScreen
-from .utils import User, Screen
+from .utils import User, Screen, database_select, Complex
 from .notes import SummaryNotes
 
 
@@ -34,7 +35,10 @@ class SummarySection(Screen):
         self.ui.InvestigationResultsTab.clicked.connect(self.goto_investigation_results)
         self.ui.ConclusionTab.clicked.connect(self.goto_conclusion)
         self.ui.ImpactTab.clicked.connect(self.goto_impact)
-        self.ui.NotesButton.clicked.connect(self.goto_summary_notes)
+        try:
+            self.ui.NotesButton.clicked.connect(self.goto_summary_notes)
+        except AttributeError:
+            pass
 
     def goto_summary(self):
         self.summary = Summary()
@@ -71,11 +75,13 @@ class Summary(SummarySection):
 
     def __init__(self):
         super(Summary, self).__init__()
+        self.question_no = 8
         self.ui = Ui_SummaryScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_mainmenu)
         self.ui.NextButton.clicked.connect(self.goto_theory_recap)
-        self.setup_tabs()
         self.show()
 
 
@@ -87,11 +93,13 @@ class TheoryRecap(SummarySection):
 
     def __init__(self):
         super(TheoryRecap, self).__init__()
+        self.question_no = 9
         self.ui = Ui_TheoryRecapScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_summary)
         self.ui.NextButton.clicked.connect(self.goto_investigation_results)
-        self.setup_tabs()
         self.show()
 
 
@@ -108,7 +116,20 @@ class InvestigationResults(SummarySection):
         self.ui.PrevButton.clicked.connect(self.goto_theory_recap)
         self.ui.NextButton.clicked.connect(self.goto_conclusion)
         self.setup_tabs()
+        self.setup_table()
         self.show()
+
+    def setup_table(self):
+        self.values = database_select(['*'], ['Zeta'])
+        self.table_values = [(Complex(value[1], value[2]), Complex(value[3], value[4])) for value in self.values]
+        self.ui.ZetaTable.setRowCount(len(self.table_values))
+        for i, values in enumerate(self.table_values):
+            for j in range(len(values)):
+                self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(values[j])))
+        self.ui.ZetaTable.horizontalHeader().setStretchLastSection(True)
+        self.ui.ZetaTable.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch)
+        self.ui.ZetaTable.setColumnWidth(1, 100)
 
 
 class Conclusion(SummarySection):
@@ -121,9 +142,9 @@ class Conclusion(SummarySection):
         super(Conclusion, self).__init__()
         self.ui = Ui_ConclusionScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
         self.ui.PrevButton.clicked.connect(self.goto_investigation_results)
         self.ui.NextButton.clicked.connect(self.goto_impact)
-        self.setup_tabs()
         self.show()
 
 
@@ -135,9 +156,11 @@ class Impact(SummarySection):
 
     def __init__(self):
         super(Impact, self).__init__()
+        self.question_no = 10
         self.ui = Ui_ImpactScreen()
         self.ui.setupUi(self)
+        self.setup_tabs()
+        self.setup_question()
         self.ui.PrevButton.clicked.connect(self.goto_conclusion)
         self.ui.NextButton.clicked.connect(self.goto_mainmenu)
-        self.setup_tabs()
         self.show()

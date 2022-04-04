@@ -128,6 +128,49 @@ font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
       <string>Prime</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="ZetaApproximationTab">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;
+background-color: rgba(0, 0, 0, 0);
+font: 18pt &quot;Sans Serif&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ZetaApproximationLabel">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>5</y>
+       <width>200</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid;
+border-radius: 20px;
+border-color:rgb(69, 69, 69);
+background-color: rgb(69, 69, 69);
+font: 18pt &quot;Sans Serif&quot;; color:rgb(239, 239, 239);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Zeta&lt;br/&gt;Approximation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="MainWidget" native="true">
     <property name="geometry">
