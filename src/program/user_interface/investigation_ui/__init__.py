@@ -1,3 +1,10 @@
+"""
+__init__.py
+===========
+Imports for the investigation_ui
+"""
+
+
 from .calculator import Ui_CalculatorScreen
 from .single_calculator import Ui_SingleCalculatorScreen
 from .table_calculator import Ui_TableCalculatorScreen

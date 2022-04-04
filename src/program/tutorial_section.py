@@ -10,7 +10,7 @@ and Summary Tutorial Screens
 """
 
 from PyQt5 import QtWidgets, QtCore
-from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen, Ui_GraphMatPlotScreen
+from .user_interface import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen
 from .utils import User, Screen, StaticGraphScreen, database_query
 from .notes import TutorialNotes
 

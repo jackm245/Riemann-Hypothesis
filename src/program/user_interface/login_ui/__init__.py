@@ -1,3 +1,10 @@
+"""
+__init__.py
+===========
+Imports for the login_ui
+"""
+
+
 from .forgotten_password import Ui_ForgottenPasswordScreen
 from .forgotten_password2 import Ui_ForgottenPassword2Screen
 from .login import Ui_LoginScreen

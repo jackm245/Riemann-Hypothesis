@@ -179,7 +179,7 @@ def save_zeta_values_to_file(table_values, filepath,
     # also show a message saying that it has been saved to the file and
     # give file location
     csv_values = [list(map(str,
-        [input.real, input.imag, output.real, output.imag]))
+        [input.get_real(), input.get_imag(), output.get_real(), output.get_imag()]))
         for input, output in table_values]
     regex = r'-?\d+\.\d+'
     index = 0

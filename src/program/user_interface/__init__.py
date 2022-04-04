@@ -1,3 +1,10 @@
+"""
+__init__.py
+===========
+Imports for the user_interface
+"""
+
+
 from .main_menu import Ui_MainMenu
 from .login_ui import Ui_ForgottenPasswordScreen, Ui_ForgottenPassword2Screen, Ui_LoginScreen, Ui_ResetPasswordScreen, Ui_ResetPassword2Screen, Ui_SignUpScreen
 from .tutorial_ui import Ui_TutorialScreen, Ui_ProgramStructureTutorialScreen, Ui_IntroductionTutorialScreen, Ui_InvestigationTutorialScreen, Ui_LoginTutorialScreen, Ui_SummaryTutorialScreen, Ui_GraphMatPlotScreen

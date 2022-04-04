@@ -390,9 +390,9 @@ class TableCalculator2(InvestigationSection):
                     'save to the database'))
 
     def saveto_file(self):
-        filepath = 'files/zeta_values.csv'
-        save_zeta_values_to_file(self.table_values, filepath)
-        self.ui.ErrorLabel.setText(self.center_text(f'Table contents written to {filepath}'))
+        FILEPATH = 'files/zeta_values.csv'
+        save_zeta_values_to_file(self.table_values, FILEPATH)
+        self.ui.ErrorLabel.setText(self.center_text(f'Table contents written to {FILEPATH}'))
 
 
 class TableCalculator(InvestigationSection):
@@ -482,6 +482,7 @@ class SingleCalculator(InvestigationSection):
             self.ui.ZetaOutput.setText('')
 
     def saveto_database(self):
+        self.calculate_zeta()
         # may have toa dd error checking here
         #  self.zeta_user_input = str(self.ui.ZetaInput.text()).strip()
         #  self.zeta_input = self.get_valid_complex_input(self.zeta_user_input)
@@ -513,9 +514,10 @@ class SingleCalculator(InvestigationSection):
                     self.center_text('Input value is not valid'))
 
     def saveto_file(self):
-        filepath = 'files/zeta_values.csv'
-        save_zeta_values_to_file(self.zeta_value, filepath)
-        self.ui.ErrorLabel.setText(self.center_text(f'Values written to {filepath}'))
+        self.calculate_zeta()
+        FILEPATH = 'files/zeta_values.csv'
+        save_zeta_values_to_file(self.zeta_value, FILEPATH)
+        self.ui.ErrorLabel.setText(self.center_text(f'Values written to {FILEPATH}'))
 
 
 class Calculator(InvestigationSection):
