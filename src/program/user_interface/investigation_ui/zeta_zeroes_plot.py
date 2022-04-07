@@ -74,6 +74,11 @@ class Ui_ZetaZeroesPlotScreen(object):
 "font: 18pt \"Sans Serif\"; color:rgb(239, 239, 239);\n"
 "")
         self.ZetaApproximationLabel.setObjectName("ZetaApproximationLabel")
+        self.PolarTab.raise_()
+        self.ZetaZeroesPlotTab.raise_()
+        self.PrimeTab.raise_()
+        self.ZetaApproximationLabel.raise_()
+        self.ZetaApproximationTab.raise_()
         self.MainWidget = QtWidgets.QWidget(self.widget)
         self.MainWidget.setGeometry(QtCore.QRect(10, 170, 1320, 540))
         self.MainWidget.setStyleSheet("background-color: rgb(239, 239, 239);\n"

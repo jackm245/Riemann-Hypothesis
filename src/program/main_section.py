@@ -111,12 +111,7 @@ class Progress(Screen):
         for i, values in enumerate(self.table_values):
             for j, value in enumerate(values):
                 self.ui.Table.setItem(i,j, QTableWidgetItem(str(value)))
-        #  self.ui.Table.horizontalHeader().setStretchLastSection(True)
-        #  self.ui.Table.horizontalHeader().setSectionResizeMode(
-            #  QHeaderView.Stretch)
         header = self.ui.Table.horizontalHeader()
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        #  self.ui.Table.setColumnWidth(1, 100)
-

@@ -1,8 +1,23 @@
+"""
+number_systems.py
+=================
+
+Contains classess used to represent different types of numbers using
+a user-definied abstract datatype,
+
+Classes:
+    - Number
+    - Complex
+"""
+
+
 from math import sin, cos, atan2, sqrt, exp, log
 import re
 
 
 class Number:
+
+    """ A generic class for numbers"""
 
     def __init__(self, number):
         self.__number = number
@@ -19,12 +34,13 @@ class Complex(Number):
     """
     Operations and arithmetic involving complex numbers
     Operations include:
-        +
-        -
-        *
-        /
-        **
-        == !=
+        + addition
+        - subtruction
+        * multiplication
+        / division
+        ** exponentiation
+        == equal to
+        != not equal to
         abs
         str
         repr
@@ -33,34 +49,31 @@ class Complex(Number):
         dump
         polar
         rect
+        get_real
+        get_imag
     """
 
-
-    # initialisation using *args
     def __init__(self, *args, rect=True):
         super().__init__([*args])
         self.args = args
         self.rect = rect
         if not self.rect:
-            # for polar coordinates
+            # make complex if input in polar coordinates form
             r = float(self.args[0])
             phi = float(self.args[1])
             self.__real = r * cos(phi)
             self.__imag = r * sin(phi)
         else:
             if isinstance(self.args[0], Complex):
-                # if already in Complex form
+                # make complex if input in Complex form
                 self.__real = self.args[0].get_real()
                 self.__imag = self.args[0].get_imag()
             elif isinstance(self.args[0], complex):
-                # if already in python complex form
+                # make complex if input in python complex form
                 self.__real = self.args[0].real
                 self.__imag = self.args[0].imag
-            #  elif self.args[0] == 'inf':
-                #  self.__real = float(self.args[0])
-                #  self.__imag = float(self.args[0])
             else:
-                # for rect coordinates
+                # make complex if input in rect coordinates form
                 self.__real = float(self.args[0])
                 if len(self.args) > 1:
                     self.__imag = float(args[1])
@@ -68,32 +81,36 @@ class Complex(Number):
                     self.__imag = float(self.args[0])
                 else:
                     self.__imag = 0
-                #  self.__imag = float(self.args[1]) if len(self.args) > 1 or self.args[0] == 'inf' else 0
 
-
-    # make the number complex, if possible
     def __correct_type(self, number):
-        """Polymorphsim"""
-        #  print(f'correcting type on {number}, type {type(number)}')
+
+        """
+        correct_type uses polymorphism to change number to the Complex
+        datatype
+        """
+
         if isinstance(number, Complex):
             return number
         elif isinstance(number, (float,int)):
             number = Complex(number)
         elif not (hasattr(number, 'real') and hasattr(number, 'imag')):
-            raise TypeError('Number must have a real and imagiary part')
+            raise TypeError('Number must have a real and imaginary part')
         else:
             raise TypeError(f'Number of type {type(number)} not of correct format')
         return number
 
 
-    # illegal operations for complex numbers
     def __illegal(self, op):
+        """ Run when an illegal operation for complex numbers is tring to be computed """
         print(f'Unable to compute \"{op}\"\nThis operation is illegal for complex numbers')
 
 
     ### Arithmetic Operations ###
     def __abs__(self):
-        """ abs(self) """
+        """
+        abs(self)
+        returns the absolute value (magnitude)
+        """
         return sqrt(self.__real**2 + self.__imag**2)
 
 
@@ -120,22 +137,26 @@ class Complex(Number):
 
 
     def __mul__(self, other):
-        """ self * other """
+        """
+        self * other
+        uses formula (a+bi)(c+di) = (ac-bd) + (ad+bc)i
+        """
         other = self.__correct_type(other)
-        # (ac-bd) + (ad+bc)i
-        return Complex(self.__real*other.__real - self.__imag*other.__imag, self.__real*other.__imag + self.__imag*other.__real)
+        return Complex(self.__real*other.__real - self.__imag*other.__imag,
+                self.__real*other.__imag + self.__imag*other.__real)
 
 
     def __rmul__(self, other):
-        """ other - self """
+        """ other * self """
         return self.__mul__(other)
 
 
     def __truediv__(self, other):
         """ self / other """
         other = self.__correct_type(other)
-        r = float(other.__real**2 + other.__imag**2)
-        return Complex((self.__real*other.__real+self.__imag*other.__imag)/r, (self.__imag*other.__real-self.__real*other.__imag)/r)
+        denominator = float(other.__real**2 + other.__imag**2)
+        return Complex((self.__real*other.__real+self.__imag*other.__imag)/denominator,
+                (self.__imag*other.__real-self.__real*other.__imag)/denominator)
 
 
     def __rtruediv__(self, other):
@@ -149,13 +170,13 @@ class Complex(Number):
         self^other = \rho^c e^{-d\theta}(\cos(d\ln\rho + c\theta)+i \sin(d\ln\rho + c\theta))
         where self = a+bi, other=c+di, \theta=\arctan(\frac{b}{a}), \rho=sqrt{a^2 + b^2}
         """
+        other = self.__correct_type(other)
         rho, theta = self.polar()
-        c = Complex(other).get_real()
-        d = Complex(other).get_imag()
+        c = other.get_real()
+        d = other.get_imag()
         mod = rho ** c * exp(-d * theta)
         arg = d * log(rho) + c * theta
         return Complex(mod, arg, rect=False)
-        #  return r**other*(cos(other*phi)+sin(other*phi)*1j)
 
 
     def __rpow__(self, other):
@@ -184,7 +205,7 @@ class Complex(Number):
         return Complex(+self.__real, +self.__imag)
 
 
-    ### printing and display ###
+    ### Printing and Display ###
     def __str__(self):
         """ str(self) """
         if self.__imag >= 0:
@@ -200,55 +221,55 @@ class Complex(Number):
 
     ### illegal operations ###
     def __gt__(self, other):
+        """ self > other"""
         self.__illegal(f'{self} > {other}')
 
 
     def __ge__(self, other):
+        """ self >= other"""
         self.__illegal(f'{self} >= {other}')
 
 
     def __lt__(self, other):
+        """ self < other"""
         self.__illegal(f'{self} < {other}')
 
 
     def __le__(self, other):
+        """ self <= other"""
         self.__illegal(f'{self} <= {other}')
 
 
     ### Miscellaneous Functions ###
 
     def conjugate(self):
-        """ (a+b*1j).conjugate() returns (a-b*1j) """
+        """ (a+bi).conjugate() returns (a-bi) """
         return Complex(self.__real, -self.__imag)
 
 
     def phase(self):
-         """ self.phase() """
+         """ self.phase() returns the argument of the complex number"""
          return atan2(self.__imag, self.__real)
 
 
     def dump(self):
-        """ self.dump() """
+        """ self.dump() returns all of the functions attributes"""
         return self.__dict__
 
 
     def polar(self):
-        """ self.polar() """
+        """ self.polar() returns the modulus and argument of the complex number"""
         return (self.__abs__(), self.phase())
 
 
     def rect(self):
-        """ self.rect() """
+        """ self.rect() returns the rect coordinates of the complex number"""
         return (self.__real, self.__imag)
 
     def get_real(self):
-        """ self.get_real()"""
+        """ self.get_real() returns the real part of the complex number"""
         return self.__real
 
     def get_imag(self):
-        """ self.get_imag()"""
+        """ self.get_imag() returns the imaginary part of the complex number"""
         return self.__imag
-
-class Fraction:
-    pass
-"fraction class removed"

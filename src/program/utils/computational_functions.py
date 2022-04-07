@@ -1,18 +1,18 @@
 """
 computational_functions.py
-=========================
+==========================
 
 Contains subroutines and classes that are used for various different algorithms
 
-These subroutines include:
+Subroutines:
     - binary_search
     - binary_insertion_sort
     - save_zeta_zeroes_to_file
     - save_zeta_values_to_file
     - save_zeta_to_file
-    - change_datatype - POTENTIALLY
+    - change_datatype
 
-These classes include:
+Classes
     - Queue
 """
 
@@ -24,19 +24,12 @@ import re
 import os
 
 
-__all__ = ['binary_insertion_sort, save_zeta_to_file',
-        'save_zeta_zeroes_to_file', 'save_zeta_values_to_file']
-
-
-# binary
-# for binary insertion sort
-# returns index where target should go in the list
-# all elements are unique
 def binary_search(data, target):
 
     """
     For a set of unique elements that are sorted in ascending order (data),
-    this function will return the index where target is in the data
+    this function will return the index where target is in the data, with time
+    complexity O(log n)
     """
 
     low = 0
@@ -88,7 +81,7 @@ class Queue:
     """
     Implementation of a circular queue
 
-    Contains the functions:
+    Contains the subroutines:
         - enQueue
         - deQueue
         - is_full
@@ -98,7 +91,9 @@ class Queue:
 
     def __init__(self, input_queue, **kwargs):
         self.input_queue = input_queue
-        self.size = len(input_queue)
+        self.size = len(self.input_queue)
+        self.front = 0
+        self.rear = len(self.input_queue)
         if 'max_size' in kwargs.keys():
             self.max_size = kwargs['max_size']
         else:
@@ -109,8 +104,6 @@ class Queue:
         else:
             self.blanks = [False for i in range(self.max_size - self.size)]
             self.queue = self.input_queue + self.blanks
-        self.front = 0
-        self.rear = len(self.input_queue)
 
     def enQueue(self, item):
 
@@ -170,14 +163,9 @@ def save_zeta_values_to_file(table_values, filepath,
 
     """
     Given a list of corresponding inputs and outputs of the zeta function,
-    save these sets of values to a file
+    save these sets of values to a file.
     """
 
-    # put new and old in same list
-    # then sort values by int of joined numbers
-    # the save to file
-    # also show a message saying that it has been saved to the file and
-    # give file location
     csv_values = [list(map(str,
         [input.get_real(), input.get_imag(), output.get_real(), output.get_imag()]))
         for input, output in table_values]
@@ -227,6 +215,12 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
 
 
 def change_datatype(value, datatype):
+
+    """
+    Change the datatype of a value, if the datatype is given as a string, and not
+    as a python keyword
+    """
+
     match str(datatype):
         case 'int':
             return int(value)

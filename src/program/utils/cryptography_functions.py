@@ -15,9 +15,6 @@ import argon2
 from argon2 import PasswordHasher as ph
 
 
-__all__ = ['hash_password', 'check_password']
-
-
 def get_pepper():
 
     """

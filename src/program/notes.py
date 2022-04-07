@@ -51,7 +51,7 @@ class Notes(Screen):
     def saveto_database(self):
         self.text = self.ui.NotesText.toPlainText()
         database_query("DELETE FROM Notes WHERE Section=? AND Username=?", self.section, User.GetUsername())
-        database_insert('Notes', get_id('Note_ID', 'Notes'), self.section, self.text, User.GetUsername())
+        database_insert('Notes', User.GetUsername(), self.section, self.text)
         self.set_text_saved()
 
     def set_text_saved(self):
@@ -72,13 +72,6 @@ class Notes(Screen):
             self.text = self.db_text[0][0]
         self.set_note_text(self.text)
 
-    #  def hide_buttons(self):
-        #  self.ui.NextButton.hide()
-        #  self.ui.IntroductionTab.hide()
-        #  self.ui.InvestigationTab.hide()
-        #  self.ui.SummaryTab.hide()
-        #  self.ui.SaveButton.hide()
-
     def set_note_text(self, text, color='rgb(69, 69, 69)'):
         self.ui.NotesText.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -87,7 +80,6 @@ class Notes(Screen):
         f"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">{text}</p></body></html>")
 
     def not_signed_in(self):
-        #  self.hide_buttons()
         self.set_note_text('You must be signed in to be able to make notes',
                 color='rgb(255, 0, 0)')
         self.ui.NotesText.setReadOnly(True)

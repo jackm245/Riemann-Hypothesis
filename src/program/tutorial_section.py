@@ -30,6 +30,12 @@ class TutorialSection(Screen):
         super(TutorialSection, self).__init__()
 
     def setup_tabs(self):
+
+        """
+        Allows the tabs and buttons to run a function once clicked, if they
+        exists on the web page that the tab/button was clicked on
+        """
+
         try:
             self.ui.TutorialTab.clicked.connect(self.goto_tutorial)
         except AttributeError:
@@ -54,6 +60,11 @@ class TutorialSection(Screen):
             self.ui.SummaryTab.clicked.connect(self.goto_summary)
         except AttributeError:
             pass
+
+    """
+    The goto functions are run when a tab is clicked. They load a new page,
+    and hide the old page.
+    """
 
     def goto_tutorial(self):
         self.tutorial= Tutorial()
@@ -86,7 +97,7 @@ class TutorialSection(Screen):
 class Tutorial(TutorialSection):
 
     """
-    The Tutorial Screen is the main entry point ot the tutorial section of the
+.p.ff    The Tutorial Screen is the main entry point ot the tutorial section of the
     program
 
     This class displays said screen to the user
@@ -179,21 +190,25 @@ class InvestigationTutorial(TutorialSection):
         self.show()
 
     def M_value_changed(self):
+        """Update the gradient display when the slider is changed"""
         self.gradient = self.ui.MSlider.value()
         self.ui.MDisplay.setText(self.center_text(str(self.gradient)))
 
     def C_value_changed(self):
+        """Update the y-intercept display when the slider is changed"""
         self.y_intercept = self.ui.CSlider.value()
         self.ui.CDisplay.setText(self.center_text(str(self.y_intercept)))
 
     def graph(self):
+        """Display a new screen with the graph on it"""
         self.plot = GraphMatPlot(self.gradient, self.y_intercept)
 
 
 class GraphMatPlot(StaticGraphScreen):
 
     """
-    Graph Mat Plot
+    The class will display the graph in the the investigation tutorial section
+    It will graph the function y=mx+c where m and c are given by the user
     """
 
     def __init__(self, gradient, y_intercept):
@@ -201,12 +216,17 @@ class GraphMatPlot(StaticGraphScreen):
         self.y_intercept = y_intercept
         self.gradient = gradient
         self.x_vals = list(range(6))
-        self.y_vals= [self.gradient * num + self.y_intercept for num in self.x_vals]
-        self.count = 0
+        self.y_vals = [self.gradient * num + self.y_intercept for num in self.x_vals]
         self.show()
         self.graph()
 
     def get_label(self, value, gradient=False):
+
+        """
+        Format the y-intercept and gradient properly so that it looks correct
+        when printed out in the graph legend.
+        """
+
         if gradient:
             match value:
                 case -1:
@@ -228,6 +248,7 @@ class GraphMatPlot(StaticGraphScreen):
             return str(value)
 
     def graph(self):
+        """Plot the graph of the function y=mx+c"""
         self.gradient_label = self.get_label(self.gradient, True)
         self.intercept_label = self.get_label(self.y_intercept, False)
         self.matplotlibwidget.axes.plot(

@@ -6,9 +6,12 @@ Contains many mathematical functions that are used throughout the program
 
 These Functions include:
     - ncr
+    - count
     - zeta
+    - is_zeta_zero
     - sieve_of_eratosthenes
     - prime_counting_function_estimation
+    - integration
     - exponential_integral
     - logarithmic_integral
     - prime_power_function
@@ -40,13 +43,14 @@ def ncr(n, r):
 
 
 def count(start=0, step=1):
+
     """
     Returns a generator object which contains all values from start
     to whenever the generator will be stopped iterating over, with a given step
     e.g count() -> 1 2 3 4 5 ...
         count(10, 2) -> 10 12 14 16 ...
-
     """
+
     n = start
     while True:
         yield n
@@ -62,6 +66,7 @@ def zeta(real_term, imag_term, number_of_terms=100):
              \sum_{k=0}^{n} (-1)^k {n \choose k}(k+1)^{-s}
     This function is implemented using generators
     """
+
     s = complex(real_term, imag_term)
     if s == 1:
         return Complex('inf')
@@ -110,6 +115,13 @@ def prime_counting_function_estimation(N):
 
 
 def integration(func, lower_limit, upper_limit, strips=int(1e6)):
+
+    """
+    For a given function func, return the definite integral between
+    limits lower_limit and upper_limit with accuracy: strips
+    This is an implementation of the trapezium formula
+    """
+
     strip_width = (upper_limit - lower_limit) / strips
     term1 = sum(func(lower_limit + strip_width * h) for h in range(1, strips))
     term2 = 0.5*(func(upper_limit) + func(lower_limit))
@@ -123,6 +135,7 @@ def exponential_integral(x, lower_limit=1e-7, upper_limit=10000):
     Exponential integral function
     \mathrm{Ei}(x) = \int_{-x}^{\infty} \frac{e^{-t}}{t}dt
     """
+
     def func(t):
         return np.exp(t) / t
 

@@ -311,7 +311,7 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
        <x>40</x>
        <y>80</y>
        <width>1251</width>
-       <height>151</height>
+       <height>201</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -319,7 +319,7 @@ background-color: rgb(239, 239, 239); padding: 5px;</string>
 background-color: rgb(239, 239, 239); padding: 5px;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to the Tutorial Section of this program.&lt;/p&gt;&lt;p&gt;The aim of this is to teach you how to be able to use this program&lt;/p&gt;&lt;p&gt;Click on any of the five other tabs above, or on the next button, to find out how to use this program to it's full extent&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to the Tutorial Section of this program.&lt;/p&gt;&lt;p&gt;The aim of this is to teach you how to be able to use this program.&lt;/p&gt;&lt;p&gt;In terms of controls for the program, avoid pressing the enter key to submit any text input - this can be done but make sure you're selecting the correct button. To avoid any confusion it may be simplest to just click on the desired button. Furthermore, to quit any pages that do not have a back button, simply press escape.&lt;/p&gt;&lt;p&gt;Click on any of the five other tabs above, or on the next button, to find out how to use this program to it's full extent&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

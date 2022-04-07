@@ -5,7 +5,8 @@ summary_section.py
 Contains all of the classes used to interact with the GUI for the
 summary section of the project
 
-Includes the ...
+Includes the main SummarySection class which is inherited by the Summary,
+TheoryRecap, InvestigationResults, Conclusion, Impact
 """
 
 from PyQt5 import QtWidgets
@@ -30,6 +31,12 @@ class SummarySection(Screen):
         super(SummarySection, self).__init__()
 
     def setup_tabs(self):
+
+        """
+        Allows the tabs and buttons to run a function once clicked, if they
+        exists on the web page that the tab/button was clicked on
+        """
+
         self.ui.SummaryTab.clicked.connect(self.goto_summary)
         self.ui.TheoryRecapTab.clicked.connect(self.goto_theory_recap)
         self.ui.InvestigationResultsTab.clicked.connect(self.goto_investigation_results)
@@ -39,6 +46,11 @@ class SummarySection(Screen):
             self.ui.NotesButton.clicked.connect(self.goto_summary_notes)
         except AttributeError:
             pass
+
+    """
+    The goto functions are run when a tab is clicked. They load a new page,
+    and hide the old page.
+    """
 
     def goto_summary(self):
         self.summary = Summary()
@@ -68,9 +80,7 @@ class Summary(SummarySection):
 
     """
     The Summary Screen is the main entry point ot the summary section of the
-    program
-
-    This class displays said screen to the user
+    program. This class displays the summary screen to the user.
     """
 
     def __init__(self):
@@ -88,7 +98,8 @@ class Summary(SummarySection):
 class TheoryRecap(SummarySection):
 
     """
-    Theory Recap
+    Theory Recap Screen class displays this screen to the user as part
+    of the sumary section of this program
     """
 
     def __init__(self):
@@ -106,7 +117,8 @@ class TheoryRecap(SummarySection):
 class InvestigationResults(SummarySection):
 
     """
-    Invsetigation Results
+    The Investigation Results Screen class displays this screen to the user as part
+    of the sumary section of this program
     """
 
     def __init__(self):
@@ -120,6 +132,10 @@ class InvestigationResults(SummarySection):
         self.show()
 
     def setup_table(self):
+        """
+        Populates the table on this screen with a list of inputs and
+        outputs of the zeta function
+        """
         self.values = database_select(['*'], ['Zeta'])
         self.table_values = [(Complex(value[1], value[2]), Complex(value[3], value[4])) for value in self.values]
         self.ui.ZetaTable.setRowCount(len(self.table_values))
@@ -135,7 +151,8 @@ class InvestigationResults(SummarySection):
 class Conclusion(SummarySection):
 
     """
-    Conclusion
+    The Conclusion Screen class displays this screen to the user as part
+    of the sumary section of this program
     """
 
     def __init__(self):
@@ -151,7 +168,8 @@ class Conclusion(SummarySection):
 class Impact(SummarySection):
 
     """
-    Impact
+    The Impact Screen class displays this screen to the user as part
+    of the sumary section of this program
     """
 
     def __init__(self):

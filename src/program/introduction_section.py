@@ -5,7 +5,12 @@ introduction_section.py
 Contains all of the classes used to interact with the GUI for the
 introduction section of the project
 
-Includes the ...
+Includes the classes:
+    - IntroductionSection
+    - Introduction
+    - HistoricalBackground
+    - WhatIsTheRiemannHypothesis
+    - PracticalApplications
 """
 
 from PyQt5 import QtWidgets
@@ -75,8 +80,6 @@ class Introduction(IntroductionSection):
     """
     The Introduction Screen is the main entry point ot the introduction section of the
     program
-
-    This class displays said screen to the user
     """
 
     def __init__(self):
@@ -92,7 +95,7 @@ class Introduction(IntroductionSection):
 class HistoricalBackground(IntroductionSection):
 
     """
-    Historical Background
+    A class used to interact with the Historical Background GUI screen
     """
 
     def __init__(self):
@@ -108,7 +111,7 @@ class HistoricalBackground(IntroductionSection):
 class WhatIsTheRiemannHypothesis(IntroductionSection):
 
     """
-    What is the RH
+    A class used to interact with the What Is The Riemann Hypothesis GUI screen
     """
 
     def __init__(self):

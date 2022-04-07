@@ -132,7 +132,7 @@ class Ui_TutorialScreen(object):
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.SubTitleText.setObjectName("SubTitleText")
         self.MainText = QtWidgets.QLabel(self.MainWidget)
-        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 151))
+        self.MainText.setGeometry(QtCore.QRect(40, 80, 1251, 201))
         self.MainText.setStyleSheet("font: 13pt \"Sans Serif\"; color:rgb(69, 69, 69);\n"
 "background-color: rgb(239, 239, 239); padding: 5px;")
         self.MainText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -155,4 +155,4 @@ class Ui_TutorialScreen(object):
         self.PrevButton.setText(_translate("TutorialScreen", "Prev"))
         self.NextButton.setText(_translate("TutorialScreen", "Next"))
         self.SubTitleText.setText(_translate("TutorialScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Tutorial</span></p></body></html>"))
-        self.MainText.setText(_translate("TutorialScreen", "<html><head/><body><p>Welcome to the Tutorial Section of this program.</p><p>The aim of this is to teach you how to be able to use this program</p><p>Click on any of the five other tabs above, or on the next button, to find out how to use this program to it\'s full extent</p></body></html>"))
+        self.MainText.setText(_translate("TutorialScreen", "<html><head/><body><p>Welcome to the Tutorial Section of this program.</p><p>The aim of this is to teach you how to be able to use this program.</p><p>In terms of controls for the program, avoid pressing the enter key to submit any text input - this can be done but make sure you\'re selecting the correct button. To avoid any confusion it may be simplest to just click on the desired button. Furthermore, to quit any pages that do not have a back button, simply press escape.</p><p>Click on any of the five other tabs above, or on the next button, to find out how to use this program to it\'s full extent</p></body></html>"))
