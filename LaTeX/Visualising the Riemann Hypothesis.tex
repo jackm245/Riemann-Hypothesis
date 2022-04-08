@@ -1634,18 +1634,19 @@ By applying decomposition to the function, we can now easily see how the flowcha
     \caption{Zeta Function Pseudocode}
     \begin{algorithmic}
         \Function{zeta}{s}
-            \State{TERMS = 100}
-            \If {$s == 1$}
-                \State{ \Return {$\infty$}}
+            \State $TERMS \gets 100$
+            \If{$s = 1$}
+                \State \Return {$\infty$}
             \Else
-                \For {n = 0 \textbf {to} TERMS}
-                    \State {sum1 = 0}
-                    \For {k = 0 \textbf{to} n+1}
-                        \State {sum2 += $(-1)^k \cdot \binom{n}{k} \cdot (k+1)^{-s}$}
+                \For {$n \gets 0 \textbf { to } TERMS$}
+                    \State $sum1 \gets 0$
+                    \For {$k \gets 0 \textbf{ to } n+1$}
+                        \State $sum2 \gets sum2 + (-1)^k \cdot \binom{n}{k} \cdot (k+1)^{-s}$
                     \EndFor
-                    \State{sum1 += sum2 $\cdot \frac{1}{2^{n+1}}$}
+                    \State $sum1 \gets sum1 + sum2 \cdot \frac{1}{2^{n+1}}$
                 \EndFor
-                \State \Return{sum1 $\cdot \frac{1}{1-2^{1-s}}$}
+                \State $constant \gets 1-2^{1-s}$
+                \State \Return{$\frac{sum1}{constant}$}
             \EndIf
         \EndFunction
     \end{algorithmic}
@@ -1663,7 +1664,7 @@ $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 Where:
 \begin{align*}
     x! &= \prod_{a=1}^x a\\
-    &= a \times (a-1) \times (a-2) \times (a-3) \times \dots \times 3 \times 2 \times 1
+    &= x \times (x-1) \times (x-2) \times (x-3) \times \dots \times 3 \times 2 \times 1
 \end{align*}
 Which is itself, the product of another series.
 
@@ -1706,12 +1707,12 @@ Implementing the binomial coefficient function as pseudocode would look as follo
 \begin{algorithm}[ht]
     \caption{Binomial Coefficient Pseudocode}
     \begin{algorithmic}
-        \Function{binom}{n, k}
-            \State{b = 1}
-            \For {i = 0 \textbf{to} k}
-                \State {$\text{b} = \text{b} \times \frac{\text{n}-\text{i}}{\text{i}+1}$}
+        \Function{binom}{$n$, $k$}
+            \State $b \gets 1$
+            \For {$i \gets 0 \textbf { to } k$}
+                \State $b = b \times \frac{n-i}{i+1}$
             \EndFor
-            \State{\Return{b}}
+            \State \Return $b$
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
@@ -1796,39 +1797,44 @@ Implementing the circular queue in pseudocode looks as follows:
 \algblockdefx[Name]{Class}{EndClass}%
 [2][Unknown]{\textbf{class} #1(#2)}%
     {\textbf{end class}}
+\algblockdefx[Name]{PubFunc}{EndPubFunc}%
+[2][Unknown]{\textbf{public function} #1(#2)}%
+    {\textbf{end function}}
+\algblockdefx[Name]{PubProc}{EndPubProc}%
+[2][Unknown]{\textbf{public prodecure} #1(#2)}%
+    {\textbf{end procedure}}
+
 \begin{algorithm}[ht]
     \caption{Circular Queue Pseudocode}
     \begin{algorithmic} [1]
-        \Class[Circular Queue]{input\_queue, max\_size}
-            \Function{\_\_init\_\_}{self, input\_queue, max\_size}
-                \State{self.input\_queue = input\_queue}
-                \State{self.max\_size = max\_size}
-                \State{self.size = LEN self.input\_queue}
-                \State{self.front = 0}
-                \State{self.rear = LEN self.input\_queue}
-                \If{self.size $>$ self.max\_size}
-                    \State {OUTPUT Error}
+        \Class[CIRCULAR QUEUE]{input\_queue, max\_size}
+        \PubFunc[\_\_INIT\_\_]{self, input\_queue, max\_size}
+                \State{$size \gets \textbf{ length } input\_queue$}
+                \State{$front \gets 0$}
+                \State{$rear \gets size$}
+                \If{$size > max\_size$}
+                    \State \Return Error
                 \Else
-                    \State{self.blanks = list()}
-                    \State{self.no\_of\_blanks = self.max\_size-self.size}
-                    \For {i = 0 \textbf{to} self.no\_of\_blanks}
-                        \State{self.blanks.append('placeholder')}
+                    \State{$blanks \gets list()$}
+                    \State{$no\_of\_blanks \gets max\_size-size$}
+                    \For {$i \gets 0 \textbf{ to } no\_of\_blanks$}
+                        \State{$blanks = blanks + 'placeholder'$}
                     \EndFor
-                    \State{self.queue = self.input\_queue + self.blanks}
+                    \State{$queue \gets input\_queue + blanks$}
                 \EndIf
-            \EndFunction\\
+            \EndPubFunc\\
 
-            \Function{enQueue}{item}
-                \If{self.is\_full()}
-                    \State {OUTPUT Error}
+            \PubProc[ENQUEUE]{item}
+                \If{$\text{IS\_FULL()} = True$}
+                    \State {\Return Error}
                 \Else
-                    \State{self.queue[self.rear] = item}
-                    \State{self.rear = MOD self.rear+1 max\_size}
-                    \State{self.size = self.size + 1}
+                    \State{$queue[rear] \gets item$}
+                    \State{$rear \gets \textbf{ mod } rear+1, max\_size$}
+                    \State{$size \gets size + 1$}
                 \EndIf
-            \EndFunction
+            \EndPubProc
 
-            \algstore{myalg}
+            \algstore{circular-queue}
     \end{algorithmic}
 \end{algorithm}
 \clearpage
@@ -1836,41 +1842,42 @@ Implementing the circular queue in pseudocode looks as follows:
 \begin{algorithm}[ht]
     \caption{Circular Queue Pseudocode Continued}
     \begin{algorithmic} [1]
-            \algrestore{myalg}
+            \algrestore{circular-queue}
 
-            \Function{deQueue}{item}
-                \If{self.is\_full()}
-                    \State {OUTPUT Error}
+            \PubFunc[DEQUEUE]{item}
+                \If{$\text{IS\_EMPTY()} = True$}
+                    \State {\Return Error}
                 \Else
-                    \State{item = self.queue[self.front]}
-                    \State{self.queue[self.front] = 'placeholder'}
-                    \State{self.front = MOD self.front+1 max\_size}
-                    \State{self.size = self.size - 1}
+                    \State{$item \gets queue[front]$}
+                    \State{$queue[front] \gets 'placeholder'$}
+                    \State{$front \gets \textbf{ mod } front+1,  max\_size$}
+                    \State{$size \gets size - 1$}
+                    \State \Return $item$
                 \EndIf
-            \EndFunction\\
+            \EndPubFunc\\
 
-            \Function{is\_full}{item}
-                \If{self.size = self.max\_size}
-                    \State {OUTPUT True}
+            \PubFunc[IS\_FULL]{}
+                \If{$size = max\_size$}
+                    \State {\Return $True$}
                 \Else
-                    \State{OUTPUT False}
+                    \State{\Return $False$}
                 \EndIf
-            \EndFunction\\
+            \EndPubFunc\\
 
-            \Function{is\_empty}{item}
-                \If{self.size = 0}
-                    \State {OUTPUT True}
+            \PubFunc[IS\_EMPTY]{}
+                \If{$size = 0$}
+                    \State {\Return $True$}
                 \Else
-                    \State{OUTPUT False}
+                    \State{\Return $False$}
                 \EndIf
-            \EndFunction
+            \EndPubFunc
         \EndClass
     \end{algorithmic}
 \end{algorithm}
 
 And then converting this pseudocode to python it will look as follows:
 
-\begin{lstlisting}[h]
+\begin{lstlisting}
 class Queue:
 
     """
@@ -1883,6 +1890,7 @@ class Queue:
         - is_empty
 
     """
+
 
     def __init__(self, input_queue, **kwargs):
         self.input_queue = input_queue
@@ -1929,6 +1937,40 @@ class Queue:
 \end{lstlisting}
 
 \clearpage
+\subsubsection{Binary Insertion Sort}
+Throughout the program I will be required to sort sets of data. To sort the data, I will be using a binary insertion sort algorithm, due to it's low time and space complexity. Although not too efficient on large data sets, I should only be handling relatively small data sets during this program so the binary insertion sort should suffice for all sorting in the program.
+
+A normal insertion sort works by having a queue which will originally contain each element in the original array. The item at the front of the queue will be removed from the queue and be placed in an array containing the elements in sorted order. When an element is taken from the queue and put in the sorted array, it is put in a position such that the elements either side of it are lower and higher than it. Once evert element has been moved from the queue to it's correct position in the sorted list, the sorted list will contain every element that was in the original array but in sorted order.
+
+A binary insertion sort is a variation of the normal insertion sort, but instead it uses a binary search, rather than a linear search to find the position that the element will go in the sorted list. This improves the time complexity of the program from O(n) to O(log n).
+
+In pseudocode, the algorithm for a binary insertion sort looks as follow:
+
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[scale=0.142]{binary-insertion-sort-flowchart}
+    \caption{Binary Insertion Sort Flowchart}
+\end{figure}
+
+This algorithm written in pseudocode looks as follows:
+
+\begin{algorithm}[ht]
+    \caption{Binary Insertion Sort Pseudocode}
+    \begin{algorithmic} [1]
+        \Function{binary\_insertion\_sort}{data}
+            \State{$queue = \text{Queue}(data)$}
+            \State{$sorted \gets list()$}
+            \State{$sorted \gets sorted + \text{queue.DEQUEUE()}$}
+            \While{\textbf{ not } \text{queue.IS\_EMPTY()}}
+                \State{$index \gets \text{binary\_search}(sorted, item)$}
+                \State{$bigger \gets sorted[index:]$}
+                \State{$\textbf{delete} \text{ } sorted[index:]$}
+            \EndWhile
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
 
 \subsection{Data Structure Design}
 
@@ -2069,6 +2111,10 @@ The user will then be able to store the output values from this calculator in a 
 
 \clearpage
 \section{Technical Solution}
+
+While creating my solution to the problem, I realised that my initial design was lacking in some areas, and a lot if it needs to be updated.
+
+The first area that needed to be redesigned was the database. I realised that parts of my old design were almost obselete and unnecessary, while my database was also not in complete third normal form. I redesigned that database, such that it now contains the following tables:
 
 \begin{figure}[h]
     \centering
