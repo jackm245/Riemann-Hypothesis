@@ -14,6 +14,7 @@ Subroutines:
 
 Classes
     - Queue
+    - Stack
 """
 
 
@@ -61,7 +62,7 @@ def binary_insertion_sort(data, descending=False):
         array = list(map(float, data ))
     except ValueError:
         array = data
-    queue = Queue(array)
+    queue = Queue(input_queue=array)
     sorted = [queue.deQueue()]
     while not queue.is_empty():
         item = queue.deQueue()
@@ -81,7 +82,7 @@ class Queue:
     """
     Implementation of a circular queue
 
-    Contains the subroutines:
+    Contains the methods:
         - enQueue
         - deQueue
         - is_full
@@ -89,15 +90,13 @@ class Queue:
 
     """
 
-    def __init__(self, input_queue, **kwargs):
-        self.input_queue = input_queue
+    def __init__(self, **kwargs):
+        self.input_queue = kwargs.get('input_queue', [])
         self.size = len(self.input_queue)
+        self.max_size = kwargs.get('max_size', self.size)
         self.front = 0
-        self.rear = len(self.input_queue)
-        if 'max_size' in kwargs.keys():
-            self.max_size = kwargs['max_size']
-        else:
-            self.max_size = len(self.input_queue)
+        self.rear = self.size
+        # if doesnt work, use len(self.input_queue) instead of self.size
         if self.size > self.max_size:
             raise IndexError("max_size must be greater than or equal to the \
                     size of the input queue")
@@ -149,6 +148,22 @@ class Queue:
 
         return self.size == 0
 
+    def get_size(self):
+
+        """
+        Returns the number of elements in the queue
+        """
+
+        return self.size
+
+    def get_queue(self):
+
+        """
+        Returns the queue as a list
+        """
+
+        return self.queue
+
     def __str__(self):
 
         """
@@ -156,6 +171,106 @@ class Queue:
         """
 
         return 'Queue(' + ', '.join([str(i) for i in self.queue]) + ')'
+
+
+class Stack:
+
+    """
+    Implementation of a stack
+
+    Contains the methods:
+        - push
+        - pop
+        - is_full
+        - is_empty
+        - peek
+        - size
+
+    """
+    class UnderflowError(Exception):
+
+        """
+        Create an UnderflowError exception, as this does not exist by default in python
+        """
+
+        def __init__(self, error_message):
+            self.error_message = error_message
+
+        def __str__(self):
+            return self.error_message
+
+    def __init__(self, **kwargs):
+        self.stack = kwargs.get('input_list', [])
+        self.size = len(self.stack)
+        self.max_size = kwargs.get('max_size', 1024)
+        if self.size > self.max_size:
+            raise IndexError("max_size must be greater than or equal to the \
+                    size of the input queue")
+
+
+    def push(self, item):
+
+        """
+        Add an item to the stack
+        """
+        if self.size < max_size:
+            self.stack.append(item)
+            self.stack.size += 1
+        else:
+            raise OverflowError("Unable to push to a full stack")
+
+    def pop(self):
+
+        """
+        Remove the item at the top of the stack
+        """
+        try:
+            item = self.stack[-1]
+        except IndexError:
+            raise UnderflowError("Unable to pop from an empty stack")
+        del self.stack[-1]
+        self.stack.size -= 1
+        return item
+
+    def is_full(self):
+
+        """
+        Check if the stack is full
+        """
+
+        return self.size == self.max_size
+
+    def is_empty(self):
+
+        """
+        Check if the stack is empty
+        """
+
+        return self.get_size() == 0
+
+    def peek(self):
+
+        """
+        Return the top item without removing it
+        """
+
+        return self.stack[-1]
+
+    def get_size(self):
+
+        """
+        Returns the number of elements in the stack
+        """
+
+        return self.size
+
+    def __str__(self):
+
+        """
+        Return a printable value of the queue
+        """
+
+        return 'Stack(' + ', '.join([str(i) for i in self.stack]) + ')'
 
 
 def save_zeta_values_to_file(table_values, filepath,

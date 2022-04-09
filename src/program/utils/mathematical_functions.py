@@ -23,7 +23,6 @@ These Functions include:
 from itertools import islice
 from functools import reduce
 import numpy as np
-from operator import mul
 from math import ceil, sqrt, log, floor
 import scipy.integrate as integrate
 from .number_systems import Complex
@@ -34,10 +33,15 @@ def ncr(n, r):
     """
     Binomial Coefficient Calculator
     {n \choose r} = \frac{n!}{r! (n-r)!} , \textrm{ for } n \geq r > 0
+                  = \frac{(n-r+1)!}{r!}
     """
 
+    def mul(num1, num2):
+        return num1 * num2
+
+    assert n >= r and r > 0
     r = min(r, n-r)
-    numerator = reduce(mul, range(n, n-r, -1), 1)
+    numerator = reduce(mul, range(n-r+1, n+1), 1)
     denominator = reduce(mul, range(1, r+1), 1)
     return numerator // denominator
 
@@ -95,6 +99,7 @@ def sieve_of_eratosthenes(limit):
     """
     The Sieve of Eratosthenes return a list of all of the prime numbers up to
     a given limit
+    Implemented using numpy arrays as they are extremely efficient
     """
 
     limit = floor(limit)
@@ -120,6 +125,8 @@ def integration(func, lower_limit, upper_limit, strips=int(1e6)):
     For a given function func, return the definite integral between
     limits lower_limit and upper_limit with accuracy: strips
     This is an implementation of the trapezium formula
+    A = \displaystyle \lim_{n \to \infty} \left(\frac{1}{2}h\{y_0+y_n +
+        2(y_1+y_2+y_3+y_4+\dots)\} \right)
     """
 
     strip_width = (upper_limit - lower_limit) / strips
@@ -183,7 +190,7 @@ def make_complex(number):
 
     try:
         number_complex = Complex(number.replace('i', 'j'))
-    except ValueError as e:
+    except ValueError:
         return False
     else:
         return number_complex
@@ -198,7 +205,7 @@ def make_int(number):
 
     try:
         number_int = int(number)
-    except ValueError as e:
+    except ValueError:
         return False
     else:
         return number_int

@@ -17,7 +17,7 @@ from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QHeaderView
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from .notes import InvestigationNotes
 from .user_interface import Ui_PolarGraphScreen, Ui_PrimeCountingFunctionScreen, Ui_GraphPlotsScreen, Ui_ZetaZeroesPlotScreen, Ui_PrimeNumbersScreen, Ui_CalculatorScreen, Ui_SingleCalculatorScreen, Ui_TableCalculatorScreen, Ui_TableCalculator2Screen, Ui_CalculateZeroesScreen, Ui_CalculateZeroes2Screen, Ui_CalculatorLeaderboardScreen, Ui_MatPlotScreen, Ui_ZeroesScreen, Ui_ZetaApproximationScreen
-from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen, Complex
+from .utils import zeta, sieve_of_eratosthenes, prime_power_function, prime_counting_function_estimation, logarithmic_integral, binary_insertion_sort, save_zeta_zeroes_to_file, save_zeta_values_to_file, make_int, make_complex, is_zeta_zero, Screen, User, database_query, database_insert, database_select, get_id, database_print, DynamicGraphScreen, Complex, Queue
 
 
 class InvestigationSection(Screen):
@@ -192,7 +192,7 @@ class CalculateZeroes2(InvestigationSection):
 
     def __init__(self, zeroes):
         super(CalculateZeroes2, self).__init__()
-        self.zeroes = zeroes
+        self.table_zeroes = zeroes
         self.ui = Ui_CalculateZeroes2Screen()
         self.ui.setupUi(self)
         self.setup_tabs()
@@ -200,10 +200,16 @@ class CalculateZeroes2(InvestigationSection):
         self.ui.NextButton.clicked.connect(self.goto_zeroes)
         self.ui.DatabaseButton.clicked.connect(self.saveto_database)
         self.ui.FileButton.clicked.connect(self.saveto_file)
-        self.ui.ZetaTable.setRowCount(len(self.zeroes))
-        for i, values in enumerate(self.zeroes):
-            for j in range(len(values)):
-                self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(values[j])))
+        self.ui.ZetaTable.setRowCount(self.table_zeroes.get_size())
+        self.zeroes = []
+        for row_no in range(self.table_zeroes.get_size()):
+            row = self.table_zeroes.deQueue()
+            for col_no, element in enumerate(row):
+                self.ui.ZetaTable.setItem(row_no, col_no, QTableWidgetItem(str(element)))
+            self.zeroes.append(row)
+        #  for i, values in enumerate(self.zeroes):
+            #  for j in range(len(values)):
+                #  self.ui.ZetaTable.setItem(i,j, QTableWidgetItem(str(values[j])))
         self.ui.ZetaTable.horizontalHeader().setStretchLastSection(True)
         self.ui.ZetaTable.horizontalHeader().setSectionResizeMode(
             QHeaderView.Stretch)
@@ -216,8 +222,8 @@ class CalculateZeroes2(InvestigationSection):
             for real, imag in self.zeroes:
                 # if there is a row with the same real and imag
                 in_table = False
-                for ri, ii in database_inputs:
-                    if ri == real and ii == imag:
+                for real_input, imag_input in database_inputs:
+                    if real_input == real and imag_input == imag:
                         in_table = True
                 # only add to database if not already in database
                 if not in_table:
@@ -262,14 +268,14 @@ class CalculateZeroes(InvestigationSection):
         if self.no_of_zeroes:
             if 0 < self.no_of_zeroes <= 100:
                 self.zeroes_calculated = True
-                self.zeroes = []
+                self.zeroes = Queue(max_size=self.no_of_zeroes)
                 count = 0
-                while len(self.zeroes) < self.no_of_zeroes:
+                while self.zeroes.get_size() < self.no_of_zeroes:
                     accuracy = count // 500 + 100
                     real = 1/2
                     imag = count / accuracy
-                    if is_zeta_zero(real, imag) and (real, round(imag, 1)) not in self.zeroes:
-                        self.zeroes.append((real, round(imag, 1)))
+                    if is_zeta_zero(real, imag) and [real, round(imag, 1)] not in self.zeroes.get_queue():
+                        self.zeroes.enQueue([real, round(imag, 1)])
                     count += 1
             else:
                 self.ui.ErrorLabel.setText(self.center_text('No. of Zeroes must be between 1 and 100'))
@@ -562,7 +568,8 @@ class PrimeNumbers(InvestigationSection):
 class ZetaApproximationMatPlot(DynamicGraphScreen):
 
     """
-    The ZetaApprozimation Mat Plot
+    The ZetaApproximation Mat Plot
+    Demonstrates the convergent nature of the Riemann Zeta Function
     """
 
     def __init__(self, complex_input):
@@ -605,8 +612,6 @@ class ZetaApproximation(InvestigationSection):
             self.ui.ZetaOutput.setText('')
         else:
             self.zeta_approximation_graph = ZetaApproximationMatPlot(self.graph_input)
-
-
 
 
 class PrimeCountingFunctionMatPlot(DynamicGraphScreen):
