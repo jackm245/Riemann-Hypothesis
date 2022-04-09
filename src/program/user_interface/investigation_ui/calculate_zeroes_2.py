@@ -1,5 +1,5 @@
 """
-calculate_zeroes2.py
+calculate_zeroes_2.py
 ====================
 A GUI for the calculate zeroes 2 page of the investigation section
 """
