@@ -14,6 +14,8 @@
 \usepackage{multirow}
 \usepackage[backend=biber, style=verbose]{biblatex}
 \addbibresource{References.bib}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -2702,22 +2704,130 @@ See \url{https://github.com/jackm245/Riemann-Hypothesis/} for the full write-up,
 
 Although this is not a list of every single class and function in the program, I have included a list of all of the important and complex features. For example, in the utils directory I describe almost every class/functions due to their high significance, whereas with the user\_interface directory, there are 6 folders, 43 files and 40 classes, however all they do is configure the UI which is very repetitive and doesn't require a lot of technical programming skill, thus they have not been mentioned in this contents page.
 \clearpage
+
 \subsection{Completeness of Solution}
+
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.5\linewidth} | p{0.2\linewidth} | p{0.3\linewidth} |}
+    \begin{tabular}{ | p{0.5\linewidth} | M{0.2\linewidth} | p{0.3\linewidth} |}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Completeness of Solution}}\\
+    \multicolumn{3}{|c|}{\textbf{Completeness of Solution - 1}}\\
     \hline
     \hline
     \textbf{Objective} & \textbf{Achieved} & \textbf{Evidence}\\
     \hline
+    1. The program will be interactive and engaging for the user & Yes  & \\
+    \hline
+    1.(a) There will be various questions throughout the program that the user can answer & Yes & \\
+    \hline
+    1.(b) The user will be able to make notes on any of the content in the program & Yes & \\
+    \hline
+    1. (c) The user will be able to choose what they do and where they go in the program, not forced along a single route & Yes & \\
+    \hline
+    1. (d) The user will be able to input their own values into various functions and graphs & Yes & \\
+    \hline
+    2. The user will be able to save their progress through the program via a login system & Yes & \\
+    \hline
+    2. (a) The login system should allow the user to: & Yes & \\
+    \hline
+    2. (a) i. Sign in to their account & Yes & \\
+    \hline
+    2. (a) ii. Create a new account & Yes & \\
+    \hline
+    2. (a) iii. Reset their password if they want to change it & Yes & \\
+    \hline
+    2. (a) iv. Reset their password if they have forgotten it & Yes & \\
+    \hline
+    2. (b) Multiple users will be able to make separate accounts on the system & Yes & \\
+    \hline
+    2. (c) The user’s data such as passwords must be saved securely & Yes & \\
+    \hline
+    2. (d) The user must be able to see how they have progressed throughout the program & Yes & \\
     \hline
     \end{tabular}
-    \caption{Completeness of Solution Table}
+    \caption{Completeness of Solution Table 1}
 \end{table}
 
 
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.5\linewidth} | M{0.2\linewidth} | p{0.3\linewidth} |}
+    \hline
+    \multicolumn{3}{|c|}{\textbf{Completeness of Solution - 2}}\\
+    \hline
+    \hline
+    \textbf{Objective} & \textbf{Achieved} & \textbf{Evidence}\\
+    \hline
+    3. The user will be given some background information about the Riemann Hypothesis such that almost anyone could feel comfortable using the program & Yes  & \\
+    \hline
+    3. (a) The user should be able to learn the historical background of the Riemann Hypothesis & Yes & \\
+    \hline
+    3. (b) The user should be able to learn what imaginary and complex numbers are & Yes & \\
+    \hline
+    3. (c) The user should be able to learn what the Riemann Hypothesis states & Yes & \\
+    \hline
+    3. (d) The user should be able to learn about the practical applications of the Riemann Hypothesis & Yes & \\
+    \hline
+    4. The program will allow the user to plot various graphs in order to develop their understanding of the Riemann Zeta function and allow them to learn about it & Yes & \\
+    \hline
+    4. (a) A polar graph of the Riemann Zeta Function & Yes & \\
+    \hline
+    4. (b) A graph of the prime counting function, and other related functions used to estimate it & Yes & \\
+    \hline
+    4. (c) A graph of the zeroes of the Riemann Zeta Function & Yes & \\
+    \hline
+    4. (d) A visualisation of the convergence of the infinite series in the Riemann Zeta Function & Yes & \\
+    \hline
+    5. The user will be able to calculate specific values of the Riemann Zeta Function & Yes & \\
+    \hline
+    5. (a) A single calculator, where the user inputs a complex input and receives an output & Yes & \\
+    \hline
+    \end{tabular}
+    \caption{Completeness of Solution Table 2}
+\end{table}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.5\linewidth} | M{0.2\linewidth} | p{0.3\linewidth} |}
+    \hline
+    \multicolumn{3}{|c|}{\textbf{Completeness of Solution - 3}}\\
+    \hline
+    \hline
+    \textbf{Objective} & \textbf{Achieved} & \textbf{Evidence}\\
+    \hline
+    5. (b) A table calculator, where the user can calculate the zeta function for a range of input values& Yes & \\
+    \hline
+    5. (c) A leaderboard showing how many values of the zeta function, each user has computed & Yes & \\
+    \hline
+    5. (d) The program will allow the user to store these value(s) to a database and to a csv file & Yes & \\
+    \hline
+    6. The user will be able to calculate the zeroes of the Riemann Zeta Function & Yes & \\
+    \hline
+    6. (a) The user will input how many zeroes they want to calculate & Yes & \\
+    \hline
+    6. (b) The program will calculate these zeroes & Yes & \\
+    \hline
+    6. (c) The zeroes will be displayed to the user in a table & Yes & \\
+    \hline
+    7. The user will be able to store the data that they have collected & Yes & \\
+    \hline
+    7. (a) The program will include a database of multiple values and zeroes of the zeta function & Yes & \\
+    \hline
+    7. (a) i. The user will be able to store values of the zeta function & Yes & \\
+    \hline
+    7. (a) ii. The user will be able to store the non-trivial zeta zeros & Yes & \\
+    \hline
+    7. (a) iii. The user program will retrieve data from the database and display its contents suitably to the user & Yes & \\
+    \hline
+    8. The Program will have a graphical user interface & Yes & \\
+    \hline
+    \end{tabular}
+    \caption{Completeness of Solution Table 3}
+\end{table}
+\clearpage
+\section{Testing}
 \clearpage
 \section{Appendix A - Technical Solution Source Code}
 \clearpage
