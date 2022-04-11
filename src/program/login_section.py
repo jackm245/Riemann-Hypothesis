@@ -111,17 +111,17 @@ class LoginSection(Screen):
         try:
             self.correct_hashed_password = database_query("SELECT Password FROM Users WHERE Username=?", self.username)[0][0]
         except IndexError:
-            self.ui.ErrorLabel.setText("Username or password is not valid")
+            self.ui.ErrorLabel.setText(self.center_text("Username or password is not valid"))
         else:
             if not check_password(self.password, self.correct_hashed_password):
-                self.ui.ErrorLabel.setText("Username or password is not valid")
+                self.ui.ErrorLabel.setText(self.center_text("Username or password is not valid"))
             else:
                 User.SetSignedIn(True)
                 User.SetUsername(self.username)
                 self.email = database_query("SELECT Email FROM Users WHERE Username=?", self.username)[0][0]
                 User.SetEmail(self.email)
-                self.main_menu = MainMenu()
-                self.hide()
+                return True
+        return False
 
     def are_invalid_passwords(self):
 
@@ -169,10 +169,10 @@ class ResetPassword2(LoginSection):
 
     def submit(self):
         self.password1 = self.ui.PasswordInput.text()
-        self.password2 = self.ui.ConfirmPasswordInput.text()
+        self.password2 = self.ui.PasswordInput_2.text()
         self.pwds_invalid = self.are_invalid_passwords()
         if self.pwds_invalid:
-            self.ui.ErrorLabel.setText(self.pwds_invalid)
+            self.ui.ErrorLabel.setText(self.center_text(self.pwds_invalid))
         else:
             database_query("UPDATE Users SET Password=? WHERE Username=?", hash_password(self.password1), User.GetUsername())
             from .main_section import MainMenu
@@ -231,7 +231,7 @@ class ForgottenPassword2(LoginSection):
             self.reset_password_2 = ResetPassword2()
             self.hide()
         else:
-            self.ui.ErrorLabel.setText("Verification Code Incorrect")
+            self.ui.ErrorLabel.setText(self.center_text("Verification Code Incorrect"))
 
 
 class ForgottenPassword(LoginSection):
@@ -253,8 +253,9 @@ class ForgottenPassword(LoginSection):
         self.show()
 
     def submit(self):
-        self.email  = self.ui.EmailInput.text()
-        self.selection = database_query("SELECT Email FROM Users WHERE Email=?", (self.email,))
+        self.email  = self.ui.EmailInput.text().strip()
+        self.selection = database_query("SELECT Email FROM Users WHERE Email=?", self.email)
+        print(self.selection)
         if len(self.selection) == 0:
             self.ui.ErrorLabel.setText("Email is not registered")
         else:
@@ -295,21 +296,21 @@ class SignUp(LoginSection):
         self.pwds_invalid = self.are_invalid_passwords()
         # check is of right form
         if not re.fullmatch('\w{1,20}', self.username):
-            self.ui.ErrorLabel.setText("Username must be at 1-20 characters long\nand not contain special characters")
+            self.ui.ErrorLabel.setText(self.center_text("Username must be at 1-20 characters long\nand not contain special characters"))
         elif not re.fullmatch('.+@.+\..+', self.email):
-            self.ui.ErrorLabel.setText("Email address must be valid")
+            self.ui.ErrorLabel.setText(self.center_text("Email address must be valid"))
         elif self.pwds_invalid:
             self.ui.ErrorLabel.setText(self.pwds_invalid)
         else:
             self.username_query = database_select(['Username'], ['Users'])
             self.usernames = set([row[0].lower() for row in self.username_query])
             if self.username.lower() in self.usernames:
-                self.ui.ErrorLabel.setText("Username already taken")
+                self.ui.ErrorLabel.setText(self.center_text("Username already taken"))
             else:
                 self.emaill_query = database_select(['Email'], ['Users'])
                 self.emails = set([row[0].lower() for row in self.emaill_query])
                 if self.email.lower() in self.emails:
-                    self.ui.ErrorLabel.setText("Email already taken")
+                    self.ui.ErrorLabel.setText(self.center_text("Email already taken"))
                 else:
                     self.hashed_password = hash_password(self.password1)
                     database_insert('Users', self.username, self.email, self.hashed_password)

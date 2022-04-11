@@ -306,7 +306,7 @@ def save_zeta_zeroes_to_file(table_values, filepath,
 def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
 
     """
-    Given a list of imaginary numbers, combine these with the contents of the
+    Given a list of complex numbers, combine these with the contents of the
     file that they are going to be saved to, sort these values using the first
     real number, and save them back into the csv file
     """
@@ -318,8 +318,8 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
         for row in csv_reader:
             if row != fieldnames:
                 csv_values.append(list(map(str, row)))
-    sorting_dict = {list(map(float,
-        re.findall(regex, ','.join(row))))[index]: row for row in csv_values}
+    sorting_dict = {float(str(list(map(float,
+        re.findall(regex, ','.join(row))))[index]) + str(row_no)) : row for row_no, row in enumerate(csv_values)}
     sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
     sorted_values = [sorting_dict[key] for key in sorted_keys]
     with open(filepath, 'w') as csv_file:

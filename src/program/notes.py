@@ -73,11 +73,12 @@ class Notes(Screen):
         self.set_note_text(self.text)
 
     def set_note_text(self, text, color='rgb(69, 69, 69)'):
+        note_text = text.replace('\n', '<br>')
         self.ui.NotesText.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
         "p, li { white-space: pre-wrap; }\n"
         f"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:18pt; font-weight:400; font-style:normal; color:{color};\">\n"
-        f"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">{text}</p></body></html>")
+        f"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">{note_text}</p></body></html>")
 
     def not_signed_in(self):
         self.set_note_text('You must be signed in to be able to make notes',

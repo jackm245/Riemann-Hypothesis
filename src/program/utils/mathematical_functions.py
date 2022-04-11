@@ -17,6 +17,7 @@ These Functions include:
     - prime_power_function
     - make_complex
     - make_int
+    - round_to_3_sf
 """
 
 
@@ -39,7 +40,7 @@ def ncr(n, r):
     def mul(num1, num2):
         return num1 * num2
 
-    assert n >= r and r > 0
+    #  assert n >= r and r > 0
     r = min(r, n-r)
     numerator = reduce(mul, range(n-r+1, n+1), 1)
     denominator = reduce(mul, range(1, r+1), 1)
@@ -209,3 +210,12 @@ def make_int(number):
         return False
     else:
         return number_int
+
+
+def round_to_3_sf(number):
+
+    """
+    Round a number to three significant figures
+    """
+
+    return '{:g}'.format(float('{:.3g}'.format(number)))

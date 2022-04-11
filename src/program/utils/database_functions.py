@@ -282,5 +282,4 @@ def get_id(ID, table):
     ID_Number = get_next_id(IDs)
     return ID_Number
 
-
 database_print()

@@ -74,7 +74,7 @@
     Dr Challoner's Grammar School\\
     Centre Number: 52205\\
     Candidate Number: 7469\\
-    January 2022\\
+    April 2022\\
 
     \vspace{1cm}
 
@@ -1128,20 +1128,20 @@ Finally, is the Impact of the Riemann Hypothesis. The aim of this section is to 
 
 
 Overall, I feel as if I have sufficiently broken down my project into a number of more manageable parts that will comes together neatly to form the whole system.
-\subsection{Hierarchy Diagrams}
+% \subsection{Hierarchy Diagrams}
 
-\subsection{System Flowcharts}
+% \subsection{System Flowcharts}
 
-\subsection{Data Flow Diagrams}
+% \subsection{Data Flow Diagrams}
 
 \clearpage
 \subsection{Object-Oriented Design}
 
-$$NEED TO ADD UI CLASSES$$
+% $$NEED TO ADD UI CLASSES$$
 
-$$ AND ALSO EXPLAIN HIGH LEVEL OOP STUFF$$
+% $$ AND ALSO EXPLAIN HIGH LEVEL OOP STUFF$$
 
-$$SEE BOOK ON HOW TO DO PROPERLY$$
+% $$SEE BOOK ON HOW TO DO PROPERLY$$
 
 \begin{figure}[h]
     \centering
@@ -2004,7 +2004,7 @@ def binary_insertion_sort(data, descending=False):
 \end{lstlisting}
 
 This python variation of the binary insertion sort algorithm also includes an option to return the sorted list in descending order, as well as the default ascending order.
-\subsection{Data Structure Design}
+% \subsection{Data Structure Design}
 
 \clearpage
 
@@ -2828,8 +2828,267 @@ Although this is not a list of every single class and function in the program, I
 \end{table}
 \clearpage
 \section{Testing}
+\subsubsection{Iterative Testing}
 \clearpage
+
+
+
+\subsubsection{Post-Development Testing}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \hline
+    \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 2}}\\
+    \hline
+    \hline
+    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \hline
+    1. & & & & & & \\
+    \hline
+    1.(a) & & & & & & \\
+    \hline
+    1.(b) & & & & & & \\
+    \hline
+    1.(c) & & & & & & \\
+    \hline
+    1.(d) & & & & & & \\
+    \hline
+    2. & & & & & & \\
+    \hline
+    2.(a) & & & & & & \\
+    \hline
+    2.(a)i. & & & & & & \\
+    \hline
+    2.(a)ii. & & & & & & \\
+    \hline
+    2.(a)iii. & & & & & & \\
+    \hline
+    2.(a)iv. & & & & & & \\
+    \hline
+    2.(b) & & & & & & \\
+    \hline
+    2.(c) & & & & & & \\
+    \hline
+    2.(d) & & & & & & \\
+    \hline
+    3.(a) & & & & & & \\
+    \hline
+    3.(b) & & & & & & \\
+    \hline
+    3.(c) & & & & & & \\
+    \hline
+    3.(d) & & & & & & \\
+    \hline
+    4. & & & & & & \\
+    \hline
+    4.(a) & & & & & & \\
+    \hline
+    4.(b) & & & & & & \\
+    \hline
+    4.(c) & & & & & & \\
+    \hline
+    4.(d) & & & & & & \\
+    \hline
+    5. & & & & & & \\
+    \hline
+    5.(a) & & & & & & \\
+    \hline
+    5.(b) & & & & & & \\
+    \hline
+    5.(c) & & & & & & \\
+    \hline
+    5.(d) & & & & & & \\
+    \hline
+    \end{tabular}
+    \caption{Post Development Test Table - 1}
+\end{table}
+\clearpage
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \hline
+    \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 2}}\\
+    \hline
+    \hline
+    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \hline
+    6. & & & & & & \\
+    \hline
+    6.(a) & & & & & & \\
+    \hline
+    6.(b) & & & & & & \\
+    \hline
+    6.(c) & & & & & & \\
+    \hline
+    7. & & & & & & \\
+    \hline
+    7.(a) & & & & & & \\
+    \hline
+    7.(a)i. & & & & & & \\
+    \hline
+    7.(a)ii. & & & & & & \\
+    \hline
+    7.(a)iii. & & & & & & \\
+    \hline
+    8. & & & & & & \\
+    \hline
+    \end{tabular}
+    \caption{Post Development Test Table - 2}
+\end{table}
+
+One error which I discovered during my testing was to do with saving values of the zeta function to the csv file. After going back and looking at the problem, I realised that I had a logic error where the csv file was unable to have two records where the InputReal record was the same. This is due to how I chose to sort of the data. The code at the time look as such:
+
+\begin{lstlisting}
+def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
+
+    """
+    Given a list of complex numbers, combine these with the contents of the
+    file that they are going to be saved to, sort these values using the first
+    real number, and save them back into the csv file
+    """
+
+    if not os.path.isfile(filepath):
+        os.mknod(filepath)
+    with open(filepath, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for row in csv_reader:
+            if row != fieldnames:
+                csv_values.append(list(map(str, row)))
+    sorting_dict = {list(map(float,
+        re.findall(regex, ','.join(row))))[index] : row for row in csv_values}
+    sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
+    sorted_values = [sorting_dict[key] for key in sorted_keys]
+    with open(filepath, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(fieldnames)
+        for row in sorted_values:
+            csv_writer.writerow(row)
+\end{lstlisting}
+
+The problems came with lines 16 and 17, which say that
+
+\begin{lstlisting}
+    sorting_dict = {list(map(float,
+        re.findall(regex, ','.join(row))))[index] : row for row in csv_values}
+\end{lstlisting}
+
+This creates a dictionary with the InputReal of each record as the key, and each record as the value, for all of the records in the file. However, if two records had the same InputReal, then they would create the same key. So then when I call
+
+\begin{lstlisting}
+    sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
+\end{lstlisting}
+
+I am sorting the set of all of the keys. This removes duplicates. However, I have to sort the data as a set, otherwise the binary\_insertion\_sort will not work. So I need to change the data in order to eliminate any two records having the same first value. To do this, I added the number of the record onto the end of each key. This allows each record to still be sorted, and also make them unique.
+
+With these changes, the working function now looks as follows:
+
+\begin{lstlisting}
+def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
+
+    """
+    Given a list of complex numbers, combine these with the contents of the
+    file that they are going to be saved to, sort these values using the first
+    real number, and save them back into the csv file
+    """
+
+    if not os.path.isfile(filepath):
+        os.mknod(filepath)
+    with open(filepath, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for row in csv_reader:
+            if row != fieldnames:
+                csv_values.append(list(map(str, row)))
+    sorting_dict = {float(str(list(map(float,
+        re.findall(regex, ','.join(row))))[index]) + str(row_no)) : row for row_no, row in enumerate(csv_values)}
+    sorted_keys = binary_insertion_sort(list(set(sorting_dict.keys())))
+    sorted_values = [sorting_dict[key] for key in sorted_keys]
+    with open(filepath, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(fieldnames)
+        for row in sorted_values:
+            csv_writer.writerow(row)
+\end{lstlisting}
+\clearpage
+\section{Evaluation}
+
+
+\subsection{Objective Completion}
+
+In this section, I will list many of the key objectives of my program, and evaluate how well I have achieved them.
+
+\textbf{1. The program will be interactive and engaging for the user}
+
+User input in the forms of questions, notes and inputs to functions are abundant throughout the program. I met this first objective well by adding features that allow the user to actually control what happens in a program, instead of just getting a user to click a 'next' button over and over. Steps have been taken to make this program interactive and I believe that these features make the program both interactive and engaging. This objective has been completed well.
+
+\textbf{1. (a) There will be various questions throughout the program that the user can answer}
+
+In total, there are 10 questions asked to the user. The user's answer is then marked correct or incorrect. And if the user is signed in, their progress is saved, such that their answer is saved and they can see which questions they have answered correctly or incorrectly. I have met this objective.
+
+
+\textbf{1. (b) The user will be able to make notes on any of the content in the program}
+
+Throughout the program, there are many buttons that the user can click on to access the notes section, so it has been made very accessible. The notes have been split into a separate page for each section, and the user can make their notes as long as they like. This objective has been completed sufficiently.
+
+
+\textbf{1. (c) The user will be able to choose what they do and where they go in the program, not forced along a single route}
+
+Although there is a sort of default linear way to go through the program using the prev and next buttons, the tab bar on each page allows the user to jump between sections and pages as they wish. Although the actual layout and organisation of the pages could have been made more straightforwards, the user is still able to access all parts of the program at any point, so I have achieved this objective.
+
+\textbf{2. (a) The login system should allow the user to i. Sign in to their account ii. Create a new account iii. Reset their password if they want to change it iv. Reset their password if they have forgotten it}
+
+I am very happy with how they login system turned out in my project. It is very straightforward for the user to login, create an account, or change their password. Two key elements of this that stand out to me are the input validation for the usernames, emails, and passwords - making sure that they are always of the correct type and structure; and also with the emailing of the user when they have forgotten their password - this is very neat. An improvement I could make to the login system would be to add a page or button to log out of an account. This would not be hard to implement at all (just requires updating the User instance of the ProgramUser class), as this would stop the user having to close and reopen the program every time they want to log out of their account. Overall however, the login system does meet all of the objectives and does so well.
+
+\textbf{2. (d) The user must be able to see how they have progressed throughout the program}
+
+The progress section in the program sufficiently completes this objective. It displays to the user which of the questions they have answered, and if they have done so successfully. This allows the user to see what they have gotten right or wrong, and also how much they actually know about the Riemann Hypothesis. If a user starts using this program knowing nothing about the Riemann Hypothesis, then reads through the introduction and uses the investigation, and is then able to answer some, if not all, of the questions, then they have made significant progress, not just through the program but of their understanding of the Riemann Hypothesis, and this is shown on the progress page. Therefore, I have achieved this objective.
+
+\textbf{3. The user will be given some background information about the Riemann Hypothesis such that almost anyone could feel comfortable using the program}
+
+Through the tutorial and the introduction section, the user is given sufficient explanations regarding to the historical background of the Riemann Hypothesis, what complex numbers are, what the Riemann Hypothesis is, and what the practical applications of the hypothesis are. This information is then solidified as knowledge through the questions asked in the program, showing that the user has understood what they've read and learnt. Through these pages in the introduction section, I have reached objectives 3. (a), 3. (b), 3. (c) and 3, (d), thus meeting the overall objective 3 sufficiently. However, it would help the user understand a lot more about the program if they had a more in-depth knowledge than the information that is said during the introduction. The problem is that this project is not solely about teaching people what the hypothesis is, and reading pages and pages of information about the hypothesis would more than likely not be interesting to the user - they could just go to the wikipedia page for that. Overall, I think this program has a good balance of introductory knowledge teaching while also allowing the user to actually investigate the Hypothesis.
+
+
+\textbf{4. (a) A polar graph of the Riemann Hypothesis}
+
+Overall, most of the graphs I created in the project were clear in what they showed, and allowed the user to understand further what the Riemann Hypothesis is about. However, I am especially pleased with the turn out of this graph. Going from iteration to iteration of the zeta function, eventually finding a way of computing it such that the graph appears to calculate values of the zeta function took a lot of research but definitely was worth the while. An improvement that could be made to not just this graph but also other ones is to make them more interactive for the user. This would entail, for example, the user being able to hover with the mouse over different parts of the graph, and be shown a pop-up of the input and output of that point, or having the graph change colour slightly as the imaginary input increases with time. It's small additions like this that would make the program more appealing to use and provide just that much more useful information.
+
+\textbf{4. (d) A graph of the zeroes of the Riemann Zeta Function}
+
+The zeroes graph was one of the trickiest parts of this project, due to the constraints when it comes to how the values are actually calculated. There is no real formula for calculating the zeroes of the Riemann Zeta Function, so the only way to find them is to try every value as an input, and find which ones give an output of zero, essentially using brute force to try and find the zeta zeroes. It's not exactly an elegant design but is unfortunately the only way of doing so. This brute force method means that the zeroes take a long time to be calculated, with only a few points plotted on the graph after 20 or so minutes of waiting. One way of speeding this up would to just get a better computer. With a more advanced CPU with more cores, larger cache storage, and a faster clock speed; I would be able to calculate many more zeta zeroes in a given period of time. It would require a supercomputer to calculate enough zeta zeroes, to a good enough accuracy to actually get any meaningful data out of it. However, with the resources that I had available I'm pleased with what I managed to come up with and did complete this objective.
+
+\textbf{5. (b) A table calculator where the user can calculate the zeta function for a range of input values}
+
+The table calculator I have created in my program is very efficient. Given a range of input values, it will calculate the outputs from the zeta function for the inputs, and then display then in the table. This meets the objective. However, I don't think it's as developed as it could be. Having a table of a list of inputs and outputs isn't very useful or meaningful to the user. If instead, or as well, this data was represented using a graph - possibly even one involving domain colouring - or some other way to visualise the data, it would be a lot more useful to the user than just a table of numbers. I am happy with the table calculator feature as it meets the objective well, but I believe it could be more developed.
+
+
+\textbf{6. The user will be able to calculate the zeroes of the Riemann Zeta Function}
+
+Following on from many of the points I made while evaluating objective 4. (d), the algorithm used to calculate the zeta zeroes takes a long time to run. In the case of the graph, it could be updated as new zeroes are found, but for the table as part of this objective, every zeta zero has to be calculated before the graph can be shown. This causes a relatively empty page to be displayed for a long time. Furthermore, this page is not updating itself either. This program does not utilise threads, so the program can only do one thing at a time. This means that while the zeroes are being calculated, the old page is not being redrawn, which can lead to some weird user interface bugs. To solve this issue, I could have implemented threads, such that even while the zeta zeroes are being calculated, the previous screen can still be redrawn. Overall, the zeta zeroes calculator does work in order to find the zeroes of the zeta function, but this algorithm could have been implemented better using threads to stop UI bugs.
+
+
+\textbf{7. The user will be able to store the data that they have collected}
+
+My database is extremely efficient. Having the database in third normal form means that queries to the database are very fast. Data can be stored and retrieved in an instant. Throughout many parts of the program, the user is given the opportunity to save values to the database, through just the click of a button. Whether it's values of the zeta function, or non-trivial zeroes, the user can permanently store data to the database. Using SQLite3 as the connection between the database and my program works very well, and they way I implemented querying the database though the database\_insert, database\_select, and database\_query subroutines was very neat as it didn't require any global variables (which I was contemplating using before).
+
+
+\textbf{8. The Program will have a graphical user interface}
+
+Overall, I did well making the GUI. The page designs are all kept relatively simple and minimalistic, while still displaying all of the relevant information and allowing the user to access all parts of the program. The consistent design between pages allows for easy navigation. However, the GUI is by no means perfect. One design feature I would have liked to add would be for each page to be adjustable in it's size. Currently, the screen is a fixed size. It would taken a whole deal of time and effort, and having to learn a lot about the PyQt library, but there is a way to do this using grid layouts, and spacers. Unfortunately, I was already a long way into programming my project when I discovered this, and realised that it would have been a lot of effort to recode everything, while having very minimal reward. Another feature I would have liked to have added to my GUI would be animations. Small transitions between pages or buttons showing that they have been clicked are the small details that would make the project seem more professional. Moreover, the actual programming of my GUI was not very efficient. Creating so many classes and files was not just convoluted and confusion, but just plain inefficient. Instead, I could have created some global features that were common to each page e.g, the colours, the title position, the tab bar, the buttons - and had a template class that had these by default. Then each page could inherit this class and also add whichever extra features it needs.
+
+To conclude, I met all of my objectives well, but there were still some areas in which I feel as if I could have improved my program by adding extra features or re-designing certain parts.
+
+\subsection{Independent Feedback}
+\subsection{Evaluation of Independent Feedback}
+
+
+\clearpage
+
 \section{Appendix A - Technical Solution Source Code}
+\clearpage
+\section{Appendix B - Links to Resources}
+\subsection{Technical Solution Source Code}
+\subsection{Testing Video}
 \clearpage
 \nocite{*}
 \printbibliography

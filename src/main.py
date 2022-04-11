@@ -15,9 +15,13 @@ def main():
     """ The main entry point to the program """
     app = QtWidgets.QApplication(sys.argv)
     create_database()
-    application = MainMenu()
+    try:
+        application = MainMenu()
+    except Error as e:
+        print(f'Error: {e}\nRestarting Program')
+        application = MainMenu()
     sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
-    main()
+        main()
