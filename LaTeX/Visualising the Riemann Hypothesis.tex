@@ -2828,12 +2828,104 @@ Although this is not a list of every single class and function in the program, I
 \end{table}
 \clearpage
 \section{Testing}
-\subsubsection{Iterative Testing}
+\subsection{Iterative Testing}
+
+\textbf{Imports}
+
+With many different python files with many different functions and classes, imports are imperative to make sure that  every function/class can get accessed from where it needs to. Especially with many directories and subdirectories in the project - the file structure does not make imports easy.
+
+Initially, when writing investigation\_section.py, I needed to import the Complex class from utils/number\_systems.py. So I tried too:
+
+\begin{lstlisting}
+from utils/number_systems import Complex
+\end{lstlisting}
+
+But this returned an error. So I tried many variations of this such that
+
+\begin{lstlisting}
+from utils.number_systems import Complex
+\end{lstlisting}
+
+And
+
+\begin{lstlisting}
+from utils import number_systems.Complex
+\end{lstlisting}
+
+\begin{lstlisting}
+from number_systems import Complex
+\end{lstlisting}
+
+Until I found out the I need to create a \_\_init\_\_.py file in the utils/ directory. \_\_init\_\_ files are used by python to manage import and create modules from subdirectories.
+So in utils/\_\_init\_\_.py I Wrote:
+
+\begin{lstlisting}
+from .number_systems import Complex
+\end{lstlisting}
+
+This makes utils its own module that can be imported from elsewhere. So now in investigation\_section.py I Wrote:
+
+\begin{lstlisting}
+from .utils import Complex
+\end{lstlisting}
+
+This then allows me to import the Complex class, although it's inside a different file which is inside a different directory.
+
+But this wasn't the end of it. When now trying to create a button that goes from the investigation\_section to the main\_menu, I tried to write
+
+\begin{lstlisting}
+from .main_section import main_menu
+\end{lstlisting}
+
+However, as I was also trying to import investigation\_section from main\_section, this gave me a circular import error. So instead of importing the main\_menu when at the top of the file, instead, it has to be imported from within the function it is run.
+
+\begin{lstlisting}
+def goto_mainmenu(self):
+    from ..main_section import MainMenu
+    self.main_menu = MainMenu()
+    self.hide()
+\end{lstlisting}
+
+Which seems slightly unpythonic, but in practice it is the only way to get around this circular import error, unless I totally redesign the file structure of my code.
+
+
+\textbf{Zeta Zeroes}
+
+I encountered various different errors when creating the algorithm to find the non-trivial zeta zeroes. The only way I am able to compute the zeta zeroes is through brute force - trying every single possibility before I get them. If this weren't the case, the Riemann Hypothesis would already be solved. When brute forcing to try and get the zeta zeroes, I let the real part of the input to the zeta function be $\frac{1}{2}$, and let the imaginary part of the input be a function of time. Such that as the time spent trying to compute the zeroes increases, the imaginary part of the input increases. The first issue was to do with the accuracy of the input values and output. When changing the imaginary part of the input, if I incremented this value too much, then I could potentially skip over possible zeroes. For example, the first zeta zero is at 14.1, but if I increase the imaginary input by 0.2 every time the graph updates, then I would calculate $\zeta(14.0)$ and $\zeta(14.2)$, but completely skip 14.1, meaning that I would have missed a zero. However, if I increment the imaginary input by too small of a number, then the program will take longer to find each zero, and it could accidentally double count some zeroes. If the imaginary input incremented by $0.001$ each time, then it might mistake 14.099, 14.100, and 14.101 as three zeroes, even though there was only one there.
+
+On order to solve this problem, I used the method of trial and improvement until I got an algorithm that was fast, and didn't overcount or undercount.Eventually, I came up with the algorithm that
+
+\begin{lstlisting}
+def is_zeta_zero(real, imag):
+
+    """
+    Given a complex number, the function checks to see if this number is
+    approximately a root (zero) of the Riemann Zeta Function
+    """
+
+    zeta_value = zeta(real, imag)
+    return abs(zeta_value) < 10e-3
+
+def find_zeta_zeroes(no_of_zeroes):
+    zeroes = Queue()
+    count = 0
+    while zeroes.get_size() < no_of_zeroes:
+        accuracy = count // 500 + 100
+        real = 1/2
+        imag = count / accuracy
+        if is_zeta_zero(real, imag) and [real, round(imag, 1)] not in zeroes.get_queue():
+            zeroes.enQueue([real, round(imag, 1)])
+        count += 1
+    return zeroes
+\end{lstlisting}
+
+Where count is a function of time and updates at regular intervals, such that changing the imag input by $\frac{count}{accuracy}$, when accuracy = $\frac{count}{500} + 100$, allows zeta zeroes to be calculated by a high precision while also not trying so many values that the algorithm takes ages. Furthermore, having the range of values from -0.001 to 0.001 for the zero to be in further ensures that no zeroes get skipped. However, the drawback of this is that it does take a long time, and I am also only able to measure the zeroes to 1 decimal place, or I get too many repeats.
+
 \clearpage
 
 
 
-\subsubsection{Post-Development Testing}
+\subsection{Post-Development Testing}
 
 \begin{table}[ht]
     \centering
@@ -3089,6 +3181,7 @@ To conclude, I met all of my objectives well, but there were still some areas in
 \section{Appendix B - Links to Resources}
 \subsection{Technical Solution Source Code}
 \subsection{Testing Video}
+\url{https://www.youtube.com/watch?v=LR21yevVk74}
 \clearpage
 \nocite{*}
 \printbibliography
