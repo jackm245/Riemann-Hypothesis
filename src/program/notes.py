@@ -7,6 +7,9 @@ user to be able to take notes in the program
 
 Includes notes screens for the tutorial, introduction, investigation and summary
 screens
+
+Objectives completed in this file:
+    1 1(b)
 """
 
 

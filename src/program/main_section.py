@@ -5,7 +5,10 @@ main_section.py
 Contains the class used to interact with the GUI for the
 main menu in the project
 
-Includes the Main Menu screen only
+Includes the MainMenu and Progress classes
+
+Objectives Completed in this file:
+    1(c) 2(d) 7(a)iii 8
 """
 
 from PyQt5 import QtWidgets
@@ -76,7 +79,8 @@ class MainMenu(Screen):
 class Progress(Screen):
 
     """
-    Progress
+    Displays the Progress screen, where the user can see how many of the
+    questions they have answered, and which ones they have gotten right
     """
 
     def __init__(self):

@@ -2,6 +2,9 @@
 __init__.py
 ===========
 Imports for the user_interface
+
+Objectives completed by user_interface directory:
+    8
 """
 
 

@@ -11,6 +11,10 @@ Includes the classes:
     - HistoricalBackground
     - WhatIsTheRiemannHypothesis
     - PracticalApplications
+
+Objectives completed in this file:
+    1(a)
+    3 3.(a) 3.(b) 3.(c) 3.(d)
 """
 
 from PyQt5 import QtWidgets
@@ -34,6 +38,7 @@ class IntroductionSection(Screen):
         super(IntroductionSection, self).__init__()
 
     def setup_tabs(self):
+        """ Allows the screen to change when the tabs are clicked """
         try:
             self.ui.IntroductionTab.clicked.connect(self.goto_introduction)
         except AttributeError:
@@ -54,6 +59,8 @@ class IntroductionSection(Screen):
             self.ui.NotesButton.clicked.connect(self.goto_introduction_notes)
         except AttributeError:
             pass
+
+    """ goto functions load a new screen and hide the old one"""
 
     def goto_introduction(self):
         self.introduction = Introduction()
@@ -96,6 +103,7 @@ class HistoricalBackground(IntroductionSection):
 
     """
     A class used to interact with the Historical Background GUI screen
+    Completes objective 3(a)
     """
 
     def __init__(self):
@@ -112,6 +120,7 @@ class WhatIsTheRiemannHypothesis(IntroductionSection):
 
     """
     A class used to interact with the What Is The Riemann Hypothesis GUI screen
+    Completes objective 3(b)
     """
 
     def __init__(self):
@@ -129,7 +138,8 @@ class WhatIsTheRiemannHypothesis(IntroductionSection):
 class PracticalApplications(IntroductionSection):
 
     """
-    Practical Applications
+    A class used to interact with the Practical Applications GUI screen
+    Completes objective 3(c)
     """
 
     def __init__(self):

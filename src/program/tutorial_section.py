@@ -7,6 +7,9 @@ tutorial section of the project
 
 Includes the Program Structure, Login, Introduction, Investigation
 and Summary Tutorial Screens
+
+Objectives completed in this file:
+    1 1(a) 1(b) 1(c) 1(d)
 """
 
 from PyQt5 import QtWidgets, QtCore

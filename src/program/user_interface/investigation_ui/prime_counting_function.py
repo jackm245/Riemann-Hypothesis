@@ -1,5 +1,5 @@
 """
-prime_coutning_function.py
+prime_counting_function.py
 ==========================
 A GUI for the prime counting function page of the investigation section
 """

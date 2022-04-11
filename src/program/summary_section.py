@@ -7,6 +7,11 @@ summary section of the project
 
 Includes the main SummarySection class which is inherited by the Summary,
 TheoryRecap, InvestigationResults, Conclusion, Impact
+
+Objectives Completed:
+    1(a)
+    3. 3(a) 3(b) 3(c) 3(d)
+    7(a)iii
 """
 
 from PyQt5 import QtWidgets

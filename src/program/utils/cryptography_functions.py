@@ -8,6 +8,9 @@ These subroutines include:
     - get_pepper
     - hash_password
     - check_password
+
+Objectives completed in this file:
+    2(c)
 """
 
 

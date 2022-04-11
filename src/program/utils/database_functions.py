@@ -25,6 +25,9 @@ These subroutines include:
     - reset_database
     - get_next_id
     - get_id
+
+Objectives completed in this file:
+    7 7(a) 7(a)i 7(a)ii 7(a)iii
 """
 
 
@@ -282,4 +285,4 @@ def get_id(ID, table):
     ID_Number = get_next_id(IDs)
     return ID_Number
 
-database_print()
+#  database_print() -- used for testing

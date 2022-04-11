@@ -20,7 +20,8 @@ def main():
     except Error as e:
         print(f'Error: {e}\nRestarting Program')
         application = MainMenu()
-    sys.exit(app.exec_())
+    else:
+        sys.exit(app.exec_())
 
 
 if __name__ == '__main__':

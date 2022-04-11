@@ -6,6 +6,10 @@ Contains all of the classes used to interact with the GUI for the
 Login section of the project
 
 Includes the Login, Sign Up, Forgotten Password, and Reset Password Screens
+
+Objectives completed in this file:
+    2, 2(a), 2(a)i, 2(a)ii, 2(a)iii, 2(a)iv
+    2(b)
 """
 
 

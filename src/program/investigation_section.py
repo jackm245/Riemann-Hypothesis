@@ -5,7 +5,33 @@ investigation_section.py
 Contains all of the classes used to interact with the GUI for the
 investigation section of the project
 
-Includes the ... Screens
+Includes the classes:
+    - InvestigationSection
+    - CalculateZeroes2
+    - CalculateZeroes
+    - Zeroes
+    - CalculatorLeaderboard
+    - TableCalculator2
+    - TableCalculator
+    - SingleCalculator
+    - Calculator
+    - PrimeNumbers
+    - ZetaApproximationMatPlot
+    - ZetaApproximation
+    - PrimeCountingFunctionMatPlot
+    - PrimeCountingFunction
+    - ZetaZeroesMatPlot
+    - ZetaZeroesPlot
+    - PolarGraphMatPlot
+    - PolarGraph
+    - GraphPlot
+
+Objectives completed in this file:
+    1. 1(a), 1(b), 1(c), 1(d)
+    4. 4(a), 4(b), 4(c), 4(d)
+    5. 5(a), 5(b), 5(c), 5(d)
+    6. 6(a), 6(b), 6(c)
+    7(a)i 7(a)ii 7(a)iii
 """
 
 import sys
@@ -300,6 +326,8 @@ class CalculateZeroes(InvestigationSection):
 class Zeroes(InvestigationSection):
 
     """
+    The Zeroes class is used to display the zeroes screen, where the user can
+    calculate the non-trivial zeroes of the Riemann Zeta Function
     """
 
     def __init__(self):
@@ -609,7 +637,9 @@ class ZetaApproximationMatPlot(DynamicGraphScreen):
 class ZetaApproximation(InvestigationSection):
 
     """
-    The ZetaApproximation
+    The ZetaApproximation class displays the zeta approximation screen where the
+    user can enter a complex number and is shown a graph of how the algorithm used
+    as the zeta function uses series which converge on a single point
     """
 
     def __init__(self):
@@ -625,7 +655,6 @@ class ZetaApproximation(InvestigationSection):
     def get_complex_input(self):
         self.graph_user_input = str(self.ui.GraphInput.text()).strip()
         self.graph_input = self.get_valid_complex_input(self.graph_user_input)
-        # make sure that the value entered is within range
         if self.graph_input is None:
             self.ui.ErrorLabel.setText(self.center_text('Input must be a complex number of the form a+bi'))
         elif abs(self.graph_input.get_real()) > 30 or abs(self.graph_input.get_imag()) > 30:
