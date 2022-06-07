@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
@@ -16,7 +16,19 @@
 \addbibresource{References.bib}
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\rfoot{\thepage}
+\pagestyle{fancy}
+\fancyhead[L]{Visualising and Investigating the Riemann Hypothesis}
+\fancyhead[R]{Jack Morgan - 7469}
+% \fancyfoot[L]{Candidate Number: 7469}
+\fancyfoot[C]{Dr Challoner's Grammar School - 52205}
+\fancyfoot[R]{\thepage}
+\setlength{\headheight}{14.49998pt}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -53,7 +65,7 @@
 \begin{document}
 \begin{titlepage}
     \begin{center}
-    \vspace*{1cm}
+    \vspace*{6cm}
 
     \Huge
     \textbf{An Investigation and Visualisation of the Riemann Hypothesis}
@@ -76,7 +88,7 @@
     Candidate Number: 7469\\
     April 2022\\
 
-    \vspace{1cm}
+    \vspace{4cm}
 
     \end{center}
 \end{titlepage}
@@ -172,7 +184,7 @@ We often represent real numbers on a number line, however, this is impossible to
 
 So if we wanted to plot the point $2+3i$ on the complex plane, it would look as follows:
 
-\clearpage
+% \clearpage
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=1]{argand diagram 23i}
@@ -200,6 +212,7 @@ To multiply two complex numbers, it is equivalent to expanding out two binomial 
 $$(a+b)(c+d)$$
 $$= ac + ad + bc + bd$$
 
+\clearpage
 So with two complex numbers this would look like:
 
 $$(3+i)(2+2i)$$
@@ -217,19 +230,19 @@ $$(3+i)(2+2i)$$
 $$= (3\times2 - 1\times2) + (3\times2 + 1\times2)i$$
 $$= 4+8i$$
 We can derive this rule, to prove that it works for all complex numbers:
-\begin{align*}
-    RTP: (a+bi)(c+di) &= (ac-bd)+(ad+bc)i\\
-    LHS &=  (a+bi)(c+di)
-    \intertext{Distributing Terms:}\\
-    &=ac + adi + bci + bdi^2\\
-    \intertext{Using $i^2=-1$:}\\
-    &=ac + adi + bci -bd\\
-    \intertext{Then rearranging:}\\
-    &= ac-bd + adi + bci\\
-    &= (ac-bd)+(ad+bc)i\\
-    &= RHS\\
-    &\text{    }Q.E.D
-\end{align*}
+% \begin{align*}
+    $$RTP: (a+bi)(c+di) = (ac-bd)+(ad+bc)i$$
+    $$LHS =  (a+bi)(c+d$$
+    Distributing Terms:
+    $$=ac + adi + bci + bdi^2$$
+    Using $i^2=-1$:
+    $$=ac + adi + bci - bd$$
+    Then rearranging:
+    $$= ac-bd + adi + bci $$
+    $$= (ac-bd)+(ad+bc)i$$
+    $$= RHS$$
+    $$\text{    }Q.E.D$$
+% \end{align*}
 
 To divide two complex numbers, we create a fraction and then rationalise the denominator, by using the identity $(a+b)(a-b)  a^2-b^2$ where $a, b \in \mathbb{C}$ (meaning that a and b are both complex numbers)
 For example:
@@ -299,14 +312,12 @@ Which means that this formula does not work when we are raising any number to a 
 Say we have two complex numbers $z$ and $w$  and they are of the form $a+bi$. Such that $z=a+bi$ and $w=c+di$.To calculate $z^w$, the process is best split down into multiple steps.
 
 First we calculate $\rho$ and $\theta$, where $\rho$ is the modulus of $z$ and $\theta$ the argument of $z$
-\begin{align*}
-    \rho &= \sqrt{a^2 + b^2}\\
-    \theta &= \arctan{\frac{b}{a}}\\
-    \intertext{Then using these values, we can say that:}
-    z^w &= \rho^c e^{-d\theta}(\cos(d \ln \rho + c\theta) + i \sin(d \ln \rho + c\theta))\\
-    \intertext{Which is true for}
-    &z, w \in \mathbb{C}
-\end{align*}
+$$\rho = \sqrt{a^2 + b^2}$$
+$$\theta = \arctan{\frac{b}{a}}$$
+Then using these values, we can say that:
+$$z^w = \rho^c e^{-d\theta}(\cos(d \ln \rho + c\theta) + i \sin(d \ln \rho + c\theta))$$
+Which is true for
+$$z, w \in \mathbb{C}$$
 
 
 \subsubsection{The Riemann Zeta Function}
@@ -337,7 +348,9 @@ From Riemann's Functional Equation, we can now see why the trivial zeros occur a
 \end{align*}
 Now we can see that the functional equation includes a factor of $sin(n)$, but due to the nature of the sine function: $sin(n) = 0$ for $n \in  \mathbb{Z}$.  As shown in this diagram of the function $y = sin(x)$:
 
-\begin{figure}[h]
+\clearpage
+
+\begin{figure}[ht]
     \centering
     \includegraphics[scale=0.3]{sinx-graph}
     \caption{$y=sin x$}
@@ -439,6 +452,7 @@ For example:
     \frac{1,000,000}{log(1,000,000)} &= 48,254,942
     \intertext{where proportionally, the error is a lot s      maller}
 \end{align*}
+\clearpage
 However, Peter Dirichlet and Carl Friedrich Gauss came up this a much better approximation for $\pi(N)$. They said that:
 $$\pi(N) \sim Li(N)$$
 Where $Li(N)$ is the logarithmic integral of $N$ such that:
@@ -498,12 +512,18 @@ There are numerous ways of visualising functions on graphs and plots. Throughout
 The most common form of visualisation for the Riemann Hypothesis is showing how the output of the Riemann zeta function varies as you move along the critical strip. It plots the values of $\zeta(s)$ for $s = \frac{1}{2} + it$, where $it$ is some imaginary number.
 
 
-\begin{wrapfigure}{r}{2.2in}
+% \begin{wrapfigure}{r}{2.2in}
+    % \centering
+    % \captionsetup{justification=centering}
+    % \includegraphics[width=2.0in]{Zeta-Polar-Graph}
+    % \caption{\\Polar Graph of the Riemann Zeta Function}
+% \end{wrapfigure}
+\begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[width=2.0in]{Zeta-Polar-Graph}
-    \caption{\\Polar Graph of the Riemann Zeta Function}
-\end{wrapfigure}
+    \includegraphics[width=4.0in]{Zeta-Polar-Graph}
+    \caption{Polar Graph of the Riemann Zeta Function}
+\end{figure}
 
 This graph shows us how the Zeta function varies along the critical strip and allows for us to identify the non-trivial zeros of the function.
 
@@ -539,13 +559,16 @@ This means that in order to plot both the input and output of a complex function
 In order to represent a function by using domain colouring, it is necessary to determine how the colours of the graph will be chosen.
 
 There are multiple ways of doing this, but one of the most common ways is by taking the output of the function and using this to determine the hue and saturation of the colour.
-
+\\
+\\
+\\
+\\
 For example, if we had an argand diagram for the complex number $x+iy$:
 
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.55]{argand-diagram}
+    \includegraphics[scale=0.7]{argand-diagram}
     \caption{An argand diagram for the complex number $x+iy$}
 \end{figure}
 
@@ -569,7 +592,7 @@ We could also use interactive graphs to show how computers can approximate value
 \end{wrapfigure}
 
 As each term in the series gets calculated, the approximation gets closer and closer to the true value. We can use this fact and display it on a graph. If a user selects a point on the complex plane, we can display the approximation for $\zeta(s)$ for $1$ term, $2$ terms ... all the way up until $n$ terms (where $n$ is a high enough number so that the approximation is extremely close to the true value). The resulting graph will show a spiral of data points that converge to one point; that is the output of the zeta function. This graph allows the user to understand how the infinite series works in the zeta function, as well as how computers are able to compute the zeta function.
-
+\\
 \subsubsection{Data Storage}
 
 As part of this program, I aim to be able to store the values of the $\zeta(s)$ for specific values of $s$. There are multiple ways to store data sets such as different file types and databases. I will be exploring these data storage methods and finding which method is best suited for my program.
@@ -586,7 +609,7 @@ Another way of storing data is by using comma-separated values (CSV) files. Thes
 \end{wrapfigure}
 
 This type of storage for data has a lot more functionality than using plain text files. The use of field headers allows entire fields to be read or written to with ease and data can easily be sorted, grouped, and processed. However, some downsides of using the CSV data format are that only basic data can be stored. Complex tables and configurations cannot be used with CSV files. Furthermore, there is no distinction between text and numerical values which can make processing the data difficult.
-
+\clearpage
  Undoubtedly, one of the most efficient ways of storing large data sets is by using databases. More specifically, by using Structured Query Language (SQL).
 
 SQL is a declarative programming language, making it very efficient to use. Databases allow for large amounts of data to be written and read very quickly.
@@ -604,51 +627,67 @@ Javascript is also another programming language that could be used for this proj
 Python 3 is a high-level interpreted programming language, with a wide range of libraries and packages to support it. The main advantage of Python is that the code has high readability. This allows for it to be understood by people, even if they are not familiar with the language. Although Python is an interpreted language, there are ways to compile the code into an executable file that can be run on machines that do not have the interpreter installed. As well as this, Python has wide support for user interfaces and the plotting of graphs.
 
 Overall, I think that Python 3 will be the programming language that is most suited for my project. A web application is not what my users are looking for, so javascript would be impractical to use. The high readability and high-level features are what makes Python the optimal programming language for this project, over Javascript and C++.
-
+\clearpage
 \subsubsection{Product Research}
 
 Throughout this section, I will be taking a look at other programs that have similar features to mine. I will talk about the advantages and disadvantages of each program and how I can incorporate some of their features into my project.
 
-\begin{wrapfigure}{r}{2in}
-    \centering
-    \captionsetup{justification=centering}
-    \includegraphics[width=1.9in]{wolfram-alpha}
-    \caption{Wolfram Alpha}
-\end{wrapfigure}
+% \begin{wrapfigure}{r}{2in}
+    % \centering
+    % \captionsetup{justification=centering}
+    % \includegraphics[width=1.9in]{wolfram-alpha}
+    % \caption{Wolfram Alpha}
+% \end{wrapfigure}
 
 One of the most major programs I will look at is the web application WolframAlpha. This is a mathematical computation site, where users can input a maths query into a search bar. The answer to the query is then returned, along with information about the solution.
+\begin{figure}[ht]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=4in]{wolfram-alpha}
+    \caption{Wolfram Alpha}
+\end{figure}
 
 In this example, I input zeta(10+5i). The program then outputs a decimal approximation of the answer to my query, as well as a diagram showing the output on the complex plane. Further down the page, the program lists alternative ways that I could’ve written my input.
 
 This application works very well for calculating specific values of the zeta function, but it does little to show the mathematics of what’s happening to calculate the answer.
 \clearpage
+
 Another web application by Wolfram Research is the Riemann Zeta Function Page on Wolfram Mathworld.
 
-\begin{wrapfigure}{l}{2in}
+% \begin{wrapfigure}{l}{2in}
+    % \centering
+    % \captionsetup{justification=centering}
+    % \includegraphics[width=1.9in]{wolfram-mathworld}
+    % \caption{Wolfram Mathworld}
+% \end{wrapfigure}
+\begin{figure}[ht]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[width=1.9in]{wolfram-mathworld}
+    \includegraphics[width=4in]{wolfram-mathworld}
     \caption{Wolfram Mathworld}
-\end{wrapfigure}
+\end{figure}
 
 This site explains the Riemann Hypothesis in great detail, giving the user a very thorough understanding of the subject. There are also multiple three-dimensional and domain coloured graphs that plot the Riemann Zeta Function. The user is able to change the scale of the plots to see how the zeta function changes, depending on the input. The web page contains a variety of different graphs and lots of maths along with explanations as to what is going on.
 
 However, the maths on this page is very complex and it would be unlikely that people would understand this page if they didn't have some significant background knowledge into the Riemann Zeta function, or advanced maths in general. The page is also very linear starting from top to bottom. Overall, I like the way that the graphs are presented and explained here, however, the large quantity of maths displayed can seem confusing and unrelated.
 
-\begin{wrapfigure}{l}{2.6in}
+\clearpage
+The next program that I will look at is Verifying The Riemann hypothesis by Aaron Meurer.
+
+\begin{figure}[ht]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[width=2.5in]{verifying-riemann-hypothesis}
+    \includegraphics[width=4in]{verifying-riemann-hypothesis}
     \caption{Verifying the Riemann Hypothesis by Aaron Meurer}
-\end{wrapfigure}
-
-The next program that I will look at is Verifying The Riemann hypothesis by Aaron Meurer.
+\end{figure}
 
 He creates a program that finds the non-trivial zeros of the zeta function and displays this data on some very simple and understandable graphs. I like this program a lot because it contains a lot of relevant information.
 
 Some positives of this program are that the graphs in it are presented and explained well so that anyone could understand what is going on. The only drawback is that this isn't a very extensive program. Only 2 graphs are calculated and there isn't a user interface.
 
 Overall this program contains some appealing and useful information and graphs but could be more refined.
+
+To conclude the product research, there are many aspects of current programs that will be useful to include in my project, however, I can see that I will have to make mine different enough such that it is not too similar to these over programs, and ideally would contain more features.
 \clearpage
 \subsection{Project Objectives}
 My overall aim of this project is to be able to visualise and examine the Riemann Hypothesis, to make the complicated maths more accessible and to test whether the Hypothesis actually is true. I will be doing this by completing the following key objectives.
@@ -882,7 +921,7 @@ def zeta(s: complex) -> complex:
 First, we define the function \textit{zeta(s)}, where \textit{s} is a complex variable. Then the constant \textit{TERMS} is defined then defined to be a large integer. This number determines how many times we calculate $\frac{1}{n^s}$ and therefore determines how accurate our approximation will be. Then in the for loop, we calculate $n^{-s}$ for \textit{TERMS} many times and sum it to our result. We then return the complex variable res in order to output from the function.
 
 Here we can test the function to show if and when it works as expected, and also how accurate it is to the true value.
-\\
+\clearpage
 \begin{table}[ht]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -925,7 +964,6 @@ Here we can test the function to show if and when it works as expected, and also
     \hline
     \end{tabular}
 \end{table}
-\clearpage
 Based on the testing, I have made some adjustments to the function as seen here:
 
 \begin{lstlisting}
@@ -946,7 +984,8 @@ def zeta(s: complex) -> complex:
 
 The first change I made was validating the input. Now if the real part of the input is less than $1$, then a \textit{ValueError} is raised. Secondly, I have increased the number of \textit{TERMS} that are computed in order to make the program more accurate. Although this does make the program take more time, the time difference is hardly noticeable.
 
-Now here are the testing results for the improved function.
+Now here are the testing results for the improved function:
+\clearpage
 
 \begin{table}[ht]
     \centering
@@ -1137,22 +1176,16 @@ Overall, I feel as if I have sufficiently broken down my project into a number o
 \clearpage
 \subsection{Object-Oriented Design}
 
-% $$NEED TO ADD UI CLASSES$$
-
-% $$ AND ALSO EXPLAIN HIGH LEVEL OOP STUFF$$
-
-% $$SEE BOOK ON HOW TO DO PROPERLY$$
-
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.6]{number-systems-class-diagram}
+    \includegraphics[width=6in]{number-systems-class-diagram}
     \caption{Number Systems Class Diagram}
 \end{figure}
 As part of this project I will need to be able to represent many types of numbers namely, fractions and complex numbers. The best way to do this is to use Classes and Object-Oriented Programming. I can create a data structure in python, such that they will be able to store all of the necessary data, and perform all the operations that I need.
 
 All of the data types will inherit attributes and methods from a main \textit{‘Number’} Class. This number class will have basic attributes and methods, allowing a number to be defined and printed.
-
+\clearpage
 The complex number class is a lot more substantial than the number class.  It will allow for inputs in Rect form, or Modulus Argument Form. The methods in this class will allow for the user to add, subtract, multiply, divide, and use exponentials with complex numbers. There will also be a set of private functions in the class in order to change between cartesian and polar form.
 
 As for the fraction class, it will take inputs of a numerator and denominator, and will allow the user to use public functions in order to perform operations and calculations involving fractions.
@@ -1533,14 +1566,15 @@ $$300 = 245 \cdot n + r$$
 This is exactly how we started the previous example. This shows that it doesn't matter which way round the two input numbers go in the algorithm, it will always compute the same number.
 
 In other words, the greatest common divisor of $a$ and $b$, is the same as the greatest common divisor of $b$ and $a$, which intuitively makes sense.
-\clearpage
+% \clearpage
+
 Now using flowcharts, we can write the algorithm as follows:
 
 \begin{figure}[h]
     \centering
     \caption{Euclidean Algorithm Flowchart}
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.6]{euclidean-algorithm-flowchart}
+    \includegraphics[width=2in]{euclidean-algorithm-flowchart}
 \end{figure}
 
 By representing the algorithm as a flowchart, we can see that it starts of by receiving two integers $a$ and $b$ as an input, and then keeps on finding the values of $n$ and $r$ from the examples, until the value of $b$ is $0$. Implementing this as code, this looping could be done using a standard \texttt{WHILE} loop, but I think that implementing this algorithm as a recursive function would be more suitable.
@@ -1561,7 +1595,7 @@ Implementing this algorithm in pseudocode, it would look as follows:
 \end{algorithm}
 
 We can see from this pseudocode, the recursive nature of this algorithm.
-\clearpage
+
 Then writing the Euclidean Algorithm in Python:
 
 \begin{lstlisting}
@@ -1590,9 +1624,9 @@ This is just one of many of the ways that $\zeta(s)$ can be defined. The main ad
 Using flowcharts, we can write this function as follows:
 \begin{figure}[h]
     \centering
-    \caption{Zeta Function Flowchart}
+    \caption{Zeta Function Flowchart5}
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.6]{zeta-function-flowchart-two}
+    \includegraphics[width=5in]{zeta-function-flowchart-two}
 \end{figure}
 
 Unfortunately, with any computational implementation of the zeta function, it would be impossible to calculate an exact output for any given input. This is due to the fact that the zeta function, be definition is the sum of an infinite series.
@@ -1723,7 +1757,7 @@ Rewriting our definition of the zeta function, with this new way of calculating 
 
 $$\zeta(s) \approx \frac{1}{1-2^{1-s}} \sum_{n=0}^{\texttt{Terms}} \left( \frac{1}{2^{n+1}} \sum_{k=0}^{n} \left( (-1)^k \left(\prod^{k-1}_{i=0} \frac{n-i}{i+1} \right) (k+1)^{-s} \right) \right)$$
 
-\clearpage
+% \clearpage
 We are then able to convert both the Zeta Function Pseudocode and the Binomial Coefficient Pseudocode into Python code
 \begin{lstlisting}
 # Binomial Coefficient
@@ -1894,6 +1928,11 @@ class Queue:
     """
 
 
+
+
+
+
+
     def __init__(self, input_queue, **kwargs):
         self.input_queue = input_queue
         self.size = len(self.input_queue)
@@ -1951,10 +1990,10 @@ In pseudocode, the algorithm for a binary insertion sort looks as follow:
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.142]{binary-insertion-sort-flowchart}
     \caption{Binary Insertion Sort Flowchart}
+    \includegraphics[width=6in]{binary-insertion-sort-flowchart}
 \end{figure}
-
+\clearpage
 This algorithm written in pseudocode looks as follows:
 
 \begin{algorithm}[ht]
@@ -1982,7 +2021,6 @@ def binary_insertion_sort(data, descending=False):
     """
     Sorts a list of data into ascending order using a binary insertion sort
     """
-
 
     try:
         array = list(map(float, data ))
@@ -2049,7 +2087,7 @@ In this section, I will showcase the full planned File Structure for the program
             \end{itemize}
             \item \_\_init\_\_.py
             \item main\_menu.py
-            \item mat\_menu.py
+            \item mat\_plot.py
             \item progress.py
         \end{itemize}
         \item \textbf{utils}
@@ -2194,8 +2232,6 @@ While creating my solution to the problem, I realised that my initial design was
 
 The first area that needed to be redesigned was the database. I realised that parts of my old design were almost obsolete and unnecessary, while my database was also not in complete third normal form. I redesigned that database, such that it now contains the following tables:
 
-\clearpage
-
 \textbf{Users Table}
 
 The user's table is vastly unchanged from my original design. The main change is that I removed the User\_ID Field, as it was obsolete and used the Username as the primary key as it will be unique for each user. This table will store the credentials for each user who has registered an account
@@ -2290,7 +2326,6 @@ The zeroes table will store the input for every zeta zero calculated and saved b
     \caption{Data table for the Zeroes Table}
 \end{table}
 
-\clearpage
 \textbf{User Zeroes Table}
 
 The user zeroes will relate every zeta zero calculated back to the user who calculated it.
@@ -2312,7 +2347,7 @@ The user zeroes will relate every zeta zero calculated back to the user who calc
     \caption{Data table for the User Zeroes Table}
 \end{table}
 
-
+\clearpage
 \textbf{Zeta Table}
 
 The zeta table will contain all of the stored inputs and outputs of the zeta function.
@@ -2340,7 +2375,6 @@ The zeta table will contain all of the stored inputs and outputs of the zeta fun
     \caption{Data table for the Zeta Table}
 \end{table}
 
-\clearpage
 \textbf{User Zeta Table}
 
 The user zeroes table will relate every  zeta value calculated to the user who computed it.
@@ -2383,6 +2417,7 @@ The correct answers table lists all of the acceptable answers for the questions 
     \end{tabular}
     \caption{Data table for the Correct Answers Table}
 \end{table}
+\clearpage
 
 \textbf{Questions Table}
 
@@ -2413,7 +2448,7 @@ Now that the database has been properly designed, here is the entity relationshi
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.17]{database-er-diagram}
+    \includegraphics[width=5in]{database-er-diagram}
     \caption{Database Entity Relationship Diagram}
 \end{figure}
 
@@ -2427,19 +2462,17 @@ First Normal Form:
     \item Each cell must contain a single value
     \item Data must be atomic
 \end{itemize}
-\clearpage
 Second Normal Form:
 \begin{itemize}
     \item Must be of first normal form
     \item Contains no partial dependencies
 \end{itemize}
-
 Third Normal Form:
 \begin{itemize}
     \item Must be of second normal form
     \item Contains no non-key dependencies
 \end{itemize}
-
+\clearpage
 Since redesigning the database, there are now no non-key dependencies, no partial dependencies, all data is atomic, each cell only contains one value and all of the rows are unique, meaning that this database is now in third normal form. This helps throughout the creation of my technical solution, as data will be easier to change and maintain, there will be no duplication of data, meaning that data integrity is maintained, and smaller tables with fewer fields allows for faster searches.
 
 \subsubsection{User Interface Redesign}
@@ -2457,7 +2490,7 @@ Below is a class diagram for the tutorial section, showing how all of these clas
 \begin{figure}[ht]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[scale=0.113]{tutorial-class-diagram}
+    \includegraphics[width=6in]{tutorial-class-diagram}
     \caption{Tutorial Class Diagram}
 \end{figure}
 \clearpage
@@ -2484,54 +2517,54 @@ See \url{https://github.com/jackm245/Riemann-Hypothesis/} for the full write-up,
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.33\linewidth} | p{0.57\linewidth} | p{0.1\linewidth} |}
+    \begin{tabular}{|p{0.26\linewidth}|p{0.59\linewidth}|}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Code Contents Page - 1}}\\
+    \multicolumn{2}{|c|}{\textbf{Code Contents Page - 1}}\\
     \hline
     \hline
-    \textbf{Code} & \textbf{Description} & \textbf{Pages}\\
+    \textbf{Code} & \textbf{Description}\\
     \hline
-    main function & The main entry point to the program & \\
+    main function & The main entry point to the program\\
     \hline
-    MainMenu class & Displays the main menu & \\
+    MainMenu class & Displays the main menu\\
     \hline
-    Progress class & Displays the user's progress through the program& \\
+    Progress class & Displays the user's progress through the program\\
     \hline
-    LoginSection class & The login system, inherited by all other login classes & \\
+    LoginSection class & The login system, inherited by all other login classes\\
     \hline
-    ResetPassword2 class & Allows the user to permanently change their passwords & \\
+    ResetPassword2 class & Allows the user to permanently change their passwords\\
     \hline
-    ResetPassword class & Screen that requires user to login before password change & \\
+    ResetPassword class & Screen that requires user to login before password change\\
     \hline
-    ForgottenPassword2 class & User enters verification code to prove identity & \\
+    ForgottenPassword2 class & User enters verification code to prove identity\\
     \hline
-    ForgottenPassword class & Verification code sent to user's email & \\
+    ForgottenPassword class & Verification code sent to user's email\\
     \hline
-    SignUp class & Allows for the creation of a new user & \\
+    SignUp class & Allows for the creation of a new user\\
     \hline
-    Login class & Allows a user to sign in to an account & \\
+    Login class & Allows a user to sign in to an account\\
     \hline
-    TutorialSection class & Main class for the tutorial, inherited by all other tutorial classes & \\
+    TutorialSection class & Main class for the tutorial, inherited by all other tutorial classes\\
     \hline
-    Tutorial class & Entry point to the tutorial section & \\
+    Tutorial class & Entry point to the tutorial section\\
     \hline
-    ProgramStructure class & Displays the Program Structure Tutorial Screen & \\
+    ProgramStructure class & Displays the Program Structure Tutorial Screen\\
     \hline
-    LoginTutorial class & Displays the Login Tutorial Screen & \\
+    LoginTutorial class & Displays the Login Tutorial Screen\\
     \hline
-    IntroductionTutorial class & Displays the Introduction Tutorial Screen & \\
+    IntroductionTutorial class & Displays the Introduction Tutorial Screen\\
     \hline
-    InvestigationTutorial class & Displays the Investigation Tutorial Screen & \\
+    InvestigationTutorial class & Displays the Investigation Tutorial Screen\\
     \hline
-    GraphMatPlot class & Displays graph in the Investigation Tutorial Screen & \\
+    GraphMatPlot class & Displays graph in the Investigation Tutorial Screen\\
     \hline
-    SummaryTutorial class & Displays the Summary Tutorial Screen & \\
+    SummaryTutorial class & Displays the Summary Tutorial Screen\\
     \hline
-    IntroductionSection class & Main class for the introduction, inherited by all other introduction classes & \\
+    IntroductionSection class & Main class for the introduction, inherited by all other introduction classes\\
     \hline
-    Introduction class & Entry point to the Introduction section & \\
+    Introduction class & Entry point to the Introduction section\\
     \hline
-    HistoricalBackground class & Displays the Historical Background Screen & \\
+    HistoricalBackground class & Displays the Historical Background Screen\\
     \hline
     \end{tabular}
     \caption{Code Contents Page - 1}
@@ -2540,56 +2573,56 @@ See \url{https://github.com/jackm245/Riemann-Hypothesis/} for the full write-up,
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.33\linewidth} | p{0.57\linewidth} | p{0.1\linewidth} |}
+    \begin{tabular}{|p{0.26\linewidth}|p{0.59\linewidth}|}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Code Contents Page - 2}}\\
+    \multicolumn{2}{|c|}{\textbf{Code Contents Page - 2}}\\
     \hline
     \hline
-    \textbf{Code} & \textbf{Description} & \textbf{Pages}\\
+    \textbf{Code} & \textbf{Description}\\
     \hline
-    WhatIsTheRiemann \text{ }  \text{ } \text{ } Hypothesis class & Displays the What is the Riemann Hypothesis Screen & \\
+    WhatIsTheRiemann \text{ }  \text{ } Hypothesis class & Displays the What is the Riemann Hypothesis Screen\\
     \hline
-    PracticalApplications class & Displays the Practical Applications Screen & \\
+    PracticalApplications class & Displays the Practical Applications Screen\\
     \hline
-    InvestigationSection class & Main class for the investigation, inherited by all other investigation classes& \\
+    InvestigationSection class & Main class for the investigation, inherited by all other investigation classes\\
     \hline
-    CalculateZeroes2 class & Displays the zeta zeroes that the user has calculated & \\
+    CalculateZeroes2 class & Displays the zeta zeroes that the user has calculated\\
     \hline
-    CalculateZeroes class & Asks the user how many zeta zeroes they want to calculate & \\
+    CalculateZeroes class & Asks the user how many zeta zeroes they want to calculate\\
     \hline
-    Zeroes class & Displays the zeroes screen in the investigation & \\
+    Zeroes class & Displays the zeroes screen in the investigation\\
     \hline
-    CalculatorLeaderboard class & Displays the zeroes screen in the investigation & \\
+    CalculatorLeaderboard class & Displays the zeroes screen in the investigation\\
     \hline
-    TableCalculator2 class & Displays the zeta values that the user calculated& \\
+    TableCalculator2 class & Displays the zeta values that the user calculated\\
     \hline
-    TableCalculator class & Allows the user to input values for the table calculator & \\
+    TableCalculator class & Allows the user to input values for the table calculator\\
     \hline
-    SingleCalculator class & Allows the user to calculate values of the zeta function & \\
+    SingleCalculator class & Allows the user to calculate values of the zeta function\\
     \hline
-    Calculator class & Displays the calculator screen in the investigation section& \\
+    Calculator class & Displays the calculator screen in the investigation section\\
     \hline
-    PrimeNumbers class & Displays the prime numbers screen in the investigation section& \\
+    PrimeNumbers class & Displays the prime numbers screen in the investigation section\\
     \hline
-    ZetaApproximation \text{ } \text{ } MatPlot class & Displays a graph showing the convergent  nature of the riemann zeta function& \\
+    ZetaApproximation \text{ } \text{ } MatPlot class & Displays a graph showing the convergent  nature of the riemann zeta function\\
     \hline
-    ZetaApproximation class & Allows the user to input a value to graph & \\
+    ZetaApproximation class & Allows the user to input a value to graph\\
     \hline
-    PrimeCountingFunction MatPlot class & Displays a graph of the prime counting function and other related functions & \\
+    PrimeCountingFunction MatPlot class & Displays a graph of the prime counting function and other related functions\\
     \hline
-    PrimeCountingFunction MatPlot class & Displays a graph of the prime counting function and other related functions & \\
+    PrimeCountingFunction MatPlot class & Displays a graph of the prime counting function and other related functions\\
     \hline
-    PrimeCountingFunction class & Displays the prime counting function screen & \\
+    PrimeCountingFunction class & Displays the prime counting function screen\\
     \hline
-    ZetaZeroesMatPlot class & Displays a graph of the zeta zeroes & \\
+    ZetaZeroesMatPlot class & Displays a graph of the zeta zeroes\\
     \hline
-    ZetaZeroesPlot class & Displays the zeta zeroes mat plot screen & \\
+    ZetaZeroesPlot class & Displays the zeta zeroes mat plot screen\\
     \hline
-    PolarGraphMatPlot class & Displays a polar graph of the zeta function & \\
+    PolarGraphMatPlot class & Displays a polar graph of the zeta function\\
     \hline
-    PolarGraph class & Asks the user for an input for the polar graph& \\
+    PolarGraph class & Asks the user for an input for the polar graph\\
     \hline
-    GraphPlot class & Entry point to the investigation section & \\
+    GraphPlot class & Entry point to the investigation section\\
     \hline
     \end{tabular}
     \caption{Code Contents Page - 2}
@@ -2599,62 +2632,62 @@ See \url{https://github.com/jackm245/Riemann-Hypothesis/} for the full write-up,
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.33\linewidth} | p{0.57\linewidth} | p{0.1\linewidth} |}
+    \begin{tabular}{|p{0.26\linewidth}|p{0.59\linewidth}|}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Code Contents Page - 3}}\\
+    \multicolumn{2}{|c|}{\textbf{Code Contents Page - 3}}\\
     \hline
     \hline
-    \textbf{Code} & \textbf{Description} & \textbf{Pages}\\
+    \textbf{Code} & \textbf{Description}\\
     \hline
-    SummarySection class & Class inherited by all other classes in the summary section& \\
+    SummarySection class & Class inherited by all other classes in the summary section\\
     \hline
-    Summary class & Main entry point to the summary section & \\
+    Summary class & Main entry point to the summary section\\
     \hline
-    TheoryRecap class & Displays the theory recap screen & \\
+    TheoryRecap class & Displays the theory recap screen\\
     \hline
-    InvestigationResults class & Displays the investigation results screen & \\
+    InvestigationResults class & Displays the investigation results screen\\
     \hline
-    Conclusion class & Displays the conclusion and \& evaluation screen & \\
+    Conclusion class & Displays the conclusion and \& evaluation screen\\
     \hline
-    Imapct class & Displays the impact screen & \\
+    Imapct class & Displays the impact screen\\
     \hline
-    Notes class & A class inherited by all other classes in the notes section & \\
+    Notes class & A class inherited by all other classes in the notes section\\
     \hline
-    TutorialNotes class & Allows the user to make notes on the tutorial & \\
+    TutorialNotes class & Allows the user to make notes on the tutorial\\
     \hline
-    IntroductionNotes class & Allows the user to make notes on the introduction & \\
+    IntroductionNotes class & Allows the user to make notes on the introduction\\
     \hline
-    InvestigationNotes class & Allows the user to make notes on the investigation & \\
+    InvestigationNotes class & Allows the user to make notes on the investigation\\
     \hline
-    SummaryNotes class & Allows the user to make notes on the summary & \\
+    SummaryNotes class & Allows the user to make notes on the summary\\
     \hline
-    utils directory & Contains key functions, procedures and algorithms that are used throughout the program & \\
+    utils directory & Contains key functions, procedures and algorithms that are used throughout the program\\
     \hline
-    binary\_search function & Searches for a target in a set of data with time complexity O(log n) & \\
+    binary\_search function & Searches for a target in a set of data with time complexity O(log n)\\
     \hline
-    binary\_insertion\_sort function & Sorts a set of data efficiently using a queue & \\
+    binary\_insertion\_sort function & Sorts a set of data efficiently using a queue\\
     \hline
-    Queue class & An abstract data structure of a FIFO Queue & \\
+    Queue class & An abstract data structure of a FIFO Queue\\
     \hline
-    Stack class & An abstract data structure of a LIFO Stack & \\
+    Stack class & An abstract data structure of a LIFO Stack\\
     \hline
-    save\_zeta\_to\_file function & Uses the binary insertion sort and dictionaries to save data to a csv file& \\
+    save\_zeta\_to\_file \phantom{text} function & Uses the binary insertion sort and dictionaries to save data to a csv file\\
     \hline
-    change\_datatype function & Uses structural pattern matching to change the datatype of a variable, when the datatype is given as a string &\\
+    change\_datatype \phantom{text} function & Uses structural pattern matching to change the datatype of a variable, when the datatype is given as a string \\
     \hline
-    cryptography\_functions file & Contains functions used for hashing passwords &\\
+    cryptography\_functions file & Contains functions used for hashing password\\
     \hline
-    database\_query function & A function used to easily be able to query the database &\\
+    database\_query \phantom{text} function & A function used to easily be able to query the database \\
     \hline
-    create\_database function & Creates the database and all of its tables, populating some of the tables &\\
+    create\_database \phantom{text} function & Creates the database and all of its tables, populating some of the tables\\
     \hline
-    get\_id function & Uses recursion to auto increment the ID for a table in the database &\\
+    get\_id function & Uses recursion to auto increment the ID for a table in the database\\
     \hline
-    email\_functions file & Sends the verification code to the user's email if they have forgotten their password&\\
+    email\_functions file & Sends the verification code to the user's email if they have forgotten their password\\
     \hline
-    touch function & Uses exception handling to create a file &\\
+    touch function & Uses exception handling to create a file\\
     \hline
-    remove function & Uses exception handling to remove a file &\\
+    remove function & Uses exception handling to remove a file\\
     \hline
     \end{tabular}
     \caption{Code Contents Page - 3}
@@ -2664,40 +2697,40 @@ See \url{https://github.com/jackm245/Riemann-Hypothesis/} for the full write-up,
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.33\linewidth} | p{0.57\linewidth} | p{0.1\linewidth} |}
+    \begin{tabular}{|p{0.26\linewidth}|p{0.59\linewidth}|}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Code Contents Page - 4}}\\
+    \multicolumn{2}{|c|}{\textbf{Code Contents Page - 4}}\\
     \hline
     \hline
-    \textbf{Code} & \textbf{Description} & \textbf{Pages}\\
+    \textbf{Code} & \textbf{Description}\\
     \hline
-    ncr function & Uses iterables to compute factorials and thus the binomial coefficient &\\
+    ncr function & Uses iterables to compute factorials and thus the binomial coefficient\\
     \hline
-    zeta function & Uses generators to compute the riemann zeta function for complex numbers &\\
+    zeta function & Uses generators to compute the riemann zeta function for complex numbers\\
     \hline
-    sieve\_of\_eratosthenes function & Uses numpy arrays to find all prime numbers up to a given limit &\\
+    sieve\_of\_eratosthenes function & Uses numpy arrays to find all prime numbers up to a given limit\\
     \hline
-    integration function & Integrate a given mathematical function between two limit &\\
+    integration function & Integrate a given mathematical function between two limit\\
     \hline
-    exponential\_integral \text{ } function & Calculates the exponential integral for a given input &\\
+    exponential\_integral \text{ } function & Calculates the exponential integral for a given input\\
     \hline
-    prime\_power\_function function & Calculates the prime power function &\\
+    prime\_power\_function function & Calculates the prime power function\\
     \hline
-    Number class & Abstract data type for a given number &\\
+    Number class & Abstract data type for a given number\\
     \hline
-    Complex class & Abstract data type for complex numbers &\\
+    Complex class & Abstract data type for complex numbers\\
     \hline
-    Screen class & Class inherited by all other GUI classes &\\
+    Screen class & Class inherited by all other GUI classes\\
     \hline
-    MplWidget class & A GUI widget that allows graphs to be displayed in the GUI &\\
+    MplWidget class & A GUI widget that allows graphs to be displayed in the GUI\\
     \hline
-    StaticGraphScreen class & Default class for displaying static graphs. Creates an instance of MplWidget and inherits Screen class&\\
+    StaticGraphScreen class & Default class for displaying static graphs. Creates an instance of MplWidget and inherits Screen class\\
     \hline
-    DynamicGraphScreen class & Default class for displaying dynamic graphs. Inherits StaticGraphScreen class& \\
+    DynamicGraphScreen class & Default class for displaying dynamic graphs. Inherits StaticGraphScreen class\\
     \hline
-    ProgramUser class & An instance of this class is used to store the user's credentials during the runtime of the program & \\
+    ProgramUser class & An instance of this class is used to store the user's credentials during the runtime of the program\\
     \hline
-    user\_interface directory & An extensive directory, where each python file is the configuration for the GUI for that page & \\
+    user\_interface directory & An extensive directory, where each python file is the configuration for the GUI for that page\\
     \hline
     \end{tabular}
     \caption{Code Contents Page - 4}
@@ -2709,42 +2742,44 @@ Although this is not a list of every single class and function in the program, I
 
 \subsection{Completeness of Solution}
 
+In this section, I am listing all of the project objectives from my analysis, and whether I have met these objectives. The evidence showing that I have completed these objectives can be seen in my testing video, as well as the source code of the project.
+
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.5\linewidth} | M{0.2\linewidth} | p{0.3\linewidth} |}
+    \begin{tabular}{|p{0.5\linewidth}|M{0.15\linewidth}|}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Completeness of Solution - 1}}\\
+    \multicolumn{2}{|c|}{\textbf{Completeness of Solution - 1}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Achieved} & \textbf{Evidence}\\
+    \textbf{Objective} & \textbf{Achieved}\\
     \hline
-    1. The program will be interactive and engaging for the user & Yes  & \\
+    1. The program will be interactive and engaging for the user & Yes\\
     \hline
-    1.(a) There will be various questions throughout the program that the user can answer & Yes & \\
+    1.(a) There will be various questions throughout the program that the user can answer & Yes\\
     \hline
-    1.(b) The user will be able to make notes on any of the content in the program & Yes & \\
+    1.(b) The user will be able to make notes on any of the content in the program & Yes\\
     \hline
-    1. (c) The user will be able to choose what they do and where they go in the program, not forced along a single route & Yes & \\
+    1. (c) The user will be able to choose what they do and where they go in the program, not forced along a single route & Yes\\
     \hline
-    1. (d) The user will be able to input their own values into various functions and graphs & Yes & \\
+    1. (d) The user will be able to input their own values into various functions and graphs & Yes\\
     \hline
-    2. The user will be able to save their progress through the program via a login system & Yes & \\
+    2. The user will be able to save their progress through the program via a login system & Yes\\
     \hline
-    2. (a) The login system should allow the user to: & Yes & \\
+    2. (a) The login system should allow the user to: & Yes\\
     \hline
-    2. (a) i. Sign in to their account & Yes & \\
+    2. (a) i. Sign in to their account & Yes\\
     \hline
-    2. (a) ii. Create a new account & Yes & \\
+    2. (a) ii. Create a new account & Yes\\
     \hline
-    2. (a) iii. Reset their password if they want to change it & Yes & \\
+    2. (a) iii. Reset their password if they want to change it & Yes\\
     \hline
-    2. (a) iv. Reset their password if they have forgotten it & Yes & \\
+    2. (a) iv. Reset their password if they have forgotten it & Yes\\
     \hline
-    2. (b) Multiple users will be able to make separate accounts on the system & Yes & \\
+    2. (b) Multiple users will be able to make separate accounts on the system & Yes\\
     \hline
-    2. (c) The user’s data such as passwords must be saved securely & Yes & \\
+    2. (c) The user’s data such as passwords must be saved securely & Yes\\
     \hline
-    2. (d) The user must be able to see how they have progressed throughout the program & Yes & \\
+    2. (d) The user must be able to see how they have progressed throughout the program & Yes\\
     \hline
     \end{tabular}
     \caption{Completeness of Solution Table 1}
@@ -2754,36 +2789,36 @@ Although this is not a list of every single class and function in the program, I
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.5\linewidth} | M{0.2\linewidth} | p{0.3\linewidth} |}
+    \begin{tabular}{ | p{0.5\linewidth} | M{0.15\linewidth} |}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Completeness of Solution - 2}}\\
+    \multicolumn{2}{|c|}{\textbf{Completeness of Solution - 2}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Achieved} & \textbf{Evidence}\\
+    \textbf{Objective} & \textbf{Achieved}\\
     \hline
-    3. The user will be given some background information about the Riemann Hypothesis such that almost anyone could feel comfortable using the program & Yes  & \\
+    3. The user will be given some background information about the Riemann Hypothesis such that almost anyone could feel comfortable using the program & Yes\\
     \hline
-    3. (a) The user should be able to learn the historical background of the Riemann Hypothesis & Yes & \\
+    3. (a) The user should be able to learn the historical background of the Riemann Hypothesis & Yes\\
     \hline
-    3. (b) The user should be able to learn what imaginary and complex numbers are & Yes & \\
+    3. (b) The user should be able to learn what imaginary and complex numbers are & Yes\\
     \hline
-    3. (c) The user should be able to learn what the Riemann Hypothesis states & Yes & \\
+    3. (c) The user should be able to learn what the Riemann Hypothesis states & Yes\\
     \hline
-    3. (d) The user should be able to learn about the practical applications of the Riemann Hypothesis & Yes & \\
+    3. (d) The user should be able to learn about the practical applications of the Riemann Hypothesis & Yes\\
     \hline
-    4. The program will allow the user to plot various graphs in order to develop their understanding of the Riemann Zeta function and allow them to learn about it & Yes & \\
+    4. The program will allow the user to plot various graphs in order to develop their understanding of the Riemann Zeta function and allow them to learn about it & Yes\\
     \hline
-    4. (a) A polar graph of the Riemann Zeta Function & Yes & \\
+    4. (a) A polar graph of the Riemann Zeta Function & Yes\\
     \hline
-    4. (b) A graph of the prime counting function, and other related functions used to estimate it & Yes & \\
+    4. (b) A graph of the prime counting function, and other related functions used to estimate it & Yes\\
     \hline
-    4. (c) A graph of the zeroes of the Riemann Zeta Function & Yes & \\
+    4. (c) A graph of the zeroes of the Riemann Zeta Function & Yes\\
     \hline
-    4. (d) A visualisation of the convergence of the infinite series in the Riemann Zeta Function & Yes & \\
+    4. (d) A visualisation of the convergence of the infinite series in the Riemann Zeta Function & Yes\\
     \hline
-    5. The user will be able to calculate specific values of the Riemann Zeta Function & Yes & \\
+    5. The user will be able to calculate specific values of the Riemann Zeta Function & Yes\\
     \hline
-    5. (a) A single calculator, where the user inputs a complex input and receives an output & Yes & \\
+    5. (a) A single calculator, where the user inputs a complex input and receives an output & Yes\\
     \hline
     \end{tabular}
     \caption{Completeness of Solution Table 2}
@@ -2792,38 +2827,38 @@ Although this is not a list of every single class and function in the program, I
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.5\linewidth} | M{0.2\linewidth} | p{0.3\linewidth} |}
+    \begin{tabular}{ | p{0.5\linewidth} | M{0.15\linewidth} |}
     \hline
-    \multicolumn{3}{|c|}{\textbf{Completeness of Solution - 3}}\\
+    \multicolumn{2}{|c|}{\textbf{Completeness of Solution - 3}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Achieved} & \textbf{Evidence}\\
+    \textbf{Objective} & \textbf{Achieved}\\
     \hline
-    5. (b) A table calculator, where the user can calculate the zeta function for a range of input values& Yes & \\
+    5. (b) A table calculator, where the user can calculate the zeta function for a range of input values& Yes\\
     \hline
-    5. (c) A leaderboard showing how many values of the zeta function, each user has computed & Yes & \\
+    5. (c) A leaderboard showing how many values of the zeta function, each user has computed & Yes\\
     \hline
-    5. (d) The program will allow the user to store these value(s) to a database and to a csv file & Yes & \\
+    5. (d) The program will allow the user to store these value(s) to a database and to a csv file & Yes\\
     \hline
-    6. The user will be able to calculate the zeroes of the Riemann Zeta Function & Yes & \\
+    6. The user will be able to calculate the zeroes of the Riemann Zeta Function & Yes\\
     \hline
-    6. (a) The user will input how many zeroes they want to calculate & Yes & \\
+    6. (a) The user will input how many zeroes they want to calculate & Yes\\
     \hline
-    6. (b) The program will calculate these zeroes & Yes & \\
+    6. (b) The program will calculate these zeroes & Yes\\
     \hline
-    6. (c) The zeroes will be displayed to the user in a table & Yes & \\
+    6. (c) The zeroes will be displayed to the user in a table & Yes\\
     \hline
-    7. The user will be able to store the data that they have collected & Yes & \\
+    7. The user will be able to store the data that they have collected & Yes\\
     \hline
-    7. (a) The program will include a database of multiple values and zeroes of the zeta function & Yes & \\
+    7. (a) The program will include a database of multiple values and zeroes of the zeta function & Yes\\
     \hline
-    7. (a) i. The user will be able to store values of the zeta function & Yes & \\
+    7. (a) i. The user will be able to store values of the zeta function & Yes\\
     \hline
-    7. (a) ii. The user will be able to store the non-trivial zeta zeros & Yes & \\
+    7. (a) ii. The user will be able to store the non-trivial zeta zeros & Yes\\
     \hline
-    7. (a) iii. The user program will retrieve data from the database and display its contents suitably to the user & Yes & \\
+    7. (a) iii. The user program will retrieve data from the database and display its contents suitably to the user & Yes\\
     \hline
-    8. The Program will have a graphical user interface & Yes & \\
+    8. The Program will have a graphical user interface & Yes\\
     \hline
     \end{tabular}
     \caption{Completeness of Solution Table 3}
@@ -2923,22 +2958,57 @@ def find_zeta_zeroes(no_of_zeroes):
 
 Where count is a function of time and updates at regular intervals, such that changing the imag input by $\frac{count}{accuracy}$, when accuracy = $\frac{count}{500} + 100$, allows zeta zeroes to be calculated by a high precision while also not trying so many values that the algorithm takes ages. Furthermore, having the range of values from -0.001 to 0.001 for the zero to be in further ensures that no zeroes get skipped. However, the drawback of this is that it does take a long time, and I am also only able to measure the zeroes to 1 decimal place, or I get too many repeats.
 
+To test that these changes worked, I used the Calculate Zeroes screen. This test table shows the accuracy of the function after going through various stages of trial and improvement.
+
+\begin{table}[ht]
+    \centering
+\begin{tabular}{| M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
+    \hline
+    \multicolumn{6}{|c|}{\textbf{Zeta Zeroes Test Table}}\\
+    \hline
+    \hline
+    \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \hline
+    1 & 1  & 14.1 & & Pass & \\
+    \hline
+    2 & 2  & 14.1, 21.0& & Pass & \\
+    \hline
+    3 & 5  & 14.1, 21.0, 25.0, 30.4, 30.4 & 14.1, 21.0, 25.0, 30.4, 32.9 & Pass & Double counts one zero\\
+    \hline
+    4 & 7  & 14.1, 21.0, 25.0, 30.4, 30.4, 32.9, 37.6 & 14.1, 21.0, 25.0, 30.4, 32.9, 37.6, 40.9 & Pass & \\
+    \hline
+    \end{tabular}
+    \caption{Zeta Zeroes Test Table}
+\end{table}
+
+As can be seen from the test table, this is not a perfect calculator of the zeta zeroes. Although on test cases 3 and 4, the expected output was not exactly equal to the actual output, this can be excused for various reasons. There is no way to exactly calculate the zeta zeroes, and with a not very powerful machine, it would take far too long to be able to accurately compute every zero to a high degree of accuracy. So in order to still be able to calculate the zeroes in good time, there is a trade off with having some double counts or miss counts of zeroes. Furthermore, in order to keep the time that this takes to run to a small enough amount, I am only able to calculate the zeta zeroes to 1 decimal place.
+
+Overall, the function that I have written works well to get a rough idea of the zeta zeroes, but to calculate them accurately, it would take far longer than is reasonable for this program and would require some very large computers to do so.
+
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=4in]{zero-table-ev}
+    \caption{Evidence of the Zeta Zeroes Table}
+\end{figure}
 \clearpage
 
 
 
 \subsection{Post-Development Testing}
 
+This post-development testing was done in my testing video, so see my testing video for evidence of this.
+
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 1}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
-    1. & & & & & & \\
+    1. & & & & & & All parts of objective completed and passed \\
     \hline
     1.(a) & 1 & 14.1  & Correct! & Correct! & Pass & \\
     \hline
@@ -2970,12 +3040,12 @@ Where count is a function of time and updates at regular intervals, such that ch
 \clearpage
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 2}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
     & 13 & 0 & Polar Graph $\zeta(0)$ & Polar Graph$\zeta(0)$ & Pass & \\
     \hline
@@ -2983,9 +3053,9 @@ Where count is a function of time and updates at regular intervals, such that ch
     \hline
     & 15 & 3+2i & 0.973-0.148i & 0.973-0.148i & Pass & \\
     \hline
-    2. & & & & & & \\
+    2. & & & & & & All parts of objective completed and passed \\
     \hline
-    2. (a) & & & & & & \\
+    2. (a) & & & & & & Showcased in video and as a collection of objectives \\
     \hline
     2.(a)i. & 16 & & Username or password is not valid & Username or password is not valid & Pass & \\
     \hline
@@ -3013,12 +3083,12 @@ Where count is a function of time and updates at regular intervals, such that ch
 \clearpage
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 3}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
     & 25 & asdasd, asdasd & Password must contain... & Password must contain... & Pass & \\
     \hline
@@ -3038,6 +3108,8 @@ Where count is a function of time and updates at regular intervals, such that ch
     \hline
     2.(c) & 33 & odd numbers & False & False & Pass & \\
     \hline
+    3. & & & & & & All parts of objective completed and passed \\
+    \hline
     3.(a) & 34 & Click on Historical Background tab & Go to historical background tab & Go to historical Background tab & Pass & \\
     \hline
     3.(b) & 35 & Click on What is the RH tab & Go What is the RH tab & Go to what is the RH tab & Pass & \\
@@ -3052,14 +3124,14 @@ Where count is a function of time and updates at regular intervals, such that ch
 \clearpage
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 4}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
-    4. & & & & & & \\
+    4. & & & & & & All parts of objective completed and passed \\
     \hline
     4.(a) & 37 & abc & Error: Input must be whole number or decimal & Error: Input must be whole number or decimal & Pass & \\
     \hline
@@ -3089,14 +3161,14 @@ Where count is a function of time and updates at regular intervals, such that ch
 \clearpage
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 5}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
-    & 48 & 30-31i & Input is too large, real and imag parts must be between -30 and 30 & & Pass & \\
+    4.(d) & 48 & 30-31i & Input is too large, real and imag parts must be between -30 and 30 & & Pass & \\
     \hline
     & 49 & 30-30i & Zeta Approximation Graph & Zeta Approximation Graph & Pass & \\
     \hline
@@ -3118,14 +3190,14 @@ Where count is a function of time and updates at regular intervals, such that ch
 \clearpage
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 6}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
-    5. & & & & & & \\
+    5. & & & & & & All parts of objective completed\\
     \hline
     5.(a) & 56 & abc  & Input must be a complex number of the form a+bi & Input must be a complex number of the form a+bi & Pass & \\
     \hline
@@ -3152,12 +3224,12 @@ Where count is a function of time and updates at regular intervals, such that ch
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{ | p{0.14\linewidth} | M{0.1\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} | p{0.14\linewidth} |p{0.18\linewidth} |}
+    \begin{tabular}{|p{0.06\linewidth} | M{0.08\linewidth} | p{0.14\linewidth} | p{0.12\linewidth} | p{0.12\linewidth} | p{0.11\linewidth} |p{0.18\linewidth}|}
     \hline
     \multicolumn{7}{|c|}{\textbf{Post-Development Test Table - 7}}\\
     \hline
     \hline
-    \textbf{Objective} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
+    \textbf{Obje ctive} & \textbf{Test \#} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Outcome} & \textbf{Comments}\\
     \hline
     & 64 & 1+1i, 1+1i, 100000000 & Error & Error & Pass & \\
     \hline
@@ -3167,7 +3239,7 @@ Where count is a function of time and updates at regular intervals, such that ch
     \hline
     & 67 & Clicked on save to file & Values saved to file & Values not saved to file & Fail & \\
     \hline
-    6. & & & & & & \\
+    6. & & & & & & All parts of objective completed and passed\\
     \hline
     6.(a) & 68 & 0 & Error & Error & Pass & \\
     \hline
@@ -3179,7 +3251,7 @@ Where count is a function of time and updates at regular intervals, such that ch
     \hline
     6.(c) & & & & & & Video \\
     \hline
-    7. & & & & & & \\
+    7. & & & & & & All parts of objective completed and passed\\
     \hline
     7.(a) & & & & & & \\
     \hline
@@ -3189,7 +3261,7 @@ Where count is a function of time and updates at regular intervals, such that ch
     \hline
     7.(a)iii. & 73 & Progress button clicked & Progress screen displayed & Progress screen displayed & Pass & \\
     \hline
-    8. & & & & & & Video \\
+    8. & & & & & & Showcased in the video \\
     \hline
     \end{tabular}
     \caption{Post Development Test Table - 7}
@@ -3269,7 +3341,18 @@ def save_zeta_to_file(csv_values, filepath, regex, index, fieldnames):
         for row in sorted_values:
             csv_writer.writerow(row)
 \end{lstlisting}
+
+
+As evidence that this function now works as expected, here is a screenshot showing the sorted data in the zeta-values.csv file.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.5in]{zeta-values-ev}
+    \caption{zeta-values.csv file}
+\end{figure}
+
 \clearpage
+
 \section{Evaluation}
 
 
@@ -3338,8 +3421,34 @@ Overall, I did well making the GUI. The page designs are all kept relatively sim
 To conclude, I met all of my objectives well, but there were still some areas in which I feel as if I could have improved my program by adding extra features or re-designing certain parts.
 
 \subsection{Independent Feedback}
+
+After contacting various end-user third parties, I managed to interview various users in order to gain feedback on the project. Here is an interview that I had with one independent user.
+
+The person giving feedback is a school student, who has some prior experience and knowledge of the Riemann Hypothesis.
+
+Initially, this person had a lot of positive things to say about the project.
+
+When asked about the GUI, this individual said that it 'looks really nice and it's super easy to navigate'.
+
+With regard to the flow of information and data through the program, this user said that 'it's nice that you've got information spread out and I like that it can be accessed in a condensed form' - this was specifically referencing the questions asked in the program, and being able to see them in the progress tab, but was said to also apply to the whole project.
+
+For the database, the user said that the 'database is nice so that you don't have to keep re-using the program over again to do the same thing'.
+
+A critical point that this user said was that 'some of the pages look pretty dull, you could make the text more inviting by highlighting key points, so its not all the same.'
+
+In addition it was also mentioned that 'the graphs look cool so it would nice to be able to save a snapshot of them'.
+
+Finally, this individual said that 'if you want to learn about the Riemann Hypothesis it's pretty sick'
+
 \subsection{Evaluation of Independent Feedback}
 
+First of all, the fact that the person giving the feedback had a prior understanding the of the Riemann Hypothesis would certainly have influenced the way that they thought about the program. Potentially, if someone had never heard of the Riemann Hypothesis tries to use the program, they would not be as fluent at using it as someone who knows what they are doing. However, this was the aim of the tutorial and introduction sections, to be able to give people a basic knowledge of the Riemann Hypothesis, such that they can still use the program.
+
+In terms of the GUI, I am glad that this user found it easy to navigate. I think this is due to the common structure of each page. However, this may also be a negative point, as it was mentioned that some of the pages look 'dull', which is certainly the case with some of the more text-heavy ones. This dullness certainly would not have been helped by how similar a lot of the pages look. This has an advantage and disadvantage too it, but I should have made it so that although the pages had the same general layout, each one was slightly different. I could have done this by adding pictures, or different coloured text, or just something to break the monotony of some of the screens. With light of this feedback, I can thus consider objective 8 in my Project Objectives to be a success.
+
+As for the data in the program, the user liked that one would be able to collect lots of different types of data, and be able to store and look at the in different ways. This was said in relation to the zeta zeroes and zeta values that the user is able to calculate and being able to store these values to the database or to a file.  More specifically, they were impressed with the database, saying that it was 'nice so that you don't have to keep re-using the program over again to do the same thing'. It was good to hear some positive feedback on the database, as it does play a key role in the project. However, the individual did say that the program could be better if the user could save the graphs as well. They said that it would be beneficial to the user if there was functionality to be able to take a graph at a given moment in time and be able to save it as a picture, essentially functionality to be able to screenshot the graphs. This is a very good point, and building upon it, I could even have added the functionality to be able to save all of the data points of a graph, and have a section in the program where the user could load a graph that they had previously saved. This feedback shows that project objectives 4, 5, 6, and 7 have all been completed, however objective 7 could be more developed by allowing the user to save graphs.
+
+To conclude, I believe that the user's closing statement sums up this program well. 'If you want to learn about the Riemann Hypothesis, it's pretty sick'. A key part of this however, is the 'if you want to'. This program is not suited for everybody and requires the end user to be willing to conduct their own investigation into the Riemann Hypothesis, which could take a substantial amount of time and effort. However, this program would give someone the perfect opportunity to do this if they so wish. The feedback given by the user was a mix if positives and improvement points which is very useful. I agree with this user's feedback, and as previously mentioned, there are possible improvements that could be made to further this program.
 
 \clearpage
 
@@ -5360,7 +5469,7 @@ class TutorialSection(Screen):
 class Tutorial(TutorialSection):
 
     """
-.p.ff    The Tutorial Screen is the main entry point ot the tutorial section of the
+    The Tutorial Screen is the main entry point to the tutorial section of the
     program
 
     This class displays said screen to the user
@@ -5470,7 +5579,7 @@ class InvestigationTutorial(TutorialSection):
 class GraphMatPlot(StaticGraphScreen):
 
     """
-    The class will display the graph in the the investigation tutorial section
+    The class will display the graph in the investigation tutorial section
     It will graph the function y=mx+c where m and c are given by the user
     """
 
